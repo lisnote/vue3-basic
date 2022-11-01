@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/node': ^18.11.8
   '@vitejs/plugin-vue': ^3.2.0
   sass: ^1.55.0
   typescript: ^4.6.4
@@ -14,6 +15,7 @@ dependencies:
   vue-router: 4.1.6_vue@3.2.41
 
 devDependencies:
+  '@types/node': 18.11.8
   '@vitejs/plugin-vue': 3.2.0_vite@3.2.2+vue@3.2.41
   sass: 1.55.0
   typescript: 4.8.4
@@ -62,6 +64,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@types/node/18.11.8:
+    resolution: {integrity: sha512-uGwPWlE0Hj972KkHtCDVwZ8O39GmyjfMane1Z3GUBGGnkZ2USDq7SxLpVIiIHpweY9DS0QTDH0Nw7RNBsAAZ5A==}
+    dev: true
 
   /@vitejs/plugin-vue/3.2.0_vite@3.2.2+vue@3.2.41:
     resolution: {integrity: sha512-E0tnaL4fr+qkdCNxJ+Xd0yM31UwMkQje76fsDVBBUCoGOUPexu2VDUYHL8P4CwV+zMvWw6nlRw19OnRKmYAJpw==}
