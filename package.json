@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "lint:prettier": "prettier --write  \"./**/*.{js,ts,json,json5,css,scss,vue,html,md}\" --ignore-path ./.gitignore"
+    "lint:prettier": "prettier --write  \"./**/*.{js,ts,json,json5,css,scss,vue,html,md}\" --ignore-path .gitignore",
+    "lint:eslint": "eslint  \"./**/{\\.*,*}.{vue,js,ts}\" --fix --ignore-path .gitignore"
   },
   "dependencies": {
     "element-plus": "^2.2.19",
