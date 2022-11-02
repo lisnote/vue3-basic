@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint:prettier": "prettier --write  \"./**/*.{js,json,tsx,css,less,scss,vue,html,md}\" --ignore-path ./.gitignore"
   },
   "dependencies": {
     "element-plus": "^2.2.19",
