@@ -14,5 +14,7 @@ module.exports = {
     ecmaVersion: 2021,
   },
   plugins: [],
-  rules: {},
+  rules: {
+    'spaced-comment': ['error', 'always', { markers: ['/'] }],
+  },
 };
