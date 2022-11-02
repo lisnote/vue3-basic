@@ -12,10 +12,10 @@
 - [ ] 配置状态管理 pinia
 - [ ] 配置网络交互 : axios
 - [ ] 配置 mock : express
-- [ ] 配置代码风格检查 : prettier
-- [ ] 配置代码检查 : eslint
-- [ ] 配置 git action : husky
-- [ ] 配置 lint-staged
+- [x] 配置代码风格检查 : prettier
+- [x] 配置代码检查 : eslint
+- [x] 配置 git action : husky
+- [x] 配置 lint-staged
 - [x] 配置路径别名
 - [ ] 配置全局组件
 - [ ] 配置导航栏
