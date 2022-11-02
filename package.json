@@ -7,6 +7,7 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "pnpm lint:prettier && pnpm lint:eslint",
+    "lint:lint-staged": "lint-staged -c .husky/lintstagedrc.js",
     "lint:prettier": "prettier --write  \"./**/*.{js,ts,json,json5,css,scss,vue,html,md}\" --ignore-path .gitignore",
     "lint:eslint": "eslint  \"./**/{\\.*,*}.{vue,js,ts}\" --fix --ignore-path .gitignore",
     "prepare": "husky install"
