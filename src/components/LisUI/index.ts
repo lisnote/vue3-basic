@@ -1,4 +1,4 @@
-import type { App, Component } from 'vue';
+import type { App } from 'vue';
 import LisMenu from './LisMenu';
 
 const components = {
