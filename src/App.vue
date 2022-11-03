@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
-<template>vue3 basic</template>
+<template><LisMenu /></template>
 
 <style scoped></style>

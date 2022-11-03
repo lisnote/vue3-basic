@@ -15,5 +15,6 @@ module.exports = {
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
     'spaced-comment': ['error', 'always', { markers: ['/'] }],
+    'vue/multi-word-component-names': 'off',
   },
 };
