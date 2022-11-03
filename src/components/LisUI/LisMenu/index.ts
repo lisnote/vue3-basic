@@ -9,7 +9,7 @@ export default index;
 export interface LisMenuData {
   index: string;
   title: string;
-  children: LisMenuData;
+  children: LisMenuData[];
 }
 
 export function MenuRouteAdaptor(data: RouteRecordRaw[]): LisMenuData[] {
