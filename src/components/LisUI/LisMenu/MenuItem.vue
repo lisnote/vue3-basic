@@ -6,7 +6,11 @@ import type { LisMenuData } from '.';
 defineProps<{ data: LisMenuData }>();
 </script>
 <template>
-  <el-sub-menu v-if="data.children?.length > 0" :index="data.index">
+  <el-sub-menu
+    v-if="data.children?.length ?? 0 > 0"
+    :index="data.index"
+    @click="data.onClick"
+  >
     <template #title>{{ data.title }}</template>
     <MenuItem
       v-for="(item, index) in data.children"
@@ -14,5 +18,7 @@ defineProps<{ data: LisMenuData }>();
       :data="item"
     />
   </el-sub-menu>
-  <el-menu-item v-else :index="data.index">{{ data.title }}</el-menu-item>
+  <el-menu-item v-else :index="data.index" @click="data.onClick">
+    {{ data.title }}
+  </el-menu-item>
 </template>
