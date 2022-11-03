@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 
-const menuRouters: RouteRecordRaw[] = [
+const menuRoutes: RouteRecordRaw[] = [
   {
     path: '/',
     title: '首页',
@@ -16,7 +16,7 @@ const menuRouters: RouteRecordRaw[] = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: menuRouters,
+  routes: menuRoutes,
 });
 
-export { router as default, menuRouters };
+export { router as default, menuRoutes };
