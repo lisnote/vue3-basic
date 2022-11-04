@@ -7,8 +7,8 @@
 - [x] 配置基本框架: vite+vue3+typescript
 - [x] 使用 pnpm 作为包管理器安装依赖
 - [x] 配置 css 预处理器 : sass
-- [ ] 配置 ui 组件 : element-ui
-- [ ] 配置路由 : vue-router
+- [x] 配置 ui 组件 : element-ui
+- [x] 配置路由 : vue-router
 - [ ] 配置状态管理 pinia
 - [ ] 配置网络交互 : axios
 - [ ] 配置 mock : express
