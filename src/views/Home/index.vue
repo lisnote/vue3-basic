@@ -1,8 +1,11 @@
 <script lang="ts" setup>
 import pkg from '@root/package.json';
+import useMainStore from '@/store';
 </script>
 <template>
-  <h2>一个基本的 Vue3 项目</h2>
+  <div v-for="(key, value) in useMainStore().$state" :key="key">
+    {{ value }} : {{ key }}
+  </div>
   <hr />
   <div v-for="(key, value) in pkg.dependencies" :key="key">
     {{ value }} : {{ key }}
