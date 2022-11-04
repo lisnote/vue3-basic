@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { ElMenu } from 'element-plus';
 import MenuItem from './MenuItem.vue';
+
 import type { LisMenuData } from '.';
-const props = defineProps<{
+
+defineProps<{
   data: LisMenuData[];
 }>();
-console.log(props.data);
 </script>
 <template>
   <el-menu mode="horizontal">
