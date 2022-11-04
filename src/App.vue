@@ -16,4 +16,8 @@ router.isReady().then(() => {
   <RouterView />
 </template>
 
-<style scoped></style>
+<style scoped>
+:global(*) {
+  margin: 0;
+}
+</style>
