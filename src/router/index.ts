@@ -8,9 +8,9 @@ const menuRoutes: RouteRecordRaw[] = [
     component: () => import('@/views/Home'),
   },
   {
-    path: '/about',
-    title: '关于',
-    component: () => import('@/views/About'),
+    path: '/form',
+    title: '表单',
+    component: () => import('@/views/Form'),
   },
 ];
 
