@@ -10,7 +10,7 @@
 - [x] 配置 ui 组件 : element-ui
 - [x] 配置路由 : vue-router
 - [x] 配置状态管理 pinia
-- [ ] 配置网络交互 : axios
+- [x] 配置网络交互 : axios
 - [ ] 配置 mock : express
 - [x] 配置代码风格检查 : prettier
 - [x] 配置代码检查 : eslint
