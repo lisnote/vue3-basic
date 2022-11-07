@@ -1,5 +1,8 @@
+export function getType(value: unknown) {
+  return Object.prototype.toString.call(value).slice(8, -1);
+}
 export function is(value: unknown, type: string) {
-  return Object.prototype.toString.call(value).slice(8, -1) === type;
+  return getType(value) === type;
 }
 export function isObject(value: unknown) {
   return is(value, 'Object');
