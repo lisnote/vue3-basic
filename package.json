@@ -3,7 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
+    "mock": "vite --mode mock --host",
+    "staging": "vite --mode production --host",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "pnpm lint:prettier && pnpm lint:eslint",
@@ -22,6 +24,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
+    "@types/express": "^4.17.14",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.11.8",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
