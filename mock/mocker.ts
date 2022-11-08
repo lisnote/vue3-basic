@@ -12,6 +12,7 @@ export default function mocker() {
     if (data[req.method] && data[req.method][req.path]) {
       console.log('mocker access', req.method, req.path);
       resp.send(data[req.method][req.path]);
+      return;
     }
     next();
   };
