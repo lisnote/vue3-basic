@@ -7,7 +7,7 @@ import type { Request, Response, NextFunction } from 'express';
 
 const data = {};
 export default function mocker() {
-  dataLoader(join(__dirname, 'data'));
+  dataLoader();
   return function (req: Request, resp: Response, next: NextFunction) {
     if (data[req.method] && data[req.method][req.path]) {
       console.log('mocker access', req.method, req.path);
@@ -19,7 +19,7 @@ export default function mocker() {
 }
 
 // 加载 mock 数据到 data 对象
-async function dataLoader(dir) {
+export async function dataLoader(dir = join(__dirname, 'data')) {
   readdirSync(dir).forEach(async (file) => {
     const fullPath = join(dir, file);
     stat(fullPath).then((state) => {
