@@ -10,12 +10,13 @@ export default createProxyMiddleware({
   changeOrigin: true,
   selfHandleResponse: true,
   onProxyRes: responseInterceptor(async (respBuffer, proxyRes, req) => {
+    const pathName = req.url.replace(/\?.*/, '');
     const data = respBuffer.toString('utf8');
     const dir = join(__dirname, 'data/recorder');
     const file = req.url.replace(/\?.*/, '').replaceAll('/', '_') + '.json';
     const jsonData = {};
     jsonData[req.method] = {};
-    jsonData[req.method][req.url] = JSON.parse(data);
+    jsonData[req.method][pathName] = JSON.parse(data);
     mkdir(dir, { recursive: true }).then(() => {
       writeFile(join(dir, file), JSON.stringify(jsonData, null, 2), 'utf8');
     });
