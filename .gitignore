@@ -24,6 +24,6 @@ dist-ssr
 *.sw?
 
 # custom ignore
-test.*
+.VSCodeCounter
 temp
 temp.*
