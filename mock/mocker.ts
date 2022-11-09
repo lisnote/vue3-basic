@@ -8,10 +8,10 @@ import type { Request, Response, NextFunction } from 'express';
 const data = {};
 export default function mocker() {
   dataLoader();
-  return function (req: Request, resp: Response, next: NextFunction) {
+  return function (req: Request, res: Response, next: NextFunction) {
     if (data[req.method] && data[req.method][req.path]) {
       console.log('mocker access', req.method, req.path);
-      resp.send(data[req.method][req.path]);
+      res.send(data[req.method][req.path]);
       return;
     }
     next();
