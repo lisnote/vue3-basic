@@ -5,8 +5,8 @@ import startMocker from './mock';
 
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfigExport => {
-  const { VITE_BACKEND, VITE_PORT } = loadEnv(mode, __dirname);
-  if (mode === 'mock') startMocker(VITE_PORT);
+  const { VITE_BACKEND, VITE_PORT, VITE_MOCK_PROXY } = loadEnv(mode, __dirname);
+  if (mode === 'mock') startMocker(VITE_PORT, VITE_MOCK_PROXY);
   return {
     plugins: [vue()],
     resolve: {
