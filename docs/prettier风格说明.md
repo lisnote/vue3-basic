@@ -5,7 +5,7 @@
 箭头函数始终包含单引号
 
 ```javascript
-// let fn = name=>`hello~${name}`
+// let fn = name => `hello~${name}`
 let fn = (name) => `hello${name}`;
 ```
 
