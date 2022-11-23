@@ -19,7 +19,9 @@ export interface LisMenuData {
   onClick?(...args: unknown[]): unknown;
 }
 
-// 将 RouteRecordRow[] 类型的数据转换为 LisMenuData[] 类型的数据
+/**
+ * 将 RouteRecordRow[] 类型的数据转换为 LisMenuData[] 类型的数据
+ */
 export function MenuRouteAdaptor(data: RouteRecordRaw[]): LisMenuData[] {
   return cloneDeepWith(data, (value) => {
     if (isObject(value)) {

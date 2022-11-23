@@ -31,12 +31,16 @@ export function is(value: unknown, type: string): boolean {
   return getType(value) === type;
 }
 
-// 判断值是否为 Object 类型
+/**
+ * 判断值是否为 Object 类型
+ */
 export function isObject(value: unknown): boolean {
   return is(value, 'Object');
 }
 
-// 判断值是否为 Array 类型
+/**
+ * 判断值是否为 Array 类型
+ */
 export function isArray(value: unknown): boolean {
   return Array.isArray(value);
 }
