@@ -3,8 +3,12 @@ import { ElInput as Input } from 'element-plus';
 import type { App, FunctionalComponent } from 'vue';
 import 'element-plus/dist/index.css';
 
-// 封装 ElInput 组件
-// 增加最大长度限制, 以及输入完成后去除尾部空白字符
+/**
+ * 封装 {ElInput} 组件
+ * 增加功能 :
+ * - 默认的最大长度限制
+ * - 失去焦点后自动去除尾部空白字符
+ */
 const ElInput: FunctionalComponent = function (props: typeof Input.props, ctx) {
   return h(
     Input,
