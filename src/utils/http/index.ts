@@ -12,3 +12,4 @@ useRequest.forEach((use) => http.interceptors.request.use(use));
 useResponse.forEach((use) => http.interceptors.response.use(use));
 
 export default http;
+export * from './transformResponses';
