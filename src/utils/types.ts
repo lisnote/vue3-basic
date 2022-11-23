@@ -1,12 +1,42 @@
+/**
+ * 包含类型获取, 类型判断相关方法
+ */
+
+/**
+ * 获取值类型
+ * @param {unknown} value 待获取类型的值
+ * @returns {string} 返回获取的类型
+ * @example
+ * ```
+ * getType({})
+ * // output: 'Object'
+ * ```
+ */
 export function getType(value: unknown) {
   return Object.prototype.toString.call(value).slice(8, -1);
 }
-export function is(value: unknown, type: string) {
+
+/**
+ * 判断值是否为某类型
+ * @param {unknown} value 待获取类型的值
+ * @param {string} type 判断的类型
+ * @returns {string} 返回获取的类型
+ * @example
+ * ```
+ * is({}, 'Object')
+ * // output: true
+ * ```
+ */
+export function is(value: unknown, type: string): boolean {
   return getType(value) === type;
 }
-export function isObject(value: unknown) {
+
+// 判断值是否为 Object 类型
+export function isObject(value: unknown): boolean {
   return is(value, 'Object');
 }
-export function isArray(value: unknown) {
+
+// 判断值是否为 Array 类型
+export function isArray(value: unknown): boolean {
   return Array.isArray(value);
 }
