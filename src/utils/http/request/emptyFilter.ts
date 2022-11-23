@@ -1,4 +1,8 @@
+/**
+ * 移除对象中值为 '', null, undefined 的属性
+ */
 import type { AxiosRequestConfig } from 'axios';
+
 import { isObject, isArray } from '@/utils/types';
 
 export default function (config: AxiosRequestConfig) {
@@ -6,7 +10,6 @@ export default function (config: AxiosRequestConfig) {
   return config;
 }
 
-// 移除对象中值为 '', null, undefined 的属性
 const emptyValues: Array<unknown> = ['', null, undefined];
 function emptyFilter(value: unknown) {
   if (isArray(value)) {
