@@ -12,7 +12,7 @@
  * // output: 'Object'
  * ```
  */
-export function getType(value: unknown) {
+export function getType(value: unknown): string {
   return Object.prototype.toString.call(value).slice(8, -1);
 }
 
