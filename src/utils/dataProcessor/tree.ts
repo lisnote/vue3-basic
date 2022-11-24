@@ -14,7 +14,7 @@ import { cloneDeep } from 'lodash-es';
  * @param {any} tree 待处理的树数据
  * @param {string} search 查找的值
  * @param {treeCleanerProps} props 树属性及查找字段
- * @returns {any} 过滤后的树
+ * @returns {any} 被清理的树
  */
 export function treeCleaner(
   tree: any,
