@@ -15,7 +15,6 @@ export function download(fileName?: string) {
     fileName =
       fileName ?? decodeURI(disposition.replace(/.*filename=(.*)/, '$1'));
     const url = window.URL.createObjectURL(data);
-    console.log(url, data);
     const link = document.createElement('a');
     link.style.display = 'none';
     link.href = url;
