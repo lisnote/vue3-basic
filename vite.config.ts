@@ -1,7 +1,6 @@
 import { ConfigEnv, UserConfigExport, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
-import startMocker from './mock';
 
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfigExport => {
@@ -15,9 +14,10 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
       },
     },
     server: {
+      port: Number(VITE_PORT),
       proxy: {
         '/api': {
-          target: VITE_BACKEND + ':' + VITE_PORT,
+          target: VITE_BACKEND,
           changeOrigin: true,
           rewrite: (path) => path.replace(/\/api/, ''),
         },
