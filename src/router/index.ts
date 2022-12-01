@@ -12,6 +12,11 @@ const menuRoutes: RouteRecordRaw[] = [
     title: '表单',
     component: () => import('@/views/Form'),
   },
+  {
+    path: '/ScanningCode',
+    title: '扫码',
+    component: () => import('@/views/ScanningCode'),
+  },
 ];
 
 const router = createRouter({
