@@ -13,7 +13,8 @@
 - [x] 配置网络交互 : axios
 - [x] 配置 mock : express
 - [x] 配置代码风格检查 : prettier
-- [x] 配置代码检查 : eslint
+- [x] 配置 css/scss 检查 : stylelint
+- [x] 配置 js/ts 检查 : eslint
 - [x] 配置 git action : husky
 - [x] 配置 lint-staged
 - [x] 配置路径别名
