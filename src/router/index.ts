@@ -12,6 +12,11 @@ const menuRoutes: RouteRecordRaw[] = [
     title: '表单',
     component: () => import('@/views/Form'),
   },
+  {
+    path: '/theme',
+    title: '主题',
+    component: () => import('@/views/Theme'),
+  },
 ];
 
 const router = createRouter({
