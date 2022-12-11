@@ -34,6 +34,7 @@
     - [ ] table 封装
     - [ ] form 组件封装
     - [ ] 默认值封装
+    - [x] 主题切换
   - [ ] axios 封装
     - [ ] axios 实例及默认值
     - [ ] 文件下载
@@ -49,7 +50,7 @@
   - [ ] pdf.js: PDF 预览
   - [ ] wangeditor: 富文本编辑器
   - [ ] dplayer: 弹幕视频
-  - [ ] zxing: 二维码/条形码识别
+  - [x] zxing: 二维码/条形码识别
   - [ ] canvas: 添加水印, 合并图片 & canvas, 导出
   - [ ] amap-js: 高德地图
   - [ ] threejs: 数字孪生/3D 动画
