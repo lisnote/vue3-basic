@@ -17,6 +17,11 @@ const menuRoutes: RouteRecordRaw[] = [
     title: '扫码',
     component: () => import('@/views/ScanningCode'),
   },
+  {
+    path: '/theme',
+    title: '主题',
+    component: () => import('@/views/Theme'),
+  },
 ];
 
 const router = createRouter({

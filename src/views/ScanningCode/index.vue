@@ -44,6 +44,7 @@ function stop() {
   background: black;
   width: 100%;
 }
+
 .output {
   word-break: break-all;
 }
