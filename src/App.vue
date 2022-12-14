@@ -4,8 +4,3 @@ import Layout from '@/layout';
 <template>
   <Layout />
 </template>
-<style lang="scss" scoped>
-:global(*) {
-  margin: 0;
-}
-</style>

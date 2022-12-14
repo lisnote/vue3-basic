@@ -1,0 +1,43 @@
+/* 生成盒模型相关css */
+
+$directions: top, right, bottom, left;
+
+// margin
+@for $i from 0 through 10 {
+  .m-#{$i} {
+    margin: 0.25rem * $i;
+  }
+  @each $direction in $directions {
+    .m#{str-slice($direction,1,1) + '-' + $i} {
+      margin-#{$direction}: 0.25rem * $i;
+    }
+  }
+}
+
+// border
+:root {
+  --border-color: rgba(#000, var(--border-opacity));
+  --border-opacity: 1;
+}
+@for $i from 0 through 10 {
+  .b-#{$i} {
+    border: 1px * $i solid var(--border-color);
+  }
+  @each $direction in $directions {
+    .b#{str-slice($direction,1,1) + '-' + $i } {
+      border-#{$direction}: 1px * $i solid var(--border-color);
+    }
+  }
+}
+
+// padding
+@for $i from 0 through 10 {
+  .p-#{$i} {
+    padding: 0.25rem * $i solid var(--border-color);
+  }
+  @each $direction in $directions {
+    .p#{str-slice($direction,1,1) + '-' + $i } {
+      padding-#{$direction}: 0.25rem * $i solid var(--border-color);
+    }
+  }
+}

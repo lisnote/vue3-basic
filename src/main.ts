@@ -4,6 +4,7 @@ import { createPinia } from 'pinia';
 import ElementPlus from './plugins/ElementPlus';
 import LisUI from './components/LisUI';
 import router from './router';
+import '@/styles/global.scss';
 
 createApp(App)
   .use(createPinia())
