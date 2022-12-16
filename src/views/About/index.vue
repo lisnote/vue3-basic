@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import pkg from '@root/package.json';
-import useMainStore from '@/store';
+import { useMainStore } from '@/store';
 import http from '@/utils/http';
 import { ref } from 'vue';
 
