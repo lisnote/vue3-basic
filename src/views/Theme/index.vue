@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import switchTheme from '@/utils/theme';
+import { switchTheme } from '@/utils/theme';
 import { useStylesStore } from '@/store';
 const stylesStore = useStylesStore();
 switchTheme(stylesStore.theme);
