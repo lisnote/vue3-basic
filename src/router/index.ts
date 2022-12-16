@@ -3,6 +3,11 @@ import type { RouteRecordRaw } from 'vue-router';
 
 const menuRoutes: RouteRecordRaw[] = [
   {
+    path: '/',
+    title: '首页',
+    component: () => import('@/views/Home'),
+  },
+  {
     path: '/form',
     title: '表单',
     component: () => import('@/views/Form'),
@@ -18,7 +23,7 @@ const menuRoutes: RouteRecordRaw[] = [
     component: () => import('@/views/Theme'),
   },
   {
-    path: '/',
+    path: '/About',
     title: '关于',
     component: () => import('@/views/About'),
   },
