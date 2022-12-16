@@ -1,6 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 
+/**
+ * 菜单路由信息
+ */
 const menuRoutes: RouteRecordRaw[] = [
   {
     path: '/',
