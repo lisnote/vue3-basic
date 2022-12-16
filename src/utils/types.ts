@@ -7,7 +7,7 @@
  * @param {unknown} value 待获取类型的值
  * @returns {string} 返回获取的类型
  * @example
- * ```
+ * ```javascript
  * getType({})
  * // output: 'Object'
  * ```
@@ -22,7 +22,7 @@ export function getType(value: unknown): string {
  * @param {string} type 判断的类型
  * @returns {string} 返回获取的类型
  * @example
- * ```
+ * ```javascript
  * is({}, 'Object')
  * // output: true
  * ```

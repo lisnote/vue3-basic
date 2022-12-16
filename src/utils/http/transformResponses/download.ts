@@ -1,14 +1,16 @@
+import { AxiosHeaders } from 'axios';
+
 /**
  * 通过设定 transformResponse 进行文件下载
- * example:
+ * @example
+ * ```javascript
  * import http, { download } from '@/utils/http';
  * http({
  *   url: '/favicon.ico',
  *   transformResponse: download('fileName'),
  * });
+ * ```
  */
-import { AxiosHeaders } from 'axios';
-
 export function download(fileName?: string) {
   return function (data: Blob, headers: AxiosHeaders) {
     const disposition = (headers.get('content-disposition') ?? '') as string;
