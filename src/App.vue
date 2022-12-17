@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Layout from '@/layout';
-import switchTheme from './utils/theme';
+import { switchTheme } from './utils/theme';
 import { onBeforeMount } from 'vue';
 import { useStylesStore } from './store';
 
