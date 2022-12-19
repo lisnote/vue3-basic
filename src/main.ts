@@ -5,9 +5,9 @@ import ElementPlus from '@/plugins/ElementPlus';
 import LisUI from '@/components/LisUI';
 import router from '@/router';
 import init from '@/plugins/init';
-import '@/styles/global.scss';
 
 import '@/styles/default.scss';
+import '@/styles/global.scss';
 
 createApp(App)
   .use(pinia)
