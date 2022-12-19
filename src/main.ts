@@ -7,6 +7,8 @@ import router from '@/router';
 import init from '@/plugins/init';
 import '@/styles/global.scss';
 
+import '@/styles/default.scss';
+
 createApp(App)
   .use(pinia)
   .use(ElementPlus)
