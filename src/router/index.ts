@@ -34,7 +34,13 @@ const menuRoutes: RouteRecordRaw[] = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: menuRoutes,
+  routes: [
+    {
+      path: '/',
+      component: () => import('@/layout'),
+      children: menuRoutes,
+    },
+  ],
 });
 
 export { router as default, menuRoutes };
