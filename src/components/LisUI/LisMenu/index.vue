@@ -9,7 +9,7 @@ defineProps<{
 }>();
 </script>
 <template>
-  <ElMenu mode="horizontal">
+  <ElMenu>
     <MenuItem v-for="(item, index) in data" :key="index" :data="item" />
   </ElMenu>
 </template>
