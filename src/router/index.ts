@@ -21,6 +21,11 @@ const menuRoutes: RouteRecordRaw[] = [
     component: () => import('@/views/ScanningCode'),
   },
   {
+    path: '/PlayVideo',
+    title: '视频播放',
+    component: () => import('@/views/PlayVideo'),
+  },
+  {
     path: '/theme',
     title: '主题',
     component: () => import('@/views/Theme'),
