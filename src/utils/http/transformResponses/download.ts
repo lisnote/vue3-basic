@@ -13,9 +13,10 @@ import { AxiosHeaders } from 'axios';
  */
 export function download(fileName?: string) {
   return function (data: Blob, headers: AxiosHeaders) {
-    const disposition = (headers.get('content-disposition') ?? '') as string;
-    fileName =
-      fileName ?? decodeURI(disposition.replace(/.*filename=(.*)/, '$1'));
+    if (fileName === undefined) {
+      const disposition = String(headers.get('content-disposition'));
+      fileName = decodeURI(disposition.replace(/.*filename=(.*)/, '$1'));
+    }
     const url = window.URL.createObjectURL(data);
     const link = document.createElement('a');
     link.style.display = 'none';
