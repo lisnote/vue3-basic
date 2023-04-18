@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MenuRouteAdaptor } from '@/components/LisUI/LisMenu';
+import LisMenu, { MenuRouteAdaptor } from './LisMenu';
 import { menuRoutes } from '@/router';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
