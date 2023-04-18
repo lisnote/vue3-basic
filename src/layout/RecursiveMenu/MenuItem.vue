@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { ElSubMenu, ElMenuItem } from 'element-plus';
 
-import type { LisMenuData } from '.';
+import type { RecursiveMenuData } from '.';
 
-defineProps<{ data: LisMenuData }>();
+defineProps<{ data: RecursiveMenuData }>();
 </script>
 <template>
   <ElSubMenu

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LisMenu, { MenuRouteAdaptor } from './LisMenu';
+import RecursiveMenu, { MenuRouteAdaptor } from './RecursiveMenu';
 import { menuRoutes } from '@/router';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
@@ -12,6 +12,9 @@ router.isReady().then(() => {
 </script>
 
 <template>
-  <LisMenu :data="MenuRouteAdaptor(menuRoutes)" :default-active="activeIndex" />
+  <RecursiveMenu
+    :data="MenuRouteAdaptor(menuRoutes)"
+    :default-active="activeIndex"
+  />
   <RouterView />
 </template>
