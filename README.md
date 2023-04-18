@@ -1,6 +1,8 @@
 # vue3-basic
 
-一个基本的 Vue3 项目
+[中文](./README.md) | [English](./README_EN.md)
+
+这个项目可以作为启动 Vue3 项目的基础框架.
 
 ## TodoList
 
@@ -42,6 +44,7 @@
     - [ ] token 自动更新
   - [ ] socket.io: Websocket 实时通信
   - [ ] graphQL: 合并请求减少网络 IO
+  - [ ] webRTC: 语音/视频通话
 - [ ] 功能
   - [ ] marked: markdown 渲染
     - [ ] hightlightjs: 提供语法高亮支持
@@ -73,7 +76,7 @@
       - [ ] 大文件切片
       - [ ] 断点续传
       - [ ] md5 秒传
-    - [ ] vite: 文本转语音
+    - [ ] vits: 文本转语音
     - [ ] NovalAI: 文本生成动漫图片
-    - [ ] Real-ESRGAN: 图像/视频修复
+    - [ ] Real-ESRGAN: 图像/视频高清修复
 - [ ] 关于
