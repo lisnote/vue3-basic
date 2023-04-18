@@ -17,6 +17,7 @@ module.exports = {
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
     'spaced-comment': ['error', 'always', { markers: ['/'] }],
+    camelcase: ['error', { properties: 'always' }],
     'vue/multi-word-component-names': 'off',
   },
 };
