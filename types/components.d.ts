@@ -1,7 +1,8 @@
-import LisMenu from '../src/components/LisUI/LisMenu';
+// import RecursiveMenu from '../src/components/RecursiveMenu';
 declare module 'vue' {
   export interface GlobalComponents {
-    LisMenu: typeof LisMenu;
+    // RecursiveMenu: typeof RecursiveMenu;
     ElInput: typeof import('element-plus')['ElInput'];
   }
 }
+export {};

@@ -1,6 +1,6 @@
 /**
  * 菜单组件
- * 属性 data 接收一个 LisMenuData 类型的数据
+ * 属性 data 接收一个 RecursiveMenuData 类型的数据
  * 生成菜单栏, 兼容 el-menu 属性
  */
 import index from './index.vue';
@@ -12,17 +12,17 @@ import type { RouteRecordRaw } from 'vue-router';
 
 export default index;
 
-export interface LisMenuData {
+export interface RecursiveMenuData {
   index: string;
   title: string;
-  children?: LisMenuData[];
+  children?: RecursiveMenuData[];
   onClick?(...args: unknown[]): unknown;
 }
 
 /**
- * 将 RouteRecordRow[] 类型的数据转换为 LisMenuData[] 类型的数据
+ * 将 RouteRecordRow[] 类型的数据转换为 RecursiveMenuData[] 类型的数据
  */
-export function MenuRouteAdaptor(data: RouteRecordRaw[]): LisMenuData[] {
+export function MenuRouteAdaptor(data: RouteRecordRaw[]): RecursiveMenuData[] {
   return cloneDeepWith(data, (value) => {
     if (isObject(value)) {
       return {

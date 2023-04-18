@@ -2,10 +2,10 @@
 import { ElMenu } from 'element-plus';
 import MenuItem from './MenuItem.vue';
 
-import type { LisMenuData } from '.';
+import type { RecursiveMenuData } from '.';
 
 defineProps<{
-  data: LisMenuData[];
+  data: RecursiveMenuData[];
 }>();
 </script>
 <template>
