@@ -9,9 +9,13 @@ import type { Ref } from 'vue';
 const data: Ref<Record<string, string>> = ref({});
 http
   .get('api/repos/lisnote/vue3-basic')
-  .then(({ data: { stargazers_count, updated_at } }) => {
-    data.value = { stargazers_count, updated_at };
-  });
+  .then(
+    ({
+      data: { stargazers_count: stargazersCount, updated_at: updatedAt },
+    }) => {
+      data.value = { stargazersCount, updatedAt };
+    },
+  );
 </script>
 <template>
   <div v-for="(key, value) in useMainStore().$state" :key="key">
