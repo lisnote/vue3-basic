@@ -42,14 +42,14 @@
     - [ ] 文件下载
     - [ ] 全局错误码管理
     - [ ] token 自动更新
-  - [ ] socket.io: Websocket 实时通信
-  - [ ] graphQL: 合并请求减少网络 IO
-  - [ ] webRTC: 语音/视频通话
 - [ ] 功能
   - [ ] marked: markdown 渲染
     - [ ] hightlightjs: 提供语法高亮支持
     - [ ] KaTex: 提供 LaTeX 语法支持
   - [ ] CodeMirror: 代码在线编辑器, 也可为 marked 提供代码高亮
+  - [ ] socket.io: Websocket 实时通信
+  - [ ] graphQL: 合并请求减少网络 IO
+  - [ ] webRTC: 语音/视频通话
   - [ ] pdf.js: PDF 预览
   - [ ] wangeditor: 富文本编辑器
   - [ ] dplayer: 弹幕视频
