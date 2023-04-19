@@ -3,6 +3,7 @@ import pkg from '@root/package.json';
 import { useMainStore } from '@/store';
 import http from '@/utils/http';
 import { ref } from 'vue';
+import { dateFormat } from '@/utils/date';
 
 import type { Ref } from 'vue';
 
@@ -13,7 +14,10 @@ http
     ({
       data: { stargazers_count: stargazersCount, updated_at: updatedAt },
     }) => {
-      data.value = { stargazersCount, updatedAt };
+      data.value = {
+        stargazersCount,
+        updatedAt: dateFormat(updatedAt),
+      };
     },
   );
 </script>
