@@ -9,7 +9,7 @@ import type { Ref } from 'vue';
 
 const data: Ref<Record<string, string>> = ref({});
 http
-  .get('api/repos/lisnote/vue3-basic')
+  .get('https://api.github.com/api/repos/lisnote/vue3-basic')
   .then(
     ({
       data: { stargazers_count: stargazersCount, updated_at: updatedAt },
