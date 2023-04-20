@@ -16,6 +16,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
     "@types/dplayer": "^1.25.2",
     "@vueuse/core": "^9.6.0",
     "@zxing/library": "^0.19.1",
