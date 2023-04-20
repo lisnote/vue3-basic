@@ -13,14 +13,14 @@ router.isReady().then(() => {
 
 <template>
   <div class="layout">
-    <RecursiveMenu
-      :data="MenuRouteAdaptor(menuRoutes)"
-      :default-active="activeIndex"
-      class="sidebar"
-      ellipsis
-    />
+    <nav class="nav">nav</nav>
     <div class="main">
-      <nav class="nav">nav</nav>
+      <RecursiveMenu
+        :data="MenuRouteAdaptor(menuRoutes)"
+        :default-active="activeIndex"
+        class="sidebar"
+        ellipsis
+      />
       <article class="article">
         <RouterView />
       </article>
@@ -30,30 +30,32 @@ router.isReady().then(() => {
 <style lang="scss" scoped>
 .layout {
   display: flex;
+  flex-direction: column;
   height: 100%;
 
-  .sidebar {
+  .nav {
     flex-shrink: 0;
-    width: 200px;
-    height: 100%;
+    background-color: white;
+    width: 100%;
+    height: 50px;
+    border-bottom: solid 1px var(--el-menu-border-color);
   }
 
   .main {
     flex: 1;
     display: flex;
-    flex-direction: column;
+    overflow: hidden;
 
-    .nav {
-      flex-shrink: 0;
-      width: 100%;
-      height: 50px;
-      border-bottom: solid 1px var(--el-menu-border-color);
+    .sidebar {
+      width: 200px;
+      height: 100%;
     }
 
     .article {
       flex: 1;
       position: relative;
       overflow-y: auto;
+      overflow-wrap: break-word;
     }
   }
 }
