@@ -1,9 +1,12 @@
-import { UserConfigExport } from 'vite';
+import { ConfigEnv, UserConfigExport, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
+import mock from './mock';
 
 // https://vitejs.dev/config/
-export default (): UserConfigExport => {
+export default ({ mode }: ConfigEnv): UserConfigExport => {
+  const env = loadEnv(mode, __dirname, '');
+  mock(mode, env);
   return {
     base: './',
     plugins: [vue()],
