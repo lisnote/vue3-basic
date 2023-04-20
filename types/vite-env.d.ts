@@ -9,3 +9,9 @@ declare module '*.vue' {
   >;
   export default component;
 }
+
+interface ImportMetaEnv {
+  [key: string]: string;
+  APP_API: string;
+  APP_WS: string;
+}

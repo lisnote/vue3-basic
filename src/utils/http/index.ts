@@ -7,7 +7,7 @@ import useRequest from './request';
 import useResponse from './response';
 
 const http = axios.create({
-  baseURL: '/',
+  baseURL: import.meta.env.APP_API,
   timeout: 5000,
   responseType: 'blob',
 });
