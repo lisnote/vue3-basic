@@ -47,11 +47,12 @@ This project can be used as a base framework for starting Vue3 projects.
     - [ ] hightlightjs: provide syntax highlighting support
     - [ ] KaTex: provide support for LaTeX syntax
   - [ ] CodeMirror: online code editor, can also provide code highlighting for marked
+  - [ ] pdf.js: PDF preview
+  - [ ] docx-preview: docx preview
+  - [ ] wangeditor: rich text editor
   - [ ] socket.io: WebSocket real-time communication
   - [ ] GraphQL: Merge requests to reduce network IO
   - [ ] webRTC: Real-time Voice/Video Call
-  - [ ] pdf.js: PDF preview
-  - [ ] wangeditor: rich text editor
   - [ ] dplayer: danmaku video
   - [x] zxing: QR/barcode recognition
   - [ ] canvas: add watermark, merge images & canvas, export
