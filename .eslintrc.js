@@ -20,4 +20,12 @@ module.exports = {
     camelcase: ['error', { properties: 'always' }],
     'vue/multi-word-component-names': 'off',
   },
+  overrides: [
+    {
+      files: ['*.html'],
+      rules: {
+        'vue/comment-directive': 'off',
+      },
+    },
+  ],
 };
