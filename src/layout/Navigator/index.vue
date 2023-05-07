@@ -5,7 +5,9 @@ const mainStore = useMainStore();
 </script>
 <template>
   <nav class="navigator">
-    <div class="project-name">{{ mainStore.projectName.toUpperCase() }}</div>
+    <RouterLink to="/" class="project-name">
+      {{ mainStore.projectName.toUpperCase() }}
+    </RouterLink>
     <div class="navigator-action">
       <img
         class="w-10 rounded-1/2"
