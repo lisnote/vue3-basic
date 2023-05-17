@@ -25,8 +25,11 @@ export function treeCleaner<T extends any[]>(
     props,
   );
   return tree.reduceRight((pre, now, index) => {
-    if (now[children]) treeCleaner(now[children], search, { children, field });
-    if (!(now[children]?.length > 0 || now[field].includes(search))) {
+    if (now[field].includes(search)) return pre;
+    if (now[children]) {
+      treeCleaner(now[children], search, { children, field });
+    }
+    if (now[children]?.length ?? 0 < 1) {
       tree.splice(index, 1);
     }
     return pre;
