@@ -81,7 +81,7 @@ export function isUndefined(value: unknown): boolean {
 }
 
 /**
- * 判断值是否为 Undefined 类型
+ * 判断值是否为 Symbol 类型
  */
 export function isSymbol(value: unknown): boolean {
   return typeof value === 'symbol';
