@@ -32,6 +32,13 @@ export function is(value: unknown, type: string): boolean {
 }
 
 /**
+ * 判断值是否为 Array 类型
+ */
+export function isArray(value: unknown): boolean {
+  return Array.isArray(value);
+}
+
+/**
  * 判断值是否为 Object 类型
  */
 export function isObject(value: unknown): boolean {
@@ -39,8 +46,43 @@ export function isObject(value: unknown): boolean {
 }
 
 /**
- * 判断值是否为 Array 类型
+ * 判断值是否为 String 类型
  */
-export function isArray(value: unknown): boolean {
-  return Array.isArray(value);
+export function isString(value: unknown): boolean {
+  return typeof value === 'string';
+}
+
+/**
+ * 判断值是否为 Number 类型
+ */
+export function isNumber(value: unknown): boolean {
+  return typeof value === 'number';
+}
+
+/**
+ * 判断值是否为 Boolean 类型
+ */
+export function isBoolean(value: unknown): boolean {
+  return typeof value === 'boolean';
+}
+
+/**
+ * 判断值是否为 Null 类型
+ */
+export function isNull(value: unknown): boolean {
+  return value === null;
+}
+
+/**
+ * 判断值是否为 Undefined 类型
+ */
+export function isUndefined(value: unknown): boolean {
+  return typeof value === 'undefined';
+}
+
+/**
+ * 判断值是否为 Undefined 类型
+ */
+export function isSymbol(value: unknown): boolean {
+  return typeof value === 'symbol';
 }
