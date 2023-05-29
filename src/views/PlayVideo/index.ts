@@ -1,2 +1,2 @@
-import index from './index.vue';
-export default index;
+import PlayVideo from './PlayVideo.vue';
+export default PlayVideo;

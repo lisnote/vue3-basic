@@ -1,2 +1,2 @@
-import index from './index.vue';
-export default index;
+import Home from './Home.vue';
+export default Home;

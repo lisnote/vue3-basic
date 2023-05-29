@@ -1,2 +1,2 @@
-import index from './index.vue';
-export default index;
+import Login from './Login.vue';
+export default Login;

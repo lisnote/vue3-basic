@@ -1,2 +1,2 @@
-import index from './index.vue';
-export default index;
+import ScanningCode from './ScanningCode.vue';
+export default ScanningCode;

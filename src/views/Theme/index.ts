@@ -1,2 +1,2 @@
-import index from './index.vue';
-export default index;
+import Theme from './Theme.vue';
+export default Theme;
