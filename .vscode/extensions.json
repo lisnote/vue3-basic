@@ -4,6 +4,7 @@
     "esbenp.prettier-vscode",
     "stylelint.vscode-stylelint",
     "Vue.volar",
+    "voorjaar.windicss-intellisense",
     "vscode-icons-team.vscode-icons"
   ]
 }
