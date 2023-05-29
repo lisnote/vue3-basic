@@ -37,7 +37,7 @@ router.isReady().then(() => {
   .nav {
     flex-shrink: 0;
     width: 100%;
-    height: 50px;
+    height: 60px;
     border-bottom: solid 1px var(--el-menu-border-color);
   }
 
