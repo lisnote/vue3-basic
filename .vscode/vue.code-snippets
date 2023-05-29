@@ -1,0 +1,18 @@
+{
+  "vue": {
+    "prefix": "<v",
+    "body": [
+      "<script setup lang=\"ts\">$1</script>\n",
+      "<template>$2</template>\n",
+      "<style lang=\"scss\" scoped>$3</style>\n"
+    ],
+    "description": "vue3 & TypeScript & SCSS"
+  },
+  "clg": {
+    "prefix": "clg",
+    "body": [
+      "console.log($1)$2"
+    ],
+    "description": "user snippets"
+  },
+}
