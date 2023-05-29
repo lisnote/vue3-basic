@@ -1,7 +1,14 @@
 <script setup lang="ts">
 import { useMainStore } from '@/store';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
+import { useStorage } from '@vueuse/core';
+import router from '@/router';
 const mainStore = useMainStore();
+function logout() {
+  const loginInfo = useStorage('loginInfo', {});
+  loginInfo.value = {};
+  router.push('login');
+}
 </script>
 <template>
   <nav class="navigator">
@@ -23,7 +30,9 @@ const mainStore = useMainStore();
           <el-dropdown-menu>
             <el-dropdown-item>用户中心</el-dropdown-item>
             <el-dropdown-item>更换主题</el-dropdown-item>
-            <el-dropdown-item divided>退出登录</el-dropdown-item>
+            <el-dropdown-item divided @click="logout"
+              >退出登录</el-dropdown-item
+            >
           </el-dropdown-menu>
         </template>
       </el-dropdown>
