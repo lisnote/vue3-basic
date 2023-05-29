@@ -1,2 +1,2 @@
-import index from './index.vue';
-export default index;
+import Navigator from './Navigator.vue';
+export default Navigator;

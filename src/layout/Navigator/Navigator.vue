@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useMainStore } from '@/store';
 import { Setting } from '@element-plus/icons-vue';
+import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
 const mainStore = useMainStore();
 </script>
 <template>
@@ -14,7 +15,19 @@ const mainStore = useMainStore();
         src="https://avatars.githubusercontent.com/lisnote"
       />
       <span>lisnote</span>
-      <Setting class="cursor-pointer icon" />
+
+      <el-dropdown>
+        <span class="el-dropdown-link">
+          <Setting class="cursor-pointer icon" />
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item>用户中心</el-dropdown-item>
+            <el-dropdown-item>更换主题</el-dropdown-item>
+            <el-dropdown-item divided>退出登录</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
     </div>
   </nav>
 </template>
