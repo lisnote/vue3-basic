@@ -9,6 +9,10 @@ const router = createRouter({
       component: () => import('@/layout'),
       children: menuRoutes,
     },
+    {
+      path: '/login',
+      component: () => import('@/views/Login'),
+    },
   ],
 });
 
