@@ -5,7 +5,7 @@ import router from '@/router';
 import dayjs from '@/utils/date';
 
 function login() {
-  const loginInfo = useStorage('loginInfo', {
+  const _loginInfo = useStorage('loginInfo', {
     expires: +dayjs().add(1, 'day'),
     token: '占位token',
   });
@@ -14,7 +14,16 @@ function login() {
 </script>
 
 <template>
-  <div>
+  <div class="login">
     <ElButton @click="login">loggin</ElButton>
   </div>
 </template>
+<style lang="scss" scoped>
+.login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
