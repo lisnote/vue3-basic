@@ -23,7 +23,17 @@ export function dateFormat(
 }
 
 /**
- * 返回传入时间的今日起止时间
+ * 创建指定 format 的 dateFormat 函数
+ * @param format 时间格式
+ */
+export function createDateFormat(format: string): typeof dateFormat {
+  return function (date: ConfigType) {
+    return dateFormat(date, format);
+  };
+}
+
+/**
+ * 返回传入时间的指定单位起止时间
  * @param date
  * @param unit 时间单位
  * @param formater 格式化函数
