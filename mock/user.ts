@@ -23,7 +23,6 @@ export default createMockMethod(
     url: '/user/logout',
     response: {
       code: 0,
-      data: 'success',
     },
   },
 );

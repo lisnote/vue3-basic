@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { useMainStore } from '@/store';
+import { useMainStore, useUserStore } from '@/store';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
-import { useStorage } from '@vueuse/core';
 import router from '@/router';
 const mainStore = useMainStore();
-function logout() {
-  const loginInfo = useStorage('loginInfo', {});
-  loginInfo.value = {};
+const userStore = useUserStore();
+async function logout() {
+  await userStore.logout();
   router.push('login');
 }
 </script>
@@ -16,7 +15,7 @@ function logout() {
       {{ mainStore.projectName.toUpperCase() }}
     </RouterLink>
     <div>
-      <el-dropdown>
+      <ElDropdown>
         <span class="el-dropdown-link">
           <div class="navigator-action">
             <img
@@ -27,15 +26,13 @@ function logout() {
           </div>
         </span>
         <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item>用户中心</el-dropdown-item>
-            <el-dropdown-item>更换主题</el-dropdown-item>
-            <el-dropdown-item divided @click="logout"
-              >退出登录</el-dropdown-item
-            >
-          </el-dropdown-menu>
+          <ElDropdownMenu>
+            <ElDropdownItem>用户中心</ElDropdownItem>
+            <ElDropdownItem>更换主题</ElDropdownItem>
+            <ElDropdownItem divided @click="logout">退出登录</ElDropdownItem>
+          </ElDropdownMenu>
         </template>
-      </el-dropdown>
+      </ElDropdown>
     </div>
   </nav>
 </template>
