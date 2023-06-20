@@ -6,7 +6,7 @@ import router from '@/router';
 const userStore = useUserStore();
 function login() {
   userStore.login('lisnote', 'password123');
-  router.push('/');
+  router.push('/Dashboard');
 }
 </script>
 

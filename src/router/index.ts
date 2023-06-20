@@ -7,10 +7,16 @@ const router = createRouter({
     {
       path: '/',
       component: () => import('@/layout'),
-      children: menuRoutes,
+      children: [
+        {
+          path: '/',
+          redirect: '/Dashboard',
+        },
+        ...menuRoutes,
+      ],
     },
     {
-      path: '/login',
+      path: '/Login',
       component: () => import('@/views/Login'),
     },
   ],

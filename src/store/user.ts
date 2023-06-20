@@ -34,7 +34,7 @@ export const useUserStore = defineStore('user', {
         permissionList: [],
       });
       logout({ token: this.token });
-      router.push('/login');
+      router.push('/Login');
     },
   },
 });

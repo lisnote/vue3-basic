@@ -6,7 +6,7 @@ const mainStore = useMainStore();
 const userStore = useUserStore();
 async function logout() {
   await userStore.logout();
-  router.push('login');
+  router.push('/Login');
 }
 </script>
 <template>

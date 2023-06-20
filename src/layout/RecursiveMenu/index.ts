@@ -27,7 +27,8 @@ export function MenuRouteAdaptor(data: RouteRecordRaw[]): RecursiveMenuData[] {
     if (isObject(value)) {
       return {
         index: value.path,
-        title: value.title,
+        title: value.meta.title,
+        permission: value.meta.permission,
         children: MenuRouteAdaptor(value.children),
         onClick: () => !(value.children?.length > 0) && router.push(value.path),
       };
