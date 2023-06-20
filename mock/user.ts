@@ -8,6 +8,7 @@ export default createMockMethod(
       data: {
         id: '123456',
         name: 'lisnote',
+        phone: 18888888888,
         token: '123456',
         permissionList: [
           'permissionAdd',

@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { ElButton } from 'element-plus';
-import { useStorage } from '@vueuse/core';
+import { useUserStore } from '@/store';
 import router from '@/router';
-import dayjs from '@/utils/date';
 
+const userStore = useUserStore();
 function login() {
-  const _loginInfo = useStorage('loginInfo', {
-    expires: +dayjs().add(1, 'day'),
-    token: '占位token',
-  });
+  userStore.login('lisnote', 'password123');
   router.push('/');
 }
 </script>
