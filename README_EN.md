@@ -81,7 +81,7 @@ This project can be used as a base framework for starting Vue3 projects.
     - [ ] NovalAI: text generates manga images
     - [ ] Real-ESRGAN: Image/Video Super-Resolution
 - [ ] System Management
-  - [ ] Member Management
+  - [ ] User Management
   - [ ] Role Management
   - [ ] Role Permission
   - [ ] About
