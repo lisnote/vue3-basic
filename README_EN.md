@@ -58,10 +58,10 @@ This project can be used as a base framework for starting Vue3 projects.
   - [ ] canvas: add watermark, merge images & canvas, export
   - [ ] amap-js: AMap
   - [ ] threejs: Digital Twin/3D animation
-- [ ] Exception Page
-  - [ ] 403
-  - [ ] 404
-  - [ ] 500
+- [x] Exception Page
+  - [x] 403
+  - [x] 404
+  - [x] 500
 - [ ] System Management
   - [ ] Member Management
   - [ ] Role Management
