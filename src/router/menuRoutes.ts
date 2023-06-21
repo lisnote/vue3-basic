@@ -7,7 +7,7 @@ export const menuRoutes: RouteRecordRaw[] = [
   {
     path: '/Dashboard',
     meta: { title: '首页' },
-    component: () => import('@/views/Home'),
+    component: () => import('@/views/Dashboard'),
   },
   {
     path: '/Components',
@@ -16,7 +16,7 @@ export const menuRoutes: RouteRecordRaw[] = [
       {
         path: '/Components/Form',
         meta: { title: '表单' },
-        component: () => import('@/views/Form'),
+        component: () => import('@/views/Components/Form'),
       },
     ],
   },
@@ -29,17 +29,17 @@ export const menuRoutes: RouteRecordRaw[] = [
       {
         path: '/Features/ScanningCode',
         meta: { title: '扫码' },
-        component: () => import('@/views/ScanningCode'),
+        component: () => import('@/views/Features/ScanningCode'),
       },
       {
         path: '/Features/VideoPlayer',
         meta: { title: '视频播放' },
-        component: () => import('@/views/PlayVideo'),
+        component: () => import('@/views/Features/VideoPlayerer'),
       },
       {
         path: '/Features/Theme',
         meta: { title: '主题' },
-        component: () => import('@/views/Theme'),
+        component: () => import('@/views/Features/Theme'),
       },
     ],
   },
@@ -50,7 +50,7 @@ export const menuRoutes: RouteRecordRaw[] = [
       {
         path: '/System/About',
         meta: { title: '关于' },
-        component: () => import('@/views/About'),
+        component: () => import('@/views/System/About'),
       },
     ],
   },
