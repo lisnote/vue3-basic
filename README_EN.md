@@ -27,22 +27,25 @@ This project can be used as a base framework for starting Vue3 projects.
 
 ### Feature List
 
+- [ ] axios encapsulation
+  - [ ] axios instance and default setting
+  - [ ] file download
+  - [ ] centralized management of error code
+  - [ ] token auto update
 - [ ] Login
   - [ ] verify code
 - [ ] Home page
   - [ ] visual chart: echart
-- [ ] Encapsulation
+- [ ] Component
   - [ ] element-plus
-    - [ ] table encapsulation
     - [ ] form component encapsulation
-    - [ ] default value encapsulation
-    - [x] theme switching
-  - [ ] axios encapsulation
-    - [ ] axios instance and default setting
-    - [ ] file download
-    - [ ] centralized management of error code
-    - [ ] token auto update
+      - [ ] default value encapsulation
+    - [ ] table encapsulation
+      - [ ] props parser
+      - [ ] JSX support
+  - [ ] countjs: number animation
 - [ ] Functional
+  - [x] theme switching
   - [ ] marked: markdown rendering
     - [ ] hightlightjs: provide syntax highlighting support
     - [ ] KaTex: provide support for LaTeX syntax
@@ -64,10 +67,10 @@ This project can be used as a base framework for starting Vue3 projects.
   - [x] 500
 - [ ] Toys
   - [ ] Game
-    - [ ] don't touch the white tile
+    - [ ] Don't Tap The White Tile
     - [ ] control the 3D toy car
   - [ ] Backend Service
-    - [ ] Synchronous projection room
+    - [ ] Synchronous video
       - [ ] Debounce, deferred execution of video synchronization
       - [ ] Danmaku chat (support for emoji)
     - [ ] Live broadcast room
@@ -78,7 +81,7 @@ This project can be used as a base framework for starting Vue3 projects.
       - [ ] Breakpoint continuation
       - [ ] md5 acceleration
     - [ ] vits: text to speech
-    - [ ] NovalAI: text generates manga images
+    - [ ] StableDiffusion: text generates images
     - [ ] Real-ESRGAN: Image/Video Super-Resolution
 - [ ] System Management
   - [ ] User Management

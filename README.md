@@ -27,22 +27,25 @@
 
 ### 功能列表
 
+- [ ] axios 封装
+  - [ ] axios 实例及默认值
+  - [ ] 全局错误码管理
+  - [ ] token 自动更新
 - [ ] 登录
   - [ ] 验证码
 - [ ] 首页
   - [ ] echart 图表分析
-- [ ] 封装
+- [ ] 组件
   - [ ] element-plus
-    - [ ] table 封装
     - [ ] form 组件封装
-    - [ ] 默认值封装
-    - [x] 主题切换
-  - [ ] axios 封装
-    - [ ] axios 实例及默认值
-    - [ ] 文件下载
-    - [ ] 全局错误码管理
-    - [ ] token 自动更新
+      - [ ] 默认值封装
+    - [ ] table 封装
+      - [ ] props 解析
+      - [ ] JSX 支持
+  - [ ] countjs: 数字动画
 - [ ] 功能
+  - [x] 主题切换
+  - [ ] 文件下载
   - [ ] marked: markdown 渲染
     - [ ] hightlightjs: 提供语法高亮支持
     - [ ] KaTex: 提供 LaTeX 语法支持
@@ -78,7 +81,7 @@
       - [ ] 断点续传
       - [ ] md5 秒传
     - [ ] vits: 文本转语音
-    - [ ] NovalAI: 文本生成动漫图片
+    - [ ] StableDiffusion: 文本生成动漫图片
     - [ ] Real-ESRGAN: 图像/视频高清修复
 - [ ] 系统管理
   - [ ] 用户管理
