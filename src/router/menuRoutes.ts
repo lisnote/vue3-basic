@@ -44,6 +44,27 @@ export const menuRoutes: RouteRecordRaw[] = [
     ],
   },
   {
+    path: '/Error',
+    meta: { title: '异常页面' },
+    children: [
+      {
+        path: '/Error/403',
+        meta: { title: '403' },
+        component: () => import('@/views/Error/403.vue'),
+      },
+      {
+        path: '/Error/404',
+        meta: { title: '404' },
+        component: () => import('@/views/Error/404.vue'),
+      },
+      {
+        path: '/Error/500',
+        meta: { title: '500' },
+        component: () => import('@/views/Error/500.vue'),
+      },
+    ],
+  },
+  {
     path: '/System',
     meta: { title: '系统管理' },
     children: [

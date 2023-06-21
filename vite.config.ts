@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import WindiCSS from 'vite-plugin-windicss';
 import { resolve } from 'path';
 import { viteMockServe } from 'vite-plugin-mock';
+import svgLoader from 'vite-svg-loader';
 
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfigExport => {
@@ -17,6 +18,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
         watchFiles: true,
         ignore: /index\.ts/,
       }),
+      svgLoader(),
     ],
     resolve: {
       alias: {
