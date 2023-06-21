@@ -62,10 +62,6 @@ This project can be used as a base framework for starting Vue3 projects.
   - [x] 403
   - [x] 404
   - [x] 500
-- [ ] System Management
-  - [ ] Member Management
-  - [ ] Role Management
-  - [ ] Role Permission
 - [ ] Toys
   - [ ] Game
     - [ ] don't touch the white tile
@@ -84,4 +80,8 @@ This project can be used as a base framework for starting Vue3 projects.
     - [ ] vits: text to speech
     - [ ] NovalAI: text generates manga images
     - [ ] Real-ESRGAN: Image/Video Super-Resolution
-- [ ] About
+- [ ] System Management
+  - [ ] Member Management
+  - [ ] Role Management
+  - [ ] Role Permission
+  - [ ] About
