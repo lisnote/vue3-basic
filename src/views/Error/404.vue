@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import noExist from '@/assets/status/404.svg';
+import NoExist from '@/assets/status/404.svg?component';
+import { ElButton } from 'element-plus';
 </script>
 
 <template>
   <div class="flex justify-center items-center h-screen-sm">
-    <noExist />
+    <NoExist />
     <div class="ml-12">
       <p
         v-motion
@@ -40,7 +41,7 @@ import noExist from '@/assets/status/404.svg';
       >
         抱歉，你访问的页面不存在
       </p>
-      <el-button
+      <ElButton
         v-motion
         :initial="{
           opacity: 0,
@@ -57,7 +58,7 @@ import noExist from '@/assets/status/404.svg';
         @click="$router.push('/')"
       >
         返回首页
-      </el-button>
+      </ElButton>
     </div>
   </div>
 </template>

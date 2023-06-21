@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import noAccess from '@/assets/status/403.svg';
+import { ElButton } from 'element-plus';
+import NoAccess from '@/assets/status/403.svg?component';
 </script>
 
 <template>
   <div class="flex justify-center items-center h-screen-sm">
-    <noAccess />
+    <NoAccess />
     <div class="ml-12">
       <p
         v-motion
@@ -40,7 +41,7 @@ import noAccess from '@/assets/status/403.svg';
       >
         抱歉，你无权访问该页面
       </p>
-      <el-button
+      <ElButton
         v-motion
         :initial="{
           opacity: 0,
@@ -57,7 +58,7 @@ import noAccess from '@/assets/status/403.svg';
         @click="$router.push('/')"
       >
         返回首页
-      </el-button>
+      </ElButton>
     </div>
   </div>
 </template>
