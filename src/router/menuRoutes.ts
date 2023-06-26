@@ -156,6 +156,11 @@ export const menuRoutes: RouteRecordRaw[] = [
             meta: { title: '3D遥控车(未完成)' },
             component: { render: () => '3D遥控车' },
           },
+          {
+            path: '/Toys/Game/Minecraft',
+            meta: { title: '我的世界(未完成)' },
+            component: () => import('@/views/Toys/Game/Minecraft'),
+          },
         ],
       },
       {
