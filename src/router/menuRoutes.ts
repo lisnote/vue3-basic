@@ -24,8 +24,8 @@ export const menuRoutes: RouteRecordRaw[] = [
       },
       {
         path: '/Components/CountJS',
-        meta: { title: '数字动画(未完成)' },
-        component: { render: () => '数字动画CountJS' },
+        meta: { title: '数字动画' },
+        component: () => import('@/views/Components/CountUp'),
       },
     ],
   },
