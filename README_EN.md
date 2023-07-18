@@ -60,6 +60,7 @@ This project can be used as a base framework for starting Vue3 projects.
   - [x] zxing: QR/barcode recognition
   - [ ] canvas: add watermark, merge images & canvas, export
   - [ ] amap-js: AMap
+  - [ ] tencent map service
   - [ ] threejs: Digital Twin/3D animation
 - [x] Exception Page
   - [x] 403
