@@ -111,6 +111,11 @@ export const menuRoutes: RouteRecordRaw[] = [
         component: { render: () => '高德地图amap-js' },
       },
       {
+        path: '/Features/TencentMap',
+        meta: { title: '腾讯地图(未完成)' },
+        component: { render: () => '腾讯地图' },
+      },
+      {
         path: '/Features/WebGL',
         meta: { title: '数字孪生(未完成)' },
         component: { render: () => '数字孪生threejs' },
