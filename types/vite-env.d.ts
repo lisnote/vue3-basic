@@ -16,3 +16,7 @@ interface ImportMetaEnv {
   APP_API: string;
   APP_WS: string;
 }
+
+interface Window {
+  TMap: any;
+}

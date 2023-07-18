@@ -112,8 +112,8 @@ export const menuRoutes: RouteRecordRaw[] = [
       },
       {
         path: '/Features/TencentMap',
-        meta: { title: '腾讯地图(未完成)' },
-        component: { render: () => '腾讯地图' },
+        meta: { title: '腾讯地图' },
+        component: () => import('@/views/Features/TencentMap'),
       },
       {
         path: '/Features/WebGL',
