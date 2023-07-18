@@ -6,8 +6,8 @@ const mapRef = ref<HTMLDivElement>();
 onMounted(() => {
   // 设置地图
   const map = new TMap.Map(mapRef.value, {
-    center: new TMap.LatLng(39.984104, 116.307503),
-    zoom: 1,
+    center: new TMap.LatLng(32.847884, 110.154354),
+    zoom: 5,
   });
   // 限制边界
   const sw = new TMap.LatLng(-84.9, -179.9999);
@@ -30,7 +30,7 @@ onMounted(() => {
       {
         id: 'avatar',
         styleId: 'mapMark',
-        position: new TMap.LatLng(22.610631931778233, 114.03026681988877),
+        position: new TMap.LatLng(22.6106319, 114.0302668),
       },
       {
         id: 'target',
