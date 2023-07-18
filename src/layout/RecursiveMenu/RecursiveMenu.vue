@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ElMenu, ElScrollbar } from 'element-plus';
+import { ElMenu } from 'element-plus';
 import MenuItem from './MenuItem.vue';
 
 import type { RecursiveMenuData } from '.';
@@ -9,9 +9,7 @@ defineProps<{
 }>();
 </script>
 <template>
-  <ElScrollbar>
-    <ElMenu unique-opened>
-      <MenuItem v-for="(item, index) in data" :key="index" :data="item" />
-    </ElMenu>
-  </ElScrollbar>
+  <ElMenu unique-opened>
+    <MenuItem v-for="(item, index) in data" :key="index" :data="item" />
+  </ElMenu>
 </template>

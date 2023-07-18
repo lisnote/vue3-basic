@@ -16,12 +16,14 @@ router.isReady().then(() => {
   <div class="layout">
     <Navigator class="nav"></Navigator>
     <div class="main">
-      <RecursiveMenu
-        :data="MenuRouteAdaptor(menuRoutes)"
-        :default-active="activeIndex"
-        class="sidebar"
-        ellipsis
-      />
+      <ElScrollbar>
+        <RecursiveMenu
+          :data="MenuRouteAdaptor(menuRoutes)"
+          :default-active="activeIndex"
+          class="sidebar"
+          ellipsis
+        />
+      </ElScrollbar>
       <article class="article">
         <RouterView />
       </article>
