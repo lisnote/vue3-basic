@@ -46,9 +46,9 @@ export const menuRoutes: RouteRecordRaw[] = [
         component: { render: () => '文件下载' },
       },
       {
-        path: '/Features/MarkdwonRender',
-        meta: { title: 'Markdown渲染(未完成)' },
-        component: { render: () => '文章渲染marked' },
+        path: '/Features/MarkdownRender',
+        meta: { title: 'Markdown渲染' },
+        component: () => import('@/views/Features/MarkdownRender'),
       },
       {
         path: '/Features/CodeRender',
