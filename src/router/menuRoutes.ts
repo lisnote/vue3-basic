@@ -117,8 +117,8 @@ export const menuRoutes: RouteRecordRaw[] = [
       },
       {
         path: '/Features/WebGL',
-        meta: { title: '数字孪生(未完成)' },
-        component: { render: () => '数字孪生threejs' },
+        meta: { title: '数字孪生' },
+        component: () => import('@/views/Features/WebGL'),
       },
     ],
   },
