@@ -36,9 +36,9 @@ export const menuRoutes: RouteRecordRaw[] = [
     },
     children: [
       {
-        path: '/Features/Theme',
+        path: '/Features/ThemeSwitch',
         meta: { title: '主题切换' },
-        component: () => import('@/views/Features/Theme'),
+        component: () => import('@/views/Features/ThemeSwitch'),
       },
       {
         path: '/Features/FileDownload',

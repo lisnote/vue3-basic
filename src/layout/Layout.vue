@@ -40,7 +40,7 @@ router.isReady().then(() => {
     flex-shrink: 0;
     width: 100%;
     height: 60px;
-    border-bottom: solid 1px var(--el-menu-border-color);
+    border-bottom: solid 1px var(--el-border-color);
   }
 
   .main {
