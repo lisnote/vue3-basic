@@ -19,4 +19,5 @@ interface ImportMetaEnv {
 
 interface Window {
   TMap: any;
+  _AMapSecurityConfig: any;
 }

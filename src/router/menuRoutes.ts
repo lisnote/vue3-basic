@@ -107,8 +107,8 @@ export const menuRoutes: RouteRecordRaw[] = [
       },
       {
         path: '/Features/AMap',
-        meta: { title: '高德地图(未完成)' },
-        component: { render: () => '高德地图amap-js' },
+        meta: { title: '高德地图' },
+        component: () => import('@/views/Features/AMap'),
       },
       {
         path: '/Features/TencentMap',
