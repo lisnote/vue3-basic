@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AMapLoader from '@amap/amap-jsapi-loader';
 import { onMounted } from 'vue';
+import faviconUrl from '@root/public/favicon.ico?url';
 window._AMapSecurityConfig = {
   securityJsCode: 'ed8a8c2acd6ca27b12e08179c4efe36e',
 };
@@ -21,10 +22,7 @@ onMounted(() => {
       new AMap.Marker({
         position: new AMap.LngLat(110.154354, 32.847884),
         content: /* HTML */ `<div class="custom-content-marker">
-            <img
-              src="https://avatars.githubusercontent.com/lisnote"
-              width="30"
-            />
+            <img src="${faviconUrl}" width="30" />
           </div>
           ,`,
         offset: new AMap.Pixel(-15, -15),

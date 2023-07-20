@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { TMap } from './index';
 import { ref, onMounted } from 'vue';
+import faviconUrl from '@root/public/favicon.ico?url';
 
 const mapRef = ref<HTMLDivElement>();
 onMounted(() => {
@@ -23,7 +24,7 @@ onMounted(() => {
       mapMark: new TMap.MarkerStyle({
         width: 35,
         height: 35,
-        src: 'https://avatars.githubusercontent.com/lisnote',
+        src: faviconUrl,
       }),
     },
     geometries: [
