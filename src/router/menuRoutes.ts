@@ -42,8 +42,8 @@ export const menuRoutes: RouteRecordRaw[] = [
       },
       {
         path: '/Features/FileDownload',
-        meta: { title: '文件下载(未完成)' },
-        component: { render: () => '文件下载' },
+        meta: { title: '文件下载' },
+        component: () => import('@/views/Features/FileDownload'),
       },
       {
         path: '/Features/MarkdownRender',
