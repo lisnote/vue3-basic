@@ -53,9 +53,6 @@ This project can be used as a base framework for starting Vue3 projects.
   - [ ] pdf.js: PDF preview
   - [ ] docx-preview: docx preview
   - [ ] wangeditor: rich text editor
-  - [ ] socket.io: WebSocket real-time communication
-  - [ ] GraphQL: Merge requests to reduce network IO
-  - [ ] webRTC: Real-time Voice/Video Call
   - [ ] dplayer: danmaku video
   - [x] zxing: QR/barcode recognition
   - [ ] canvas: add watermark, merge images & canvas, export
@@ -71,6 +68,9 @@ This project can be used as a base framework for starting Vue3 projects.
     - [ ] Don't Tap The White Tile
     - [ ] control the 3D toy car
   - [ ] Backend Service
+    - [ ] socket.io: WebSocket real-time communication
+    - [ ] GraphQL: Merge requests to reduce network IO
+    - [ ] webRTC: Real-time Voice/Video Call
     - [ ] Synchronous video
       - [ ] Debounce, deferred execution of video synchronization
       - [ ] Danmaku chat (support for emoji)

@@ -53,9 +53,6 @@
   - [ ] pdf.js: PDF 预览
   - [ ] docx-preview: docx 预览
   - [ ] wangeditor: 富文本编辑器
-  - [ ] socket.io: Websocket 实时通信
-  - [ ] graphQL: 合并请求减少网络 IO
-  - [ ] webRTC: 语音/视频通话
   - [ ] dplayer: 弹幕视频
   - [x] zxing: 二维码/条形码识别
   - [ ] canvas: 添加水印, 合并图片 & canvas, 导出
@@ -71,6 +68,9 @@
     - [ ] 别踩白块
     - [ ] 3D 小车控制
   - [ ] 后端服务
+    - [ ] socket.io: Websocket 实时通信
+    - [ ] graphQL: 合并请求减少网络 IO
+    - [ ] webRTC: 语音/视频通话
     - [ ] 同步放映室
       - [ ] 防抖, 延后执行视频同步
       - [ ] 弹幕聊天(支持表情包)

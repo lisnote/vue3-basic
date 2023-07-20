@@ -71,21 +71,6 @@ export const menuRoutes: RouteRecordRaw[] = [
         component: { render: () => '富文本编辑wangeditor' },
       },
       {
-        path: '/Features/Websocket',
-        meta: { title: '双向通信(未完成)' },
-        component: { render: () => '双向通信SocketIO' },
-      },
-      {
-        path: '/Features/GraphQL',
-        meta: { title: '接口合并(未完成)' },
-        component: { render: () => '接口合并GraphQL' },
-      },
-      {
-        path: '/Features/WebRTC',
-        meta: { title: '即时通信(未完成)' },
-        component: { render: () => '即时通信WebRTC' },
-      },
-      {
         path: '/Features/VideoPlayer',
         meta: { title: '视频播放' },
         component: () => import('@/views/Features/VideoPlayer'),
@@ -172,6 +157,21 @@ export const menuRoutes: RouteRecordRaw[] = [
         path: '/Toys/Service',
         meta: { title: '服务' },
         children: [
+          {
+            path: '/Toys/Service/Websocket',
+            meta: { title: '双向通信(未完成)' },
+            component: { render: () => '双向通信SocketIO' },
+          },
+          {
+            path: '/Toys/Service/GraphQL',
+            meta: { title: '接口合并(未完成)' },
+            component: { render: () => '接口合并GraphQL' },
+          },
+          {
+            path: '/Toys/Service/WebRTC',
+            meta: { title: '即时通信(未完成)' },
+            component: { render: () => '即时通信WebRTC' },
+          },
           {
             path: '/Toys/Service/SyncronousVideo',
             meta: { title: '同步放映室(未完成)' },
