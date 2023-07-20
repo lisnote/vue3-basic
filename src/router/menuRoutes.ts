@@ -51,9 +51,9 @@ export const menuRoutes: RouteRecordRaw[] = [
         component: () => import('@/views/Features/MarkdownRender'),
       },
       {
-        path: '/Features/CodeRender',
-        meta: { title: '代码渲染(未完成)' },
-        component: { render: () => '代码渲染CodeMirror' },
+        path: '/Features/CodeEditor',
+        meta: { title: '代码编辑' },
+        component: () => import('@/views/Features/CodeEditor'),
       },
       {
         path: '/Features/PDFRender',
