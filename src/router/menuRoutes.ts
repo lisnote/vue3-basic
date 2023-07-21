@@ -67,8 +67,8 @@ export const menuRoutes: RouteRecordRaw[] = [
       },
       {
         path: '/Features/RichTextEditor',
-        meta: { title: '富文本编辑(未完成)' },
-        component: { render: () => '富文本编辑wangeditor' },
+        meta: { title: '富文本编辑' },
+        component: () => import('@/views/Features/RichTextEditor'),
       },
       {
         path: '/Features/VideoPlayer',
