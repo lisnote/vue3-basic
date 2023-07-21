@@ -57,8 +57,8 @@ export const menuRoutes: RouteRecordRaw[] = [
       },
       {
         path: '/Features/PDFRender',
-        meta: { title: 'PDF渲染(未完成)' },
-        component: { render: () => 'PDF预览pdf.js' },
+        meta: { title: 'PDF渲染' },
+        component: () => import('@/views/Features/PDFRender'),
       },
       {
         path: '/Features/DocxPreview',
