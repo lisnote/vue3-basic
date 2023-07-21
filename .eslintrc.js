@@ -19,6 +19,7 @@ module.exports = {
     'spaced-comment': ['error', 'always', { markers: ['/'] }], // 除 /// 类型的注释外, 所有注释开头必须带有空格
     camelcase: ['error', { properties: 'always' }], // 强制驼峰命名
     'vue/multi-word-component-names': 'off', // 路由组件允许非复合单词
+    'vue/no-v-html': 'off', // 允许 v-html 指令
   },
   overrides: [
     {
