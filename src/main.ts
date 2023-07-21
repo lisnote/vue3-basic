@@ -7,6 +7,7 @@ import router from '@/router';
 import init from '@/plugins/init';
 
 import 'virtual:windi.css';
+import '@/styles/normalize.css';
 
 createApp(App)
   .use(pinia)
