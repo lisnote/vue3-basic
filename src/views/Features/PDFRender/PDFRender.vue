@@ -20,10 +20,8 @@ onMounted(() => {
       if (!container) return;
       await pdfDoc.getPage(page).then((page) => {
         let viewport = page.getViewport({ scale: 1 });
-        const heightRate = container.clientHeight / viewport.height;
-        const widthRate = container.clientWidth / viewport.width;
         viewport = viewport.clone({
-          scale: heightRate < widthRate ? heightRate : widthRate,
+          scale: (container.clientWidth - 20) / viewport.width,
         });
         // 创建并插入 Canvas 元素
         const canvas = document.createElement('canvas');
@@ -46,13 +44,13 @@ onMounted(() => {
 
 <template>
   <div :class="commonStyle.contentArea">
-    <div ref="containerRef" class="pdf-container h-full"></div>
+    <ElScrollbar>
+      <div ref="containerRef" class="pdf-container h-full p-10px"></div>
+    </ElScrollbar>
   </div>
 </template>
 <style lang="scss" scoped>
 :deep(.pdf-container) {
-  margin: 0 auto;
-
   canvas {
     box-shadow: 0 0 10px var(--el-border-color-darker);
   }
