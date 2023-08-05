@@ -2,20 +2,10 @@
 import commonStyle from '@/styles/common.module.scss';
 import markdownText from '@/assets/markdown/MarkdownTest.md?raw';
 import { marked } from 'marked';
-import { markedHighlight } from 'marked-highlight';
-import hljs from 'highlight.js';
 import { ref, computed } from 'vue';
 import { ElInput } from 'element-plus';
 import 'highlight.js/styles/default.css';
 const sourceText = ref(markdownText);
-
-marked.use(
-  markedHighlight({
-    highlight(code) {
-      return hljs.highlightAuto(code).value;
-    },
-  }),
-);
 const markedProduct = computed(() => {
   return marked.parse(markdownText);
 });
