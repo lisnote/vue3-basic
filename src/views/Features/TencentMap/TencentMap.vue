@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { TMap } from './index';
+import { TMapLoader } from './index';
 import { ref, onMounted } from 'vue';
-import faviconUrl from '@root/public/favicon.ico?url';
 
 const mapRef = ref<HTMLDivElement>();
-onMounted(() => {
+onMounted(async () => {
+  const TMap = await TMapLoader();
   // 设置地图
   const map = new TMap.Map(mapRef.value, {
     center: new TMap.LatLng(32.847884, 110.154354),
@@ -24,7 +24,7 @@ onMounted(() => {
       mapMark: new TMap.MarkerStyle({
         width: 35,
         height: 35,
-        src: faviconUrl,
+        src: './favicon.ico',
       }),
     },
     geometries: [
