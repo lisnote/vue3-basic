@@ -7,7 +7,7 @@
     "mock": "vite --mode mock --host",
     "staging": "vite --mode production --host",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --host",
     "lint": "pnpm lint:stylelint && pnpm lint:prettier && pnpm lint:eslint",
     "lint:lint-staged": "lint-staged -c .husky/lintstagedrc.js",
     "lint:stylelint": "stylelint **/*.{css,scss,vue,html} --fix --ignore-path .gitignore",
