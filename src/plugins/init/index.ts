@@ -1,5 +1,7 @@
 import { switchTheme } from '@/utils/theme';
-
-export default function init() {
+import { installVConsole } from './vConsole';
+function init() {
   switchTheme();
+  installVConsole();
 }
+init();
