@@ -10,6 +10,8 @@ const http = axios.create({
   baseURL: import.meta.env.APP_API,
   timeout: 5000,
   responseType: 'blob',
+  formSerializer: { indexes: null },
+  paramsSerializer: { indexes: null },
 });
 
 useRequest.forEach((use) => http.interceptors.request.use(use));
