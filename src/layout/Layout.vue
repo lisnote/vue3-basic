@@ -25,12 +25,18 @@ router.isReady().then(() => {
         />
       </ElScrollbar>
       <article class="article">
-        <RouterView />
+        <RouterView v-slot="{ Component }">
+          <transition name="fade-left">
+            <component :is="Component" class="w-full" />
+          </transition>
+        </RouterView>
       </article>
     </div>
   </div>
 </template>
 <style lang="scss" scoped>
+@use "@/styles/animate.scss";
+
 .layout {
   display: flex;
   flex-direction: column;
@@ -57,6 +63,7 @@ router.isReady().then(() => {
       flex: 1;
       position: relative;
       overflow-y: auto;
+      overflow-x: hidden;
       overflow-wrap: break-word;
       background-color: var(--el-bg-color-page);
     }

@@ -6,6 +6,7 @@ module.exports = {
     'stylelint-config-standard-vue',
   ],
   rules: {
+    'at-rule-no-unknown': null,
     'selector-class-pattern': null,
   },
 };
