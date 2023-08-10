@@ -22,7 +22,6 @@
     "@types/dplayer": "^1.25.2",
     "@types/marked": "^5.0.1",
     "@vueuse/core": "^9.6.0",
-    "@vueuse/motion": "^2.0.0",
     "@wangeditor/editor": "^5.1.23",
     "@zxing/library": "^0.19.1",
     "axios": "^1.1.3",
