@@ -82,8 +82,8 @@ export const menuRoutes: RouteRecordRaw[] = [
       },
       {
         path: '/Features/Watermark',
-        meta: { title: '网页水印(未完成)' },
-        component: { render: () => '网页水印canvas' },
+        meta: { title: '网页水印' },
+        component: () => import('@/views/Features/Watermark'),
       },
       {
         path: '/Features/PicBlend',
