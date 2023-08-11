@@ -13,7 +13,7 @@ defineProps<{ data: RecursiveMenuData }>();
     @click="data.onClick"
   >
     <template #title>
-      <div class="flex">
+      <div v-if="data.icon" class="flex">
         <Icon :icon="data.icon" width="20" class="mx-1" />
       </div>
       <span>{{ data.title }}</span>
@@ -25,7 +25,7 @@ defineProps<{ data: RecursiveMenuData }>();
     />
   </ElSubMenu>
   <ElMenuItem v-else :index="data.index" @click="data.onClick">
-    <div class="flex">
+    <div v-if="data.icon" class="flex">
       <Icon :icon="data.icon" width="20" class="mx-1" />
     </div>
     <span>{{ data.title }}</span>
