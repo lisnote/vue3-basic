@@ -5,12 +5,12 @@ import type { RouteRecordRaw } from 'vue-router';
 export const menuRoutes: RouteRecordRaw[] = [
   {
     path: '/Dashboard',
-    meta: { title: '首页' },
+    meta: { title: '首页', icon: 'ep:house' },
     component: () => import('@/views/Dashboard'),
   },
   {
     path: '/Components',
-    meta: { title: '组件' },
+    meta: { title: '组件', icon: 'ep:menu' },
     children: [
       {
         path: '/Components/Form',
@@ -31,9 +31,7 @@ export const menuRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/Features',
-    meta: {
-      title: '功能',
-    },
+    meta: { title: '功能', icon: 'ep:magic-stick' },
     children: [
       {
         path: '/Features/ThemeSwitch',
@@ -109,7 +107,7 @@ export const menuRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/Error',
-    meta: { title: '异常页面' },
+    meta: { title: '异常页面', icon: 'ep:warning' },
     children: [
       {
         path: '/Error/403',
@@ -130,7 +128,7 @@ export const menuRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/Toys',
-    meta: { title: '玩具功能' },
+    meta: { title: '玩具功能', icon: 'ep:sugar' },
     children: [
       {
         path: '/Toys/Game',
@@ -208,7 +206,7 @@ export const menuRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/System',
-    meta: { title: '系统管理' },
+    meta: { title: '系统管理', icon: 'ep:setting' },
     children: [
       {
         path: '/System/UserManagement',

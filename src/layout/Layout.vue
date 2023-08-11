@@ -16,14 +16,12 @@ router.isReady().then(() => {
   <div class="layout">
     <Navigator class="nav"></Navigator>
     <div class="main">
-      <ElScrollbar>
-        <RecursiveMenu
-          :data="MenuRouteAdaptor(menuRoutes)"
-          :default-active="activeIndex"
-          class="sidebar"
-          ellipsis
-        />
-      </ElScrollbar>
+      <RecursiveMenu
+        :data="MenuRouteAdaptor(menuRoutes)"
+        :default-active="activeIndex"
+        class="sidebar"
+        ellipsis
+      />
       <article class="article">
         <RouterView v-slot="{ Component }">
           <transition name="fade-left">
@@ -54,8 +52,7 @@ router.isReady().then(() => {
     display: flex;
     overflow: hidden;
 
-    .sidebar {
-      width: 200px;
+    :deep(.sidebar) {
       height: 100%;
     }
 

@@ -15,6 +15,7 @@ export default RecursiveMenu;
 export interface RecursiveMenuData {
   index: string;
   title: string;
+  icon: string;
   children?: RecursiveMenuData[];
   onClick?(...args: unknown[]): unknown;
 }
@@ -28,6 +29,7 @@ export function MenuRouteAdaptor(data: RouteRecordRaw[]): RecursiveMenuData[] {
       return {
         index: value.path,
         title: value.meta.title,
+        icon: value.meta.icon,
         permission: value.meta.permission,
         children: MenuRouteAdaptor(value.children),
         onClick: () => !(value.children?.length > 0) && router.push(value.path),
