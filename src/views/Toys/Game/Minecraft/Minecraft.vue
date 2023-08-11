@@ -1,1 +1,3 @@
-<template>我的世界</template>
+<template>
+  <div>我的世界</div>
+</template>
