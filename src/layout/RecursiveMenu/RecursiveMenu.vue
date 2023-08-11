@@ -37,9 +37,15 @@ const defaultAvtive = computed(() => {
   </div>
 </template>
 <style lang="scss" scoped>
-.menu {
-  &:not(.el-menu--collapse) {
-    width: 200px;
+.recursive-menu {
+  border-right: solid 1px var(--el-menu-border-color);
+
+  .menu {
+    border-right: 0;
+
+    &:not(.el-menu--collapse) {
+      width: 200px;
+    }
   }
 }
 </style>
