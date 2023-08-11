@@ -22,16 +22,18 @@ http
   );
 </script>
 <template>
-  <div v-for="(key, value) in useMainStore().$state" :key="key">
-    {{ value }} : {{ key }}
-  </div>
-  <div v-for="(key, value) in data" :key="key">{{ value }} : {{ key }}</div>
-  <hr />
-  <div v-for="(key, value) in pkg.dependencies" :key="key">
-    {{ value }} : {{ key }}
-  </div>
-  <hr />
-  <div v-for="(key, value) in pkg.devDependencies" :key="key">
-    {{ value }} : {{ key }}
+  <div>
+    <div v-for="(key, value) in useMainStore().$state" :key="key">
+      {{ value }} : {{ key }}
+    </div>
+    <div v-for="(key, value) in data" :key="key">{{ value }} : {{ key }}</div>
+    <hr />
+    <div v-for="(key, value) in pkg.dependencies" :key="key">
+      {{ value }} : {{ key }}
+    </div>
+    <hr />
+    <div v-for="(key, value) in pkg.devDependencies" :key="key">
+      {{ value }} : {{ key }}
+    </div>
   </div>
 </template>

@@ -1,4 +1,8 @@
 import type { RouteRecordRaw } from 'vue-router';
+import { h } from 'vue';
+function createRender(content: string) {
+  return () => h('div', content);
+}
 /**
  * 菜单路由信息
  */
@@ -20,7 +24,7 @@ export const menuRoutes: RouteRecordRaw[] = [
       {
         path: '/Components/Table',
         meta: { title: '表格(未完成)' },
-        component: { render: () => '表格' },
+        component: { render: createRender('表格') },
       },
       {
         path: '/Components/CountJS',
@@ -61,7 +65,7 @@ export const menuRoutes: RouteRecordRaw[] = [
       {
         path: '/Features/DocxPreview',
         meta: { title: 'docx渲染(未完成)' },
-        component: { render: () => 'docx预览docx-preview' },
+        component: { render: createRender('docx预览docx-preview') },
       },
       {
         path: '/Features/RichTextEditor',
@@ -86,7 +90,7 @@ export const menuRoutes: RouteRecordRaw[] = [
       {
         path: '/Features/PicBlend',
         meta: { title: '合并图片(未完成)' },
-        component: { render: () => '合并图片canvas' },
+        component: { render: createRender('合并图片canvas') },
       },
       {
         path: '/Features/AMap',
@@ -137,12 +141,12 @@ export const menuRoutes: RouteRecordRaw[] = [
           {
             path: '/Toys/Game/DontTapTheWhiteTile',
             meta: { title: '别踩白块(未完成)' },
-            component: { render: () => '别踩白块' },
+            component: { render: createRender('别踩白块') },
           },
           {
             path: '/Toys/Game/ControlThe3DCar',
             meta: { title: '3D遥控车(未完成)' },
-            component: { render: () => '3D遥控车' },
+            component: { render: createRender('3D遥控车') },
           },
           {
             path: '/Toys/Game/Minecraft',
@@ -158,47 +162,47 @@ export const menuRoutes: RouteRecordRaw[] = [
           {
             path: '/Toys/Service/Websocket',
             meta: { title: '双向通信(未完成)' },
-            component: { render: () => '双向通信SocketIO' },
+            component: { render: createRender('双向通信SocketIO') },
           },
           {
             path: '/Toys/Service/GraphQL',
             meta: { title: '接口合并(未完成)' },
-            component: { render: () => '接口合并GraphQL' },
+            component: { render: createRender('接口合并GraphQL') },
           },
           {
             path: '/Toys/Service/WebRTC',
             meta: { title: '即时通信(未完成)' },
-            component: { render: () => '即时通信WebRTC' },
+            component: { render: createRender('即时通信WebRTC') },
           },
           {
             path: '/Toys/Service/SyncronousVideo',
             meta: { title: '同步放映室(未完成)' },
-            component: { render: () => '同步放映室' },
+            component: { render: createRender('同步放映室') },
           },
           {
             path: '/Toys/Service/LiveBroadcast',
             meta: { title: '直播间(未完成)' },
-            component: { render: () => '直播间' },
+            component: { render: createRender('直播间') },
           },
           {
             path: '/Toys/Service/FileUpload',
             meta: { title: '文件上传(未完成)' },
-            component: { render: () => '文件上传' },
+            component: { render: createRender('文件上传') },
           },
           {
             path: '/Toys/Service/TextToSpeech',
             meta: { title: '文本转语音(未完成)' },
-            component: { render: () => '文本转语音Vits' },
+            component: { render: createRender('文本转语音Vits') },
           },
           {
             path: '/Toys/Service/TextToImage',
             meta: { title: 'AI生图(未完成)' },
-            component: { render: () => 'AI生图StableDiffusion' },
+            component: { render: createRender('AI生图StableDiffusion') },
           },
           {
             path: '/Toys/Service/SuperResolution',
             meta: { title: '图片高清修复(未完成)' },
-            component: { render: () => '图片高清修复Real-ESRGAN' },
+            component: { render: createRender('图片高清修复Real-ESRGAN') },
           },
         ],
       },
@@ -211,17 +215,17 @@ export const menuRoutes: RouteRecordRaw[] = [
       {
         path: '/System/UserManagement',
         meta: { title: '用户管理(未完成)' },
-        component: { render: () => '用户管理' },
+        component: { render: createRender('用户管理') },
       },
       {
         path: '/System/RoleManagement',
         meta: { title: '角色管理(未完成)' },
-        component: { render: () => '角色管理' },
+        component: { render: createRender('角色管理') },
       },
       {
         path: '/System/RolePermission',
         meta: { title: '角色权限(未完成)' },
-        component: { render: () => '角色权限' },
+        component: { render: createRender('角色权限') },
       },
       {
         path: '/System/About',

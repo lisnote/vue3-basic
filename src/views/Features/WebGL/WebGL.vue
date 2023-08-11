@@ -202,8 +202,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="renderRef" class="w-full h-full overflow-hidden"></div>
-  <span class="cross-hair"></span>
+  <div class="h-full">
+    <div ref="renderRef" class="w-full h-full overflow-hidden"></div>
+    <span class="cross-hair"></span>
+  </div>
 </template>
 <style lang="scss" scoped>
 .cross-hair {

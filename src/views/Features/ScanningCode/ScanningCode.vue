@@ -32,11 +32,13 @@ function stop() {
 }
 </script>
 <template>
-  <button @click="start">开始</button>
-  <button @click="stop">结束</button>
-  <video id="video" />
-  <div v-for="(item, index) in data" :key="index" class="output">
-    {{ item }}
+  <div>
+    <button @click="start">开始</button>
+    <button @click="stop">结束</button>
+    <video id="video" />
+    <div v-for="(item, index) in data" :key="index" class="output">
+      {{ item }}
+    </div>
   </div>
 </template>
 <style lang="scss" scoped>

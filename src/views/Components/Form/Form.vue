@@ -8,14 +8,16 @@ function submit(event: KeyboardEvent) {
 }
 </script>
 <template>
-  <ElInput
-    v-model="data"
-    type="textarea"
-    placeholder="submit: ctrl+enter"
-    @keyup.ctrl.enter="submit"
-  />
   <div>
-    <pre>{{ data }}</pre>
+    <ElInput
+      v-model="data"
+      type="textarea"
+      placeholder="submit: ctrl+enter"
+      @keyup.ctrl.enter="submit"
+    />
+    <div>
+      <pre>{{ data }}</pre>
+    </div>
   </div>
 </template>
 <style lang="scss" scoped>
