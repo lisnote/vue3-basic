@@ -5,9 +5,9 @@ import zhCn from 'element-plus/lib/locale/lang/zh-cn';
 <template>
   <ElConfigProvider :locale="zhCn">
     <RouterView v-slot="{ Component }">
-      <transition name="fade-left">
+      <Transition name="fade-left">
         <component :is="Component" class="w-full" />
-      </transition>
+      </Transition>
     </RouterView>
   </ElConfigProvider>
 </template>

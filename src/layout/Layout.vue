@@ -24,9 +24,9 @@ router.isReady().then(() => {
       />
       <article class="article">
         <RouterView v-slot="{ Component }">
-          <transition name="fade-left">
+          <Transition name="fade-left">
             <component :is="Component" class="w-full" />
-          </transition>
+          </Transition>
         </RouterView>
       </article>
     </div>
