@@ -31,14 +31,23 @@ const defaultAvtive = computed(() => {
         </ElMenu>
       </div>
     </ElScrollbar>
-    <div @click="isCollapse = !isCollapse">
-      <Icon icon="ep:fold" width="20" class="mx-1" />
+    <div class="collapse-button" @click="isCollapse = !isCollapse">
+      <Transition name="flip" mode="out-in">
+        <Icon
+          :key="isCollapse.toString()"
+          :icon="isCollapse ? 'ep:fold' : 'ep:expand'"
+          width="20"
+          class="mx-1"
+        />
+      </Transition>
     </div>
   </div>
 </template>
 <style lang="scss" scoped>
+@use "@/styles/animate.scss";
+
 .recursive-menu {
-  border-right: solid 1px var(--el-menu-border-color);
+  border-right: solid 1px var(--el-border-color);
 
   .menu {
     border-right: 0;
@@ -46,6 +55,18 @@ const defaultAvtive = computed(() => {
     &:not(.el-menu--collapse) {
       width: 200px;
     }
+  }
+
+  .collapse-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    width: 80%;
+    height: 30px;
+    background-color: var(--el-bg-color-page);
+    border: 1px solid var(--el-border-color);
+    border-radius: 5px;
   }
 }
 </style>
