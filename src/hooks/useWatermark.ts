@@ -102,10 +102,8 @@ export function useWatermark(
   };
 
   function setWatermark(str: string, attr?: attr) {
-    const el = unref(appendEl);
     window.addEventListener('resize', func);
     createWatermark(str, attr);
-
     const instance = getCurrentInstance();
     if (instance) {
       onBeforeUnmount(() => {
