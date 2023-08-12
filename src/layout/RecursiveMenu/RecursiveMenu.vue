@@ -64,9 +64,13 @@ const defaultAvtive = computed(() => {
     margin: 10px auto;
     width: 90%;
     height: 30px;
-    background-color: var(--el-bg-color-page);
     border: 1px solid var(--el-border-color);
     border-radius: 5px;
+
+    &:hover {
+      cursor: pointer;
+      background: var(--el-color-primary-light-9);
+    }
   }
 }
 </style>
