@@ -6,23 +6,42 @@ import {
   createToolbar,
   type IDomEditor,
 } from '@wangeditor/editor';
+import { blobToBlobURL } from '@/utils/typeTransform';
 import { ref, onMounted } from 'vue';
 
 const toolbarRef = ref<HTMLDivElement>();
 const editorRef = ref<HTMLDivElement>();
 onMounted(() => {
   if (!toolbarRef.value || !editorRef.value) return;
-  const editorConfig = {
-    placeholder: 'Type here...',
-    onChange(editor: IDomEditor) {
-      const html = editor.getHtml();
-      console.log('editor content', html);
-    },
-  };
   const editor = createEditor({
     selector: editorRef.value,
     html: '',
-    config: editorConfig,
+    config: {
+      onChange(editor: IDomEditor) {
+        const html = editor.getHtml();
+        console.log('editor content', html);
+      },
+      MENU_CONF: {
+        uploadImage: {
+          async customUpload(
+            file: File,
+            insertFn: (url: string, alt: string, href: string) => void,
+          ) {
+            const url = blobToBlobURL(file);
+            insertFn(url, file.name, url);
+          },
+        },
+        uploadVideo: {
+          async customUpload(
+            file: File,
+            insertFn: (url: string, poster?: string) => void,
+          ) {
+            const url = blobToBlobURL(file);
+            insertFn(url);
+          },
+        },
+      },
+    },
     mode: 'default', // or 'simple'
   });
   const toolbarConfig = {};
