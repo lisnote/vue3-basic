@@ -62,7 +62,7 @@ const defaultAvtive = computed(() => {
     justify-content: center;
     align-items: center;
     margin: 10px auto;
-    width: 80%;
+    width: 90%;
     height: 30px;
     background-color: var(--el-bg-color-page);
     border: 1px solid var(--el-border-color);
