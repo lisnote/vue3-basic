@@ -42,14 +42,14 @@ onMounted(() => {
         },
       },
     },
-    mode: 'default', // or 'simple'
+    mode: 'default',
   });
   const toolbarConfig = {};
   const _toolbar = createToolbar({
     editor,
     selector: toolbarRef.value,
     config: toolbarConfig,
-    mode: 'default', // or 'simple'
+    mode: 'default',
   });
 });
 </script>
