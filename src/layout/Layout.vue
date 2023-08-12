@@ -33,7 +33,7 @@ router.isReady().then(() => {
   </div>
 </template>
 <style lang="scss" scoped>
-@use "@/styles/animate.scss";
+@use '@/styles/animate.scss';
 
 .layout {
   display: flex;

@@ -8,5 +8,6 @@ module.exports = {
   rules: {
     'at-rule-no-unknown': null,
     'selector-class-pattern': null,
+    'string-quotes': 'single',
   },
 };

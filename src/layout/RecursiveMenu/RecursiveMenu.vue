@@ -44,7 +44,7 @@ const defaultAvtive = computed(() => {
   </div>
 </template>
 <style lang="scss" scoped>
-@use "@/styles/animate.scss";
+@use '@/styles/animate.scss';
 
 .recursive-menu {
   border-right: solid 1px var(--el-border-color);

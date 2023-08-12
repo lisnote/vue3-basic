@@ -13,5 +13,5 @@ import zhCn from 'element-plus/lib/locale/lang/zh-cn';
 </template>
 
 <style lang="scss" scoped>
-@use "@/styles/animate.scss";
+@use '@/styles/animate.scss';
 </style>
