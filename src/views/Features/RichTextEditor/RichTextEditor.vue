@@ -57,8 +57,8 @@ onMounted(() => {
 <template>
   <div :class="commonStyle.contentArea" class="flex flex-col divide-y-2">
     <div ref="toolbarRef"></div>
-    <ElScrollbar>
-      <div ref="editorRef" class="flex-1"></div>
+    <ElScrollbar view-class="h-full">
+      <div ref="editorRef" class="h-full"></div>
     </ElScrollbar>
   </div>
 </template>
