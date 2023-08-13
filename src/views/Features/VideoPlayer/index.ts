@@ -1,2 +1,2 @@
-import PlayVideo from './PlayVideo.vue';
-export default PlayVideo;
+import VideoPlayer from './VideoPlayer.vue';
+export default VideoPlayer;

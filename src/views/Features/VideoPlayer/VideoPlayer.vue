@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import DPlayer from 'dplayer';
 import { ref, onMounted } from 'vue';
+import commonStyle from '@/styles/common.module.scss';
 
 const video = ref();
 onMounted(() => {
@@ -13,5 +14,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div ref="video" />
+  <div :class="commonStyle.contentArea">
+    <div ref="video" />
+  </div>
 </template>
