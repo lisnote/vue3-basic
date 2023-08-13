@@ -7,7 +7,7 @@ import { ElInput } from 'element-plus';
 import 'highlight.js/styles/default.css';
 const sourceText = ref(markdownText);
 const markedProduct = computed(() => {
-  return marked.parse(markdownText);
+  return marked.parse(markdownText, { mangle: false });
 });
 </script>
 

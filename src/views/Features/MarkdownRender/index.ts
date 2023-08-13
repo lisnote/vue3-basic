@@ -1,7 +1,8 @@
 import MarkdownRender from './MarkdownRender.vue';
-import { markedHighlight } from 'marked-highlight';
-import hljs from 'highlight.js';
 import { marked } from 'marked';
+import hljs from 'highlight.js';
+import { markedHighlight } from 'marked-highlight';
+import { gfmHeadingId } from 'marked-gfm-heading-id';
 
 marked.use(
   markedHighlight({
@@ -9,6 +10,7 @@ marked.use(
       return hljs.highlightAuto(code).value;
     },
   }),
+  gfmHeadingId({ prefix: 'marked-heading-' }),
 );
 
 export default MarkdownRender;
