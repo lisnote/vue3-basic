@@ -63,11 +63,6 @@ export const menuRoutes: RouteRecordRaw[] = [
         component: () => import('@/views/Features/PDFRender'),
       },
       {
-        path: '/Features/DocxPreview',
-        meta: { title: 'docx渲染(未完成)' },
-        component: { render: createRender('docx预览docx-preview') },
-      },
-      {
         path: '/Features/RichTextEditor',
         meta: { title: '富文本编辑' },
         component: () => import('@/views/Features/RichTextEditor'),
@@ -86,11 +81,6 @@ export const menuRoutes: RouteRecordRaw[] = [
         path: '/Features/Watermark',
         meta: { title: '网页水印' },
         component: () => import('@/views/Features/Watermark'),
-      },
-      {
-        path: '/Features/PicBlend',
-        meta: { title: '合并图片(未完成)' },
-        component: { render: createRender('合并图片canvas') },
       },
       {
         path: '/Features/AMap',
