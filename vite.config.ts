@@ -30,5 +30,8 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
     server: {
       port: Number(env.APP_PORT),
     },
+    build: {
+      target: 'ESNext',
+    },
   };
 };

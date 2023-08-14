@@ -1,13 +1,14 @@
 <script lang="ts" setup>
-import { TMapLoader } from './index';
+import { TMap, DomMarker } from '@/utils/TMap';
 import { ref, onMounted } from 'vue';
 
 const mapRef = ref<HTMLDivElement>();
+const markerList: DomMarker[] = [];
 onMounted(async () => {
-  const TMap = await TMapLoader();
   // 设置地图
+  const center = new TMap.LatLng(32.847884, 110.154354);
   const map = new TMap.Map(mapRef.value, {
-    center: new TMap.LatLng(32.847884, 110.154354),
+    center,
     zoom: 5,
   });
   // 限制边界
@@ -15,40 +16,34 @@ onMounted(async () => {
   const ne = new TMap.LatLng(84.9, 180);
   const boundary = new TMap.LatLngBounds(sw, ne);
   map.setBoundary(boundary);
+  // 创建及dom
+  function insertMarker(position: { lat: number; lng: number }) {
+    const dom = document.createElement('div');
+    dom.style.cssText =
+      'height:20px;width:20px;background:red;position:absolute;';
+    const dm = new DomMarker({
+      map,
+      position,
+      dom,
+    });
+    markerList.push(dm);
+  }
   // 监听地图点击事件
-  map.on('click', console.log);
-  // 地图标记
-  const markerLayer = new TMap.MultiMarker({
-    map: map,
-    styles: {
-      mapMark: new TMap.MarkerStyle({
-        width: 35,
-        height: 35,
-        src: './favicon.ico',
-      }),
-    },
-    geometries: [
-      {
-        id: 'avatar',
-        styleId: 'mapMark',
-        position: new TMap.LatLng(22.6106319, 114.0302668),
-      },
-      {
-        id: 'target',
-        position: new TMap.LatLng(39.994104, 116.287503),
-      },
-    ],
-  });
-  // 监听地图标记事件
-  markerLayer.on('click', console.log);
-  // 信息窗口
-  const _infoWindow = new TMap.InfoWindow({
-    map: map,
-    position: new TMap.LatLng(21.2772538057459, 110.35657555734383),
-    content: `<div>湛江市</div>`,
+  map.on('click', ({ latLng }: { latLng: { lat: number; lng: number } }) => {
+    insertMarker(latLng);
   });
 });
+function clearMarker() {
+  markerList.forEach((marker) => {
+    marker.setMap(null);
+  });
+}
 </script>
 <template>
-  <div ref="mapRef" class="w-full h-full overflow-hidden"></div>
+  <div class="h-full relative">
+    <div ref="mapRef" class="w-full h-full overflow-hidden"></div>
+    <div class="absolute top-0 z-9999">
+      <button class="m-5 bg-white" @click="clearMarker">清空marker</button>
+    </div>
+  </div>
 </template>
