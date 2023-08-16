@@ -52,7 +52,7 @@ export function treeFilter<T extends any[]>(
 }
 
 /**
- * 获取一棵树的节点列表
+ * 获取树的节点列表
  * @param {T} tree 待处理的树
  * @param {string} children 子节点列表的字段名
  * @param {T} list 树节点列表
@@ -61,11 +61,30 @@ export function treeFilter<T extends any[]>(
 export function treeToList<T extends any[]>(
   tree: T,
   children: string = 'children',
-  list: T[number] = [],
+  list: T = [] as any,
 ): T {
-  tree.forEach((item) => {
-    list.push(item);
-    if (item[children]?.length) treeToList(item[children], children, list);
+  tree.forEach((node) => {
+    list.push(node);
+    const childNodes = node[children];
+    if (childNodes?.length) treeToList(childNodes, children, list);
   });
   return list;
+}
+
+/**
+ * 函数遍历树的每一个节点
+ * @param {T} tree 待处理的树
+ * @param {(node: T[number]) => void} handle 处理函数
+ * @param {string} children 子节点列表的字段名
+ */
+export function treeForEach<T extends any[]>(
+  tree: T,
+  handle: (node: T[number]) => void,
+  children: string = 'children',
+) {
+  tree.forEach((node) => {
+    handle(node);
+    const childNodes = node[children];
+    if (childNodes?.length) treeForEach(childNodes, handle, children);
+  });
 }
