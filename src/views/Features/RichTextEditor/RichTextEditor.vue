@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import commonStyle from '@/styles/common.module.scss';
-import '@wangeditor/editor/dist/css/style.css';
 import {
   createEditor,
   createToolbar,
@@ -55,10 +54,20 @@ onMounted(() => {
 </script>
 
 <template>
-  <div :class="commonStyle.contentArea" class="flex flex-col divide-y-2">
+  <div
+    component="RichTextEditor"
+    :class="commonStyle.contentArea"
+    class="flex flex-col divide-y-2"
+  >
     <div ref="toolbarRef"></div>
     <ElScrollbar view-class="h-full">
       <div ref="editorRef" class="h-full"></div>
     </ElScrollbar>
   </div>
 </template>
+
+<style lang="scss">
+[component='RichTextEditor'] {
+  @import '@wangeditor/editor/dist/css/style';
+}
+</style>
