@@ -2,7 +2,6 @@
 import hljs from 'highlight.js';
 import { computed, ref } from 'vue';
 import { copyText } from '@/utils/clipboard';
-import 'highlight.js/styles/atom-one-dark.css';
 const props = defineProps<{ code: string; title?: string }>();
 const lines = computed(() => props.code.split(/\r\n|\r|\n/));
 const html = computed(() => hljs.highlightAuto(props.code).value);
@@ -19,22 +18,33 @@ function fullscreen() {
 </script>
 
 <template>
-  <div ref="codeViewerRef" class="code-viewer hljs" @dblclick="fullscreen">
-    <div class="header">
-      <span class="title">{{ title }}</span>
-      <span class="pointer" @click="copyText(code)">copy</span>
-      <span class="pointer" @click="fullscreen">full</span>
-    </div>
-    <div class="lines-and-codes">
-      <div class="lines">
-        <div v-for="(_v, index) in lines" :key="index" class="hljs line">
-          {{ index }}
-        </div>
+  <div component="codeViewer">
+    <div ref="codeViewerRef" class="code-viewer hljs" @dblclick="fullscreen">
+      <div class="header">
+        <span class="title">{{ title }}</span>
+        <span class="pointer" @click="copyText(code)">copy</span>
+        <span class="pointer" @click="fullscreen">full</span>
       </div>
-      <pre class="codes hljs" v-html="html"></pre>
+      <div class="lines-and-codes">
+        <div class="lines">
+          <div v-for="(_v, index) in lines" :key="index" class="hljs line">
+            {{ index }}
+          </div>
+        </div>
+        <pre class="codes hljs" v-html="html"></pre>
+      </div>
     </div>
   </div>
 </template>
+
+<style lang="scss">
+[component='codeViewer'] {
+  @import 'highlight.js/scss/atom-one-dark';
+
+  height: 100%;
+  width: 100%;
+}
+</style>
 
 <style lang="scss" scoped>
 .code-viewer {

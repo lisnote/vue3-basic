@@ -9,5 +9,7 @@ module.exports = {
     'at-rule-no-unknown': null,
     'selector-class-pattern': null,
     'string-quotes': 'single',
+    'no-invalid-position-at-import-rule': null,
+    'import-notation': null,
   },
 };

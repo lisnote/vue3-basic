@@ -4,7 +4,6 @@ import markdownText from '@/assets/markdown/MarkdownTest.md?raw';
 import { marked } from 'marked';
 import { ref, computed } from 'vue';
 import { ElInput } from 'element-plus';
-import 'highlight.js/styles/default.css';
 const sourceText = ref(markdownText);
 const markedProduct = computed(() => {
   return marked.parse(markdownText, { mangle: false });
@@ -12,7 +11,7 @@ const markedProduct = computed(() => {
 </script>
 
 <template>
-  <div class="flex" :class="commonStyle.contentArea">
+  <div component="markdownRender" class="flex" :class="commonStyle.contentArea">
     <div class="flex-1 min-w-0">
       <ElInput v-model="sourceText" type="textarea" class="el-textarea" />
     </div>
@@ -22,6 +21,12 @@ const markedProduct = computed(() => {
     ></div>
   </div>
 </template>
+
+<style lang="scss">
+[component='markdownRender'] {
+  @import 'highlight.js/scss/default';
+}
+</style>
 
 <style scoped lang="scss">
 :deep(.el-textarea) {
