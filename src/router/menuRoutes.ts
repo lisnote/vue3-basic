@@ -31,6 +31,11 @@ export const menuRoutes: RouteRecordRaw[] = [
         meta: { title: '数字动画' },
         component: () => import('@/views/Components/CountUp'),
       },
+      {
+        path: '/Components/CodeViewer',
+        meta: { title: '代码查看' },
+        component: () => import('@/views/Components/CodeViewer'),
+      },
     ],
   },
   {
