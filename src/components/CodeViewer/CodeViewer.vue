@@ -31,7 +31,7 @@ function fullscreen() {
             {{ index }}
           </div>
         </div>
-        <pre class="codes hljs" v-html="html"></pre>
+        <pre class="codes" v-html="html"></pre>
       </div>
     </div>
   </div>
