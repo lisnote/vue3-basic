@@ -18,8 +18,8 @@ function fullscreen() {
 </script>
 
 <template>
-  <div component="codeViewer">
-    <div ref="codeViewerRef" class="code-viewer hljs" @dblclick="fullscreen">
+  <div ref="codeViewerRef" component="codeViewer">
+    <div class="code-viewer hljs" @dblclick="fullscreen">
       <div class="header">
         <span class="title">{{ title }}</span>
         <span class="pointer" @click="copyText(code)">copy</span>
