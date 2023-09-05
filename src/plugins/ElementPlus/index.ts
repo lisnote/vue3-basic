@@ -3,10 +3,10 @@
  */
 import type { App } from 'vue';
 import { ElInput } from './ElInput';
-import { ElScrollbar, ElLink } from 'element-plus';
+import { ElScrollbar, ElLink, ElForm, ElFormItem } from 'element-plus';
 import 'element-plus/dist/index.css';
 
-const components = { ElInput, ElScrollbar, ElLink };
+const components = { ElInput, ElScrollbar, ElLink, ElForm, ElFormItem };
 
 /**
  * 全局注册指定 Element Plus 组件的 vue 插件
