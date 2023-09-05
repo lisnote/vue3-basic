@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { useStorage } from '@vueuse/core';
+import { type Theme } from '@/utils/theme';
 
 /**
  * 样式相关信息
@@ -7,6 +8,6 @@ import { useStorage } from '@vueuse/core';
 export const useStylesStore = defineStore('styles', {
   state: () =>
     useStorage('styles', {
-      theme: '',
+      theme: undefined as Theme,
     }),
 });

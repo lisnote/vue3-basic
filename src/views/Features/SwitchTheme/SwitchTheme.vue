@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { switchTheme } from '@/utils/theme';
+import { themeMap, switchTheme } from '@/utils/theme';
 import { useStylesStore } from '@/store';
 import commonStyle from '@/styles/common.module.scss';
 import { ElButton } from 'element-plus';
+import { color } from 'echarts';
 const stylesStore = useStylesStore();
 switchTheme(stylesStore.theme);
 
@@ -73,10 +74,14 @@ const colorVars = [
 <template>
   <div :class="commonStyle.contentArea">
     <div class="mb-10px">
-      <ElButton @click="switchTheme('')">默认主题</ElButton>
-      <ElButton @click="switchTheme('green')">绿色主题</ElButton>
-      <ElButton @click="switchTheme('dark')">夜间主题</ElButton>
-      <ElButton @click="switchTheme('memorial-day')">哀悼日</ElButton>
+      <ElButton
+        v-for="(theme, key) of themeMap"
+        :key="key"
+        :style="{ background: theme.background, color: theme.color }"
+        @click="switchTheme(key)"
+      >
+        {{ theme.name }}
+      </ElButton>
     </div>
     <div class="flex flex-wrap gap-10px">
       <div

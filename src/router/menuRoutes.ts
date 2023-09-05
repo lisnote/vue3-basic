@@ -43,9 +43,9 @@ export const menuRoutes: RouteRecordRaw[] = [
     meta: { title: '功能', icon: 'ep:magic-stick' },
     children: [
       {
-        path: '/Features/ThemeSwitch',
+        path: '/Features/SwitchTheme',
         meta: { title: '主题切换' },
-        component: () => import('@/views/Features/ThemeSwitch'),
+        component: () => import('@/views/Features/SwitchTheme'),
       },
       {
         path: '/Features/FileDownload',
