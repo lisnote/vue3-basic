@@ -11,11 +11,14 @@ const userStore = useUserStore();
 const formRef = ref<FormInstance>();
 const formRules: FormRules = {};
 const formData = ref({
-  name: '',
-  password: '',
+  name: 'admin',
+  password: 'admin123',
 });
-function login() {
-  userStore.login('lisnote', 'password123');
+async function login() {
+  let valid = false;
+  await formRef.value?.validate((value) => (valid = value));
+  if (!valid) return;
+  await userStore.login(formData.value.name, formData.value.password);
   router.push('/Dashboard');
 }
 const passwordVisible = ref(false);
