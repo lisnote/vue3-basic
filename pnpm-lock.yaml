@@ -11,9 +11,6 @@ dependencies:
   '@codemirror/lang-javascript':
     specifier: ^6.1.9
     version: 6.1.9
-  '@element-plus/icons-vue':
-    specifier: ^2.1.0
-    version: 2.1.0(vue@3.2.41)
   '@types/dplayer':
     specifier: ^1.25.2
     version: registry.npmmirror.com/@types/dplayer@1.25.2
