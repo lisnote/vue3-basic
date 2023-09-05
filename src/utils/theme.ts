@@ -16,5 +16,5 @@ export function switchTheme(theme?: string) {
     stylesStore.theme = theme;
   }
   document.documentElement.dataset.theme = theme;
-  if (theme) import(`../../styles/theme/${theme}.scss`);
+  if (theme) import(`../styles/theme/${theme}.scss`);
 }
