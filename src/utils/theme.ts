@@ -1,6 +1,6 @@
 // 主题相关函数, 变量, 类型
 import pinia, { useStylesStore } from '@/store';
-// 代表色
+// 主题映射
 export const themeMap = {
   '': {
     name: '默认主题',
