@@ -39,7 +39,7 @@ function fullscreen() {
 
 <style lang="scss">
 [component='codeViewer'] {
-  @import 'highlight.js/scss/atom-one-dark';
+  @import 'highlight.js/styles/default';
 
   height: 100%;
   width: 100%;
