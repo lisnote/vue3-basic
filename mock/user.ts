@@ -7,9 +7,9 @@ export default createMockMethod(
       code: 0,
       data: {
         id: '123456',
-        name: 'lisnote',
-        phone: 18888888888,
+        name: 'admin',
         token: '123456',
+        avatar: 'https://avatars.githubusercontent.com/lisnote',
         permissionList: [
           'permissionAdd',
           'permissionSelect',
