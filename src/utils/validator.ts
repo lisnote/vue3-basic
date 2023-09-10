@@ -70,3 +70,14 @@ export const passwordValidator: Validator = function (_rule, value, cb) {
     cb();
   }
 };
+// 验证码输入验证
+export const smsCodeValidator: Validator = function (_rule, value, cb) {
+  value = String(value);
+  if (value.length !== 6) {
+    cb('长度必须为6位');
+  } else if (!/^\d*$/.test(value)) {
+    cb('只允许使用数字');
+  } else {
+    cb();
+  }
+};
