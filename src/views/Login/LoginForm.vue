@@ -32,7 +32,7 @@ async function submit() {
   <div class="w-full">
     <ElForm ref="formRef" :model="formData" :rules="formRules">
       <ElFormItem prop="name">
-        <ElInput v-model="formData.name" placeholder="请输入手机号" />
+        <ElInput v-model="formData.name" placeholder="请输入账户名" />
       </ElFormItem>
       <ElFormItem prop="password">
         <ElInput
