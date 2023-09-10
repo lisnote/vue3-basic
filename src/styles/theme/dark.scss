@@ -30,4 +30,8 @@
 @use 'element-plus/theme-chalk/src/dark/css-vars.scss';
 html[data-theme='dark'] {
   @extend html, .dark;
+  .el-input-group__append,
+  .el-input-group__prepend {
+    color: var(--el-text-color-regular);
+  }
 }
