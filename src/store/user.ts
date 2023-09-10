@@ -12,8 +12,8 @@ export const useUserStore = defineStore('user', {
     return useStorage('userInfo', {
       id: '',
       name: '',
-      phone: '',
       token: '',
+      avatar: '',
       permissionList: [] as string[],
     });
   },
@@ -29,8 +29,8 @@ export const useUserStore = defineStore('user', {
       this.$patch({
         id: '',
         name: '',
-        phone: '',
         token: '',
+        avatar: '',
         permissionList: [],
       });
       logout({ token: this.token });
