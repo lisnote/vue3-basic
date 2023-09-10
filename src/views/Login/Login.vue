@@ -19,7 +19,7 @@ const mode = ref<'login' | 'signup' | 'reset'>('login');
         </div>
         <LoginForm v-if="mode === 'login'" />
         <SignupForm v-else-if="mode === 'signup'" />
-        <ResetForm v-else />
+        <ResetForm v-else @success="mode = 'login'" />
         <div class="flex justify-between">
           <template v-if="mode === 'login'">
             <ElLink type="primary" @click="mode = 'signup'">注册账号</ElLink>
