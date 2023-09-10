@@ -3,7 +3,7 @@ import { themeMap, switchTheme } from '@/utils/theme';
 import { useStylesStore } from '@/store';
 import commonStyle from '@/styles/common.module.scss';
 import { ElButton } from 'element-plus';
-import { color } from 'echarts';
+
 const stylesStore = useStylesStore();
 switchTheme(stylesStore.theme);
 
@@ -72,12 +72,13 @@ const colorVars = [
 </script>
 
 <template>
-  <div :class="commonStyle.contentArea">
-    <div class="mb-10px">
+  <div :class="commonStyle.contentArea" class="flex flex-col gap-10px">
+    <div class="flex flex-wrap gap-10px">
       <ElButton
         v-for="(theme, key) of themeMap"
         :key="key"
         :style="{ background: theme.background, color: theme.color }"
+        class="!ml-0"
         @click="switchTheme(key)"
       >
         {{ theme.name }}
