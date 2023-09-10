@@ -1,27 +1,31 @@
 <script setup lang="ts">
-import { type FormInstance, FormRules } from 'element-plus';
 import { ElButton } from 'element-plus';
 import { useUserStore } from '@/store';
 import { Icon } from '@iconify/vue';
 import router from '@/router';
 import { ref } from 'vue';
+import { accountValidator, passwordValidator } from '@/utils/validator';
+import type { FormInstance, FormRules } from 'element-plus';
 const userStore = useUserStore();
 
 // form
 const formRef = ref<FormInstance>();
-const formRules: FormRules = {};
+const formRules: FormRules = {
+  name: { validator: accountValidator, trigger: 'blur' },
+  password: { validator: passwordValidator, trigger: 'blur' },
+};
 const formData = ref({
   name: 'admin',
   password: 'admin123',
 });
-async function login() {
+const passwordVisible = ref(false);
+async function submit() {
   let valid = false;
   await formRef.value?.validate((value) => (valid = value));
   if (!valid) return;
   await userStore.login(formData.value.name, formData.value.password);
   router.push('/Dashboard');
 }
-const passwordVisible = ref(false);
 </script>
 
 <template>
@@ -45,6 +49,6 @@ const passwordVisible = ref(false);
         </ElInput>
       </ElFormItem>
     </ElForm>
-    <ElButton class="w-full" @click="login">登录</ElButton>
+    <ElButton class="w-full" @click="submit">登录</ElButton>
   </div>
 </template>
