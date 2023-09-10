@@ -9,6 +9,14 @@ export async function login(
   return http.post('/user/login', data, config);
 }
 
+// 重置密码
+export async function resetPassword(
+  data: { name: string; password: string; smsCode: string },
+  config?: AxiosRequestConfig,
+) {
+  return http.post('/user/resetPassword', data, config);
+}
+
 // 登出
 export async function logout(
   data: { token: string },

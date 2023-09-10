@@ -20,6 +20,12 @@ export default createMockMethod(
     },
   },
   {
+    url: '/user/resetPassword',
+    response: {
+      code: 0,
+    },
+  },
+  {
     url: '/user/logout',
     response: {
       code: 0,
