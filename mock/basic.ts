@@ -9,7 +9,7 @@ export default createMockMethod({
       body += chunk.toString();
     });
     req.on('end', () => {
-      const data = JSON.parse(body);
+      const data = JSON.parse(body || '{}');
       if (data.name !== 'admin') {
         res.statusCode = 404;
         res.end(JSON.stringify({ code: 40002, message: 'User not found.' }));
