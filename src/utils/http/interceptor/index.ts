@@ -1,6 +1,7 @@
 import blobUrl from './blobUrl';
 import emptyFilter from './emptyFilter';
 import blobToText from './blobToText';
+import errorHandle from './errorHandle';
 import type { AxiosInstance } from 'axios';
 
 /**
@@ -12,5 +13,5 @@ export default function useInterceptors(http: AxiosInstance) {
   http.interceptors.request.use(emptyFilter);
   http.interceptors.request.use(blobUrl);
   // 响应拦截
-  http.interceptors.response.use(blobToText);
+  http.interceptors.response.use(blobToText, errorHandle);
 }
