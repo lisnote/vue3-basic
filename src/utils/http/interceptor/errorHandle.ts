@@ -24,10 +24,11 @@ const codeMessageMap: { [key: number]: string } = {
 };
 export default async function (error: AxiosError) {
   const blob = error.response?.data as Blob;
+  let message = '';
   if (blob.type === 'application/json') {
     const data = JSON.parse(await blob.text());
-    const message = codeMessageMap[data.code];
-    ElMessage.error(message || '未知异常');
+    message = codeMessageMap[data.code];
   }
+  ElMessage.error(message || '未知异常');
   throw error;
 }
