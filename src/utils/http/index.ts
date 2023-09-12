@@ -3,8 +3,7 @@
  * 导出所有 transformResponse 相关方法
  */
 import axios from 'axios';
-import useRequest from './request';
-import useResponse from './response';
+import useInterceptors from './interceptor';
 
 const http = axios.create({
   baseURL: import.meta.env.APP_API,
@@ -14,8 +13,7 @@ const http = axios.create({
   paramsSerializer: { indexes: null },
 });
 
-useRequest.forEach((use) => http.interceptors.request.use(use));
-useResponse.forEach((use) => http.interceptors.response.use(use));
+useInterceptors(http);
 
 export default http;
 export * from './transformResponse';
