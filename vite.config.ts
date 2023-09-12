@@ -32,6 +32,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
     },
     build: {
       target: 'ESNext',
+      chunkSizeWarningLimit: 2000,
     },
   };
 };
