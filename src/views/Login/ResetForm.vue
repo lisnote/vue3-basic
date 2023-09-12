@@ -13,7 +13,7 @@ import type { FormInstance, FormItemInstance, FormRules } from 'element-plus';
 
 const emit = defineEmits(['success']);
 
-// 表单
+// 表单组件数据
 const formRef = ref<FormInstance>();
 const formRules: FormRules = {
   name: { validator: accountValidator, trigger: 'blur' },
@@ -26,7 +26,7 @@ const formData = ref({
   password: '',
 });
 const passwordVisible = ref(false);
-// 验证码
+// 验证码展示逻辑
 const smsCodeAppend = ref('发送验证码');
 const smsCodeFormItemRef = ref<FormItemInstance>();
 let smsCodeSetTimeout: ReturnType<typeof setTimeout>;
@@ -41,6 +41,7 @@ function updateSmsCodeAppend(time = 60) {
     nextSecond();
   }
 }
+// 获取验证码
 async function sendSmsVerificationCode() {
   const valid = await formRef.value?.validateField('name').catch(() => false);
   if (!valid && smsCodeFormItemRef.value) {

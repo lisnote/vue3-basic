@@ -8,7 +8,7 @@ import { accountValidator, passwordValidator } from '@/utils/validator';
 import type { FormInstance, FormRules } from 'element-plus';
 const userStore = useUserStore();
 
-// form
+// 表单组件数据
 const formRef = ref<FormInstance>();
 const formRules: FormRules = {
   name: { validator: accountValidator, trigger: 'blur' },
