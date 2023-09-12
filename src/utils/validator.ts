@@ -46,7 +46,7 @@ export function lengthInRange(
 }
 
 // 具体校验函数 -------------------------------------------------------------
-// 账号输入验证
+// 用户名输入验证
 export const accountValidator: Validator = function (_rule, value, cb) {
   if (!lengthInRange(value, { min: 4, max: 16 })) {
     cb('长度必须为4-16位');
@@ -54,6 +54,18 @@ export const accountValidator: Validator = function (_rule, value, cb) {
     cb('必须包含字母');
   } else if (!/^[\w.-]*$/.test(value)) {
     cb('只允许使用字母，数字、特殊符号._-');
+  } else {
+    cb();
+  }
+};
+// 手机号输入验证
+export const phoneValidator: Validator = function (_rule, value, cb) {
+  if (!lengthInRange(value, { min: 11, max: 11 })) {
+    cb('长度必须为11位');
+  } else if (value[0] != 1) {
+    cb('只允许1开始的手机号');
+  } else if (!/^1\d{10}$/.test(value)) {
+    cb('只允许使用数字');
   } else {
     cb();
   }
