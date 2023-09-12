@@ -14,7 +14,6 @@ declare module '*.vue' {
 interface ImportMetaEnv {
   [key: string]: string;
   APP_API: string;
-  APP_WS: string;
 }
 
 interface Window {
