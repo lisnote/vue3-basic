@@ -4,6 +4,7 @@ export default createMockMethod({
   url: '/basic/sendSmsCode',
   // name 不为 admin 时抛错: 用户不存在
   rawResponse(req, res) {
+    res.setHeader('Content-Type', 'application/json');
     let body = '';
     req.on('data', (chunk) => {
       body += chunk.toString();
