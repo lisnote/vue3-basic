@@ -3,7 +3,7 @@ import { AxiosRequestConfig } from 'axios';
 
 // 登录
 export async function login(
-  data: { name: string; password: string },
+  data: { phone: string; password: string },
   config?: AxiosRequestConfig,
 ) {
   return http.post('/user/login', data, config);
@@ -11,7 +11,7 @@ export async function login(
 
 // 注册
 export async function signup(
-  data: { name: string; password: string; smsCode: string },
+  data: { phone: string; password: string; smsCode: string },
   config?: AxiosRequestConfig,
 ) {
   return http.post('/user/signup', data, config);
@@ -19,7 +19,7 @@ export async function signup(
 
 // 重置密码
 export async function resetPassword(
-  data: { name: string; password: string; smsCode: string },
+  data: { phone: string; password: string; smsCode: string },
   config?: AxiosRequestConfig,
 ) {
   return http.post('/user/resetPassword', data, config);

@@ -11,7 +11,7 @@ export const smsCodeType = {
   deleteProject: 5,
 } as const;
 export async function sendSmsCode(
-  data: { name: string; type: typeof smsCodeType[keyof typeof smsCodeType] },
+  data: { phone: string; type: typeof smsCodeType[keyof typeof smsCodeType] },
   config?: AxiosRequestConfig,
 ) {
   return http.post('/basic/sendSmsCode', data, config);

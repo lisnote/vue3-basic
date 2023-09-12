@@ -3,7 +3,7 @@ import { ElButton, ElMessage } from 'element-plus';
 import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
 import {
-  accountValidator,
+  phoneValidator,
   passwordValidator,
   smsCodeValidator,
 } from '@/utils/validator';
@@ -16,12 +16,12 @@ const emit = defineEmits(['success']);
 // 表单组件数据
 const formRef = ref<FormInstance>();
 const formRules: FormRules = {
-  name: { validator: accountValidator, trigger: 'blur' },
+  phone: { validator: phoneValidator, trigger: 'blur' },
   smsCode: { validator: smsCodeValidator, trigger: 'blur' },
   password: { validator: passwordValidator, trigger: 'blur' },
 };
 const formData = ref({
-  name: '',
+  phone: '',
   smsCode: '',
   password: '',
 });
@@ -43,15 +43,15 @@ function updateSmsCodeAppend(time = 60) {
 }
 // 获取验证码
 async function sendSmsVerificationCode() {
-  const valid = await formRef.value?.validateField('name').catch(() => false);
+  const valid = await formRef.value?.validateField('phone').catch(() => false);
   if (!valid && smsCodeFormItemRef.value) {
     smsCodeFormItemRef.value.validateState = 'error';
-    smsCodeFormItemRef.value.validateMessage = '请先输入有效的用户名';
+    smsCodeFormItemRef.value.validateMessage = '请先输入有效的手机号';
     return;
   }
   updateSmsCodeAppend();
   sendSmsCode({
-    name: formData.value.name,
+    phone: formData.value.phone,
     type: smsCodeType.resetPassword,
   })
     .then(() => {
@@ -66,7 +66,7 @@ async function sendSmsVerificationCode() {
 async function submit() {
   await formRef.value?.validate();
   await resetPassword({
-    name: formData.value.name,
+    phone: formData.value.phone,
     smsCode: formData.value.smsCode,
     password: formData.value.password,
   }).then(() => {
@@ -79,8 +79,8 @@ async function submit() {
 <template>
   <div class="w-full">
     <ElForm ref="formRef" :model="formData" :rules="formRules">
-      <ElFormItem prop="name">
-        <ElInput v-model="formData.name" placeholder="请输入用户名" />
+      <ElFormItem prop="phone">
+        <ElInput v-model="formData.phone" placeholder="请输入手机号" />
       </ElFormItem>
       <ElFormItem ref="smsCodeFormItemRef" prop="smsCode">
         <ElInput

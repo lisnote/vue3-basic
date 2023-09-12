@@ -12,14 +12,15 @@ export const useUserStore = defineStore('user', {
     return useStorage('userInfo', {
       id: '',
       name: '',
+      phone: '',
       token: '',
       avatar: '',
       permissionList: [] as string[],
     });
   },
   actions: {
-    async login(name: string, password: string) {
-      await login({ name, password: Md5.hashStr(password) }).then(
+    async login(phone: string, password: string) {
+      await login({ phone, password: Md5.hashStr(password) }).then(
         ({ data }) => {
           this.$patch(data.data);
         },
@@ -29,6 +30,7 @@ export const useUserStore = defineStore('user', {
       this.$patch({
         id: '',
         name: '',
+        phone: '',
         token: '',
         avatar: '',
         permissionList: [],
