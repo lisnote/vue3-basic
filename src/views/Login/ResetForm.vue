@@ -29,10 +29,11 @@ const passwordVisible = ref(false);
 // 验证码
 const smsCodeAppend = ref('发送验证码');
 const smsCodeFormItemRef = ref<FormItemInstance>();
+let smsCodeSetTimeout: ReturnType<typeof setTimeout>;
 function updateSmsCodeAppend(time = 60) {
   smsCodeAppend.value = time + '秒后重新发送';
   const nextSecond = function () {
-    setTimeout(() => updateSmsCodeAppend(time - 1), 1000);
+    smsCodeSetTimeout = setTimeout(() => updateSmsCodeAppend(time - 1), 1000);
   };
   if (time === 0) {
     smsCodeAppend.value = '发送验证码';
@@ -41,20 +42,24 @@ function updateSmsCodeAppend(time = 60) {
   }
 }
 async function sendSmsVerificationCode() {
-  await formRef.value?.validateField('name').catch(() => {
-    if (!smsCodeFormItemRef.value) return;
+  const valid = await formRef.value?.validateField('name').catch(() => false);
+  if (!valid && smsCodeFormItemRef.value) {
     smsCodeFormItemRef.value.validateState = 'error';
-    smsCodeFormItemRef.value.validateMessage = '用户名错误';
-    throw new Error('用户名错误');
-  });
-  smsCodeFormItemRef.value?.clearValidate();
+    smsCodeFormItemRef.value.validateMessage = '请先输入有效的用户名';
+    return;
+  }
   updateSmsCodeAppend();
   sendSmsCode({
     name: formData.value.name,
     type: smsCodeType.resetPassword,
-  }).then(() => {
-    ElMessage.success('验证码发送成功');
-  });
+  })
+    .then(() => {
+      ElMessage.success('验证码发送成功');
+    })
+    .catch(() => {
+      clearTimeout(smsCodeSetTimeout);
+      updateSmsCodeAppend(0);
+    });
 }
 // 提交表单
 async function submit() {
