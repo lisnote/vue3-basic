@@ -8,6 +8,6 @@ import { type Theme } from '@/utils/theme';
 export const useStylesStore = defineStore('styles', {
   state: () =>
     useStorage('styles', {
-      theme: undefined as Theme,
+      theme: 'default' as Theme,
     }),
 });

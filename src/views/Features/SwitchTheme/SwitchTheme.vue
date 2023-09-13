@@ -1,11 +1,7 @@
 <script lang="ts" setup>
 import { themeMap, switchTheme } from '@/utils/theme';
-import { useStylesStore } from '@/store';
 import commonStyle from '@/styles/common.module.scss';
 import { ElButton } from 'element-plus';
-
-const stylesStore = useStylesStore();
-switchTheme(stylesStore.theme);
 
 const colorVars = [
   {

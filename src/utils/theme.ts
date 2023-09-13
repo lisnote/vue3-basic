@@ -2,7 +2,7 @@
 import pinia, { useStylesStore } from '@/store';
 // 主题映射
 export const themeMap = {
-  '': {
+  default: {
     name: '默认主题',
     accentColor: '#409eff',
     background: 'white',
@@ -27,7 +27,7 @@ export const themeMap = {
     color: '#919191',
   },
 };
-export type Theme = keyof typeof themeMap | undefined;
+export type Theme = keyof typeof themeMap;
 /**
  * 切换主题, 不传参即为初始化
  * @param {Theme} theme 主题名称
@@ -40,5 +40,5 @@ export function switchTheme(theme?: Theme) {
     stylesStore.theme = theme;
   }
   document.documentElement.dataset.theme = theme;
-  if (theme) import(`../styles/theme/${theme}.scss`);
+  if (theme !== 'default') import(`../styles/theme/${theme}.scss`);
 }
