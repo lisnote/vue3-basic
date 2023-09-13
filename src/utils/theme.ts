@@ -40,5 +40,5 @@ export function switchTheme(theme?: Theme) {
     stylesStore.theme = theme;
   }
   document.documentElement.dataset.theme = theme;
-  if (theme !== 'default') import(`../styles/theme/${theme}.scss`);
+  if (theme !== 'default') import(`@/styles/theme/${theme}.scss?inline`);
 }
