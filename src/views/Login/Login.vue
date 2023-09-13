@@ -18,7 +18,7 @@ const mode = ref<'login' | 'signup' | 'reset'>('login');
           {{ mainStore.projectName }}
         </div>
         <LoginForm v-show="mode === 'login'" />
-        <SignupForm v-show="mode === 'signup'" />
+        <SignupForm v-show="mode === 'signup'" @success="mode = 'login'" />
         <ResetForm v-show="mode === 'reset'" @success="mode = 'login'" />
         <div class="flex justify-between">
           <template v-if="mode === 'login'">
