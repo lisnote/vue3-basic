@@ -1,0 +1,38 @@
+/* normalize -------------------------------------------------- */
+/* 通用块级元素 */
+body {
+  margin: 0px;
+}
+/* 标题 */
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+/* 表单 */
+button {
+  cursor: pointer;
+  margin: 0em;
+  padding: 1px 6px;
+  border-width: 2px;
+  border-color: buttonborder;
+}
+
+/* custom -------------------------------------------------- */
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  &-corner {
+    background-color: transparent;
+  }
+  &-thumb {
+    border-radius: 3px;
+  }
+}
+:hover::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color, rgba(144, 147, 153, 0.3));
+  &:hover {
+    background-color: var(--scrollbar-hover-color, rgba(144, 147, 153, 0.5));
+    cursor: pointer;
+  }
+}

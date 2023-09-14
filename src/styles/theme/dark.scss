@@ -28,10 +28,12 @@
   )
 );
 @use 'element-plus/theme-chalk/src/dark/css-vars.scss';
+@use './mixins/scrollbar-var' as *;
 html[data-theme='dark'] {
   @extend html, .dark;
   .el-input-group__append,
   .el-input-group__prepend {
     color: var(--el-text-color-regular);
   }
+  @include set-scrollbar-var();
 }
