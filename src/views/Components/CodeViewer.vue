@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import CodeViewer from '@/components/CodeViewer';
-import CodeViewerStr from '@/components/CodeViewer/CodeViewer.vue?raw';
+import CodeViewer from '@/components/CodeViewer.vue';
+import CodeViewerStr from '@/components/CodeViewer.vue?raw';
 import common from '@/styles/common.module.scss';
 </script>
 

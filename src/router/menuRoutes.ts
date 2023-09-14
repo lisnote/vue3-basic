@@ -19,7 +19,7 @@ export const menuRoutes: RouteRecordRaw[] = [
       {
         path: '/Components/Form',
         meta: { title: '表单' },
-        component: () => import('@/views/Components/Form'),
+        component: () => import('@/views/Components/Form.vue'),
       },
       {
         path: '/Components/Table',
@@ -29,12 +29,12 @@ export const menuRoutes: RouteRecordRaw[] = [
       {
         path: '/Components/CountJS',
         meta: { title: '数字动画' },
-        component: () => import('@/views/Components/CountUp'),
+        component: () => import('@/views/Components/CountUp.vue'),
       },
       {
         path: '/Components/CodeViewer',
         meta: { title: '代码查看' },
-        component: () => import('@/views/Components/CodeViewer'),
+        component: () => import('@/views/Components/CodeViewer.vue'),
       },
     ],
   },
