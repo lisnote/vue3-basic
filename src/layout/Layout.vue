@@ -44,6 +44,7 @@ router.isReady().then(() => {
     flex-shrink: 0;
     width: 100%;
     height: 60px;
+    background-color: var(--el-fill-color-blank);
     border-bottom: solid 1px var(--el-border-color);
   }
 
@@ -54,6 +55,7 @@ router.isReady().then(() => {
 
     :deep(.sidebar) {
       height: 100%;
+      background-color: var(--el-fill-color-blank);
     }
 
     .article {
