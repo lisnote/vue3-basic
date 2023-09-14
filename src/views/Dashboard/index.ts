@@ -1,2 +1,2 @@
-import Home from './Home.vue';
-export default Home;
+import Dashboard from './Dashboard.vue';
+export default Dashboard;
