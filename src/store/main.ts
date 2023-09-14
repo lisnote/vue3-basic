@@ -5,7 +5,7 @@ import { defineStore } from 'pinia';
  */
 export const useMainStore = defineStore('main', {
   state: () => ({
-    projectName: 'vue3-basic',
+    projectName: import.meta.env.APP_PROJECT_NAME,
     author: 'lisnote',
     description:
       'This project can be used as a base framework for starting Vue3 projects.',

@@ -12,7 +12,7 @@ async function logout() {
 <template>
   <nav class="navigator">
     <RouterLink to="/" class="project-name">
-      {{ mainStore.projectName.toUpperCase() }}
+      {{ mainStore.projectName }}
     </RouterLink>
     <div>
       <ElDropdown>

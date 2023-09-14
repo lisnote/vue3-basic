@@ -4,6 +4,7 @@ import WindiCSS from 'vite-plugin-windicss';
 import { resolve } from 'path';
 import { viteMockServe } from 'vite-plugin-mock';
 import svgLoader from 'vite-svg-loader';
+import { createHtmlPlugin } from 'vite-plugin-html';
 
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfigExport => {
@@ -11,6 +12,14 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
   return {
     base: './',
     plugins: [
+      createHtmlPlugin({
+        minify: true,
+        inject: {
+          data: {
+            title: env.APP_PROJECT_NAME,
+          },
+        },
+      }),
       vue(),
       WindiCSS(),
       viteMockServe({
