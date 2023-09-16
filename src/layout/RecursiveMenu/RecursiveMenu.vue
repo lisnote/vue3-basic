@@ -4,14 +4,19 @@ import MenuItem from './MenuItem.vue';
 import { ref, computed } from 'vue';
 import router from '@/router';
 import { Icon } from '@iconify/vue';
+import { useStylesStore } from '@/store';
 
 import type { RecursiveMenuData } from '.';
 
+const stylesStore = useStylesStore();
 defineProps<{
   data: RecursiveMenuData[];
 }>();
 
 const isCollapse = ref(false);
+const translateX = computed(() => {
+  return stylesStore.sidebarVisible ? '0' : '-100%';
+});
 // 默认路由
 const defaultAvtive = computed(() => {
   return router.currentRoute.value.path;
@@ -35,7 +40,7 @@ const defaultAvtive = computed(() => {
       <Transition name="flip" mode="out-in">
         <Icon
           :key="isCollapse.toString()"
-          :icon="isCollapse ? 'ep:fold' : 'ep:expand'"
+          :icon="isCollapse ? 'ep:expand' : 'ep:fold'"
           width="20"
           class="mx-1"
         />
@@ -48,6 +53,8 @@ const defaultAvtive = computed(() => {
 
 .recursive-menu {
   border-right: solid 1px var(--el-border-color);
+  z-index: 1;
+  transition: transform var(--el-transition-duration) ease;
 
   .menu {
     border-right: 0;
@@ -70,6 +77,17 @@ const defaultAvtive = computed(() => {
     &:hover {
       cursor: pointer;
       background: var(--el-color-primary-light-9);
+    }
+  }
+}
+
+@media (max-width: 767.9px) {
+  .recursive-menu {
+    position: absolute;
+    transform: translateX(v-bind('translateX'));
+
+    .collapse-button {
+      display: none;
     }
   }
 }

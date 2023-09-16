@@ -52,6 +52,7 @@ router.isReady().then(() => {
     flex: 1;
     display: flex;
     overflow: hidden;
+    position: relative;
 
     :deep(.sidebar) {
       height: 100%;

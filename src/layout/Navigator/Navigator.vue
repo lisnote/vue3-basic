@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { useMainStore, useUserStore } from '@/store';
+import { useMainStore, useUserStore, useStylesStore } from '@/store';
+import { Icon } from '@iconify/vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
 import router from '@/router';
 const mainStore = useMainStore();
 const userStore = useUserStore();
+const stylesStore = useStylesStore();
 async function logout() {
   await userStore.logout();
   router.push('/Login');
@@ -11,7 +13,17 @@ async function logout() {
 </script>
 <template>
   <nav class="navigator">
-    <RouterLink to="/" class="project-name">
+    <div class="<md:block hidden" @click="stylesStore.sidebarToggle">
+      <Transition name="flip" mode="out-in">
+        <Icon
+          :key="stylesStore.sidebarVisible.toString()"
+          :icon="stylesStore.sidebarVisible ? 'ep:fold' : 'ep:expand'"
+          width="20"
+          class="mx-1"
+        />
+      </Transition>
+    </div>
+    <RouterLink to="/" class="project-name <md:hidden">
       {{ mainStore.projectName }}
     </RouterLink>
     <div>
@@ -37,6 +49,8 @@ async function logout() {
   </nav>
 </template>
 <style scoped lang="scss">
+@use '@/styles/animate.scss';
+
 .navigator {
   display: flex;
   justify-content: space-between;

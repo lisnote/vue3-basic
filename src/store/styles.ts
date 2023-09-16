@@ -11,6 +11,12 @@ export const useStylesStore = function () {
     state: () =>
       useStorage('styles', {
         theme: 'default' as Theme,
+        sidebarVisible: false,
       }),
+    actions: {
+      sidebarToggle() {
+        this.sidebarVisible = !this.sidebarVisible;
+      },
+    },
   })(pinia);
 };
