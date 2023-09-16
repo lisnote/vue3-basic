@@ -4,7 +4,7 @@ import NoAccess from '@/assets/status/403.svg?component';
 </script>
 
 <template>
-  <div class="flex justify-center items-center h-screen-sm">
+  <div class="flex flex-wrap justify-center items-center h-screen-sm">
     <NoAccess />
     <div class="ml-12">
       <p class="font-medium text-4xl mb-4">403</p>

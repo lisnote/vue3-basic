@@ -4,7 +4,7 @@ import { ElButton } from 'element-plus';
 </script>
 
 <template>
-  <div class="flex justify-center items-center h-screen-sm">
+  <div class="flex flex-wrap justify-center items-center h-screen-sm">
     <NoExist />
     <div class="ml-12">
       <p class="font-medium text-4xl mb-4">404</p>

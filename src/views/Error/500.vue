@@ -4,7 +4,7 @@ import NoServer from '@/assets/status/500.svg?component';
 </script>
 
 <template>
-  <div class="flex justify-center items-center h-screen-sm">
+  <div class="flex flex-wrap justify-center items-center h-screen-sm">
     <NoServer />
     <div class="ml-12">
       <p class="font-medium text-4xl mb-4">500</p>
