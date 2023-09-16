@@ -42,7 +42,7 @@ function clearMarker() {
 <template>
   <div class="h-full relative">
     <div ref="mapRef" class="w-full h-full overflow-hidden"></div>
-    <div class="absolute top-0 z-9999">
+    <div class="absolute top-0 z-1000">
       <button class="m-5 bg-white" @click="clearMarker">清空marker</button>
     </div>
   </div>
