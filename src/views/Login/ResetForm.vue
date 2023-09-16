@@ -78,7 +78,12 @@ async function submit() {
 
 <template>
   <div class="w-full">
-    <ElForm ref="formRef" :model="formData" :rules="formRules">
+    <ElForm
+      ref="formRef"
+      :model="formData"
+      :rules="formRules"
+      @keyup.enter="submit"
+    >
       <ElFormItem prop="phone">
         <ElInput v-model="formData.phone" placeholder="请输入手机号" />
       </ElFormItem>
