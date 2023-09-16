@@ -4,7 +4,9 @@ import Navigator from './Navigator';
 import { menuRoutes } from '@/router';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
+import { useStylesStore } from '@/store';
 
+const stylesStore = useStylesStore();
 const router = useRouter();
 const activeIndex = ref('');
 router.isReady().then(() => {
@@ -22,7 +24,7 @@ router.isReady().then(() => {
         class="sidebar"
         ellipsis
       />
-      <article class="article">
+      <article class="article" @click="stylesStore.hideSidebar">
         <RouterView v-slot="{ Component }">
           <Transition name="fade-left">
             <component :is="Component" class="w-full" />

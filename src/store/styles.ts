@@ -17,6 +17,9 @@ export const useStylesStore = function () {
       sidebarToggle() {
         this.sidebarVisible = !this.sidebarVisible;
       },
+      hideSidebar() {
+        this.sidebarVisible = false;
+      },
     },
   })(pinia);
 };
