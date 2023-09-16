@@ -2,7 +2,7 @@
 
 [中文](./README.md) | [English](./README_EN.md)
 
-这个项目可以作为启动 Vue3 项目的基础框架.
+Vue3 项目案例.
 
 ## TodoList
 

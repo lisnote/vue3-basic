@@ -2,7 +2,7 @@
 
 [中文](./README.md) | [English](./README_EN.md)
 
-This project can be used as a base framework for starting Vue3 projects.
+Vue3 projects example.
 
 ## TodoList
 
