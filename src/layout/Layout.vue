@@ -54,7 +54,7 @@ router.isReady().then(() => {
     overflow: hidden;
     position: relative;
 
-    :deep(.sidebar) {
+    .sidebar {
       height: 100%;
       background-color: var(--el-bg-color-overlay);
     }
