@@ -6,17 +6,21 @@ import { ref, computed } from 'vue';
 import { ElInput } from 'element-plus';
 const sourceText = ref(markdownText);
 const markedProduct = computed(() => {
-  return marked.parse(markdownText, { mangle: false });
+  return marked.parse(sourceText.value, { mangle: false });
 });
 </script>
 
 <template>
-  <div component="markdownRender" class="flex" :class="commonStyle.contentArea">
-    <div class="flex-1 min-w-0">
+  <div
+    component="markdownRender"
+    class="flex flex-wrap"
+    :class="commonStyle.contentArea"
+  >
+    <div class="flex-1 min-w-300px min-h-300px">
       <ElInput v-model="sourceText" type="textarea" class="el-textarea" />
     </div>
     <div
-      class="flex-1 min-w-0 marked-product overflow-y-auto p-3"
+      class="flex-1 min-w-300px marked-product overflow-y-auto p-3"
       v-html="markedProduct"
     ></div>
   </div>
