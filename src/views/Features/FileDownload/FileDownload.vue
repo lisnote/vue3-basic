@@ -49,10 +49,10 @@ function downloadCanvas() {
 
 <template>
   <div :class="commonStyle.contentArea">
-    <div>
-      <ElButton @click="downloadLink">下载链接</ElButton>
-      <ElButton @click="downloadDataUrl">下载DataUrl</ElButton>
-      <ElButton @click="downloadCanvas">下载canvas图片</ElButton>
+    <div class="flex flex-wrap gap-10px">
+      <ElButton class="!ml-0" @click="downloadLink">下载链接</ElButton>
+      <ElButton class="!ml-0" @click="downloadDataUrl">下载DataUrl</ElButton>
+      <ElButton class="!ml-0" @click="downloadCanvas">下载canvas图片</ElButton>
     </div>
     <div ref="canvasContainerRef"></div>
   </div>
