@@ -210,22 +210,22 @@ export const menuRoutes: RouteRecordRaw[] = [
       {
         path: '/System/UserManagement',
         meta: { title: '用户管理(未完成)' },
-        component: { render: createRender('用户管理') },
+        component: () => import('@/views/System/UserManagement'),
       },
       {
         path: '/System/RoleManagement',
         meta: { title: '角色管理(未完成)' },
-        component: { render: createRender('角色管理') },
+        component: () => import('@/views/System/RoleManagement'),
       },
       {
         path: '/System/RolePermission',
         meta: { title: '角色权限(未完成)' },
-        component: { render: createRender('角色权限') },
+        component: () => import('@/views/System/RolePermission'),
       },
       {
         path: '/System/LicenseManagement',
         meta: { title: '许可证管理(未完成)' },
-        component: { render: createRender('许可证管理') },
+        component: () => import('@/views/System/LicenseManagement'),
       },
       {
         path: '/System/About',
