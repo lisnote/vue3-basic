@@ -1,1 +1,3 @@
-<template>LicenseManagement</template>
+<template>
+  <div>LicenseManagement</div>
+</template>

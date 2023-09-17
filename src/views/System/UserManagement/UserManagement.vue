@@ -1,1 +1,3 @@
-<template>UserManagement</template>
+<template>
+  <div>UserManagement</div>
+</template>

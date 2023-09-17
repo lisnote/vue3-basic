@@ -1,1 +1,3 @@
-<template>RolePermission</template>
+<template>
+  <div>RolePermission</div>
+</template>
