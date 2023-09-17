@@ -85,10 +85,6 @@ const defaultAvtive = computed(() => {
   .recursive-menu {
     position: absolute;
     transform: translateX(v-bind('translateX'));
-
-    .collapse-button {
-      display: none;
-    }
   }
 }
 </style>
