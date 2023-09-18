@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { useStorage } from '@vueuse/core';
+import { useStorage } from '@/utils/storage';
 import pinia from '.';
 import { type Theme } from '@/utils/theme';
 

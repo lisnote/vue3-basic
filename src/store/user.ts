@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { useStorage } from '@vueuse/core';
+import { useStorage } from '@/utils/storage';
 import router from '@/router';
 import { Md5 } from 'ts-md5';
 import { login, logout } from '@/api/user';
