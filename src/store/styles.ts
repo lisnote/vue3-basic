@@ -27,6 +27,12 @@ export function useStylesStore() {
 
 const stylesStore = useStylesStore();
 stylesStore.deviceMode = window.innerWidth < 768 ? 'mobild' : 'pc';
+stylesStore.sidebarVisible = false;
 window.addEventListener('resize', () => {
-  stylesStore.deviceMode = window.innerWidth < 768 ? 'mobild' : 'pc';
+  if (window.innerWidth < 768) {
+    stylesStore.deviceMode = 'mobild';
+  } else {
+    stylesStore.deviceMode = 'pc';
+    stylesStore.sidebarVisible = false;
+  }
 });
