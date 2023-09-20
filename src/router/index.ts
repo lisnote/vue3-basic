@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { menuRoutes } from './menuRoutes';
 import { useUserStore } from '@/store';
+import NProgress from 'nprogress';
 
 const loginPath = '/Login';
 const router = createRouter({
@@ -33,6 +34,7 @@ const router = createRouter({
 });
 
 router.beforeEach(function (to, _from, next) {
+  NProgress.start();
   const userStore = useUserStore();
   if (to.path !== loginPath && !userStore.token) {
     // 未登录跳转到登录界面
@@ -45,6 +47,8 @@ router.beforeEach(function (to, _from, next) {
     next();
   }
 });
-
+router.afterEach(() => {
+  NProgress.done();
+});
 export { router as default };
 export * from './menuRoutes';
