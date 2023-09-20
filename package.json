@@ -1,5 +1,10 @@
 {
   "name": "vue3-basic",
+  "description": "Vue3 projects example",
+  "author": {
+    "name": "lisnote",
+    "url": "https://github.com/lisnote"
+  },
   "private": true,
   "version": "0.0.0",
   "scripts": {

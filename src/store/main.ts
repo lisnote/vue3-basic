@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import pinia from '.';
+import pkg from '@root/package.json';
 
 /**
  * 项目主要信息
@@ -7,9 +8,9 @@ import pinia from '.';
 export function useMainStore() {
   return defineStore('main', {
     state: () => ({
-      projectName: import.meta.env.APP_PROJECT_NAME,
-      author: 'lisnote',
-      description: 'Vue3 projects example',
+      projectName: pkg.name,
+      author: pkg.author.name,
+      description: pkg.description,
     }),
   })(pinia);
 }

@@ -5,6 +5,7 @@ import { resolve } from 'path';
 import { viteMockServe } from 'vite-plugin-mock';
 import svgLoader from 'vite-svg-loader';
 import { createHtmlPlugin } from 'vite-plugin-html';
+import pkg from './package.json';
 
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfigExport => {
@@ -16,7 +17,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
         minify: true,
         inject: {
           data: {
-            title: env.APP_PROJECT_NAME,
+            title: pkg.name,
           },
         },
       }),
