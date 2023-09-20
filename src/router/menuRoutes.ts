@@ -17,6 +17,11 @@ export const menuRoutes: RouteRecordRaw[] = [
     meta: { title: '组件', icon: 'ep:menu' },
     children: [
       {
+        path: '/Components/Dialog',
+        meta: { title: '对话框' },
+        component: () => import('@/views/Components/Dialog.vue'),
+      },
+      {
         path: '/Components/Form',
         meta: { title: '表单' },
         component: () => import('@/views/Components/Form.vue'),
