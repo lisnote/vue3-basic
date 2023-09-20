@@ -11,6 +11,7 @@ export function useStylesStore() {
     state: () =>
       useStorage('styles', {
         theme: 'default' as Theme,
+        deviceMode: 'mobile' as 'mobild' | 'pc',
         sidebarVisible: false,
       }),
     actions: {
@@ -23,3 +24,9 @@ export function useStylesStore() {
     },
   })(pinia);
 }
+
+const stylesStore = useStylesStore();
+stylesStore.deviceMode = window.innerWidth < 768 ? 'mobild' : 'pc';
+window.addEventListener('resize', () => {
+  stylesStore.deviceMode = window.innerWidth < 768 ? 'mobild' : 'pc';
+});
