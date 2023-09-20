@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { useStorage } from '@/utils/storage';
-import pinia from '.';
+import pinia from './pinia';
 import { type Theme } from '@/utils/theme';
 
 /**

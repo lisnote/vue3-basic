@@ -3,7 +3,7 @@ import { useStorage } from '@/utils/storage';
 import router from '@/router';
 import { Md5 } from 'ts-md5';
 import { login, logout } from '@/api/user';
-import pinia from '.';
+import pinia from './pinia';
 
 /**
  * 样式相关信息
