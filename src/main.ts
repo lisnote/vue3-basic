@@ -6,6 +6,5 @@ import router from '@/router';
 import '@/plugins/init';
 import 'virtual:windi.css';
 import '@/styles/global.scss';
-import '@/styles/nprogress.scss';
 
 createApp(App).use(pinia).use(ElementPlus).use(router).mount('#app');
