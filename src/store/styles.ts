@@ -6,7 +6,7 @@ import { type Theme } from '@/utils/theme';
 /**
  * 样式相关信息
  */
-export const useStylesStore = function () {
+export function useStylesStore() {
   return defineStore('styles', {
     state: () =>
       useStorage('styles', {
@@ -22,4 +22,4 @@ export const useStylesStore = function () {
       },
     },
   })(pinia);
-};
+}
