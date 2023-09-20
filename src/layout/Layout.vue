@@ -24,7 +24,12 @@ router.isReady().then(() => {
         class="sidebar"
         ellipsis
       />
-      <article class="article" @click="stylesStore.hideSidebar">
+      <div
+        class="fixed h-full w-full opacity-50 z-1005 hidden bg-$el-overlay-color-lighter"
+        :class="{ '<md:block': stylesStore.sidebarVisible }"
+        @click="stylesStore.hideSidebar"
+      ></div>
+      <article class="article">
         <RouterView v-slot="{ Component }">
           <Transition name="fade-left">
             <component :is="Component" class="w-full" />

@@ -53,7 +53,7 @@ const defaultAvtive = computed(() => {
 
 .recursive-menu {
   border-right: solid 1px var(--el-border-color);
-  z-index: 1001;
+  z-index: 1010;
   transition: transform var(--el-transition-duration) ease;
 
   .menu {
