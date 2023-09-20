@@ -13,7 +13,10 @@ async function logout() {
 </script>
 <template>
   <nav class="navigator">
-    <div class="<md:block hidden" @click="stylesStore.sidebarToggle">
+    <div
+      v-show="stylesStore.deviceMode === 'mobild'"
+      @click="stylesStore.sidebarToggle"
+    >
       <Transition name="flip" mode="out-in">
         <Icon
           :key="stylesStore.sidebarVisible.toString()"
@@ -23,7 +26,11 @@ async function logout() {
         />
       </Transition>
     </div>
-    <RouterLink to="/" class="project-name <md:hidden">
+    <RouterLink
+      v-show="stylesStore.deviceMode === 'pc'"
+      to="/"
+      class="project-name"
+    >
       {{ pkg.name }}
     </RouterLink>
     <div>

@@ -14,20 +14,26 @@ defineProps<{
 }>();
 
 const isCollapse = ref(false);
-const translateX = computed(() => {
-  return stylesStore.sidebarVisible ? '0' : '-100%';
-});
 // 默认路由
 const defaultAvtive = computed(() => {
   return router.currentRoute.value.path;
 });
 </script>
 <template>
-  <div class="recursive-menu flex flex-col">
+  <div
+    class="recursive-menu flex flex-col"
+    :style="{
+      position: stylesStore.deviceMode === 'mobild' ? 'absolute' : 'static',
+      transform:
+        !stylesStore.sidebarVisible && stylesStore.deviceMode === 'mobild'
+          ? 'translateX(-100%)'
+          : '',
+    }"
+  >
     <ElScrollbar class="flex-1">
       <div>
         <ElMenu
-          :collapse="isCollapse"
+          :collapse="isCollapse && stylesStore.deviceMode === 'pc'"
           :default-active="defaultAvtive"
           unique-opened
           class="menu"
@@ -36,7 +42,11 @@ const defaultAvtive = computed(() => {
         </ElMenu>
       </div>
     </ElScrollbar>
-    <div class="collapse-button" @click="isCollapse = !isCollapse">
+    <div
+      v-show="stylesStore.deviceMode === 'pc'"
+      class="collapse-button"
+      @click="isCollapse = !isCollapse"
+    >
       <Transition name="flip" mode="out-in">
         <Icon
           :key="isCollapse.toString()"
@@ -78,13 +88,6 @@ const defaultAvtive = computed(() => {
       cursor: pointer;
       background: var(--el-color-primary-light-9);
     }
-  }
-}
-
-@media (max-width: 767.9px) {
-  .recursive-menu {
-    position: absolute;
-    transform: translateX(v-bind('translateX'));
   }
 }
 </style>

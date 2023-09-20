@@ -25,10 +25,10 @@ router.isReady().then(() => {
         ellipsis
       />
       <div
-        class="sidebar-modal pointer-events-none opacity-0"
+        class="sidebar-modal"
         :class="{
-          '<md:pointer-events-auto': stylesStore.sidebarVisible,
-          '<md:opacity-100': stylesStore.sidebarVisible,
+          'pointer-events-none': !stylesStore.sidebarVisible,
+          'opacity-0': !stylesStore.sidebarVisible,
         }"
         @click="stylesStore.hideSidebar"
       ></div>
