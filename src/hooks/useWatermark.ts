@@ -92,7 +92,7 @@ export function useWatermark(
     div.style.top = '0px';
     div.style.left = '0px';
     div.style.position = 'absolute';
-    div.style.zIndex = '100000';
+    div.style.zIndex = '1000';
     const el = unref(appendEl);
     if (!el) return id;
     const { clientHeight: height, clientWidth: width } = el;
