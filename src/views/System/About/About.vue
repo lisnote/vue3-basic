@@ -1,12 +1,16 @@
 <script lang="ts" setup>
 import pkg from '@root/package.json';
-import { useMainStore } from '@/store';
 import http from '@/utils/http';
 import { ref } from 'vue';
 import { dateFormat } from '@/utils/date';
 
 import type { Ref } from 'vue';
 
+const projectInfo = {
+  name: pkg.name,
+  author: pkg.author.name,
+  description: pkg.description,
+};
 const data: Ref<Record<string, string>> = ref({});
 http
   .get('https://api.github.com/repos/lisnote/vue3-basic')
@@ -23,7 +27,7 @@ http
 </script>
 <template>
   <div>
-    <div v-for="(key, value) in useMainStore().$state" :key="key">
+    <div v-for="(key, value) in projectInfo" :key="key">
       {{ value }} : {{ key }}
     </div>
     <div v-for="(key, value) in data" :key="key">{{ value }} : {{ key }}</div>

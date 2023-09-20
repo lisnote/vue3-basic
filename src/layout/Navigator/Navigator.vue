@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useMainStore, useUserStore, useStylesStore } from '@/store';
+import { useUserStore, useStylesStore } from '@/store';
 import { Icon } from '@iconify/vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
+import pkg from '@root/package.json';
 import router from '@/router';
-const mainStore = useMainStore();
 const userStore = useUserStore();
 const stylesStore = useStylesStore();
 async function logout() {
@@ -24,7 +24,7 @@ async function logout() {
       </Transition>
     </div>
     <RouterLink to="/" class="project-name <md:hidden">
-      {{ mainStore.projectName }}
+      {{ pkg.name }}
     </RouterLink>
     <div>
       <ElDropdown>

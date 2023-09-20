@@ -4,9 +4,8 @@ import SignupForm from './SignupForm.vue';
 import ResetForm from './ResetForm.vue';
 import { themeMap, switchTheme } from '@/utils/theme';
 import { ref } from 'vue';
-import { useMainStore } from '@/store';
+import pkg from '@root/package.json';
 
-const mainStore = useMainStore();
 const mode = ref<'login' | 'signup' | 'reset'>('login');
 </script>
 
@@ -15,7 +14,7 @@ const mode = ref<'login' | 'signup' | 'reset'>('login');
     <div class="login-box flex justify-center items-center">
       <div class="w-300px flex flex-col gap-3">
         <div class="font-bold text-3xl text-center">
-          {{ mainStore.projectName }}
+          {{ pkg.name }}
         </div>
         <LoginForm v-show="mode === 'login'" />
         <SignupForm v-show="mode === 'signup'" @success="mode = 'login'" />
