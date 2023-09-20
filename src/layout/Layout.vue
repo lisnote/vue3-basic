@@ -25,8 +25,11 @@ router.isReady().then(() => {
         ellipsis
       />
       <div
-        class="fixed h-full w-full opacity-50 z-1005 hidden bg-$el-overlay-color-lighter"
-        :class="{ '<md:block': stylesStore.sidebarVisible }"
+        class="sidebar-modal pointer-events-none opacity-0"
+        :class="{
+          '<md:pointer-events-auto': stylesStore.sidebarVisible,
+          '<md:opacity-100': stylesStore.sidebarVisible,
+        }"
         @click="stylesStore.hideSidebar"
       ></div>
       <article class="article">
@@ -64,6 +67,15 @@ router.isReady().then(() => {
     .sidebar {
       height: 100%;
       background-color: var(--el-bg-color-overlay);
+    }
+
+    .sidebar-modal {
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      background-color: var(--el-overlay-color-lighter);
+      z-index: 1005;
+      transition: opacity var(--el-transition-duration) ease;
     }
 
     .article {
