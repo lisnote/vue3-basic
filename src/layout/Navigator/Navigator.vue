@@ -4,6 +4,7 @@ import { Icon } from '@iconify/vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
 import pkg from '@root/package.json';
 import router from '@/router';
+import { themeMap, switchTheme } from '@/utils/theme';
 const userStore = useUserStore();
 const stylesStore = useStylesStore();
 async function logout() {
@@ -34,7 +35,7 @@ async function logout() {
       {{ pkg.name }}
     </RouterLink>
     <div>
-      <ElDropdown>
+      <ElDropdown trigger="click">
         <span class="el-dropdown-link">
           <div class="navigator-action">
             <img
@@ -47,7 +48,20 @@ async function logout() {
         <template #dropdown>
           <ElDropdownMenu>
             <ElDropdownItem>用户中心</ElDropdownItem>
-            <ElDropdownItem>更换主题</ElDropdownItem>
+            <ElDropdown placement="left" trigger="click">
+              <div><ElDropdownItem>切换主题</ElDropdownItem></div>
+              <template #dropdown>
+                <ElDropdownMenu>
+                  <ElDropdownItem
+                    v-for="(theme, key) of themeMap"
+                    :key="key"
+                    @click="switchTheme(key)"
+                  >
+                    {{ theme.name }}
+                  </ElDropdownItem>
+                </ElDropdownMenu>
+              </template>
+            </ElDropdown>
             <ElDropdownItem divided @click="logout">退出登录</ElDropdownItem>
           </ElDropdownMenu>
         </template>

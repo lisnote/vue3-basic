@@ -49,7 +49,7 @@ export const menuRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: '/Features/SwitchTheme',
-        meta: { title: '主题切换' },
+        meta: { title: '切换主题' },
         component: () => import('@/views/Features/SwitchTheme'),
       },
       {

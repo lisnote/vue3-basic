@@ -44,7 +44,7 @@ Vue3 项目案例.
       - [ ] JSX 支持
   - [ ] countjs: 数字动画
 - [ ] 功能
-  - [x] 主题切换
+  - [x] 切换主题
   - [ ] 文件下载
   - [ ] marked: markdown 渲染
     - [ ] hightlightjs: 提供语法高亮支持
