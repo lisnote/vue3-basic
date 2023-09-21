@@ -70,22 +70,22 @@ onMounted(() => {
 [component='RichTextEditor'] {
   @import '@wangeditor/editor/dist/css/style';
 
-  --w-e-textarea-bg-color: #fff;
-  --w-e-textarea-color: #333;
-  --w-e-textarea-border-color: #ccc;
-  --w-e-textarea-slight-border-color: #e8e8e8;
-  --w-e-textarea-slight-color: #d4d4d4;
-  --w-e-textarea-slight-bg-color: #f5f2f0;
-  --w-e-textarea-selected-border-color: #b4d5ff;
-  --w-e-textarea-handler-bg-color: #4290f7;
-  --w-e-toolbar-color: #595959;
-  --w-e-toolbar-bg-color: #fff;
-  --w-e-toolbar-active-color: #333;
-  --w-e-toolbar-active-bg-color: #f1f1f1;
-  --w-e-toolbar-disabled-color: #999;
-  --w-e-toolbar-border-color: #e8e8e8;
-  --w-e-modal-button-bg-color: #fafafa;
-  --w-e-modal-button-border-color: #d9d9d9;
+  --w-e-textarea-bg-color: var(--el-bg-color-overlay);
+  --w-e-textarea-color: var(--el-text-color-primary);
+  --w-e-textarea-border-color: var(--el-border-color);
+  --w-e-textarea-slight-border-color: var(--el-border-color-light);
+  --w-e-textarea-slight-color: var(--el-text-color-regular);
+  --w-e-textarea-slight-bg-color: var(--el-bg-color-page);
+  --w-e-textarea-selected-border-color: var(--el-border-color-darker);
+  --w-e-textarea-handler-bg-color: var(--el-bg-color);
+  --w-e-toolbar-color: var(--el-text-color-regular);
+  --w-e-toolbar-bg-color: var(--el-bg-color-overlay);
+  --w-e-toolbar-active-color: var(--el-text-color-primary);
+  --w-e-toolbar-active-bg-color: var(--el-color-primary-light-9);
+  --w-e-toolbar-disabled-color: var(--el-disabled-text-color);
+  --w-e-toolbar-border-color: var(--el-border-color);
+  --w-e-modal-button-bg-color: var(--el-fill-color-blank);
+  --w-e-modal-button-border-color: var(--el-border-color);
 
   .w-e-textarea-video-container {
     padding: 0;
