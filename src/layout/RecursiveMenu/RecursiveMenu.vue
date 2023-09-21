@@ -26,7 +26,7 @@ const defaultAvtive = computed(() => {
       position: stylesStore.deviceMode === 'mobild' ? 'absolute' : 'static',
       transform:
         !stylesStore.sidebarVisible && stylesStore.deviceMode === 'mobild'
-          ? 'translateX(-100%)'
+          ? 'translateX(calc(-100% - 1px))'
           : '',
     }"
   >
