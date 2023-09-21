@@ -31,9 +31,11 @@
 @use './mixins/scrollbar-var' as *;
 html[data-theme='dark'] {
   @extend html, .dark;
+  @include set-scrollbar-var();
+  // 浏览器适配
   .el-input-group__append,
   .el-input-group__prepend {
     color: var(--el-text-color-regular);
   }
-  @include set-scrollbar-var();
+  color: #ffffff;
 }
