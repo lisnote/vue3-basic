@@ -6,25 +6,35 @@ import {
   javascriptLanguage,
   scopeCompletionSource,
 } from '@codemirror/lang-javascript';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
+import { oneDark } from '@codemirror/theme-one-dark';
+import { useStylesStore } from '@/store';
 
+const stylesStore = useStylesStore();
 const codeRef = ref<HTMLDivElement>();
-onMounted(() => {
-  new EditorView({
-    doc:
-      `function hello(who = "world") {\n` +
-      `  console.log(\`Hello, \${who}!\`)\n` +
-      `}`,
+const editor = ref<InstanceType<typeof EditorView>>();
+function init() {
+  const doc =
+    editor.value?.state.doc.toString() ||
+    'function hello(who = "world") {\n' +
+      '  console.log(`Hello, ${who}!`)\n' +
+      '}';
+  editor.value?.destroy();
+  editor.value = new EditorView({
+    doc,
     extensions: [
       basicSetup,
       javascript(),
       javascriptLanguage.data.of({
         autocomplete: scopeCompletionSource(window),
       }),
+      stylesStore.theme === 'dark' ? oneDark : [],
     ],
     parent: codeRef.value,
   });
-});
+}
+onMounted(init);
+watch(() => stylesStore.theme === 'dark', init);
 </script>
 
 <template>

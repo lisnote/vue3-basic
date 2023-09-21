@@ -23,6 +23,7 @@
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
     "@codemirror/lang-javascript": "^6.1.9",
+    "@codemirror/theme-one-dark": "^6.1.2",
     "@types/dplayer": "^1.25.2",
     "@types/marked": "^5.0.1",
     "@vueuse/core": "^9.6.0",
