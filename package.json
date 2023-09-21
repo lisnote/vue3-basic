@@ -34,7 +34,7 @@
     "dayjs": "^1.11.7",
     "dplayer": "^1.27.1",
     "echarts": "^5.4.1",
-    "element-plus": "^2.3.14",
+    "element-plus": "^2.3.7",
     "highlight.js": "^11.8.0",
     "lodash-es": "^4.17.21",
     "marked": "^5.1.1",
