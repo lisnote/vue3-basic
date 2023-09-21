@@ -16,64 +16,81 @@ const markedProduct = computed(() => {
     class="flex flex-wrap"
     :class="commonStyle.contentArea"
   >
-    <div class="flex-1 min-w-300px min-h-300px">
+    <div class="marked-source">
       <ElInput v-model="sourceText" type="textarea" class="el-textarea" />
     </div>
-    <div
-      class="flex-1 min-w-300px marked-product overflow-y-auto p-3"
-      v-html="markedProduct"
-    ></div>
+    <div class="marked-product" v-html="markedProduct"></div>
   </div>
 </template>
 
 <style lang="scss">
 [component='markdownRender'] {
-  @import 'highlight.js/scss/default';
-}
-</style>
+  @import 'highlight.js/styles/atom-one-light';
 
-<style scoped lang="scss">
-:deep(.el-textarea) {
-  height: 100%;
+  .marked-source {
+    flex: 1 1 50%;
+    min-width: 300px;
+    min-height: 50%;
 
-  .el-textarea__inner {
-    height: 100%;
-    max-height: 100%;
-  }
-}
+    .el-textarea {
+      height: 100%;
 
-:deep(.marked-product) {
-  pre {
-    overflow-x: auto;
-    background: var(--el-bg-color-page);
-    padding: 1em;
-    color: #444;
-  }
-
-  p,
-  li {
-    word-wrap: break-word;
-    word-break: break-word;
-  }
-
-  blockquote {
-    border-left: 5px solid var(--el-border-color);
-    padding-left: 5px;
-  }
-
-  table {
-    word-break: break-word;
-    overflow: auto;
-    background: var(--el-border-color);
-    margin: 10px;
-
-    * {
-      background: var(--el-bg-color-overlay);
+      .el-textarea__inner {
+        height: 100%;
+        max-height: 100%;
+      }
     }
   }
 
-  img {
-    max-width: 100%;
+  .marked-product {
+    flex: 1 1 50%;
+    min-width: 300px;
+    overflow-y: auto;
+    padding: 10px;
+
+    pre {
+      color: #383a42;
+      background-color: #fafafa;
+      overflow-x: auto;
+      padding: 1em;
+    }
+
+    p,
+    li {
+      word-wrap: break-word;
+      word-break: break-word;
+    }
+
+    blockquote {
+      border-left: 5px solid var(--el-border-color);
+      padding-left: 5px;
+    }
+
+    table {
+      word-break: break-word;
+      overflow: auto;
+      background: var(--el-border-color);
+      margin: 10px;
+
+      * {
+        background: var(--el-bg-color-overlay);
+      }
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+html[data-theme='dark'] [component='markdownRender'] {
+  @import 'highlight.js/styles/atom-one-dark';
+
+  .marked-product {
+    pre {
+      color: #abb2bf;
+      background-color: #282c34;
+    }
   }
 }
 </style>
