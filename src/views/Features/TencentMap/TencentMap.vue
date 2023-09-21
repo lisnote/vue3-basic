@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { TMap, DomMarker } from '@/utils/TMap';
 import { ref, onMounted } from 'vue';
+import { useStylesStore } from '@/store';
 
+const stylesStore = useStylesStore();
 const mapRef = ref<HTMLDivElement>();
 const markerList: DomMarker[] = [];
 onMounted(async () => {
@@ -10,6 +12,7 @@ onMounted(async () => {
   const map = new TMap.Map(mapRef.value, {
     center,
     zoom: 5,
+    mapStyleId: stylesStore.theme === 'dark' ? '1' : undefined,
   });
   // 限制边界
   const sw = new TMap.LatLng(-84.9, -179.9999);
@@ -43,7 +46,9 @@ function clearMarker() {
   <div class="h-full relative">
     <div ref="mapRef" class="w-full h-full overflow-hidden"></div>
     <div class="absolute top-0 z-1000">
-      <button class="m-5 bg-white" @click="clearMarker">清空marker</button>
+      <button class="m-5 bg-white text-black" @click="clearMarker">
+        清空marker
+      </button>
     </div>
   </div>
 </template>
