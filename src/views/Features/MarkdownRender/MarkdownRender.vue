@@ -4,6 +4,9 @@ import markdownText from '@/assets/markdown/MarkdownTest.md?raw';
 import { marked } from 'marked';
 import { ref, computed } from 'vue';
 import { ElInput } from 'element-plus';
+import { useStylesStore } from '@/store';
+
+const stylesStore = useStylesStore();
 const sourceText = ref(markdownText);
 const markedProduct = computed(() => {
   return marked.parse(sourceText.value, { mangle: false });
@@ -13,8 +16,11 @@ const markedProduct = computed(() => {
 <template>
   <div
     component="markdownRender"
-    class="flex flex-wrap"
-    :class="commonStyle.contentArea"
+    class="flex"
+    :class="[
+      commonStyle.contentArea,
+      stylesStore.deviceMode === 'mobild' ? 'flex-col' : '',
+    ]"
   >
     <div class="marked-source">
       <ElInput v-model="sourceText" type="textarea" class="el-textarea" />
