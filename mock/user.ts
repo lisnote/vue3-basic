@@ -39,11 +39,12 @@ const userList = Array.from({ length: 96 }).map((_v, index) => {
   const role = roleList[(Math.random() * roleList.length) | 0];
   return {
     id: String(++index),
+    avatar: `https://avatars.githubusercontent.com/u/${++index}`,
     name: `用户${index}`,
     phone: String(18888888889 + index),
+    email: 18888888889 + index + '@lisnote.com',
     role: role.name,
     roleId: role.id,
-    email: 18888888889 + index + '@lisnote.com',
   };
 });
 export default createMockMethod(
