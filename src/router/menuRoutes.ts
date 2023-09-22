@@ -213,14 +213,14 @@ export const menuRoutes: RouteRecordRaw[] = [
     meta: { title: '系统管理', icon: 'ep:setting' },
     children: [
       {
+        path: '/System/RolePermission',
+        meta: { title: '职位与权限(未完成)' },
+        component: () => import('@/views/System/RolePermission'),
+      },
+      {
         path: '/System/UserManagement',
         meta: { title: '用户管理(未完成)' },
         component: () => import('@/views/System/UserManagement'),
-      },
-      {
-        path: '/System/RolePermission',
-        meta: { title: '角色权限(未完成)' },
-        component: () => import('@/views/System/RolePermission'),
       },
       {
         path: '/System/LicenseManagement',
