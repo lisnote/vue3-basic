@@ -11,6 +11,8 @@ const stylesStore = useStylesStore();
   <ElSubMenu
     v-if="data.children?.length ?? 0 > 0"
     :index="data.index"
+    teleported
+    :popper-class="$style.subMenu"
     @click="data.onClick"
   >
     <template #title>
@@ -36,3 +38,9 @@ const stylesStore = useStylesStore();
     <span>{{ data.title }}</span>
   </ElMenuItem>
 </template>
+<style module lang="scss">
+.subMenu {
+  max-height: calc(100vh - 10px);
+  overflow-y: auto;
+}
+</style>
