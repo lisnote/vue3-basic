@@ -218,11 +218,6 @@ export const menuRoutes: RouteRecordRaw[] = [
         component: () => import('@/views/System/UserManagement'),
       },
       {
-        path: '/System/RoleManagement',
-        meta: { title: '角色管理(未完成)' },
-        component: () => import('@/views/System/RoleManagement'),
-      },
-      {
         path: '/System/RolePermission',
         meta: { title: '角色权限(未完成)' },
         component: () => import('@/views/System/RolePermission'),
