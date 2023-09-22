@@ -29,6 +29,6 @@ export default async function (error: AxiosError) {
     const data = JSON.parse(await blob.text());
     message = codeMessageMap[data.code];
   }
-  ElMessage.error(message || '未知异常');
+  ElMessage.error(message || '未知网络异常');
   throw error;
 }
