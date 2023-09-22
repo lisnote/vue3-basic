@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import common from '@/styles/common.module.scss';
+import commonStyle from '@/styles/common.module.scss';
 import CountUp from 'vue-countup-v3';
 </script>
 
 <template>
-  <div :class="common.contentArea">
+  <div :class="commonStyle.contentArea">
     <CountUp
       :end-val="9432.123"
       :start-val="4532.4521"
