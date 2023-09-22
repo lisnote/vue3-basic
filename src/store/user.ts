@@ -29,6 +29,7 @@ export function useUserStore() {
         );
       },
       async logout() {
+        logout({ token: this.token });
         this.$patch({
           id: '',
           name: '',
@@ -37,7 +38,6 @@ export function useUserStore() {
           avatar: '',
           permissionList: [],
         });
-        logout({ token: this.token });
         router.push('/Login');
       },
     },
