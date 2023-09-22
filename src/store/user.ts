@@ -29,16 +29,17 @@ export function useUserStore() {
         );
       },
       async logout() {
-        logout({ token: this.token });
-        this.$patch({
-          id: '',
-          name: '',
-          phone: '',
-          token: '',
-          avatar: '',
-          permissionList: [],
+        logout().finally(() => {
+          this.$patch({
+            id: '',
+            name: '',
+            phone: '',
+            token: '',
+            avatar: '',
+            permissionList: [],
+          });
+          router.push('/Login');
         });
-        router.push('/Login');
       },
     },
   })(pinia);

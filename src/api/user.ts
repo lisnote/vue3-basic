@@ -26,9 +26,6 @@ export async function resetPassword(
 }
 
 // 登出
-export async function logout(
-  data: { token: string },
-  config?: AxiosRequestConfig,
-) {
-  return http.post('/user/logout', data, config);
+export async function logout(config?: AxiosRequestConfig) {
+  return http.post('/user/logout', {}, config);
 }
