@@ -12,6 +12,7 @@ export function useStylesStore() {
       useStorage('styles', {
         theme: 'default' as Theme,
         deviceMode: 'mobile' as 'mobild' | 'pc',
+        isTouchDevice: 'ontouchstart' in document.documentElement,
         sidebarVisible: false,
       }),
     actions: {
@@ -26,8 +27,11 @@ export function useStylesStore() {
 }
 
 const stylesStore = useStylesStore();
-stylesStore.deviceMode = window.innerWidth < 768 ? 'mobild' : 'pc';
-stylesStore.sidebarVisible = false;
+stylesStore.$patch({
+  deviceMode: window.innerWidth < 768 ? 'mobild' : 'pc',
+  sidebarVisible: false,
+  isTouchDevice: 'ontouchstart' in document.documentElement,
+});
 window.addEventListener('resize', () => {
   if (window.innerWidth < 768) {
     stylesStore.deviceMode = 'mobild';

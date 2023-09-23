@@ -33,7 +33,11 @@ const defaultAvtive = computed(() => {
     <ElScrollbar class="flex-1">
       <div>
         <ElMenu
-          :collapse="isCollapse && stylesStore.deviceMode === 'pc'"
+          :collapse="
+            isCollapse &&
+            !stylesStore.isTouchDevice &&
+            stylesStore.deviceMode === 'pc'
+          "
           :default-active="defaultAvtive"
           unique-opened
           class="menu"
@@ -43,7 +47,7 @@ const defaultAvtive = computed(() => {
       </div>
     </ElScrollbar>
     <div
-      v-show="stylesStore.deviceMode === 'pc'"
+      v-show="stylesStore.deviceMode === 'pc' && !stylesStore.isTouchDevice"
       class="collapse-button"
       @click="isCollapse = !isCollapse"
     >
