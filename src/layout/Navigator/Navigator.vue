@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useUserStore, useStylesStore } from '@/store';
+import { useUserStore, useStyleStore } from '@/store';
 import { Icon } from '@iconify/vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
 import pkg from '@root/package.json';
 import router from '@/router';
 import { themeMap, switchTheme } from '@/utils/theme';
 const userStore = useUserStore();
-const stylesStore = useStylesStore();
+const styleStore = useStyleStore();
 async function logout() {
   await userStore.logout();
   router.push('/Login');
@@ -15,20 +15,20 @@ async function logout() {
 <template>
   <nav class="navigator">
     <div
-      v-show="stylesStore.deviceMode === 'mobild'"
-      @click="stylesStore.sidebarToggle"
+      v-show="styleStore.deviceMode === 'mobild'"
+      @click="styleStore.sidebarToggle"
     >
       <Transition name="flip" mode="out-in">
         <Icon
-          :key="stylesStore.sidebarVisible.toString()"
-          :icon="stylesStore.sidebarVisible ? 'ep:fold' : 'ep:expand'"
+          :key="styleStore.sidebarVisible.toString()"
+          :icon="styleStore.sidebarVisible ? 'ep:fold' : 'ep:expand'"
           width="20"
           class="mx-1"
         />
       </Transition>
     </div>
     <RouterLink
-      v-show="stylesStore.deviceMode === 'pc'"
+      v-show="styleStore.deviceMode === 'pc'"
       to="/"
       class="project-name"
     >

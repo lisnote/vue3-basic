@@ -8,9 +8,9 @@ import {
 } from '@codemirror/lang-javascript';
 import { ref, onMounted, watch } from 'vue';
 import { oneDark } from '@codemirror/theme-one-dark';
-import { useStylesStore } from '@/store';
+import { useStyleStore } from '@/store';
 
-const stylesStore = useStylesStore();
+const styleStore = useStyleStore();
 const codeRef = ref<HTMLDivElement>();
 const editor = ref<InstanceType<typeof EditorView>>();
 function init() {
@@ -28,13 +28,13 @@ function init() {
       javascriptLanguage.data.of({
         autocomplete: scopeCompletionSource(window),
       }),
-      stylesStore.theme === 'dark' ? oneDark : [],
+      styleStore.theme === 'dark' ? oneDark : [],
     ],
     parent: codeRef.value,
   });
 }
 onMounted(init);
-watch(() => stylesStore.theme === 'dark', init);
+watch(() => styleStore.theme === 'dark', init);
 </script>
 
 <template>

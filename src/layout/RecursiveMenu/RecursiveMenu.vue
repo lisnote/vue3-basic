@@ -4,11 +4,11 @@ import MenuItem from './MenuItem.vue';
 import { ref, computed } from 'vue';
 import router from '@/router';
 import { Icon } from '@iconify/vue';
-import { useStylesStore } from '@/store';
+import { useStyleStore } from '@/store';
 
 import type { RecursiveMenuData } from '.';
 
-const stylesStore = useStylesStore();
+const styleStore = useStyleStore();
 defineProps<{
   data: RecursiveMenuData[];
 }>();
@@ -23,9 +23,9 @@ const defaultAvtive = computed(() => {
   <div
     class="recursive-menu flex flex-col"
     :style="{
-      position: stylesStore.deviceMode === 'mobild' ? 'absolute' : 'static',
+      position: styleStore.deviceMode === 'mobild' ? 'absolute' : 'static',
       transform:
-        !stylesStore.sidebarVisible && stylesStore.deviceMode === 'mobild'
+        !styleStore.sidebarVisible && styleStore.deviceMode === 'mobild'
           ? 'translateX(calc(-100% - 1px))'
           : '',
     }"
@@ -35,8 +35,8 @@ const defaultAvtive = computed(() => {
         <ElMenu
           :collapse="
             isCollapse &&
-            !stylesStore.isTouchDevice &&
-            stylesStore.deviceMode === 'pc'
+            !styleStore.isTouchDevice &&
+            styleStore.deviceMode === 'pc'
           "
           :default-active="defaultAvtive"
           unique-opened
@@ -47,7 +47,7 @@ const defaultAvtive = computed(() => {
       </div>
     </ElScrollbar>
     <div
-      v-show="stylesStore.deviceMode === 'pc' && !stylesStore.isTouchDevice"
+      v-show="styleStore.deviceMode === 'pc' && !styleStore.isTouchDevice"
       class="collapse-button"
       @click="isCollapse = !isCollapse"
     >

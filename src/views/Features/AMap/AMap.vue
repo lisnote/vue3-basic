@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import AMapLoader from '@amap/amap-jsapi-loader';
 import { onMounted } from 'vue';
-import { useStylesStore } from '@/store';
+import { useStyleStore } from '@/store';
 
-const stylesStore = useStylesStore();
+const styleStore = useStyleStore();
 window._AMapSecurityConfig = {
   securityJsCode: 'ed8a8c2acd6ca27b12e08179c4efe36e',
 };
@@ -17,7 +17,7 @@ onMounted(() => {
       center: new AMap.LngLat(110.154354, 32.847884),
       zoom: 5,
       mapStyle:
-        stylesStore.theme === 'dark' ? 'amap://styles/darkblue' : undefined,
+        styleStore.theme === 'dark' ? 'amap://styles/darkblue' : undefined,
     });
     // 监听地图事件
     map.on('click', console.log);

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { TMap, DomMarker } from '@/utils/TMap';
 import { ref, onMounted } from 'vue';
-import { useStylesStore } from '@/store';
+import { useStyleStore } from '@/store';
 
-const stylesStore = useStylesStore();
+const styleStore = useStyleStore();
 const mapRef = ref<HTMLDivElement>();
 const markerList: DomMarker[] = [];
 onMounted(async () => {
@@ -12,7 +12,7 @@ onMounted(async () => {
   const map = new TMap.Map(mapRef.value, {
     center,
     zoom: 5,
-    mapStyleId: stylesStore.theme === 'dark' ? '1' : undefined,
+    mapStyleId: styleStore.theme === 'dark' ? '1' : undefined,
   });
   // 限制边界
   const sw = new TMap.LatLng(-84.9, -179.9999);

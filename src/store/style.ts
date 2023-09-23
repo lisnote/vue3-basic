@@ -6,7 +6,7 @@ import { type Theme } from '@/utils/theme';
 /**
  * 样式相关信息
  */
-export function useStylesStore() {
+export function useStyleStore() {
   return defineStore('styles', {
     state: () =>
       useStorage('styles', {
@@ -26,17 +26,17 @@ export function useStylesStore() {
   })(pinia);
 }
 
-const stylesStore = useStylesStore();
-stylesStore.$patch({
+const styleStore = useStyleStore();
+styleStore.$patch({
   deviceMode: window.innerWidth < 768 ? 'mobild' : 'pc',
   sidebarVisible: false,
   isTouchDevice: 'ontouchstart' in document.documentElement,
 });
 window.addEventListener('resize', () => {
   if (window.innerWidth < 768) {
-    stylesStore.deviceMode = 'mobild';
+    styleStore.deviceMode = 'mobild';
   } else {
-    stylesStore.deviceMode = 'pc';
-    stylesStore.sidebarVisible = false;
+    styleStore.deviceMode = 'pc';
+    styleStore.sidebarVisible = false;
   }
 });

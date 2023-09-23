@@ -4,9 +4,9 @@ import Navigator from './Navigator';
 import { menuRoutes } from '@/router';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
-import { useStylesStore } from '@/store';
+import { useStyleStore } from '@/store';
 
-const stylesStore = useStylesStore();
+const styleStore = useStyleStore();
 const router = useRouter();
 const activeIndex = ref('');
 router.isReady().then(() => {
@@ -27,10 +27,10 @@ router.isReady().then(() => {
       <div
         class="sidebar-modal"
         :class="{
-          'pointer-events-none': !stylesStore.sidebarVisible,
-          'opacity-0': !stylesStore.sidebarVisible,
+          'pointer-events-none': !styleStore.sidebarVisible,
+          'opacity-0': !styleStore.sidebarVisible,
         }"
-        @click="stylesStore.hideSidebar"
+        @click="styleStore.hideSidebar"
       ></div>
       <article class="article">
         <RouterView v-slot="{ Component }">

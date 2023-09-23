@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { ElSubMenu, ElMenuItem } from 'element-plus';
 import { Icon } from '@iconify/vue';
-import { useStylesStore } from '@/store';
+import { useStyleStore } from '@/store';
 import type { RecursiveMenuData } from '.';
 
 defineProps<{ data: RecursiveMenuData }>();
-const stylesStore = useStylesStore();
+const styleStore = useStyleStore();
 </script>
 <template>
   <ElSubMenu
@@ -30,7 +30,7 @@ const stylesStore = useStylesStore();
   <ElMenuItem
     v-else
     :index="data.index"
-    @click="data.onClick?.(), stylesStore.hideSidebar()"
+    @click="data.onClick?.(), styleStore.hideSidebar()"
   >
     <div v-if="data.icon" class="flex">
       <Icon :icon="data.icon" width="20" class="mx-1" />

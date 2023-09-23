@@ -1,5 +1,5 @@
 // 主题相关函数, 变量, 类型
-import { useStylesStore } from '@/store';
+import { useStyleStore } from '@/store';
 // 主题映射
 export const themeMap = {
   default: {
@@ -33,11 +33,11 @@ export type Theme = keyof typeof themeMap;
  * @param {Theme} theme 主题名称
  */
 export function switchTheme(theme?: Theme) {
-  const stylesStore = useStylesStore();
+  const styleStore = useStyleStore();
   if (theme === undefined) {
-    theme = stylesStore.theme;
+    theme = styleStore.theme;
   } else {
-    stylesStore.theme = theme;
+    styleStore.theme = theme;
   }
   document.documentElement.dataset.theme = theme;
   if (theme !== 'default') import(`@/styles/theme/${theme}.scss`);
