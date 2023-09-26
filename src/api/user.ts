@@ -29,3 +29,16 @@ export async function resetPassword(
 export async function logout(config?: AxiosRequestConfig) {
   return http.post('/user/logout', {}, config);
 }
+
+// 获取角色树
+export async function getRoleTree(config?: AxiosRequestConfig) {
+  return http.post('/user/getRoleTree', config);
+}
+
+// 获取用户列表
+export async function getUserList(
+  data: { page: number; limit: number },
+  config?: AxiosRequestConfig,
+) {
+  return http.post('/user/getUserList', data, config);
+}
