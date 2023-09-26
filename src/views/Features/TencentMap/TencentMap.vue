@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { TMap, DomMarker } from '@/utils/TMap';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, useCssModule } from 'vue';
 import { useStyleStore } from '@/store';
-
+import { useWatchIsDarkTheme } from '@/hooks/useTheme';
+import { toString } from 'lodash-es';
 const styleStore = useStyleStore();
 const mapRef = ref<HTMLDivElement>();
 const markerList: DomMarker[] = [];
@@ -12,18 +13,18 @@ onMounted(async () => {
   const map = new TMap.Map(mapRef.value, {
     center,
     zoom: 5,
-    mapStyleId: styleStore.theme === 'dark' ? '1' : undefined,
+    mapStyleId: styleStore.theme === 'dark' ? '1' : 'DEFAULT',
   });
   // 限制边界
   const sw = new TMap.LatLng(-84.9, -179.9999);
   const ne = new TMap.LatLng(84.9, 180);
   const boundary = new TMap.LatLngBounds(sw, ne);
   map.setBoundary(boundary);
-  // 创建及dom
+  // 创建及插入dom
+  const pointClass = useCssModule('$style').point;
   function insertMarker(position: { lat: number; lng: number }) {
     const dom = document.createElement('div');
-    dom.style.cssText =
-      'height:20px;width:20px;background:red;position:absolute;';
+    dom.classList.add(pointClass);
     const dm = new DomMarker({
       map,
       position,
@@ -34,6 +35,14 @@ onMounted(async () => {
   // 监听地图点击事件
   map.on('click', ({ latLng }: { latLng: { lat: number; lng: number } }) => {
     insertMarker(latLng);
+  });
+  // 根据主题变化切换地图样式
+  useWatchIsDarkTheme((value) => {
+    if (value) {
+      map.setMapStyleId('1');
+    } else {
+      map.setMapStyleId('DEFAULT');
+    }
   });
 });
 function clearMarker() {
@@ -52,3 +61,12 @@ function clearMarker() {
     </div>
   </div>
 </template>
+<style module>
+.point {
+  height: 20px;
+  width: 20px;
+  background: var(--el-color-primary);
+  position: absolute;
+  border-radius: 10px;
+}
+</style>
