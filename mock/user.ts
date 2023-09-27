@@ -136,10 +136,10 @@ export default createMockMethod(
   { url: '/user/addRole', response: () => ({ code: 0 }) },
   { url: '/user/updateRole', response: () => ({ code: 0 }) },
   {
-    url: '/user/getPermission',
+    url: '/user/getRolePermission',
     response: ({ body: { id } }) => ({ code: 0, data: permissionMap[id] }),
   },
-  { url: '/user/updatePermission', response: () => ({ code: 0 }) },
+  { url: '/user/updateRolePermission', response: () => ({ code: 0 }) },
   // 成员管理
   {
     url: '/user/getUserList',
