@@ -31,7 +31,10 @@ export async function logout(config?: AxiosRequestConfig) {
 }
 
 // 获取角色树
-export async function getRoleTree(config?: AxiosRequestConfig) {
+export type Role = { id: string; name: string; children?: Role[] };
+export async function getRoleTree(
+  config?: AxiosRequestConfig,
+): Promise<{ data: { data: Role[] } }> {
   return http.post('/user/getRoleTree', config);
 }
 

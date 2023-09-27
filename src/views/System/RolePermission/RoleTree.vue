@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { getRoleTree } from '@/api/user';
+import { getRoleTree, type Role } from '@/api/user';
 import { ElTree } from 'element-plus';
 import { ref } from 'vue';
 
-const emit = defineEmits<{ (e: 'node-click', id: string): void }>();
+const emit = defineEmits<{ (e: 'node-click', id: Role): void }>();
 
-const treeData = ref([]);
+const treeData = ref<Role[]>([]);
 getRoleTree().then(({ data: { data } }) => {
   treeData.value = data;
 });
 
-function nodeClick({ id }: { id: string }) {
-  emit('node-click', id);
+function nodeClick(role: Role) {
+  emit('node-click', role);
 }
 </script>
 
