@@ -56,11 +56,11 @@ export async function addRole(
   return http.post('/user/addRole', data, config);
 }
 // 更新角色
-export async function updateRoles(
+export async function updateRole(
   data: { id: string; name: string },
   config?: AxiosRequestConfig,
 ) {
-  return http.post('/user/removeRoles', data, config);
+  return http.post('/user/updateRole', data, config);
 }
 // 获取角色权限
 export async function getRolePermission(
