@@ -25,9 +25,13 @@ function renderContent(
       <div class="flex-1" onClick={() => nodeClick(data)}>
         {data.name}
       </div>
-      <ElDropdown class="h-full">
+      <ElDropdown tabindex="">
         {{
-          default: () => <Icon icon="ep:more-filled" class="h-full" />,
+          default: () => (
+            <div>
+              <Icon icon="ep:more-filled" class="h-full" />
+            </div>
+          ),
           dropdown: () => [
             <ElDropdownItem onClick={() => addNode(data)}>新增</ElDropdownItem>,
             <ElDropdownItem onClick={() => editNode(data)}>
