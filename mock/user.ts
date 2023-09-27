@@ -28,14 +28,15 @@ const roleTree: Role[] = [
     ],
   },
 ];
-const roleList = (function getRoleList(roleTree: Role[], list: Role[] = []) {
+function getRoleList(roleTree: Role[], list: Role[] = []) {
   roleTree?.forEach((role) => {
     list.push(role);
     if (role.children?.length) getRoleList(role.children, list);
   });
   return list;
-})(roleTree);
+}
 const userList = Array.from({ length: 96 }).map((_v, index) => {
+  const roleList = getRoleList(roleTree);
   const role = roleList[(Math.random() * roleList.length) | 0];
   return {
     id: String(++index),
@@ -77,25 +78,17 @@ export default createMockMethod(
       }
     },
   },
-  {
-    url: '/user/signup',
-    response: () => ({ code: 0 }),
-  },
-  {
-    url: '/user/resetPassword',
-    response: () => ({ code: 0 }),
-  },
-  {
-    url: '/user/logout',
-    response: () => ({ code: 0 }),
-  },
-  {
-    url: '/user/getRoleTree',
-    response: () => ({
-      code: 0,
-      data: roleTree,
-    }),
-  },
+  { url: '/user/signup', response: () => ({ code: 0 }) },
+  { url: '/user/resetPassword', response: () => ({ code: 0 }) },
+  { url: '/user/logout', response: () => ({ code: 0 }) },
+  // 角色与权限
+  { url: '/user/getRoleTree', response: () => ({ code: 0, data: roleTree }) },
+  { url: '/user/removeRoles', response: () => ({ code: 0 }) },
+  { url: '/user/addRole', response: () => ({ code: 0 }) },
+  { url: '/user/updateRole', response: () => ({ code: 0 }) },
+  { url: '/user/getPermission', response: () => ({ code: 0, data: [] }) },
+  { url: '/user/updatePermission', response: () => ({ code: 0 }) },
+  // 成员管理
   {
     url: '/user/getUserList',
     response: ({ body: { page, limit } }) => ({
@@ -104,4 +97,7 @@ export default createMockMethod(
       data: queryList(userList, page, limit),
     }),
   },
+  { url: '/user/removeUsers', response: () => ({ code: 0 }) },
+  { url: '/user/addUser', response: () => ({ code: 0 }) },
+  { url: '/user/updateUser', response: () => ({ code: 0 }) },
 );
