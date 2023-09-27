@@ -2,12 +2,15 @@
 import commonStyle from '@/styles/common.module.scss';
 import RoleTree from './RoleTree.vue';
 import PermissionTree from './PermissionTree.vue';
+function log(...args: any[]) {
+  console.log(...args);
+}
 </script>
 
 <template>
   <div :class="commonStyle.contentArea" class="role-permission">
     <div class="role-tree-container">
-      <RoleTree />
+      <RoleTree @node-click="log" />
     </div>
     <div class="flex-1">
       <PermissionTree />
