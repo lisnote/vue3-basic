@@ -3,7 +3,9 @@ import { getRoleTree, type Role } from '@/api/user';
 import { ElTree } from 'element-plus';
 import { ref } from 'vue';
 
-const emit = defineEmits<{ (e: 'node-click', id: Role): void }>();
+const emit = defineEmits({
+  'node-click': (role: Role) => role,
+});
 
 const treeData = ref<Role[]>([]);
 getRoleTree().then(({ data: { data } }) => {
