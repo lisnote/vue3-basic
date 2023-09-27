@@ -3,7 +3,6 @@ import { TMap, DomMarker } from '@/utils/TMap';
 import { ref, onMounted, useCssModule } from 'vue';
 import { useStyleStore } from '@/store';
 import { useWatchIsDarkTheme } from '@/hooks/useTheme';
-import { toString } from 'lodash-es';
 const styleStore = useStyleStore();
 const mapRef = ref<HTMLDivElement>();
 const markerList: DomMarker[] = [];
