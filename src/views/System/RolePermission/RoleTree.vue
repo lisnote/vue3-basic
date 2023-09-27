@@ -9,6 +9,7 @@ import {
 } from 'element-plus';
 import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
+import EditRole from './EditRole.vue';
 
 const emit = defineEmits({
   'node-click': (role: Role) => role,
@@ -20,17 +21,13 @@ function renderContent(
   { node: { data } }: { node: { data: Role } },
 ) {
   return (
-    <div class="flex-1 h-full flex justify-between">
-      <div class="flex-1 flex items-center" onClick={() => nodeClick(data)}>
+    <div class="flex-1 h-full flex justify-between items-center">
+      <div class="flex-1" onClick={() => nodeClick(data)}>
         {data.name}
       </div>
-      <ElDropdown>
+      <ElDropdown class="h-full">
         {{
-          default: () => (
-            <div class="flex items-center">
-              <Icon icon="ep:more-filled" class="select-none" />
-            </div>
-          ),
+          default: () => <Icon icon="ep:more-filled" class="h-full" />,
           dropdown: () => [
             <ElDropdownItem onClick={() => addNode(data)}>新增</ElDropdownItem>,
             <ElDropdownItem onClick={() => editNode(data)}>
@@ -47,26 +44,37 @@ function renderContent(
 }
 // tree data
 const treeData = ref<Role[]>([]);
-getRoleTree().then(({ data: { data } }) => {
-  treeData.value = data;
-});
+async function loadData() {
+  getRoleTree().then(({ data: { data } }) => {
+    treeData.value = data;
+  });
+}
+loadData();
 // tree event
 function nodeClick(role: Role) {
   emit('node-click', role);
 }
 function addNode(role: Role) {
-  console.log('addNode', role);
+  editRoleVisible.value = true;
+  editRoleData.value = role;
+  editRoleMode.value = 'add';
 }
 function editNode(role: Role) {
-  console.log('editNode', role);
+  editRoleVisible.value = true;
+  editRoleData.value = role;
+  editRoleMode.value = 'edit';
 }
 function removeNode(role: Role) {
-  ElMessageBox.confirm(`确认删除职位: ${role.name}?`)
+  ElMessageBox.confirm(`确定删除${role.name}?`)
     .then(() => {
       return removeRoles([role.id]);
     })
     .then(() => ElMessage.success('删除成功'));
 }
+// EditRole
+const editRoleVisible = ref(false);
+const editRoleData = ref<Role>();
+const editRoleMode = ref<'add' | 'edit'>('add');
 </script>
 
 <template>
@@ -77,6 +85,11 @@ function removeNode(role: Role) {
       :expand-on-click-node="false"
       draggable
       :render-content="renderContent"
+    />
+    <EditRole
+      v-model:visible="editRoleVisible"
+      :data="editRoleData"
+      :mode="editRoleMode"
     />
   </ElScrollbar>
 </template>
