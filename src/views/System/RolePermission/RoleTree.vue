@@ -1,6 +1,12 @@
 <script setup lang="tsx">
-import { getRoleTree, type Role } from '@/api/user';
-import { ElTree, ElDropdown, ElDropdownItem, ElMessageBox } from 'element-plus';
+import { getRoleTree, removeRoles, type Role } from '@/api/user';
+import {
+  ElTree,
+  ElDropdown,
+  ElDropdownItem,
+  ElMessageBox,
+  ElMessage,
+} from 'element-plus';
 import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
 
@@ -55,9 +61,11 @@ function editNode(role: Role) {
   console.log('editNode', role);
 }
 function removeNode(role: Role) {
-  ElMessageBox.confirm(`确认删除职位: ${role.name}?`).then(() => {
-    console.log('removeNode', role);
-  });
+  ElMessageBox.confirm(`确认删除职位: ${role.name}?`)
+    .then(() => {
+      return removeRoles([role.id]);
+    })
+    .then(() => ElMessage.success('删除成功'));
 }
 </script>
 
