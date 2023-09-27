@@ -1,5 +1,7 @@
 import { createMockMethod, queryList } from '.';
+import { cloneDeep } from 'lodash-es';
 
+// 角色数据
 type Role = { id: string; name: string; children?: Role[] };
 const roleTree: Role[] = [
   {
@@ -35,6 +37,51 @@ function getRoleList(roleTree: Role[], list: Role[] = []) {
   });
   return list;
 }
+const roleList = getRoleList(roleTree);
+// 权限数据
+const permission = [
+  {
+    code: 'RolePermission',
+    has: false,
+    children: [
+      { code: 'RolePermission/view', has: false },
+      { code: 'RolePermission/remove', has: false },
+      { code: 'RolePermission/add', has: false },
+      { code: 'RolePermission/update', has: false },
+    ],
+  },
+  {
+    code: 'RolePermission',
+    has: false,
+    children: [
+      { code: 'RolePermission/view', has: false },
+      { code: 'RolePermission/remove', has: false },
+      { code: 'RolePermission/add', has: false },
+      { code: 'RolePermission/update', has: false },
+    ],
+  },
+  {
+    code: 'UserManagement',
+    has: false,
+    children: [
+      { code: 'UserManagement/view', has: false },
+      { code: 'UserManagement/remove', has: false },
+      { code: 'UserManagement/add', has: false },
+      { code: 'UserManagement/update', has: false },
+    ],
+  },
+  {
+    code: 'LicenseManagement',
+    children: [
+      { code: 'LicenseManagement/view' },
+      { code: 'LicenseManagement/update' },
+    ],
+  },
+];
+const permissionMap = {
+  ...Array.from({ length: roleList.length }).map(() => cloneDeep(permission)),
+};
+// 用户数据
 const userList = Array.from({ length: 96 }).map((_v, index) => {
   const roleList = getRoleList(roleTree);
   const role = roleList[(Math.random() * roleList.length) | 0];
@@ -48,7 +95,9 @@ const userList = Array.from({ length: 96 }).map((_v, index) => {
     roleId: role.id,
   };
 });
+// mock 导出
 export default createMockMethod(
+  // 登录管理
   {
     url: '/user/login',
     response(this, { body: { phone, password } }) {
@@ -81,12 +130,15 @@ export default createMockMethod(
   { url: '/user/signup', response: () => ({ code: 0 }) },
   { url: '/user/resetPassword', response: () => ({ code: 0 }) },
   { url: '/user/logout', response: () => ({ code: 0 }) },
-  // 角色与权限
+  // 角色权限
   { url: '/user/getRoleTree', response: () => ({ code: 0, data: roleTree }) },
   { url: '/user/removeRoles', response: () => ({ code: 0 }) },
   { url: '/user/addRole', response: () => ({ code: 0 }) },
   { url: '/user/updateRole', response: () => ({ code: 0 }) },
-  { url: '/user/getPermission', response: () => ({ code: 0, data: [] }) },
+  {
+    url: '/user/getPermission',
+    response: ({ body: { id } }) => ({ code: 0, data: permissionMap[id] }),
+  },
   { url: '/user/updatePermission', response: () => ({ code: 0 }) },
   // 成员管理
   {
