@@ -5,6 +5,7 @@ import { resolve } from 'path';
 import { viteMockServe } from 'vite-plugin-mock';
 import svgLoader from 'vite-svg-loader';
 import { createHtmlPlugin } from 'vite-plugin-html';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 import pkg from './package.json';
 
 // https://vitejs.dev/config/
@@ -22,13 +23,14 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
         },
       }),
       vue(),
+      vueJsx(),
+      svgLoader(),
       WindiCSS(),
       viteMockServe({
         mockPath: 'mock',
         watchFiles: true,
         ignore: /index\.ts/,
       }),
-      svgLoader(),
     ],
     resolve: {
       alias: {
