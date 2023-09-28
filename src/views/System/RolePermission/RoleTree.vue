@@ -18,12 +18,17 @@ const emit = defineEmits({
 // tree prop
 function renderContent(
   _h: never,
-  { node: { data } }: { node: { data: Role } },
+  {
+    node: {
+      data: role,
+      parent: { data: parent },
+    },
+  }: { node: { data: Role; parent: { data: Role } } },
 ) {
   return (
     <div class="flex-1 h-full flex justify-between items-center">
-      <div class="flex-1" onClick={() => nodeClick(data)}>
-        {data.name}
+      <div class="flex-1" onClick={() => nodeClick(role)}>
+        {role.name}
       </div>
       <ElDropdown tabindex="">
         {{
@@ -33,11 +38,11 @@ function renderContent(
             </div>
           ),
           dropdown: () => [
-            <ElDropdownItem onClick={() => addNode(data)}>新增</ElDropdownItem>,
-            <ElDropdownItem onClick={() => editNode(data)}>
+            <ElDropdownItem onClick={() => addNode(role)}>新增</ElDropdownItem>,
+            <ElDropdownItem onClick={() => editNode(role, parent)}>
               编辑
             </ElDropdownItem>,
-            <ElDropdownItem onClick={() => removeNode(data)}>
+            <ElDropdownItem onClick={() => removeNode(role)}>
               删除
             </ElDropdownItem>,
           ],
@@ -59,14 +64,14 @@ function nodeClick(role: Role) {
   emit('node-click', role);
 }
 function addNode(role: Role) {
-  editRoleVisible.value = true;
   editRoleData.value = role;
   editRoleMode.value = 'add';
-}
-function editNode(role: Role) {
   editRoleVisible.value = true;
-  editRoleData.value = role;
+}
+function editNode(role: Role, parent: Role) {
+  editRoleData.value = { ...role, pid: parent.id };
   editRoleMode.value = 'edit';
+  editRoleVisible.value = true;
 }
 function removeNode(role: Role) {
   ElMessageBox.confirm(`确定删除${role.name}?`)
@@ -94,6 +99,7 @@ const editRoleMode = ref<'add' | 'edit'>('add');
       v-model:visible="editRoleVisible"
       :data="editRoleData"
       :mode="editRoleMode"
+      :role-tree="treeData"
     />
   </ElScrollbar>
 </template>
