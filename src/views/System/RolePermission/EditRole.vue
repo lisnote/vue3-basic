@@ -6,21 +6,20 @@ import { ref } from 'vue';
 const props = withDefaults(
   defineProps<{
     visible: boolean;
-    data: Role & { pid?: string };
+    data: Partial<Role & { pid: string }>;
     mode: 'add' | 'edit';
     roleTree: Role[];
   }>(),
-  { data: () => ({ id: '', name: '' }) },
+  { data: () => ({}) },
 );
 const emit = defineEmits(['success', 'update:visible']);
 
-const formData = ref({ pid: '', id: '', name: '' });
+const formData = ref<Partial<{ pid: string; id: string; name: string }>>({});
 function loadData() {
   if (props.mode === 'add') {
-    formData.value.pid = props.data.id;
+    formData.value = { pid: props.data.id };
   } else {
-    formData.value.name = props.data.name;
-    formData.value.id = props.data.id;
+    formData.value = { ...props.data };
   }
 }
 </script>
@@ -38,7 +37,12 @@ function loadData() {
         <ElCascader
           v-model="formData.pid"
           :options="roleTree"
-          :props="{ label: 'name', checkStrictly: true, emitPath: false }"
+          :props="{
+            value: 'id',
+            label: 'name',
+            checkStrictly: true,
+            emitPath: false,
+          }"
           clearable
           :show-all-levels="false"
         />
@@ -47,6 +51,12 @@ function loadData() {
         <ElInput v-model="formData.name" />
       </ElFormItem>
     </ElForm>
-    <div v-for="(value, key) of props" :key="key">{{ key }} : {{ value }}</div>
   </ElDialog>
 </template>
+<style lang="scss" scoped>
+:deep() {
+  .el-cascader.el-tooltip__trigger {
+    flex: 1 auto;
+  }
+}
+</style>
