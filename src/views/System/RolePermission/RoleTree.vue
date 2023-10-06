@@ -82,7 +82,7 @@ function removeNode(role: Role) {
 }
 // EditRole
 const editRoleVisible = ref(false);
-const editRoleData = ref<Role>();
+const editRoleData = ref<Role & { pid?: string }>();
 const editRoleMode = ref<'add' | 'edit'>('add');
 </script>
 

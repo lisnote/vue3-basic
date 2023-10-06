@@ -2,18 +2,19 @@
 import commonStyle from '@/styles/common.module.scss';
 import RoleTree from './RoleTree.vue';
 import PermissionTree from './PermissionTree.vue';
-function log(...args: any[]) {
-  console.log(...args);
-}
+import { ref } from 'vue';
+import { type Role } from '@/api/user';
+
+const currentRole = ref<Role>();
 </script>
 
 <template>
   <div :class="commonStyle.contentArea" class="role-permission">
     <div class="role-tree-container">
-      <RoleTree @node-click="log" />
+      <RoleTree @node-click="currentRole = $event" />
     </div>
     <div class="flex-1">
-      <PermissionTree />
+      <PermissionTree :role="currentRole" />
     </div>
   </div>
 </template>
