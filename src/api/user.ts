@@ -50,14 +50,14 @@ export async function removeRoles(data: string[], config?: AxiosRequestConfig) {
 }
 // 添加角色
 export async function addRole(
-  data: { pid: string; name: string },
+  data: { name: string; pid?: string },
   config?: AxiosRequestConfig,
 ) {
   return http.post('/user/addRole', data, config);
 }
 // 更新角色
 export async function updateRole(
-  data: { id: string; name: string },
+  data: { id: string; name: string; pid?: string },
   config?: AxiosRequestConfig,
 ) {
   return http.post('/user/updateRole', data, config);

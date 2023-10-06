@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { type Role, updateRole, addRole } from '@/api/user';
-import { ElCascader, ElDialog } from 'element-plus';
+import { ElButton, ElCascader, ElDialog } from 'element-plus';
 import { ref } from 'vue';
+
+import type { FormInstance, FormRules } from 'element-plus';
 
 const props = withDefaults(
   defineProps<{
@@ -14,49 +16,84 @@ const props = withDefaults(
 );
 const emit = defineEmits(['success', 'update:visible']);
 
+const formRef = ref<FormInstance>();
 const formData = ref<Partial<{ pid: string; id: string; name: string }>>({});
 function loadData() {
+  formRef.value?.clearValidate();
   if (props.mode === 'add') {
     formData.value = { pid: props.data.id };
   } else {
     formData.value = { ...props.data };
   }
 }
+const formRules: FormRules = {
+  name: { required: true, message: '请输入职位名称', trigger: 'blur' },
+};
+async function submit() {
+  let valid = false;
+  await formRef.value?.validate((value) => (valid = value));
+  if (!valid) return;
+  const { id = '', name = '', pid } = formData.value;
+  if (props.mode === 'add') {
+    addRole({ name, pid });
+  } else {
+    updateRole({ id, name, pid });
+  }
+  emit('update:visible', false);
+}
 </script>
 
 <template>
-  <ElDialog
-    :title="mode === 'add' ? '新增职位' : '编辑职位'"
-    width="300"
-    :model-value="visible"
-    @update:model-value="emit('update:visible', $event)"
-    @open="loadData"
-  >
-    <ElForm>
-      <ElFormItem label="名称">
-        <ElCascader
-          v-model="formData.pid"
-          :options="roleTree"
-          :props="{
-            value: 'id',
-            label: 'name',
-            checkStrictly: true,
-            emitPath: false,
-          }"
-          clearable
-          :show-all-levels="false"
-        />
-      </ElFormItem>
-      <ElFormItem label="名称">
-        <ElInput v-model="formData.name" />
-      </ElFormItem>
-    </ElForm>
-  </ElDialog>
+  <div>
+    <ElDialog
+      :title="mode === 'add' ? '新增职位' : '编辑职位'"
+      width="300"
+      :model-value="visible"
+      @update:model-value="emit('update:visible', $event)"
+      @open="loadData"
+    >
+      <ElForm
+        ref="formRef"
+        :model="formData"
+        :rules="formRules"
+        @keyup.enter="submit"
+      >
+        <ElFormItem label="名称" prop="pid">
+          <ElCascader
+            v-model="formData.pid"
+            :options="roleTree"
+            :props="{
+              value: 'id',
+              label: 'name',
+              checkStrictly: true,
+              emitPath: false,
+            }"
+            clearable
+            :show-all-levels="false"
+            placeholder="请选择上级职位"
+          />
+        </ElFormItem>
+        <ElFormItem label="名称" prop="name">
+          <ElInput v-model="formData.name" placeholder="请输入职位名称" />
+        </ElFormItem>
+      </ElForm>
+      <template #footer>
+        <div>
+          <ElButton @click="emit('update:visible', false)">取消</ElButton>
+          <ElButton @click="submit">确定</ElButton>
+        </div>
+      </template>
+    </ElDialog>
+  </div>
 </template>
 <style lang="scss" scoped>
 :deep() {
   .el-cascader.el-tooltip__trigger {
     flex: 1 auto;
+  }
+
+  .el-dialog__body {
+    padding: 0 20px;
   }
 }
 </style>
