@@ -56,6 +56,7 @@ const treeData = ref<Role[]>([]);
 async function loadData() {
   getRoleTree().then(({ data: { data } }) => {
     treeData.value = data;
+    emit('node-click', data[0]);
   });
 }
 loadData();
