@@ -8,6 +8,7 @@ import {
 } from 'vue';
 import { useRafThrottle } from '@/utils/functionOptimizers';
 import { isDefined } from '@vueuse/core';
+import { addResizeListener, removeResizeListener } from '@/utils/event';
 const domSymbol = Symbol('watermark-dom');
 
 type attr = {
@@ -16,7 +17,7 @@ type attr = {
 };
 
 export function useWatermark(
-  appendEl: Ref<HTMLElement | null> = ref(document.body) as Ref<HTMLElement>,
+  appendEl: Ref<HTMLElement | null> | HTMLElement = document.body,
 ): {
   setWatermark: (str: string, attr?: attr | undefined) => void;
   clear: () => void;
@@ -36,7 +37,7 @@ export function useWatermark(
     const el = unref(appendEl);
     if (!el) return;
     domId && el.removeChild(domId);
-    window.removeEventListener('resize', func);
+    removeResizeListener(el, func);
   };
 
   function createBase64(str: string, attr?: attr) {
@@ -102,7 +103,8 @@ export function useWatermark(
   };
 
   function setWatermark(str: string, attr?: attr) {
-    window.addEventListener('resize', func);
+    const el = unref(appendEl)!;
+    addResizeListener(el, func);
     createWatermark(str, attr);
     const instance = getCurrentInstance();
     if (instance) {
