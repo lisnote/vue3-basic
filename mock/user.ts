@@ -42,39 +42,32 @@ const roleList = getRoleList(roleTree);
 const permission = [
   {
     code: 'RolePermission',
+    name: '职位与权限',
     has: false,
     children: [
-      { code: 'RolePermission/view', has: false },
-      { code: 'RolePermission/remove', has: false },
-      { code: 'RolePermission/add', has: false },
-      { code: 'RolePermission/update', has: false },
-    ],
-  },
-  {
-    code: 'RolePermission',
-    has: false,
-    children: [
-      { code: 'RolePermission/view', has: false },
-      { code: 'RolePermission/remove', has: false },
-      { code: 'RolePermission/add', has: false },
-      { code: 'RolePermission/update', has: false },
+      { code: 'RolePermission/view', name: '查看', has: false },
+      { code: 'RolePermission/remove', name: '删除', has: false },
+      { code: 'RolePermission/add', name: '添加', has: false },
+      { code: 'RolePermission/update', name: '更新', has: false },
     ],
   },
   {
     code: 'UserManagement',
+    name: '用户管理',
     has: false,
     children: [
-      { code: 'UserManagement/view', has: false },
-      { code: 'UserManagement/remove', has: false },
-      { code: 'UserManagement/add', has: false },
-      { code: 'UserManagement/update', has: false },
+      { code: 'UserManagement/view', name: '查看', has: false },
+      { code: 'UserManagement/remove', name: '删除', has: false },
+      { code: 'UserManagement/add', name: '添加', has: false },
+      { code: 'UserManagement/update', name: '更新', has: false },
     ],
   },
   {
     code: 'LicenseManagement',
+    name: '许可证管理',
     children: [
-      { code: 'LicenseManagement/view' },
-      { code: 'LicenseManagement/update' },
+      { code: 'LicenseManagement/view', name: '查看', has: false },
+      { code: 'LicenseManagement/update', name: '更新', has: false },
     ],
   },
 ];
