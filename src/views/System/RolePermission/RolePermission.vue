@@ -13,7 +13,7 @@ const currentRole = ref<Role>();
     <div class="role-tree-container">
       <RoleTree @node-click="currentRole = $event" />
     </div>
-    <div class="flex-1">
+    <div class="flex-1 overflow-hidden">
       <PermissionTree :role="currentRole" />
     </div>
   </div>

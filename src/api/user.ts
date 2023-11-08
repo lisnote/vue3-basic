@@ -35,6 +35,7 @@ export async function logout(config?: AxiosRequestConfig) {
 // 获取角色树
 export type Role = { id: string; name: string; children?: Role[] };
 export type Permission = {
+  name: string;
   code: string;
   has: boolean;
   children?: Permission[];
