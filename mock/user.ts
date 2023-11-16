@@ -66,10 +66,10 @@ const permission = [
   {
     code: 'LicenseManagement',
     name: '许可证管理',
-    has: false,
+    has: true,
     children: [
-      { code: 'LicenseManagement/view', name: '查看', has: false },
-      { code: 'LicenseManagement/update', name: '更新', has: false },
+      { code: 'LicenseManagement/view', name: '查看', has: true },
+      { code: 'LicenseManagement/update', name: '更新', has: true },
     ],
   },
 ];
