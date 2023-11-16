@@ -94,6 +94,7 @@ const editRoleMode = ref<'add' | 'edit'>('add');
       default-expand-all
       :expand-on-click-node="false"
       draggable
+      highlight-current
       :render-content="renderContent"
     />
     <EditRole
