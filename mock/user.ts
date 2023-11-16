@@ -1,5 +1,6 @@
 import { createMockMethod, queryList } from '.';
 import { cloneDeep } from 'lodash-es';
+import { treeToList } from '.';
 
 // 角色数据
 type Role = { id: string; name: string; children?: Role[] };
@@ -37,7 +38,7 @@ function getRoleList(roleTree: Role[], list: Role[] = []) {
   });
   return list;
 }
-const roleList = getRoleList(roleTree);
+const roleList = treeToList(roleTree);
 // 权限数据
 const permission = [
   {
