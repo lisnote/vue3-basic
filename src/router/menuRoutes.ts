@@ -214,7 +214,7 @@ export const menuRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: '/System/RolePermission',
-        meta: { title: '职位与权限(未完成)' },
+        meta: { title: '职位与权限' },
         component: () => import('@/views/System/RolePermission'),
       },
       {
