@@ -1,6 +1,6 @@
 import { createMockMethod, queryList } from '.';
 import { cloneDeep } from 'lodash-es';
-import { treeToList } from '.';
+import { treeToList } from '../src/utils/dataFactory';
 
 // 角色数据
 type Role = { id: string; name: string; children?: Role[] };
@@ -129,7 +129,12 @@ export default createMockMethod(
     url: '/user/getRolePermission',
     response: ({ body: { id } }) => ({ code: 0, data: permissionMap[id] }),
   },
-  { url: '/user/updateRolePermission', response: () => ({ code: 0 }) },
+  {
+    url: '/user/updateRolePermission',
+    response({ body: { userId, permissions } }) {
+      return { code: 0 };
+    },
+  },
   // 成员管理
   {
     url: '/user/getUserList',

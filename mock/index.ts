@@ -23,23 +23,3 @@ export function queryList<T>(list: T[], page = 1, limit = 10) {
   const start = end - limit;
   return list.slice(start, end);
 }
-
-/**
- * 获取树的节点列表
- * @param {T} tree 待处理的树
- * @param {string} children 子节点列表的字段名
- * @param {T} list 树节点列表
- * @returns
- */
-export function treeToList<T extends any[]>(
-  tree: T,
-  children: string = 'children',
-  list: T = [] as any,
-): T {
-  tree.forEach((node) => {
-    list.push(node);
-    const childNodes = node[children];
-    if (childNodes?.length) treeToList(childNodes, children, list);
-  });
-  return list;
-}

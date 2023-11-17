@@ -11,6 +11,7 @@
     "vite.config.ts",
     "package.json",
     "mock/**/*.ts",
-    "mock/**/*.d.ts"
+    "mock/**/*.d.ts",
+    "src/utils/dataFactory/**/*.ts"
   ]
 }
