@@ -79,12 +79,17 @@ export function treeToList<T extends any[]>(
  */
 export function treeForEach<T extends any[]>(
   tree: T,
-  handle: (node: T[number]) => void,
-  children: string = 'children',
+  handle: (node: T[number], parent?: T[number]) => void,
+  {
+    children = 'children',
+    parent,
+  }: { children?: string; parent?: T[number] } = {},
 ) {
   tree.forEach((node) => {
-    handle(node);
+    handle(node, parent);
     const childNodes = node[children];
-    if (childNodes?.length) treeForEach(childNodes, handle, children);
+    if (childNodes?.length) {
+      treeForEach(childNodes, handle, { children, parent: node });
+    }
   });
 }
