@@ -46,7 +46,6 @@ const permission = [
     name: '职位与权限',
     has: false,
     children: [
-      { code: 'RolePermission/view', name: '查看', has: false },
       { code: 'RolePermission/remove', name: '删除', has: false },
       { code: 'RolePermission/add', name: '添加', has: false },
       { code: 'RolePermission/update', name: '更新', has: false },
@@ -57,7 +56,6 @@ const permission = [
     name: '用户管理',
     has: false,
     children: [
-      { code: 'UserManagement/view', name: '查看', has: false },
       { code: 'UserManagement/remove', name: '删除', has: false },
       { code: 'UserManagement/add', name: '添加', has: false },
       { code: 'UserManagement/update', name: '更新', has: false },
@@ -67,10 +65,7 @@ const permission = [
     code: 'LicenseManagement',
     name: '许可证管理',
     has: true,
-    children: [
-      { code: 'LicenseManagement/view', name: '查看', has: true },
-      { code: 'LicenseManagement/update', name: '更新', has: true },
-    ],
+    children: [{ code: 'LicenseManagement/update', name: '更新', has: true }],
   },
 ];
 const permissionMap = {
