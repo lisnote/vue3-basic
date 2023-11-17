@@ -1,5 +1,5 @@
 import http from '@/utils/http';
-import { AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 // 登录管理 --------------------------------------------------
 // 登录
@@ -67,7 +67,7 @@ export async function updateRole(
 export async function getRolePermission(
   data: { id: string },
   config?: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<{ code: number; data: Permission[] }>> {
   return http.post('/user/getRolePermission', data, config);
 }
 // 更新角色权限
