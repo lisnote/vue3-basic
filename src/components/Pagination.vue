@@ -33,12 +33,17 @@ function updateLimit(value: number) {
   <ElPagination
     :bind="$attrs"
     :total="props.total"
-    :pager-count="5"
     :current-page="props.page"
     :page-size="props.limit"
-    layout="total, sizes, prev, pager, next, jumper"
+    layout="slot, ->, sizes, prev, next, jumper"
     background
     @update:current-page="updatePage"
     @update:page-size="updateLimit"
-  />
+  >
+    <template #default>
+      <div>
+        共 {{ props.total }} 条，{{ Math.ceil(props.total / props.limit) }} 页
+      </div>
+    </template>
+  </ElPagination>
 </template>
