@@ -56,9 +56,10 @@ async function submit() {
         ref="formRef"
         :model="formData"
         :rules="formRules"
+        label-width="80px"
         @keyup.enter="submit"
       >
-        <ElFormItem label="名称" prop="pid">
+        <ElFormItem label="上级职位" prop="pid">
           <ElCascader
             v-model="formData.pid"
             :options="roleTree"
@@ -73,7 +74,7 @@ async function submit() {
             placeholder="请选择上级职位"
           />
         </ElFormItem>
-        <ElFormItem label="名称" prop="name">
+        <ElFormItem label="职位名称" prop="name">
           <ElInput v-model="formData.name" placeholder="请输入职位名称" />
         </ElFormItem>
       </ElForm>
