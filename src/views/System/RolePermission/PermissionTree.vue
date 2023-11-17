@@ -40,7 +40,7 @@ async function submit() {
   treeForEach(tableData.value, (node) => {
     if (node.has) permissions.push(node.code);
   });
-  updateRolePermission({ userId: props.role!.id, permissions }).then(() =>
+  updateRolePermission({ roleId: props.role!.id, permissions }).then(() =>
     ElMessage.success('权限更新成功'),
   );
 }

@@ -72,7 +72,7 @@ export async function getRolePermission(
 }
 // 更新角色权限
 export async function updateRolePermission(
-  data: { userId: string; permissions: string[] },
+  data: { roleId: string; permissions: string[] },
   config?: AxiosRequestConfig,
 ) {
   return http.post('/user/updateRolePermission', data, config);
