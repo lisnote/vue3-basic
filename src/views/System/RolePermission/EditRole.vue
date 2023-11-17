@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { type Role, updateRole, addRole } from '@/api/user';
-import { ElButton, ElCascader, ElDialog } from 'element-plus';
+import { ElButton, ElCascader, ElDialog, ElMessage } from 'element-plus';
 import { ref } from 'vue';
 
 import type { FormInstance, FormRules } from 'element-plus';
@@ -35,9 +35,9 @@ async function submit() {
   if (!valid) return;
   const { id = '', name = '', pid } = formData.value;
   if (props.mode === 'add') {
-    addRole({ name, pid });
+    addRole({ name, pid }).then(() => ElMessage.success('新增职位成功'));
   } else {
-    updateRole({ id, name, pid });
+    updateRole({ id, name, pid }).then(() => ElMessage.success('编辑职位成功'));
   }
   emit('update:visible', false);
 }
