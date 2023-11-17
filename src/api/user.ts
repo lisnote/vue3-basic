@@ -32,7 +32,6 @@ export async function logout(config?: AxiosRequestConfig) {
 }
 
 // 角色权限 --------------------------------------------------------
-// 获取角色树
 export type Role = { id: string; name: string; children?: Role[] };
 export type Permission = {
   name: string;
@@ -40,6 +39,7 @@ export type Permission = {
   has: boolean;
   children?: Permission[];
 };
+// 获取角色树
 export async function getRoleTree(
   config?: AxiosRequestConfig,
 ): Promise<{ data: { data: Role[] } }> {
@@ -67,7 +67,7 @@ export async function updateRole(
 export async function getRolePermission(
   data: { roleId: string },
   config?: AxiosRequestConfig,
-): Promise<AxiosResponse<{ code: number; data: Permission[] }>> {
+): Promise<AxiosResponse<{ data: Permission[] }>> {
   return http.post('/user/getRolePermission', data, config);
 }
 // 更新角色权限
@@ -79,10 +79,19 @@ export async function updateRolePermission(
 }
 
 // 用户管理 --------------------------------------------------------
+export type User = {
+  id: string;
+  avatar: string;
+  name: string;
+  phone: string;
+  email: string;
+  role: string;
+  roleId: string;
+};
 // 获取用户列表
 export async function getUserList(
   data: { page: number; limit: number },
   config?: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<{ data: User[]; count: number }>> {
   return http.post('/user/getUserList', data, config);
 }
