@@ -24,7 +24,7 @@ watch(
   async () => {
     const tabelInstance = tableRef.value!;
     if (!props.role?.id) return;
-    getRolePermission({ id: props.role.id }).then(({ data: { data } }) => {
+    getRolePermission({ roleId: props.role.id }).then(({ data: { data } }) => {
       tableData.value = data;
       treeForEach(tableData.value, (node, parent) => {
         if (parent) parentMap.set(toRaw(node), parent);

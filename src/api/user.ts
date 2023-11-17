@@ -65,7 +65,7 @@ export async function updateRole(
 }
 // 获取角色权限
 export async function getRolePermission(
-  data: { id: string },
+  data: { roleId: string },
   config?: AxiosRequestConfig,
 ): Promise<AxiosResponse<{ code: number; data: Permission[] }>> {
   return http.post('/user/getRolePermission', data, config);

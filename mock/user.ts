@@ -127,7 +127,10 @@ export default createMockMethod(
   { url: '/user/updateRole', response: () => ({ code: 0 }) },
   {
     url: '/user/getRolePermission',
-    response: ({ body: { id } }) => ({ code: 0, data: permissionMap[id] }),
+    response: ({ body: { roleId } }) => ({
+      code: 0,
+      data: permissionMap[roleId],
+    }),
   },
   {
     url: '/user/updateRolePermission',
