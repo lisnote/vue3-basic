@@ -1,5 +1,5 @@
 import { createMockMethod, queryList } from '.';
-import { cloneDeep } from 'lodash-es';
+import { pick } from 'lodash-es';
 import { treeForEach, treeToList } from '../src/utils/dataFactory';
 
 // 角色数据
@@ -40,7 +40,7 @@ function getRoleList(roleTree: Role[], list: Role[] = []) {
 }
 const roleList = treeToList(roleTree);
 // 权限数据
-const permission = [
+const permissionMap = Array.from({ length: roleList.length }).map(() => [
   {
     code: 'RolePermission',
     name: '职位与权限',
@@ -67,23 +67,29 @@ const permission = [
     has: true,
     children: [{ code: 'LicenseManagement/update', name: '更新', has: true }],
   },
-];
-const permissionMap = {
-  ...Array.from({ length: roleList.length }).map(() => cloneDeep(permission)),
-};
+]);
 // 用户数据
 const userList = Array.from({ length: 96 }).map((_v, index) => {
   const roleList = getRoleList(roleTree);
   const role = roleList[index % roleList.length];
   return {
     id: String(++index),
-    avatar: `https://avatars.githubusercontent.com/u/${index}`,
     name: `用户${index}`,
+    avatar: `https://avatars.githubusercontent.com/u/${index}`,
     phone: String(18888888889 + index),
     email: 18888888889 + index + '@lisnote.com',
     role: role.name,
     roleId: role.id,
   };
+});
+userList.unshift({
+  id: '0',
+  name: `lisnote`,
+  avatar: `https://avatars.githubusercontent.com/lisnote`,
+  phone: '18888888888',
+  email: '18888888888@lisnote.com',
+  role: '系统管理员',
+  roleId: '-1',
 });
 // mock 导出
 export default createMockMethod(
@@ -91,7 +97,8 @@ export default createMockMethod(
   {
     url: '/user/login',
     response(this, { body: { phone, password } }) {
-      if (phone != '18888888888') {
+      const user = userList.find((user) => user.phone == phone);
+      if (!user) {
         this.res.statusCode = 400;
         return { code: 40002 };
       } else if (password != '0192023a7bbd73250516f069df18b500') {
@@ -101,17 +108,11 @@ export default createMockMethod(
         return {
           code: 0,
           data: {
-            id: '0',
-            name: 'admin',
-            phone: '18888888888',
-            token: '123456',
-            avatar: 'https://avatars.githubusercontent.com/lisnote',
-            permissions: [
-              'permissionAdd',
-              'permissionSelect',
-              'permissionEdit',
-              'permissionDelete',
-            ],
+            ...pick(user, 'id', 'name', 'avatar', 'phone', 'email'),
+            token: user.roleId,
+            permissionList: treeToList(permissionMap[Number(user.roleId)])
+              .filter((permission) => user.roleId === '-1' || permission.has)
+              .map((permission) => permission.code),
           },
         };
       }
@@ -134,8 +135,8 @@ export default createMockMethod(
   },
   {
     url: '/user/updateRolePermission',
-    response({ body: { roleId, permissions } }) {
-      const permissionSet = new Set(permissions);
+    response({ body: { roleId, permissionList } }) {
+      const permissionSet = new Set(permissionList);
       treeForEach(permissionMap[roleId], (node) => {
         node.has = permissionSet.has(node.code);
       });
