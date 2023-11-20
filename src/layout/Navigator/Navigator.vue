@@ -38,11 +38,8 @@ async function logout() {
       <ElDropdown trigger="click">
         <span class="el-dropdown-link">
           <div class="navigator-action">
-            <img
-              class="w-10 rounded-1/2"
-              src="https://avatars.githubusercontent.com/lisnote"
-            />
-            <span>lisnote</span>
+            <img class="w-10 rounded-1/2" :src="userStore.avatar" />
+            <span>{{ userStore.name }}</span>
           </div>
         </span>
         <template #dropdown>

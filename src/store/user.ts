@@ -14,9 +14,10 @@ export function useUserStore() {
       return useStorage('userInfo', {
         id: '',
         name: '',
-        phone: '',
-        token: '',
         avatar: '',
+        phone: '',
+        email: '',
+        token: '',
         permissionList: [] as string[],
       });
     },
@@ -33,10 +34,11 @@ export function useUserStore() {
           this.$patch({
             id: '',
             name: '',
-            phone: '',
-            token: '',
             avatar: '',
-            permissionList: [],
+            phone: '',
+            email: '',
+            token: '',
+            permissionList: [] as string[],
           });
           router.push('/Login');
         });
