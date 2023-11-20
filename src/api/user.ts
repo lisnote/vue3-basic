@@ -90,7 +90,7 @@ export type User = {
 };
 // 获取用户列表
 export async function getUsers(
-  data: { page: number; limit: number },
+  data: { page: number; limit: number; search: string },
   config?: AxiosRequestConfig,
 ): Promise<AxiosResponse<{ data: User[]; count: number }>> {
   return http.post('/user/getUsers', data, config);
