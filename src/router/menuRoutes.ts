@@ -219,7 +219,7 @@ export const menuRoutes: RouteRecordRaw[] = [
       },
       {
         path: '/System/UserManagement',
-        meta: { title: '用户管理(未完成)' },
+        meta: { title: '用户管理' },
         component: () => import('@/views/System/UserManagement'),
       },
       {
