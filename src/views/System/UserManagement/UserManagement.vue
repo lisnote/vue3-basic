@@ -1,12 +1,19 @@
 <script setup lang="ts">
-import { User, getUsers } from '@/api/user';
-import { ElTable, ElTableColumn, ElImage, ElButton } from 'element-plus';
+import { User, getUsers, removeUsers } from '@/api/user';
+import {
+  ElTable,
+  ElTableColumn,
+  ElImage,
+  ElButton,
+  ElMessage,
+} from 'element-plus';
 import Pagination from '@/components/Pagination.vue';
 import commonStyle from '@/styles/common.module.scss';
 import { useUserStore } from '@/store';
 import { ref } from 'vue';
 
 const userStore = useUserStore();
+// 加载数据
 const paging = ref({ page: 1, limit: 10, total: 0 });
 const tableData = ref<User[]>([]);
 const imageList = ref<string[]>([]);
@@ -21,14 +28,21 @@ function loadTableData() {
 }
 loadTableData();
 
-function edit(user: User) {
-  console.log(user);
+// 移除用户
+function remove(users: User[]) {
+  removeUsers(users.map((user) => user.id)).then(() => {
+    ElMessage.success('删除成功');
+    loadTableData();
+  });
 }
-function remove(user: User) {
-  console.log(user);
-}
+// 切换用户
 function login(user: User) {
   userStore.login(user.phone, 'admin123');
+}
+
+// 编辑用户
+function edit(user: User) {
+  console.log(user);
 }
 </script>
 
@@ -66,7 +80,7 @@ function login(user: User) {
           <ElButton type="primary" size="small" link @click="edit(row)">
             编辑
           </ElButton>
-          <ElButton type="primary" size="small" link @click="remove(row)">
+          <ElButton type="primary" size="small" link @click="remove([row])">
             删除
           </ElButton>
           <ElButton type="primary" size="small" link @click="login(row)">

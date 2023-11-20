@@ -96,7 +96,10 @@ export async function getUsers(
   return http.post('/user/getUsers', data, config);
 }
 // 邀请用户
-export async function inviteUsers(data: string[], config?: AxiosRequestConfig) {
+export async function inviteUser(
+  data: { phone: string; roleId: string },
+  config?: AxiosRequestConfig,
+) {
   return http.post('/user/inviteUsers', data, config);
 }
 // 移除用户
@@ -105,7 +108,7 @@ export async function removeUsers(data: string[], config?: AxiosRequestConfig) {
 }
 // 更新用户
 export async function updateUser(
-  data: { page: number; limit: number },
+  data: { userId: string; roleId: string },
   config?: AxiosRequestConfig,
 ) {
   return http.post('/user/updateUser', data, config);
