@@ -89,10 +89,6 @@ async function submit() {
 </template>
 <style lang="scss" scoped>
 :deep() {
-  .el-cascader.el-tooltip__trigger {
-    flex: 1 auto;
-  }
-
   .el-dialog__body {
     padding: 0 20px;
   }
