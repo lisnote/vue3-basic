@@ -18,6 +18,7 @@ const userStore = useUserStore();
 const searchValue = ref('');
 // 加载数据
 const paging = ref({ page: 1, limit: 10, total: 0 });
+const tableRef = ref<InstanceType<typeof ElTable>>();
 const tableData = ref<User[]>([]);
 const imageList = ref<string[]>([]);
 function loadTableData() {
@@ -67,7 +68,11 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
       />
       <div class="flex">
         <ElButton type="primary" @click="showEditUser('add')">邀请</ElButton>
-        <ElButton type="danger">删除</ElButton>
+        <ElButton
+          type="danger"
+          @click="remove(tableRef?.getSelectionRows() ?? [])"
+          >删除</ElButton
+        >
       </div>
     </div>
     <ElTable
@@ -77,6 +82,10 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
       show-overflow-tooltip
       class="flex-1 my-5px"
     >
+      <ElTableColumn
+        type="selection"
+        :selectable="(row) => row.roleId != '-1'"
+      />
       <ElTableColumn width="50" :show-overflow-tooltip="false">
         <template #default="{ row }">
           <ElImage
