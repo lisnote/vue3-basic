@@ -74,10 +74,10 @@ const permissionMap = {
 // 用户数据
 const userList = Array.from({ length: 96 }).map((_v, index) => {
   const roleList = getRoleList(roleTree);
-  const role = roleList[(Math.random() * roleList.length) | 0];
+  const role = roleList[index % roleList.length];
   return {
     id: String(++index),
-    avatar: `https://avatars.githubusercontent.com/u/${++index}`,
+    avatar: `https://avatars.githubusercontent.com/u/${index}`,
     name: `用户${index}`,
     phone: String(18888888889 + index),
     email: 18888888889 + index + '@lisnote.com',
@@ -106,7 +106,7 @@ export default createMockMethod(
             phone: '18888888888',
             token: '123456',
             avatar: 'https://avatars.githubusercontent.com/lisnote',
-            permissionList: [
+            permissions: [
               'permissionAdd',
               'permissionSelect',
               'permissionEdit',
