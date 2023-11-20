@@ -35,9 +35,11 @@ async function submit() {
   if (!valid) return;
   const { id = '', name = '', pid } = formData.value;
   if (props.mode === 'add') {
-    addRole({ name, pid }).then(() => ElMessage.success('新增职位成功'));
+    await addRole({ name, pid }).then(() => ElMessage.success('新增职位成功'));
   } else {
-    updateRole({ id, name, pid }).then(() => ElMessage.success('编辑职位成功'));
+    await updateRole({ id, name, pid }).then(() =>
+      ElMessage.success('编辑职位成功'),
+    );
   }
   emit('update:visible', false);
 }
