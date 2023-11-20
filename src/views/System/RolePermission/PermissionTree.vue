@@ -36,11 +36,11 @@ watch(
 
 // 提交
 async function submit() {
-  const permissionList: string[] = [];
+  const permissions: string[] = [];
   treeForEach(tableData.value, (node) => {
-    if (node.has) permissionList.push(node.code);
+    if (node.has) permissions.push(node.code);
   });
-  updateRolePermission({ roleId: props.role!.id, permissionList }).then(() =>
+  updateRolePermission({ roleId: props.role!.id, permissions }).then(() =>
     ElMessage.success('权限更新成功'),
   );
 }

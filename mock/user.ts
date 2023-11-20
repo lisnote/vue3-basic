@@ -137,8 +137,8 @@ export default createMockMethod(
   },
   {
     url: '/user/updateRolePermission',
-    response({ body: { roleId, permissionList } }) {
-      const permissionSet = new Set(permissionList);
+    response({ body: { roleId, permissions } }) {
+      const permissionSet = new Set(permissions);
       treeForEach(permissionMap[roleId], (node) => {
         node.has = permissionSet.has(node.code);
       });
