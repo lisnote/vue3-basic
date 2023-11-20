@@ -1,5 +1,6 @@
 // 主题相关函数, 变量, 类型
 import { useStyleStore } from '@/store';
+import nProgress from 'nprogress';
 // 主题映射
 export const themeMap = {
   default: {
@@ -40,5 +41,8 @@ export function switchTheme(theme?: Theme) {
     styleStore.theme = theme;
   }
   document.documentElement.dataset.theme = theme;
-  if (theme !== 'default') import(`@/styles/theme/${theme}.scss`);
+  if (theme !== 'default') {
+    nProgress.start();
+    import(`@/styles/theme/${theme}.scss`).then(nProgress.done);
+  }
 }
