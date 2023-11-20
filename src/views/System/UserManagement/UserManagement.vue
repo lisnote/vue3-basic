@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { User, getUserList } from '@/api/user';
-import { ElTable, ElTableColumn, ElImage } from 'element-plus';
+import { ElTable, ElTableColumn, ElImage, ElButton } from 'element-plus';
 import Pagination from '@/components/Pagination.vue';
 import commonStyle from '@/styles/common.module.scss';
 import { ref } from 'vue';
@@ -18,6 +18,16 @@ function loadTableData() {
   );
 }
 loadTableData();
+
+function edit(user: User) {
+  console.log(user);
+}
+function remove(user: User) {
+  console.log(user);
+}
+function login(user: User) {
+  console.log(user);
+}
 </script>
 
 <template>
@@ -44,6 +54,24 @@ loadTableData();
       <ElTableColumn label="职位" prop="role" />
       <ElTableColumn label="电话" prop="phone" />
       <ElTableColumn label="邮件" prop="email" />
+      <ElTableColumn
+        label="操作"
+        :show-overflow-tooltip="false"
+        fixed="right"
+        width="180"
+      >
+        <template #default="{ row }">
+          <ElButton type="primary" size="small" link @click="edit(row)">
+            编辑
+          </ElButton>
+          <ElButton type="primary" size="small" link @click="remove(row)">
+            删除
+          </ElButton>
+          <ElButton type="primary" size="small" link @click="login(row)">
+            登录此账户
+          </ElButton>
+        </template>
+      </ElTableColumn>
     </ElTable>
     <Pagination
       v-model:limit="paging.limit"
