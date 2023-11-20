@@ -11,6 +11,7 @@ import Pagination from '@/components/Pagination.vue';
 import commonStyle from '@/styles/common.module.scss';
 import { useUserStore } from '@/store';
 import { ref } from 'vue';
+import EditUser from './EditUser.vue';
 
 const userStore = useUserStore();
 // 加载数据
@@ -41,8 +42,13 @@ function login(user: User) {
 }
 
 // 编辑用户
+const editUserData = ref<User>();
+const editUserVisible = ref(false);
+const editUserMode = ref<'add' | 'edit'>('add');
 function edit(user: User) {
-  console.log(user);
+  editUserData.value = user;
+  editUserMode.value = 'edit';
+  editUserVisible.value = true;
 }
 </script>
 
@@ -95,6 +101,12 @@ function edit(user: User) {
       :total="paging.total"
       class="mt-5px"
       @change="loadTableData()"
+    />
+    <EditUser
+      v-model:visible="editUserVisible"
+      :data="editUserData"
+      :mode="editUserMode"
+      @success="loadTableData()"
     />
   </div>
 </template>
