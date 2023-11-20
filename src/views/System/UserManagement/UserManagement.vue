@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { User, getUserList } from '@/api/user';
+import { User, getUsers } from '@/api/user';
 import { ElTable, ElTableColumn, ElImage, ElButton } from 'element-plus';
 import Pagination from '@/components/Pagination.vue';
 import commonStyle from '@/styles/common.module.scss';
+import { useUserStore } from '@/store';
 import { ref } from 'vue';
 
+const userStore = useUserStore();
 const paging = ref({ page: 1, limit: 10, total: 0 });
 const tableData = ref<User[]>([]);
 const imageList = ref<string[]>([]);
 function loadTableData() {
-  getUserList({ limit: paging.value.limit, page: paging.value.page }).then(
+  getUsers({ limit: paging.value.limit, page: paging.value.page }).then(
     ({ data: { data, count } }) => {
       tableData.value = data;
       paging.value.total = count;
@@ -26,7 +28,7 @@ function remove(user: User) {
   console.log(user);
 }
 function login(user: User) {
-  console.log(user);
+  userStore.login(user.phone, 'admin123');
 }
 </script>
 

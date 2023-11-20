@@ -89,9 +89,24 @@ export type User = {
   roleId: string;
 };
 // 获取用户列表
-export async function getUserList(
+export async function getUsers(
   data: { page: number; limit: number },
   config?: AxiosRequestConfig,
 ): Promise<AxiosResponse<{ data: User[]; count: number }>> {
-  return http.post('/user/getUserList', data, config);
+  return http.post('/user/getUsers', data, config);
+}
+// 邀请用户
+export async function inviteUsers(data: string[], config?: AxiosRequestConfig) {
+  return http.post('/user/inviteUsers', data, config);
+}
+// 移除用户
+export async function removeUsers(data: string[], config?: AxiosRequestConfig) {
+  return http.post('/user/removeUsers', data, config);
+}
+// 更新用户
+export async function updateUser(
+  data: { page: number; limit: number },
+  config?: AxiosRequestConfig,
+) {
+  return http.post('/user/updateUser', data, config);
 }

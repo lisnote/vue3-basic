@@ -147,14 +147,14 @@ export default createMockMethod(
   },
   // 成员管理
   {
-    url: '/user/getUserList',
+    url: '/user/getUsers',
     response: ({ body: { page, limit } }) => ({
       code: 0,
       count: userList.length,
       data: queryList(userList, page, limit),
     }),
   },
+  { url: '/user/inviteUsers', response: () => ({ code: 0 }) },
   { url: '/user/removeUsers', response: () => ({ code: 0 }) },
-  { url: '/user/addUser', response: () => ({ code: 0 }) },
   { url: '/user/updateUser', response: () => ({ code: 0 }) },
 );
