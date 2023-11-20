@@ -108,7 +108,7 @@ export async function removeUsers(data: string[], config?: AxiosRequestConfig) {
 }
 // 更新用户
 export async function updateUser(
-  data: { userId: string; roleId: string },
+  data: { phone: string; roleId: string },
   config?: AxiosRequestConfig,
 ) {
   return http.post('/user/updateUser', data, config);
