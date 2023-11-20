@@ -74,7 +74,7 @@ const userList = Array.from({ length: 96 }).map((_v, index) => {
   const role = roleList[index % roleList.length];
   return {
     id: String(++index),
-    name: `用户${index}`,
+    name: role.name + index,
     avatar: `https://avatars.githubusercontent.com/u/${index}`,
     phone: String(18888888889 + index),
     email: 18888888889 + index + '@lisnote.com',
@@ -110,7 +110,9 @@ export default createMockMethod(
           data: {
             ...pick(user, 'id', 'name', 'avatar', 'phone', 'email'),
             token: user.roleId,
-            permissionList: treeToList(permissionMap[Number(user.roleId)])
+            permissionList: treeToList(
+              permissionMap[user.roleId === '-1' ? 0 : user.roleId],
+            )
               .filter((permission) => user.roleId === '-1' || permission.has)
               .map((permission) => permission.code),
           },
