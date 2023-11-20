@@ -22,7 +22,7 @@ export const ElInput: FunctionalComponent = function (
         : props.type === 'text' || props.type === undefined
         ? 30
         : undefined,
-      onBlur() {
+      onChange() {
         ctx.emit('update:modelValue', props.modelValue.replace(/\s*$/, ''));
       },
     },
