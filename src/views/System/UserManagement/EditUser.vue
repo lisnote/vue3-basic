@@ -5,7 +5,6 @@ import { ElButton, ElCascader, ElDialog, ElMessage } from 'element-plus';
 import { ref } from 'vue';
 
 import type { FormInstance, FormRules } from 'element-plus';
-import { pick } from 'lodash-es';
 import { phoneValidator } from '@/utils/validator';
 
 const props = withDefaults(
@@ -19,7 +18,7 @@ const props = withDefaults(
 const emit = defineEmits(['success', 'update:visible']);
 
 const formRef = ref<FormInstance>();
-const formData = ref<Partial<Pick<User, 'phone' | 'roleId'>>>({});
+const formData = ref<Pick<User, 'phone' | 'roleId'>>({ phone: '', roleId: '' });
 const roleTree = ref<Role[]>();
 getRoleTree().then(({ data: { data } }) => {
   roleTree.value = data;
@@ -27,9 +26,12 @@ getRoleTree().then(({ data: { data } }) => {
 function loadData() {
   formRef.value?.clearValidate();
   if (props.mode === 'add') {
-    formData.value = {};
+    formData.value = { phone: '', roleId: '' };
   } else {
-    formData.value = pick(props.data, 'phone', 'roleId')!;
+    formData.value = {
+      phone: props.data.phone ?? '',
+      roleId: props.data.roleId ?? '',
+    };
   }
 }
 const formRules: FormRules = {
@@ -43,7 +45,7 @@ async function submit() {
   const { roleId, phone } = formData.value;
   if (props.mode === 'add') {
     await inviteUser({ phone: phone!, roleId: roleId! }).then(() =>
-      ElMessage.success('邀请用户成功, 等待用户tongyi'),
+      ElMessage.success('邀请用户成功, 等待用户同意'),
     );
   } else {
     await updateUser({ phone: phone!, roleId: roleId! }).then(() =>
@@ -89,7 +91,7 @@ async function submit() {
             }"
             clearable
             :show-all-levels="false"
-            placeholder="请选择上级职位"
+            placeholder="请选择职位"
           />
         </ElFormItem>
       </ElForm>

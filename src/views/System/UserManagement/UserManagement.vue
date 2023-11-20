@@ -14,18 +14,22 @@ import { ref } from 'vue';
 import EditUser from './EditUser.vue';
 
 const userStore = useUserStore();
+// 查询参数
+const searchValue = ref('');
 // 加载数据
 const paging = ref({ page: 1, limit: 10, total: 0 });
 const tableData = ref<User[]>([]);
 const imageList = ref<string[]>([]);
 function loadTableData() {
-  getUsers({ limit: paging.value.limit, page: paging.value.page }).then(
-    ({ data: { data, count } }) => {
-      tableData.value = data;
-      paging.value.total = count;
-      imageList.value = data.map((v) => v.avatar);
-    },
-  );
+  getUsers({
+    limit: paging.value.limit,
+    page: paging.value.page,
+    search: searchValue.value,
+  }).then(({ data: { data, count } }) => {
+    tableData.value = data;
+    paging.value.total = count;
+    imageList.value = data.map((v) => v.avatar);
+  });
 }
 loadTableData();
 
@@ -45,21 +49,33 @@ function login(user: User) {
 const editUserData = ref<User>();
 const editUserVisible = ref(false);
 const editUserMode = ref<'add' | 'edit'>('add');
-function edit(user: User) {
+function showEditUser(mode: 'add' | 'edit', user?: User) {
+  editUserMode.value = mode;
   editUserData.value = user;
-  editUserMode.value = 'edit';
   editUserVisible.value = true;
 }
 </script>
 
 <template>
   <div :class="commonStyle.contentArea" class="flex flex-col">
+    <div class="flex">
+      <ElInput
+        v-model="searchValue"
+        placeholder="模糊查询, 请输入"
+        class="block"
+        @change="loadTableData()"
+      />
+      <div class="flex">
+        <ElButton type="primary" @click="showEditUser('add')">邀请</ElButton>
+        <ElButton type="danger">删除</ElButton>
+      </div>
+    </div>
     <ElTable
       ref="tableRef"
       :data="tableData"
       default-expand-all
       show-overflow-tooltip
-      class="flex-1"
+      class="flex-1 my-5px"
     >
       <ElTableColumn width="50" :show-overflow-tooltip="false">
         <template #default="{ row }">
@@ -83,7 +99,12 @@ function edit(user: User) {
         width="180"
       >
         <template #default="{ row }">
-          <ElButton type="primary" size="small" link @click="edit(row)">
+          <ElButton
+            type="primary"
+            size="small"
+            link
+            @click="showEditUser('edit', row)"
+          >
             编辑
           </ElButton>
           <ElButton type="primary" size="small" link @click="remove([row])">
@@ -99,7 +120,6 @@ function edit(user: User) {
       v-model:limit="paging.limit"
       v-model:page="paging.page"
       :total="paging.total"
-      class="mt-5px"
       @change="loadTableData()"
     />
     <EditUser
