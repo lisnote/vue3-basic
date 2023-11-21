@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import pkg from '@root/package.json';
-import http from '@/utils/http';
+import axios from 'axios';
 import { ref } from 'vue';
 import { dateFormat } from '@/utils/date';
 
@@ -12,7 +12,7 @@ const projectInfo = {
   description: pkg.description,
 };
 const data: Ref<Record<string, string>> = ref({});
-http
+axios
   .get('https://api.github.com/repos/lisnote/vue3-basic')
   .then(
     ({
