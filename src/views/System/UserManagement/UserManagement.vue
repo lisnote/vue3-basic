@@ -69,14 +69,14 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
       />
       <div class="flex">
         <ElButton
-          v-show="hasPermission('UserManagement/invite')"
+          v-show="hasPermission('UserManagement/inviteUser')"
           type="primary"
           @click="showEditUser('add')"
         >
           邀请
         </ElButton>
         <ElButton
-          v-show="hasPermission('UserManagement/remove')"
+          v-show="hasPermission('UserManagement/removeUser')"
           type="danger"
           @click="remove(tableRef?.getSelectionRows() ?? [])"
         >
@@ -118,7 +118,7 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
       >
         <template #default="{ row }">
           <ElButton
-            v-if="hasPermission('UserManagement/update')"
+            v-if="hasPermission('UserManagement/updateUser')"
             type="primary"
             size="small"
             link
@@ -127,7 +127,7 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
             编辑
           </ElButton>
           <ElButton
-            v-if="hasPermission('UserManagement/remove')"
+            v-if="hasPermission('UserManagement/removeUser')"
             type="danger"
             size="small"
             link
@@ -142,7 +142,7 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
             link
             @click="login(row)"
           >
-            登录此账户
+            登录此用户
           </ElButton>
         </template>
       </ElTableColumn>

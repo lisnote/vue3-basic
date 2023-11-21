@@ -44,21 +44,22 @@ const permissionMap = Array.from({ length: roleList.length }).map(() => [
   {
     code: 'RolePermission',
     name: '职位与权限',
-    has: false,
+    has: true,
     children: [
-      { code: 'RolePermission/remove', name: '删除', has: false },
-      { code: 'RolePermission/add', name: '添加', has: false },
-      { code: 'RolePermission/update', name: '更新', has: false },
+      { code: 'RolePermission/addRole', name: '添加职位', has: false },
+      { code: 'RolePermission/updateRole', name: '更新职位', has: false },
+      { code: 'RolePermission/removeRole', name: '删除职位', has: false },
+      { code: 'RolePermission/removePermission', name: '更新权限', has: false },
     ],
   },
   {
     code: 'UserManagement',
     name: '用户管理',
-    has: false,
+    has: true,
     children: [
-      { code: 'UserManagement/remove', name: '删除', has: false },
-      { code: 'UserManagement/invite', name: '邀请', has: false },
-      { code: 'UserManagement/update', name: '更新', has: false },
+      { code: 'UserManagement/inviteUser', name: '邀请用户', has: false },
+      { code: 'UserManagement/updateUser', name: '更新用户', has: false },
+      { code: 'UserManagement/removeUser', name: '删除用户', has: false },
     ],
   },
 ]);
