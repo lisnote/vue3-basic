@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { getRolePermission, updateRolePermission } from '@/api/user';
 import type { Role, Permission } from '@/api/user';
+import { hasPermission, notPermission } from '@/hooks/usePermission';
+import { useUserStore } from '@/store';
 import { treeForEach } from '@/utils/dataFactory';
 import {
   ElTable,
@@ -15,7 +17,11 @@ const props = defineProps<{
   role: Role | undefined;
 }>();
 
+const userStore = useUserStore();
 const tableRef = ref<InstanceType<typeof ElTable>>();
+// 查询参数
+const searchValue = ref('');
+function search() {}
 // 数据展示
 const tableData = ref<Permission[]>([]);
 const parentMap = new WeakMap<Permission, Permission>();
@@ -62,22 +68,41 @@ function changePermission(row: Permission) {
 
 <template>
   <div class="h-full flex flex-col gap-1">
+    <div class="flex">
+      <ElInput
+        v-model="searchValue"
+        class="block"
+        placeholder="模糊查询, 请输入"
+        @change="search"
+      />
+      <ElButton
+        v-if="
+          userStore.roleId !== role?.id &&
+          hasPermission('RolePermission/updatePermission')
+        "
+        type="primary"
+        @click="submit"
+        >保存</ElButton
+      >
+    </div>
     <ElTable
       ref="tableRef"
       :data="tableData"
       row-key="code"
       default-expand-all
       show-overflow-tooltip
+      class="mt-5px"
     >
       <ElTableColumn prop="name" label="名称" />
       <ElTableColumn prop="code" label="权限码" />
       <ElTableColumn label="操作" width="90">
-        <template #header>
-          <ElButton type="primary" @click="submit">保存</ElButton>
-        </template>
         <template #default="{ row }">
           <ElCheckbox
             v-model="row.has"
+            :disabled="
+              notPermission('RolePermission/updatePermission') ||
+              notPermission(row.code)
+            "
             @change="changePermission(row)"
           ></ElCheckbox>
         </template>
