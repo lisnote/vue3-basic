@@ -66,9 +66,11 @@ function renderContent(
 }
 // tree data
 const treeData = ref<Role[]>([]);
+const currentNodeKey = ref('');
 async function loadData() {
   getRoleTree().then(({ data: { data } }) => {
     treeData.value = data;
+    currentNodeKey.value = data[0].id;
     emit('node-click', data[0]);
   });
 }
@@ -109,6 +111,8 @@ const editRoleMode = ref<'add' | 'edit'>('add');
       draggable
       highlight-current
       :render-content="renderContent"
+      node-key="id"
+      :current-node-key="currentNodeKey"
     />
     <EditRole
       v-model:visible="editRoleVisible"
