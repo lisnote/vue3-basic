@@ -7,6 +7,7 @@ import {
   ElButton,
   ElMessage,
 } from 'element-plus';
+import { hasPermission } from '@/hooks/usePermission';
 import Pagination from '@/components/Pagination.vue';
 import commonStyle from '@/styles/common.module.scss';
 import { useUserStore } from '@/store';
@@ -67,12 +68,20 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
         @change="loadTableData()"
       />
       <div class="flex">
-        <ElButton type="primary" @click="showEditUser('add')">邀请</ElButton>
         <ElButton
+          v-show="hasPermission('UserManagement/invite')"
+          type="primary"
+          @click="showEditUser('add')"
+        >
+          邀请
+        </ElButton>
+        <ElButton
+          v-show="hasPermission('UserManagement/remove')"
           type="danger"
           @click="remove(tableRef?.getSelectionRows() ?? [])"
-          >删除</ElButton
         >
+          删除
+        </ElButton>
       </div>
     </div>
     <ElTable
@@ -84,7 +93,7 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
     >
       <ElTableColumn
         type="selection"
-        :selectable="(row) => row.roleId != '-1'"
+        :selectable="(row) => !(row.roleId === '-1' || row.id === userStore.id)"
       />
       <ElTableColumn width="50" :show-overflow-tooltip="false">
         <template #default="{ row }">
@@ -109,6 +118,7 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
       >
         <template #default="{ row }">
           <ElButton
+            v-if="hasPermission('UserManagement/update')"
             type="primary"
             size="small"
             link
@@ -116,10 +126,22 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
           >
             编辑
           </ElButton>
-          <ElButton type="primary" size="small" link @click="remove([row])">
+          <ElButton
+            v-if="hasPermission('UserManagement/remove')"
+            type="danger"
+            size="small"
+            link
+            @click="remove([row])"
+          >
             删除
           </ElButton>
-          <ElButton type="primary" size="small" link @click="login(row)">
+          <ElButton
+            v-if="row.id !== userStore.id"
+            type="primary"
+            size="small"
+            link
+            @click="login(row)"
+          >
             登录此账户
           </ElButton>
         </template>
