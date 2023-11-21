@@ -18,7 +18,7 @@ export function useUserStore() {
         phone: '',
         email: '',
         token: '',
-        permissionList: [] as string[],
+        permissions: [] as string[],
       });
     },
     actions: {
@@ -38,7 +38,7 @@ export function useUserStore() {
             phone: '',
             email: '',
             token: '',
-            permissionList: [] as string[],
+            permissions: [] as string[],
           });
           router.push('/Login');
         });

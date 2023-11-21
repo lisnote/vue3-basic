@@ -104,7 +104,7 @@ export default createMockMethod(
           data: {
             ...pick(user, 'id', 'name', 'avatar', 'phone', 'email'),
             token: user.roleId,
-            permissionList: treeToList(
+            permissions: treeToList(
               permissionMap[user.roleId === '-1' ? 0 : user.roleId],
             )
               .filter((permission) => user.roleId === '-1' || permission.has)
