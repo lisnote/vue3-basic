@@ -8,8 +8,8 @@ export {
 } from '@vueuse/core';
 /**
  * 基于帧动画的节流函数
- * @param {T} fn 需要节流的函数
- * @returns {T}
+ * @param fn 需要节流的函数
+ * @returns
  */
 export function useRafThrottle<T extends (...args: any[]) => void>(fn: T): T {
   let locked = false;

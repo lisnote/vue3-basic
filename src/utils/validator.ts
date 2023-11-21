@@ -9,25 +9,25 @@ type Validator = Exclude<
 // 基础判断函数 -------------------------------------------------------------
 /**
  * 判断字符串是否包含字母
- * @param {string} str 待检查字符串
- * @returns {boolean} 判断结果 判断结果
+ * @param str 待检查字符串
+ * @returns 判断结果 判断结果
  */
 export function hasLetter(str: string): boolean {
   return /[a-zA-Z]/.test(str);
 }
 /**
  * 判断字符串是否包含数字
- * @param {string} str 待检查字符串
- * @returns {boolean} 判断结果
+ * @param str 待检查字符串
+ * @returns 判断结果
  */
 export function hasNumber(str: string): boolean {
   return /\d/.test(str);
 }
 /**
  * 判断字符串长度是否在指定范围
- * @param {string} str 待检查的字符串
- * @param {{min?:number,max?:number}} options 字符串长度配置对象
- * @returns {boolean} 判断结果
+ * @param str 待检查的字符串
+ * @param options 字符串长度配置对象
+ * @returns 判断结果
  * @example
  * lengthInRange(value,{max:20})
  * lengthInRange(value,{min:8, max:20})

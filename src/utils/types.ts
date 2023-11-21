@@ -4,8 +4,8 @@
 
 /**
  * 获取值类型
- * @param {unknown} value 待获取类型的值
- * @returns {string} 返回获取的类型
+ * @param value 待获取类型的值
+ * @returns 返回获取的类型
  * @example
  * ```javascript
  * getType({})
@@ -18,9 +18,9 @@ export function getType(value: unknown): string {
 
 /**
  * 判断值是否为某类型
- * @param {unknown} value 待获取类型的值
- * @param {string} type 判断的类型
- * @returns {string} 返回获取的类型
+ * @param value 待获取类型的值
+ * @param type 判断的类型
+ * @returns 返回获取的类型
  * @example
  * ```javascript
  * is({}, 'Object')

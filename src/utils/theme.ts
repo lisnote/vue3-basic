@@ -31,7 +31,7 @@ export const themeMap = {
 export type Theme = keyof typeof themeMap;
 /**
  * 切换主题, 不传参即为初始化
- * @param {Theme} theme 主题名称
+ * @param theme 主题名称
  */
 export function switchTheme(theme?: Theme) {
   const styleStore = useStyleStore();
