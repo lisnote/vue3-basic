@@ -61,12 +61,6 @@ const permissionMap = Array.from({ length: roleList.length }).map(() => [
       { code: 'UserManagement/update', name: '更新', has: false },
     ],
   },
-  {
-    code: 'LicenseManagement',
-    name: '许可证管理',
-    has: true,
-    children: [{ code: 'LicenseManagement/update', name: '更新', has: true }],
-  },
 ]);
 // 用户数据
 const userList = Array.from({ length: 96 }).map((_v, index) => {

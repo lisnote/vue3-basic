@@ -223,11 +223,6 @@ export const menuRoutes: RouteRecordRaw[] = [
         component: () => import('@/views/System/UserManagement'),
       },
       {
-        path: '/System/LicenseManagement',
-        meta: { title: '许可证管理(未完成)' },
-        component: () => import('@/views/System/LicenseManagement'),
-      },
-      {
         path: '/System/About',
         meta: { title: '关于' },
         component: () => import('@/views/System/About'),
