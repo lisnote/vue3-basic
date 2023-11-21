@@ -10,6 +10,7 @@ import {
 import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
 import EditRole from './EditRole.vue';
+import { hasPermission } from '@/hooks/usePermission';
 
 const emit = defineEmits({
   'node-click': (role: Role) => role,
@@ -30,24 +31,36 @@ function renderContent(
       <div class="flex-1" onClick={() => nodeClick(role)}>
         {role.name}
       </div>
-      <ElDropdown tabindex="">
-        {{
-          default: () => (
-            <div>
-              <Icon icon="ep:more-filled" class="h-full" />
-            </div>
-          ),
-          dropdown: () => [
-            <ElDropdownItem onClick={() => addNode(role)}>新增</ElDropdownItem>,
-            <ElDropdownItem onClick={() => editNode(role, parent)}>
-              编辑
-            </ElDropdownItem>,
-            <ElDropdownItem onClick={() => removeNode(role)}>
-              删除
-            </ElDropdownItem>,
-          ],
-        }}
-      </ElDropdown>
+      {hasPermission('RolePermission/addRole') ||
+      hasPermission('RolePermission/updateRole') ||
+      hasPermission('RolePermission/removeRole') ? (
+        <ElDropdown tabindex="">
+          {{
+            default: () => (
+              <div>
+                <Icon icon="ep:more-filled" class="h-full" />
+              </div>
+            ),
+            dropdown: () => [
+              hasPermission('RolePermission/addRole') ? (
+                <ElDropdownItem onClick={() => addNode(role)}>
+                  新增
+                </ElDropdownItem>
+              ) : undefined,
+              hasPermission('RolePermission/updateRole') ? (
+                <ElDropdownItem onClick={() => editNode(role, parent)}>
+                  编辑
+                </ElDropdownItem>
+              ) : undefined,
+              hasPermission('RolePermission/removeRole') ? (
+                <ElDropdownItem onClick={() => removeNode(role)}>
+                  删除
+                </ElDropdownItem>
+              ) : undefined,
+            ],
+          }}
+        </ElDropdown>
+      ) : undefined}
     </div>
   );
 }
