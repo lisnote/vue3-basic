@@ -49,7 +49,7 @@ const permissionMap = Array.from({ length: roleList.length }).map(() => [
       { code: 'RolePermission/addRole', name: '添加职位', has: false },
       { code: 'RolePermission/updateRole', name: '更新职位', has: false },
       { code: 'RolePermission/removeRole', name: '删除职位', has: false },
-      { code: 'RolePermission/removePermission', name: '更新权限', has: false },
+      { code: 'RolePermission/updatePermission', name: '更新权限', has: false },
     ],
   },
   {
