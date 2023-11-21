@@ -57,7 +57,7 @@ const permissionMap = Array.from({ length: roleList.length }).map(() => [
     has: false,
     children: [
       { code: 'UserManagement/remove', name: '删除', has: false },
-      { code: 'UserManagement/add', name: '添加', has: false },
+      { code: 'UserManagement/invite', name: '邀请', has: false },
       { code: 'UserManagement/update', name: '更新', has: false },
     ],
   },
