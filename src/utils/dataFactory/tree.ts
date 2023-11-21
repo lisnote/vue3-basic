@@ -1,7 +1,7 @@
 /**
  * 树结构的数据处理方法集
  */
-import { cloneDeep } from 'lodash-es';
+import { cloneDeep, isString } from 'lodash-es';
 
 interface TreeProps {
   children?: string;
@@ -11,13 +11,13 @@ interface TreeProps {
 /**
  * 树结构数据修剪, 直接影响原对象, 移除自身及子树指定字段的值不含search值的树
  * @param tree 待处理的树数据
- * @param search 查找的值
+ * @param search 查找的值或查找函数
  * @param props 树属性及查找字段
  * @returns 被修剪的树
  */
 export function treeCleaner<T extends any[]>(
   tree: T,
-  search: string,
+  search: string | ((node: T[number]) => boolean),
   props?: TreeProps,
 ): T {
   const { children, field } = Object.assign(
@@ -25,9 +25,11 @@ export function treeCleaner<T extends any[]>(
     props,
   );
   return tree.reduceRight((pre, now, index) => {
-    if (now[field].includes(search)) return pre;
+    if (isString(search) ? now[field].includes(search) : search(now)) {
+      return pre;
+    }
     if (now[children]) {
-      treeCleaner(now[children], search, { children, field });
+      treeCleaner(now[children], search, props);
     }
     if ((now[children]?.length ?? 0) < 1) {
       tree.splice(index, 1);
@@ -39,13 +41,13 @@ export function treeCleaner<T extends any[]>(
 /**
  * 树结构数据过滤, 不影响原对象, 过滤自身及子树指定字段的值不含search值的树
  * @param tree 待处理的树数据
- * @param search 查找的值
+ * @param search 查找的值或查找函数
  * @param props 树属性及查找字段
  * @returns 被过滤的树
  */
 export function treeFilter<T extends any[]>(
   tree: T,
-  search: string,
+  search: string | ((node: T[number]) => boolean),
   props?: TreeProps,
 ): T {
   return treeCleaner(cloneDeep(tree), search, props);
