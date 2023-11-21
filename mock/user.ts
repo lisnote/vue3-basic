@@ -1,5 +1,4 @@
 import { createMockMethod, queryList } from '.';
-import { pick } from 'lodash-es';
 import { treeForEach, treeToList } from '../src/utils/dataFactory';
 
 // 角色数据
@@ -103,7 +102,7 @@ export default createMockMethod(
         return {
           code: 0,
           data: {
-            ...pick(user, 'id', 'name', 'avatar', 'phone', 'email'),
+            ...user,
             token: user.roleId,
             permissions: treeToList(
               permissionMap[user.roleId === '-1' ? 0 : user.roleId],

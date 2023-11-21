@@ -17,6 +17,8 @@ export function useUserStore() {
         avatar: '',
         phone: '',
         email: '',
+        role: '',
+        roleId: '',
         token: '',
         permissions: [] as string[],
       });
@@ -37,6 +39,8 @@ export function useUserStore() {
             avatar: '',
             phone: '',
             email: '',
+            role: '',
+            roleId: '',
             token: '',
             permissions: [] as string[],
           });
