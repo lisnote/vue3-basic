@@ -45,9 +45,10 @@ const submit = debounce(async function submit() {
 function changePermission(row: Permission) {
   if (row.has) {
     const parent = parentMap.get(toRaw(row));
-    if (!parent) return;
-    parent.has = true;
-    changePermission(parent);
+    if (parent) {
+      parent.has = true;
+      changePermission(parent);
+    }
   } else {
     row.children?.forEach((child) => {
       child.has = false;
