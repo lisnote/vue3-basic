@@ -3,13 +3,25 @@ import { ElSubMenu, ElMenuItem } from 'element-plus';
 import { Icon } from '@iconify/vue';
 import { useStyleStore } from '@/store';
 import type { RecursiveMenuData } from '.';
+import { hasPermission } from '@/hooks/usePermission';
 
 defineProps<{ data: RecursiveMenuData }>();
 const styleStore = useStyleStore();
+
+function isMenu(data: RecursiveMenuData) {
+  if (!data.children?.length) return false;
+  for (const child of data.children) {
+    if (!child.permission || hasPermission(child.permission)) return true;
+  }
+}
+function isMenuItem(data: RecursiveMenuData) {
+  if (data.children?.length) return false;
+  return !data.permission || hasPermission(data.permission);
+}
 </script>
 <template>
   <ElSubMenu
-    v-if="data.children?.length ?? 0 > 0"
+    v-if="isMenu(data)"
     :index="data.index"
     teleported
     :popper-class="$style.subMenu"
@@ -28,7 +40,7 @@ const styleStore = useStyleStore();
     />
   </ElSubMenu>
   <ElMenuItem
-    v-else
+    v-else-if="isMenuItem(data)"
     :index="data.index"
     @click="data.onClick?.(), styleStore.hideSidebar()"
   >
