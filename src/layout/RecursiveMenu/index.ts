@@ -16,6 +16,7 @@ export interface RecursiveMenuData {
   index: string;
   title: string;
   icon: string;
+  permission: string;
   children?: RecursiveMenuData[];
   onClick?(...args: unknown[]): unknown;
 }
