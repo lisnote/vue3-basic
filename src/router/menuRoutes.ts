@@ -50,62 +50,62 @@ export const menuRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: '/Features/SwitchTheme',
-        meta: { title: '切换主题' },
+        meta: { title: $t('menus.themeManagement') },
         component: () => import('@/views/Features/SwitchTheme'),
       },
       {
         path: '/Features/FileDownload',
-        meta: { title: '文件下载' },
+        meta: { title: $t('menus.downloader') },
         component: () => import('@/views/Features/FileDownload'),
       },
       {
         path: '/Features/MarkdownRender',
-        meta: { title: 'Markdown渲染' },
+        meta: { title: $t('menus.markdownRender') },
         component: () => import('@/views/Features/MarkdownRender'),
       },
       {
         path: '/Features/CodeEditor',
-        meta: { title: '代码编辑' },
+        meta: { title: $t('menus.codeEditor') },
         component: () => import('@/views/Features/CodeEditor'),
       },
       {
         path: '/Features/PDFRender',
-        meta: { title: 'PDF渲染' },
+        meta: { title: $t('menus.pdfRender') },
         component: () => import('@/views/Features/PDFRender'),
       },
       {
         path: '/Features/RichTextEditor',
-        meta: { title: '富文本编辑' },
+        meta: { title: $t('menus.richTextEditor') },
         component: () => import('@/views/Features/RichTextEditor'),
       },
       {
         path: '/Features/VideoPlayer',
-        meta: { title: '视频播放' },
+        meta: { title: $t('menus.videoPlayer') },
         component: () => import('@/views/Features/VideoPlayer'),
       },
       {
-        path: '/Features/ScanningCode',
-        meta: { title: '扫码' },
+        path: '/Features/QRCodeRecognition',
+        meta: { title: $t('menus.qrCodeRecognition') },
         component: () => import('@/views/Features/ScanningCode'),
       },
       {
         path: '/Features/Watermark',
-        meta: { title: '网页水印' },
+        meta: { title: $t('menus.watermark') },
         component: () => import('@/views/Features/Watermark'),
       },
       {
         path: '/Features/AMap',
-        meta: { title: '高德地图' },
+        meta: { title: $t('menus.aMap') },
         component: () => import('@/views/Features/AMap'),
       },
       {
         path: '/Features/TencentMap',
-        meta: { title: '腾讯地图' },
+        meta: { title: $t('menus.tencentMap') },
         component: () => import('@/views/Features/TencentMap'),
       },
       {
         path: '/Features/WebGL',
-        meta: { title: '数字孪生' },
+        meta: { title: $t('menus.digitalTwin') },
         component: () => import('@/views/Features/WebGL'),
       },
     ],
@@ -137,7 +137,7 @@ export const menuRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: '/Toys/Game',
-        meta: { title: '游戏' },
+        meta: { title: $t('menus.game') },
         children: [
           {
             path: '/Toys/Game/DontTapTheWhiteTile',
@@ -158,7 +158,7 @@ export const menuRoutes: RouteRecordRaw[] = [
       },
       {
         path: '/Toys/Service',
-        meta: { title: '服务' },
+        meta: { title: $t('menus.service') },
         children: [
           {
             path: '/Toys/Service/Websocket',
@@ -215,17 +215,23 @@ export const menuRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: '/System/RolePermission',
-        meta: { title: '职位与权限', permission: 'RolePermission' },
+        meta: {
+          title: $t('menus.rolePermission'),
+          permission: 'RolePermission',
+        },
         component: () => import('@/views/System/RolePermission'),
       },
       {
         path: '/System/UserManagement',
-        meta: { title: '用户管理', permission: 'UserManagement' },
+        meta: {
+          title: $t('menus.userManagement'),
+          permission: 'UserManagement',
+        },
         component: () => import('@/views/System/UserManagement'),
       },
       {
         path: '/System/About',
-        meta: { title: '关于' },
+        meta: { title: $t('menus.about') },
         component: () => import('@/views/System/About'),
       },
     ],
