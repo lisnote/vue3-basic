@@ -1,0 +1,7 @@
+menus:
+  dashboard: Dashboard
+  component: Component
+  functional: Functional
+  exceptionPage: Exception Page
+  toys: Toys
+  systemManagement: System Management

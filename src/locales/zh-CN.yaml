@@ -1,0 +1,7 @@
+menus:
+  dashboard: 仪表盘
+  component: 组件
+  functional: 功能
+  exceptionPage: 异常页面
+  toys: 玩具
+  systemManagement: 系统管理
