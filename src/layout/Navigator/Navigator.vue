@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useUserStore, useStyleStore } from '@/store';
+import { langs, lang, t } from '@/locales';
 import { Icon } from '@iconify/vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
 import pkg from '@root/package.json';
@@ -34,7 +35,15 @@ async function logout() {
     >
       {{ pkg.name }}
     </RouterLink>
-    <div>
+    <div class="flex items-center">
+      <ElDropdown trigger="click" tabindex="">
+        <div><Icon icon="cil:language" width="20" class="mx-1" /></div>
+        <template #dropdown>
+          <ElDropdownMenu v-for="(value, key) of langs" :key="key">
+            <ElDropdownItem @click="lang = key">{{ value }}</ElDropdownItem>
+          </ElDropdownMenu>
+        </template>
+      </ElDropdown>
       <ElDropdown trigger="click">
         <span class="el-dropdown-link">
           <div class="navigator-action">
