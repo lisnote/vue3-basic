@@ -50,12 +50,12 @@ export const menuRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: '/Features/SwitchTheme',
-        meta: { title: $t('menus.themeManagement') },
+        meta: { title: $t('menus.switchTheme') },
         component: () => import('@/views/Features/SwitchTheme'),
       },
       {
         path: '/Features/FileDownload',
-        meta: { title: $t('menus.downloader') },
+        meta: { title: $t('menus.fileDownload') },
         component: () => import('@/views/Features/FileDownload'),
       },
       {

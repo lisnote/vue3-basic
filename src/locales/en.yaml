@@ -2,8 +2,8 @@ menus:
   dashboard: Dashboard
   component: Component
   functional: Functional
-  themeManagement: Theme Management
-  downloader: Downloader
+  switchTheme: Switch Theme
+  fileDownload: File Download
   markdownRender: Markdown Render
   codeEditor: Code Editor
   pdfRender: PDF Render

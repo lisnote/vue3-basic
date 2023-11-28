@@ -2,8 +2,8 @@ menus:
   dashboard: 仪表盘
   component: 组件
   functional: 功能
-  themeManagement: 主题管理
-  downloader: 文件下载
+  switchTheme: 主题管理
+  fileDownload: 文件下载
   markdownRender: Markdown渲染
   codeEditor: 代码编辑器
   pdfRender: PDF渲染
