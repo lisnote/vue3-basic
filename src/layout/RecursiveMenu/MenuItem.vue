@@ -1,14 +1,16 @@
 <script lang="ts" setup>
-import { ElSubMenu, ElMenuItem } from 'element-plus';
+import { ElSubMenu, ElMenuItem, ElTooltip } from 'element-plus';
 import { Icon } from '@iconify/vue';
 import { useStyleStore } from '@/store';
 import type { RecursiveMenuData } from '.';
 import { hasPermission } from '@/hooks/usePermission';
 import { t } from '@/locales';
+import { ref } from 'vue';
 
 defineProps<{ data: RecursiveMenuData }>();
 const styleStore = useStyleStore();
 
+// SubMenu/MenuItem 判断
 function isMenu(data: RecursiveMenuData) {
   if (!data.children?.length) return false;
   for (const child of data.children) {
@@ -18,6 +20,16 @@ function isMenu(data: RecursiveMenuData) {
 function isMenuItem(data: RecursiveMenuData) {
   if (data.children?.length) return false;
   return !data.permission || hasPermission(data.permission);
+}
+
+// 菜单文字溢出时显示 Tooltip
+const menuTextRef = ref<HTMLElement>();
+const tooltipDisabled = ref(false);
+function hoverMenu() {
+  const menuTextContainer = menuTextRef.value!;
+  tooltipDisabled.value = !(
+    menuTextContainer.scrollWidth > menuTextContainer.clientWidth
+  );
 }
 </script>
 <template>
@@ -32,7 +44,19 @@ function isMenuItem(data: RecursiveMenuData) {
       <div v-if="data.icon" class="flex">
         <Icon :icon="data.icon" width="20" class="mx-1" />
       </div>
-      <span>{{ t(data.title) ?? data.title }}</span>
+      <ElTooltip
+        :content="t(data.title) ?? data.title"
+        placement="top"
+        :disabled="tooltipDisabled"
+      >
+        <span
+          ref="menuTextRef"
+          class="overflow-ellipsis overflow-hidden"
+          @mouseover="hoverMenu"
+        >
+          {{ t(data.title) ?? data.title }}
+        </span>
+      </ElTooltip>
     </template>
     <MenuItem
       v-for="(item, index) in data.children"
@@ -48,7 +72,19 @@ function isMenuItem(data: RecursiveMenuData) {
     <div v-if="data.icon" class="flex">
       <Icon :icon="data.icon" width="20" class="mx-1" />
     </div>
-    <span>{{ t(data.title) ?? data.title }}</span>
+    <ElTooltip
+      :content="t(data.title) ?? data.title"
+      placement="top"
+      :disabled="tooltipDisabled"
+    >
+      <span
+        ref="menuTextRef"
+        class="overflow-ellipsis overflow-hidden"
+        @mouseover="hoverMenu"
+      >
+        {{ t(data.title) ?? data.title }}
+      </span>
+    </ElTooltip>
   </ElMenuItem>
 </template>
 <style module lang="scss">
