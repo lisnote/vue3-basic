@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useUserStore, useStyleStore } from '@/store';
-import { langs, lang, t } from '@/locales';
+import { langs, lang } from '@/locales';
 import { Icon } from '@iconify/vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
 import pkg from '@root/package.json';
@@ -36,8 +36,9 @@ async function logout() {
       {{ pkg.name }}
     </RouterLink>
     <div class="flex items-center">
+      <div><Icon icon="ep:bell" width="20" class="mx-10px" /></div>
       <ElDropdown trigger="click" tabindex="">
-        <div><Icon icon="cil:language" width="20" class="mx-1" /></div>
+        <div><Icon icon="cil:language" width="20" class="mx-10px" /></div>
         <template #dropdown>
           <ElDropdownMenu v-for="(value, key) of langs" :key="key">
             <ElDropdownItem @click="lang = key">{{ value }}</ElDropdownItem>
@@ -48,7 +49,9 @@ async function logout() {
         <span class="el-dropdown-link">
           <div class="navigator-action">
             <img class="w-10 rounded-1/2" :src="userStore.avatar" />
-            <span>{{ userStore.name }}</span>
+            <span v-show="styleStore.deviceMode !== 'mobild'">
+              {{ userStore.name }}
+            </span>
           </div>
         </span>
         <template #dropdown>
