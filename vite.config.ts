@@ -7,6 +7,7 @@ import svgLoader from 'vite-svg-loader';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import pkg from './package.json';
+import yamlLoader from '@modyfi/vite-plugin-yaml';
 
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfigExport => {
@@ -25,6 +26,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
       vue(),
       vueJsx(),
       svgLoader(),
+      yamlLoader(),
       WindiCSS(),
       viteMockServe({
         mockPath: 'mock',

@@ -54,6 +54,7 @@
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
     "@iconify/vue": "^4.1.1",
+    "@modyfi/vite-plugin-yaml": "^1.0.4",
     "@types/express": "^4.17.14",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.11.8",
