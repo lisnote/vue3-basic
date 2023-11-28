@@ -1,5 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router';
 import { h } from 'vue';
+import { $t } from '@/locales';
 function createRender(content: string) {
   return () => h('div', content);
 }
@@ -9,12 +10,12 @@ function createRender(content: string) {
 export const menuRoutes: RouteRecordRaw[] = [
   {
     path: '/Dashboard',
-    meta: { title: '首页', icon: 'ep:house' },
+    meta: { title: $t('menus.dashboard'), icon: 'ep:house' },
     component: () => import('@/views/Dashboard'),
   },
   {
     path: '/Components',
-    meta: { title: '组件', icon: 'ep:menu' },
+    meta: { title: $t('menus.component'), icon: 'ep:menu' },
     children: [
       {
         path: '/Components/Dialog',
@@ -45,7 +46,7 @@ export const menuRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/Features',
-    meta: { title: '功能', icon: 'ep:magic-stick' },
+    meta: { title: $t('menus.functional'), icon: 'ep:magic-stick' },
     children: [
       {
         path: '/Features/SwitchTheme',
@@ -111,7 +112,7 @@ export const menuRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/Error',
-    meta: { title: '异常页面', icon: 'ep:warning' },
+    meta: { title: $t('menus.exceptionPage'), icon: 'ep:warning' },
     children: [
       {
         path: '/Error/403',
@@ -132,7 +133,7 @@ export const menuRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/Toys',
-    meta: { title: '玩具功能', icon: 'ep:sugar' },
+    meta: { title: $t('menus.toys'), icon: 'ep:sugar' },
     children: [
       {
         path: '/Toys/Game',
@@ -210,7 +211,7 @@ export const menuRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/System',
-    meta: { title: '系统管理', icon: 'ep:setting' },
+    meta: { title: $t('menus.systemManagement'), icon: 'ep:setting' },
     children: [
       {
         path: '/System/RolePermission',

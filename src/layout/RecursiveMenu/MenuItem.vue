@@ -4,6 +4,7 @@ import { Icon } from '@iconify/vue';
 import { useStyleStore } from '@/store';
 import type { RecursiveMenuData } from '.';
 import { hasPermission } from '@/hooks/usePermission';
+import { t } from '@/locales';
 
 defineProps<{ data: RecursiveMenuData }>();
 const styleStore = useStyleStore();
@@ -31,7 +32,7 @@ function isMenuItem(data: RecursiveMenuData) {
       <div v-if="data.icon" class="flex">
         <Icon :icon="data.icon" width="20" class="mx-1" />
       </div>
-      <span>{{ data.title }}</span>
+      <span>{{ t(data.title) ?? data.title }}</span>
     </template>
     <MenuItem
       v-for="(item, index) in data.children"
@@ -47,7 +48,7 @@ function isMenuItem(data: RecursiveMenuData) {
     <div v-if="data.icon" class="flex">
       <Icon :icon="data.icon" width="20" class="mx-1" />
     </div>
-    <span>{{ data.title }}</span>
+    <span>{{ t(data.title) ?? data.title }}</span>
   </ElMenuItem>
 </template>
 <style module lang="scss">
