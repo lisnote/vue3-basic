@@ -2,6 +2,23 @@ menus:
   dashboard: Dashboard
   component: Component
   functional: Functional
+  themeManagement: Theme Management
+  downloader: Downloader
+  markdownRender: Markdown Render
+  codeEditor: Code Editor
+  pdfRender: PDF Render
+  richTextEditor: Rich Text Editor
+  videoPlayer: Video Player
+  qrCodeRecognition: QR Code Recognition
+  watermark: Watermark
+  aMap: AMap
+  tencentMap: Tencent Map
+  digitalTwin: Digital Twin
   exceptionPage: Exception Page
   toys: Toys
+  game: Game
+  service: Service
   systemManagement: System Management
+  rolePermission: Role Permission
+  userManagement: User Management
+  about: About

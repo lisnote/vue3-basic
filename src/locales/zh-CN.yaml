@@ -2,6 +2,23 @@ menus:
   dashboard: 仪表盘
   component: 组件
   functional: 功能
+  themeManagement: 主题管理
+  downloader: 文件下载
+  markdownRender: Markdown渲染
+  codeEditor: 代码编辑器
+  pdfRender: PDF渲染
+  richTextEditor: 富文本编辑器
+  videoPlayer: 视频播放器
+  qrCodeRecognition: 二维码识别
+  watermark: 水印
+  aMap: 高德地图
+  tencentMap: 腾讯地图
+  digitalTwin: 数字孪生
   exceptionPage: 异常页面
   toys: 玩具
+  game: 游戏
+  service: 服务
   systemManagement: 系统管理
+  rolePermission: 职位与权限
+  userManagement: 用户管理
+  about: 关于
