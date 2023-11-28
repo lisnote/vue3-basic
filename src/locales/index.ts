@@ -1,5 +1,8 @@
-import { reactive, ref } from 'vue';
+import { reactive } from 'vue';
+import { useStorage } from '@/utils/storage';
 
+/** 当前的语言 */
+export const lang = useStorage('lang', navigator.language ?? 'en');
 const messages = reactive(
   Object.fromEntries(
     Object.entries(import.meta.glob('./*.yaml', { eager: true })).map(
@@ -10,9 +13,6 @@ const messages = reactive(
     ),
   ),
 );
-
-/** 当前的语言 */
-export const lang = ref(navigator.language ?? 'en');
 
 /** 支持的语言数组 */
 export const langs = {
