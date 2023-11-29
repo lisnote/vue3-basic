@@ -28,12 +28,20 @@ export const $t = (message: string) => message;
  * @param message 待国际化的信息
  * @returns 国际化后的信息
  */
-export function t(message: string) {
-  function getMessage(path: string[]) {
-    return path.reduce(
+export function t(
+  message: string,
+  map?: Record<string, string | number> | Array<string | number>,
+) {
+  let msg = message
+    .split('.')
+    .reduce(
       (pre, current) => pre[current],
       messages[lang.value] ?? messages['en'],
     );
+  if (map) {
+    Object.entries(map).forEach(([key, value]) => {
+      msg = msg.replaceAll('%{' + key + '}', String(value));
+    });
   }
-  return getMessage(message.split('.'));
+  return msg;
 }
