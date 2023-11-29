@@ -2,6 +2,9 @@
 import LoginForm from './LoginForm.vue';
 import SignupForm from './SignupForm.vue';
 import ResetForm from './ResetForm.vue';
+import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
+import { langs, lang } from '@/locales';
+import { Icon } from '@iconify/vue';
 import { themeMap, switchTheme } from '@/utils/theme';
 import { ref } from 'vue';
 import pkg from '@root/package.json';
@@ -36,6 +39,14 @@ const mode = ref<'login' | 'signup' | 'reset'>('login');
       </div>
     </div>
     <div class="absolute right-0 bottom-0 flex gap-3 m-3">
+      <ElDropdown trigger="click" tabindex="">
+        <div><Icon icon="cil:language" width="20" class="mx-10px" /></div>
+        <template #dropdown>
+          <ElDropdownMenu v-for="(value, key) of langs" :key="key">
+            <ElDropdownItem @click="lang = key">{{ value }}</ElDropdownItem>
+          </ElDropdownMenu>
+        </template>
+      </ElDropdown>
       <div
         v-for="(theme, key) of themeMap"
         :key="key"
