@@ -10,6 +10,7 @@ import {
 import { sendSmsCode, smsCodeType } from '@/api/basic';
 import { resetPassword } from '@/api/user';
 import { t } from '@/locales';
+import { useWatchLang } from '@/hooks/useI18n';
 import type { FormInstance, FormItemInstance, FormRules } from 'element-plus';
 
 const emit = defineEmits(['success']);
@@ -29,14 +30,20 @@ const formData = ref({
 const passwordVisible = ref(false);
 // 验证码展示逻辑
 const smsCodeAppend = ref(t('login.sendSms'));
+const sendSmsDisabled = ref(false);
+useWatchLang(() => {
+  if (!sendSmsDisabled.value) smsCodeAppend.value = t('login.sendSms');
+});
 const smsCodeFormItemRef = ref<FormItemInstance>();
 let smsCodeSetTimeout: ReturnType<typeof setTimeout>;
 function updateSmsCodeAppend(time = 60) {
+  sendSmsDisabled.value = true;
   smsCodeAppend.value = t('login.wait60s', [time]);
   const nextSecond = function () {
     smsCodeSetTimeout = setTimeout(() => updateSmsCodeAppend(time - 1), 1000);
   };
   if (time === 0) {
+    sendSmsDisabled.value = false;
     smsCodeAppend.value = t('login.sendSms');
   } else {
     nextSecond();
@@ -101,7 +108,7 @@ async function submit() {
         >
           <template #append>
             <ElButton
-              :disabled="smsCodeAppend !== t('login.sendSms')"
+              :disabled="sendSmsDisabled"
               @click="sendSmsVerificationCode()"
             >
               {{ smsCodeAppend }}
