@@ -9,6 +9,7 @@ import {
 } from '@/utils/validator';
 import { sendSmsCode, smsCodeType } from '@/api/basic';
 import { resetPassword } from '@/api/user';
+import { t } from '@/locales';
 import type { FormInstance, FormItemInstance, FormRules } from 'element-plus';
 
 const emit = defineEmits(['success']);
@@ -27,16 +28,16 @@ const formData = ref({
 });
 const passwordVisible = ref(false);
 // 验证码展示逻辑
-const smsCodeAppend = ref('发送验证码');
+const smsCodeAppend = ref(t('login.sendSms'));
 const smsCodeFormItemRef = ref<FormItemInstance>();
 let smsCodeSetTimeout: ReturnType<typeof setTimeout>;
 function updateSmsCodeAppend(time = 60) {
-  smsCodeAppend.value = time + '秒后重新发送';
+  smsCodeAppend.value = t('login.wait60s', [time]);
   const nextSecond = function () {
     smsCodeSetTimeout = setTimeout(() => updateSmsCodeAppend(time - 1), 1000);
   };
   if (time === 0) {
-    smsCodeAppend.value = '发送验证码';
+    smsCodeAppend.value = t('login.sendSms');
   } else {
     nextSecond();
   }
@@ -46,7 +47,9 @@ async function sendSmsVerificationCode() {
   const valid = await formRef.value?.validateField('phone').catch(() => false);
   if (!valid && smsCodeFormItemRef.value) {
     smsCodeFormItemRef.value.validateState = 'error';
-    smsCodeFormItemRef.value.validateMessage = '请先输入有效的手机号';
+    smsCodeFormItemRef.value.validateMessage = t(
+      'validator.pleaseInputAValidPhoneNumberFirst',
+    );
     return;
   }
   updateSmsCodeAppend();
@@ -55,7 +58,7 @@ async function sendSmsVerificationCode() {
     type: smsCodeType.resetPassword,
   })
     .then(() => {
-      ElMessage.success('验证码发送成功');
+      ElMessage.success(t('login.smsSentSuccessfully'));
     })
     .catch(() => {
       clearTimeout(smsCodeSetTimeout);
@@ -70,7 +73,7 @@ async function submit() {
     smsCode: formData.value.smsCode,
     password: formData.value.password,
   }).then(() => {
-    ElMessage.success('密码重置成功');
+    ElMessage.success(t('login.passwordResetSuccessfully'));
     emit('success');
   });
 }
@@ -85,17 +88,20 @@ async function submit() {
       @keyup.enter="submit"
     >
       <ElFormItem prop="phone">
-        <ElInput v-model="formData.phone" placeholder="请输入手机号" />
+        <ElInput
+          v-model="formData.phone"
+          :placeholder="t('login.phonePlaceholder')"
+        />
       </ElFormItem>
       <ElFormItem ref="smsCodeFormItemRef" prop="smsCode">
         <ElInput
           v-model="formData.smsCode"
-          placeholder="请输入验证码"
+          :placeholder="t('login.smsCodePlaceholder')"
           maxlength="6"
         >
           <template #append>
             <ElButton
-              :disabled="smsCodeAppend !== '发送验证码'"
+              :disabled="smsCodeAppend !== t('login.sendSms')"
               @click="sendSmsVerificationCode()"
             >
               {{ smsCodeAppend }}
@@ -107,7 +113,7 @@ async function submit() {
         <ElInput
           v-model="formData.password"
           :type="passwordVisible ? 'text' : 'password'"
-          placeholder="请输入密码"
+          :placeholder="t('login.passwordPlaceholder')"
         >
           <template #suffix>
             <Icon
@@ -118,6 +124,8 @@ async function submit() {
         </ElInput>
       </ElFormItem>
     </ElForm>
-    <ElButton class="w-full" @click="submit">重置密码</ElButton>
+    <ElButton class="w-full" @click="submit">
+      {{ t('login.resetPassword') }}
+    </ElButton>
   </div>
 </template>

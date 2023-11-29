@@ -1,3 +1,4 @@
+import { t } from '@/locales';
 import type { FormRules } from 'element-plus';
 type ArrayAbleFormItemRule = Exclude<FormRules['validator'], undefined>;
 type ExtractArray<T> = T extends Array<infer U> ? U : never;
@@ -49,23 +50,23 @@ export function lengthInRange(
 // 用户名输入验证
 export const accountValidator: Validator = function (_rule, value, cb) {
   if (!lengthInRange(value, { min: 4, max: 16 })) {
-    cb('长度必须为4-16位');
+    cb(t('validator.lengthMustBe', ['4-16']));
   } else if (!hasLetter(value)) {
-    cb('必须包含字母');
+    cb(t('validator.account.mustContain'));
   } else if (!/^[\w.-]*$/.test(value)) {
-    cb('只允许使用字母，数字、特殊符号._-');
+    cb(t('validator.account.onlyAllowed'));
   } else {
     cb();
   }
 };
 // 手机号输入验证
 export const phoneValidator: Validator = function (_rule, value, cb) {
-  if (!lengthInRange(value, { min: 11, max: 11 })) {
-    cb('长度必须为11位');
+  if (value.length !== 11) {
+    cb(t('validator.lengthMustBe', [11]));
   } else if (value[0] != 1) {
-    cb('只允许1开始的手机号');
+    cb(t('validator.phone.startWith'));
   } else if (!/^1\d{10}$/.test(value)) {
-    cb('只允许使用数字');
+    cb(t('validator.phone.onlyAllowed'));
   } else {
     cb();
   }
@@ -73,11 +74,11 @@ export const phoneValidator: Validator = function (_rule, value, cb) {
 // 密码输入验证
 export const passwordValidator: Validator = function (_rule, value, cb) {
   if (!lengthInRange(value, { min: 8, max: 20 })) {
-    cb('长度必须为8-20位');
+    cb(t('validator.lengthMustBe', ['8-20']));
   } else if (!hasLetter(value) || !hasNumber(value)) {
-    cb('必须包含字母和数字');
+    cb(t('validator.password.mustContain'));
   } else if (!/^[\w.-]*$/.test(value)) {
-    cb('只允许使用字母，数字，特殊符号._-');
+    cb(t('validator.password.onlyAllowed'));
   } else {
     cb();
   }
@@ -86,9 +87,9 @@ export const passwordValidator: Validator = function (_rule, value, cb) {
 export const smsCodeValidator: Validator = function (_rule, value, cb) {
   value = String(value);
   if (value.length !== 6) {
-    cb('长度必须为6位');
+    cb(t('validator.lengthMustBe', [6]));
   } else if (!/^\d*$/.test(value)) {
-    cb('只允许使用数字');
+    cb(t('validator.smsCode.onlyAllowed'));
   } else {
     cb();
   }

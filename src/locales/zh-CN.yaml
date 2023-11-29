@@ -1,8 +1,29 @@
+button:
+  add: 新增
+  edit: 编辑
+  delete: 删除
+  invite: 邀请
+  confirm: 确认
+  cancel: 取消
+validator:
+  lengthMustBe: 长度必须为%{0}位
+  pleaseInputAValidPhoneNumberFirst: 请先输入有效的手机号
+  account:
+    mustContain: 必须包含字母
+    onlyAllowed: 只允许使用字母，数字，特殊符号._-
+  phone:
+    startWith: 只允许1开头的手机号
+    onlyAllowed: 只允许使用数字
+  password:
+    mustContain: 必须包含字母和数字
+    onlyAllowed: 只允许使用字母，数字，特殊符号._-
+  smsCode:
+    onlyAllowed: 只允许使用数字
 menus:
   dashboard: 仪表盘
   component: 组件
   functional: 功能
-  switchTheme: 主题管理
+  switchTheme: 切换主题
   fileDownload: 文件下载
   markdownRender: Markdown渲染
   codeEditor: 代码编辑器
@@ -22,3 +43,14 @@ menus:
   rolePermission: 职位与权限
   userManagement: 用户管理
   about: 关于
+login:
+  phonePlaceholder: 请输入手机号
+  passwordPlaceholder: 请输入密码
+  smsCodePlaceholder: 请输入验证码
+  wait60s: 等待%{0}秒
+  sendSms: 发送短信
+  smsSentSuccessfully: 短信发送成功
+  signIn: 登录
+  signUp: 注册
+  resetPassword: 重置密码
+  passwordResetSuccessfully: 重置密码成功

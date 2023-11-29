@@ -5,6 +5,7 @@ import { Icon } from '@iconify/vue';
 import router from '@/router';
 import { ref } from 'vue';
 import { phoneValidator, passwordValidator } from '@/utils/validator';
+import { t } from '@/locales';
 import type { FormInstance, FormRules } from 'element-plus';
 const userStore = useUserStore();
 
@@ -37,13 +38,16 @@ async function submit() {
       @keyup.enter="submit"
     >
       <ElFormItem prop="phone">
-        <ElInput v-model="formData.phone" placeholder="请输入手机号" />
+        <ElInput
+          v-model="formData.phone"
+          :placeholder="t('login.phonePlaceholder')"
+        />
       </ElFormItem>
       <ElFormItem prop="password">
         <ElInput
           v-model="formData.password"
           :type="passwordVisible ? 'text' : 'password'"
-          placeholder="请输入密码"
+          :placeholder="t('login.passwordPlaceholder')"
         >
           <template #suffix>
             <Icon
@@ -54,6 +58,6 @@ async function submit() {
         </ElInput>
       </ElFormItem>
     </ElForm>
-    <ElButton class="w-full" @click="submit">登录</ElButton>
+    <ElButton class="w-full" @click="submit">{{ t('login.signIn') }}</ElButton>
   </div>
 </template>

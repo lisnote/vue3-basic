@@ -1,3 +1,24 @@
+button:
+  add: Add
+  edit: Edit
+  delete: Delete
+  invite: Invite
+  confirm: Confirm
+  cancel: Cancel
+validator:
+  lengthMustBe: Length must be %{0} characters
+  pleaseInputAValidPhoneNumberFirst: Please input a valid phone number first
+  account:
+    mustContain: Must contain letters
+    onlyAllowed: Only letters, numbers, and special characters ._- are allowed
+  phone:
+    startWith: Phone number must start with 1
+    onlyAllowed: Only numbers are allowed
+  password:
+    mustContain: Must contain both letters and numbers
+    onlyAllowed: Only letters, numbers, and special characters ._- are allowed
+  smsCode:
+    onlyAllowed: Only numbers are allowed
 menus:
   dashboard: Dashboard
   component: Component
@@ -22,3 +43,14 @@ menus:
   rolePermission: Role Permission
   userManagement: User Management
   about: About
+login:
+  phonePlaceholder: Please input the phone number
+  passwordPlaceholder: Please input the password
+  smsCodePlaceholder: Please input the SMS code
+  sendSms: Send SMS
+  smsSentSuccessfully: SMS sent successfully
+  wait60s: Wait %{0}s
+  signIn: Sign in
+  signUp: Sign up
+  resetPassword: Reset password
+  passwordResetSuccessfully: Password reset successfully

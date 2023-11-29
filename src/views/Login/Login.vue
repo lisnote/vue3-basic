@@ -5,6 +5,7 @@ import ResetForm from './ResetForm.vue';
 import { themeMap, switchTheme } from '@/utils/theme';
 import { ref } from 'vue';
 import pkg from '@root/package.json';
+import { t } from '@/locales';
 
 const mode = ref<'login' | 'signup' | 'reset'>('login');
 </script>
@@ -21,11 +22,15 @@ const mode = ref<'login' | 'signup' | 'reset'>('login');
         <ResetForm v-show="mode === 'reset'" @success="mode = 'login'" />
         <div class="flex justify-between">
           <template v-if="mode === 'login'">
-            <ElLink type="primary" @click="mode = 'signup'">注册账号</ElLink>
-            <ElLink type="info" @click="mode = 'reset'">忘记密码</ElLink>
+            <ElLink type="primary" @click="mode = 'signup'">
+              {{ t('login.signUp') }}
+            </ElLink>
+            <ElLink type="info" @click="mode = 'reset'">
+              {{ t('login.resetPassword') }}
+            </ElLink>
           </template>
           <ElLink v-else type="primary" @click="mode = 'login'">
-            返回登录
+            {{ t('login.signIn') }}
           </ElLink>
         </div>
       </div>
