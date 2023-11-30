@@ -18,11 +18,6 @@
       "@root/*": ["*"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.vue",
-    "types/**/*.d.ts"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.vue", "types/**/*.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

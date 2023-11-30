@@ -7,11 +7,5 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": [
-    "vite.config.ts",
-    "package.json",
-    "mock/**/*.ts",
-    "mock/**/*.d.ts",
-    "src/utils/dataFactory/**/*.ts"
-  ]
+  "include": ["vite.config.ts", "package.json", "mock/**/*.ts"]
 }

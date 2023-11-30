@@ -1,5 +1,4 @@
-import { createMockMethod, queryList } from '.';
-import { treeForEach, treeToList } from '../src/utils/dataFactory';
+import { createMockMethod, queryList, treeForEach, treeToList } from '.';
 
 // 角色数据
 type Role = { id: string; name: string; children?: Role[] };
