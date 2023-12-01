@@ -11,6 +11,7 @@ import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
 import EditRole from './EditRole.vue';
 import { hasPermission } from '@/hooks/usePermission';
+import { t } from '@/locales';
 
 const emit = defineEmits({
   'node-click': (role: Role) => role,
@@ -44,17 +45,17 @@ function renderContent(
             dropdown: () => [
               hasPermission('RolePermission/addRole') ? (
                 <ElDropdownItem onClick={() => addNode(role)}>
-                  新增
+                  {t('button.add')}
                 </ElDropdownItem>
               ) : undefined,
               hasPermission('RolePermission/updateRole') ? (
                 <ElDropdownItem onClick={() => editNode(role, parent)}>
-                  编辑
+                  {t('button.edit')}
                 </ElDropdownItem>
               ) : undefined,
               hasPermission('RolePermission/removeRole') ? (
                 <ElDropdownItem onClick={() => removeNode(role)}>
-                  删除
+                  {t('button.delete')}
                 </ElDropdownItem>
               ) : undefined,
             ],
@@ -90,11 +91,11 @@ function editNode(role: Role, parent: Role) {
   editRoleVisible.value = true;
 }
 function removeNode(role: Role) {
-  ElMessageBox.confirm(`确定删除${role.name}?`)
+  ElMessageBox.confirm(t('rolePermission.deleteConfirm', [role.name]))
     .then(() => {
       return removeRoles([role.id]);
     })
-    .then(() => ElMessage.success('删除成功'));
+    .then(() => ElMessage.success(t('rolePermission.roleDeleteSuccessfully')));
 }
 // EditRole
 const editRoleVisible = ref(false);

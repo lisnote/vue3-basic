@@ -23,7 +23,6 @@ const currentRole = ref<Role>();
   display: flex;
 
   .role-tree-container {
-    // w-200px flex-shrink-0 border-r border-$el-border-color mr-10px
     width: 200px;
     flex: 0 0 200px;
     border-right: 1px solid var(--el-border-color);

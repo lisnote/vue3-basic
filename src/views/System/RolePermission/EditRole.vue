@@ -4,6 +4,7 @@ import { ElButton, ElCascader, ElDialog, ElMessage } from 'element-plus';
 import { ref } from 'vue';
 
 import type { FormInstance, FormRules } from 'element-plus';
+import { t } from '@/locales';
 
 const props = withDefaults(
   defineProps<{
@@ -27,7 +28,11 @@ function loadData() {
   }
 }
 const formRules: FormRules = {
-  name: { required: true, message: '请输入职位名称', trigger: 'blur' },
+  name: {
+    required: true,
+    message: () => t('rolePermission.roleNamePlaceholder'),
+    trigger: 'blur',
+  },
 };
 async function submit() {
   let valid = false;
@@ -35,10 +40,12 @@ async function submit() {
   if (!valid) return;
   const { id = '', name = '', pid } = formData.value;
   if (props.mode === 'add') {
-    await addRole({ name, pid }).then(() => ElMessage.success('新增职位成功'));
+    await addRole({ name, pid }).then(() =>
+      ElMessage.success(t('rolePermission.roleAddSuccessfully')),
+    );
   } else {
     await updateRole({ id, name, pid }).then(() =>
-      ElMessage.success('编辑职位成功'),
+      ElMessage.success(t('rolePermission.roleEditSuccessfully')),
     );
   }
   emit('update:visible', false);
@@ -48,8 +55,12 @@ async function submit() {
 <template>
   <div>
     <ElDialog
-      :title="mode === 'add' ? '新增职位' : '编辑职位'"
-      width="300"
+      :title="
+        mode === 'add'
+          ? t('rolePermission.addRole')
+          : t('rolePermission.editRole')
+      "
+      width="350"
       :model-value="visible"
       @update:model-value="emit('update:visible', $event)"
       @open="loadData"
@@ -58,10 +69,10 @@ async function submit() {
         ref="formRef"
         :model="formData"
         :rules="formRules"
-        label-width="80px"
+        label-width="100px"
         @keyup.enter="submit"
       >
-        <ElFormItem label="上级职位" prop="pid">
+        <ElFormItem :label="t('rolePermission.parentRole')" prop="pid">
           <ElCascader
             v-model="formData.pid"
             :options="roleTree"
@@ -73,17 +84,22 @@ async function submit() {
             }"
             clearable
             :show-all-levels="false"
-            placeholder="请选择上级职位"
+            :placeholder="t('rolePermission.parentRolePlaceholder')"
           />
         </ElFormItem>
-        <ElFormItem label="职位名称" prop="name">
-          <ElInput v-model="formData.name" placeholder="请输入职位名称" />
+        <ElFormItem :label="t('rolePermission.roleName')" prop="name">
+          <ElInput
+            v-model="formData.name"
+            :placeholder="t('rolePermission.roleNamePlaceholder')"
+          />
         </ElFormItem>
       </ElForm>
       <template #footer>
         <div>
-          <ElButton @click="emit('update:visible', false)">取消</ElButton>
-          <ElButton @click="submit">确定</ElButton>
+          <ElButton @click="emit('update:visible', false)">
+            {{ t('button.cancel') }}
+          </ElButton>
+          <ElButton @click="submit">{{ t('button.confirm') }}</ElButton>
         </div>
       </template>
     </ElDialog>

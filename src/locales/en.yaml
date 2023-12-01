@@ -54,3 +54,18 @@ login:
   signUp: Sign up
   resetPassword: Reset password
   passwordResetSuccessfully: Password reset successfully
+rolePermission:
+  addRole: Add role
+  editRole: Edit role
+  parentRole: Superior role
+  parentRolePlaceholder: Please select superior role
+  roleName: Role name
+  roleNamePlaceholder: Please input the role name
+  roleAddSuccessfully: Role add successfully
+  roleEditSuccessfully: Role edit successfully
+  deleteConfirm: Are you sure delete %{0}?
+  roleDeleteSuccessfully: Delete successfully
+  permissionName: Permission name
+  permissionCode: Permission code
+  handle: Handle
+  permissionUpdateSuccessfully: Permission update successfully

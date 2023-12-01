@@ -54,3 +54,18 @@ login:
   signUp: 注册
   resetPassword: 重置密码
   passwordResetSuccessfully: 重置密码成功
+rolePermission:
+  addRole: 新增职位
+  editRole: 编辑职位
+  parentRole: 上级职位
+  parentRolePlaceholder: 请选择上级职位
+  roleName: 职位名称
+  roleNamePlaceholder: 请输入职位名称
+  roleAddSuccessfully: 职位新增成功
+  roleEditSuccessfully: 编辑职位成功
+  deleteConfirm: 确定删除%{0}?
+  roleDeleteSuccessfully: 删除成功
+  permissionName: 权限名
+  permissionCode: 权限码
+  handle: 操作
+  permissionUpdateSuccessfully: 权限更新成功

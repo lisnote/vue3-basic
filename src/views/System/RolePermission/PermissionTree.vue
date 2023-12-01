@@ -2,6 +2,7 @@
 import { getRolePermission, updateRolePermission } from '@/api/user';
 import type { Role, Permission } from '@/api/user';
 import { notPermission } from '@/hooks/usePermission';
+import { t } from '@/locales';
 import { useUserStore } from '@/store';
 import { treeForEach } from '@/utils/dataFactory';
 import { ElTable, ElTableColumn, ElCheckbox, ElMessage } from 'element-plus';
@@ -39,7 +40,7 @@ const submit = debounce(async function submit() {
     if (node.has) permissions.push(node.code);
   });
   updateRolePermission({ roleId: props.role!.id, permissions }).then(() =>
-    ElMessage.success('权限更新成功'),
+    ElMessage.success(t('rolePermission.permissionUpdateSuccessfully')),
   );
 }, 1000);
 function changePermission(row: Permission) {
@@ -68,9 +69,9 @@ function changePermission(row: Permission) {
       default-expand-all
       show-overflow-tooltip
     >
-      <ElTableColumn prop="name" label="名称" />
-      <ElTableColumn prop="code" label="权限码" />
-      <ElTableColumn label="操作" width="90">
+      <ElTableColumn prop="name" :label="t('rolePermission.permissionName')" />
+      <ElTableColumn prop="code" :label="t('rolePermission.permissionCode')" />
+      <ElTableColumn :label="t('rolePermission.handle')" width="90">
         <template #default="{ row }">
           <ElCheckbox
             v-model="row.has"
