@@ -1,10 +1,7 @@
-import { defineConfig } from 'windicss/helpers';
+import { defineConfig } from 'unocss';
 export default defineConfig({
-  shortcuts: {
-    icon: 'w-6',
-  },
   theme: {
-    screens: {
+    breakpoints: {
       sm: '640px',
       md: '768px',
       lg: '1024px',

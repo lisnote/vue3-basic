@@ -90,6 +90,8 @@ async function logout() {
 
   .project-name {
     font-size: xx-large;
+    text-decoration: none;
+    color: var(--el-color-primary);
   }
 
   .navigator-action {

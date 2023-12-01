@@ -1,6 +1,5 @@
 import { ConfigEnv, UserConfigExport, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import WindiCSS from 'vite-plugin-windicss';
 import { resolve } from 'path';
 import { viteMockServe } from 'vite-plugin-mock';
 import svgLoader from 'vite-svg-loader';
@@ -8,6 +7,7 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import pkg from './package.json';
 import yamlLoader from '@modyfi/vite-plugin-yaml';
+import UnoCSS from 'unocss/vite';
 
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfigExport => {
@@ -27,12 +27,12 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
       vueJsx(),
       svgLoader(),
       yamlLoader(),
-      WindiCSS(),
       viteMockServe({
         mockPath: 'mock',
         watchFiles: true,
         ignore: /index\.ts/,
       }),
+      UnoCSS(),
     ],
     resolve: {
       alias: {
