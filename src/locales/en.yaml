@@ -65,7 +65,7 @@ rolePermission:
   roleEditSuccessfully: Role edit successfully
   deleteConfirm: Are you sure delete %{0}?
   roleDeleteSuccessfully: Delete successfully
-  permissionName: Permission name
-  permissionCode: Permission code
+  permissionName: Name
+  permissionCode: Code
   handle: Handle
   permissionUpdateSuccessfully: Permission update successfully
