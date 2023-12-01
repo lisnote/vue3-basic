@@ -1,4 +1,10 @@
 /* normalize -------------------------------------------------- */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
 /* 通用块级元素 */
 body {
   margin: 0px;
