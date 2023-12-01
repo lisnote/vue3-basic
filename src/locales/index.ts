@@ -14,6 +14,7 @@ const messages = reactive(
   ),
 );
 
+console.log();
 /** 支持的语言数组 */
 export const langs = {
   'zh-CN': '简体中文',
@@ -35,7 +36,7 @@ export function t(
   let msg = message
     .split('.')
     .reduce(
-      (pre, current) => pre[current],
+      (pre, current) => pre?.[current] || message,
       messages[lang.value] ?? messages['en'],
     );
   if (map) {

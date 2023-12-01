@@ -45,7 +45,7 @@ function hoverMenu() {
         <Icon :icon="data.icon" width="20" class="mx-1" />
       </div>
       <ElTooltip
-        :content="t(data.title) ?? data.title"
+        :content="t(data.title)"
         placement="top"
         :disabled="tooltipDisabled"
       >
@@ -54,7 +54,7 @@ function hoverMenu() {
           class="overflow-ellipsis overflow-hidden"
           @mouseover="hoverMenu"
         >
-          {{ t(data.title) ?? data.title }}
+          {{ t(data.title) }}
         </span>
       </ElTooltip>
     </template>
@@ -73,7 +73,7 @@ function hoverMenu() {
       <Icon :icon="data.icon" width="20" class="mx-1" />
     </div>
     <ElTooltip
-      :content="t(data.title) ?? data.title"
+      :content="t(data.title)"
       placement="top"
       :disabled="tooltipDisabled"
     >
@@ -82,7 +82,7 @@ function hoverMenu() {
         class="overflow-ellipsis overflow-hidden"
         @mouseover="hoverMenu"
       >
-        {{ t(data.title) ?? data.title }}
+        {{ t(data.title) }}
       </span>
     </ElTooltip>
   </ElMenuItem>
