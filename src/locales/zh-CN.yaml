@@ -2,7 +2,6 @@ button:
   add: 新增
   edit: 编辑
   delete: 删除
-  invite: 邀请
   confirm: 确认
   cancel: 取消
 validator:
@@ -64,8 +63,15 @@ rolePermission:
   roleAddSuccessfully: 职位新增成功
   roleEditSuccessfully: 编辑职位成功
   deleteConfirm: 确定删除%{0}?
-  roleDeleteSuccessfully: 删除成功
+  roleDeleteSuccessfully: 删除职位成功
   permissionName: 权限名
   permissionCode: 权限码
   handle: 操作
   permissionUpdateSuccessfully: 权限更新成功
+userManagement:
+  searchAllUserInfo: 查询所有用户信息
+  name: 名称
+  role: 职位
+  phone: 电话
+  mail: 邮箱
+  accessThisAccount: 登录此用户

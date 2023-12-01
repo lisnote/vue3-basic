@@ -2,7 +2,6 @@ button:
   add: Add
   edit: Edit
   delete: Delete
-  invite: Invite
   confirm: Confirm
   cancel: Cancel
 validator:
@@ -69,3 +68,10 @@ rolePermission:
   permissionCode: Code
   handle: Handle
   permissionUpdateSuccessfully: Permission update successfully
+userManagement:
+  searchAllUserInfo: searchAllUserInfo
+  name: Name
+  role: Role
+  phone: Phone
+  mail: Mail
+  accessThisAccount: Access this account
