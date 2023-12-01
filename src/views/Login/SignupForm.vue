@@ -7,8 +7,8 @@ import {
   passwordValidator,
   smsCodeValidator,
 } from '@/utils/validator';
-import { sendSmsCode, smsCodeType } from '@/api/basic';
-import { signup } from '@/api/user';
+import { sendSmsCode, smsCodeType } from '@/apis/basic';
+import { signup } from '@/apis/user';
 import type { FormInstance, FormItemInstance, FormRules } from 'element-plus';
 import { t } from '@/locales';
 import { useWatchLang } from '@/hooks/useI18n';

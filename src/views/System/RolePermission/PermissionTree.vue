@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getRolePermission, updateRolePermission } from '@/api/user';
-import type { Role, Permission } from '@/api/user';
+import { getRolePermission, updateRolePermission } from '@/apis/user';
+import type { Role, Permission } from '@/apis/user';
 import { notPermission } from '@/hooks/usePermission';
 import { t } from '@/locales';
 import { useUserStore } from '@/store';

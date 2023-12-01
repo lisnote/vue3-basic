@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { User, getUsers, removeUsers } from '@/api/user';
+import { User, getUsers, removeUsers } from '@/apis/user';
 import {
   ElTable,
   ElTableColumn,

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Role, updateRole, addRole } from '@/api/user';
+import { type Role, updateRole, addRole } from '@/apis/user';
 import { ElButton, ElCascader, ElDialog, ElMessage } from 'element-plus';
 import { ref } from 'vue';
 

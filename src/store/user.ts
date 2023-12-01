@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { useStorage } from '@/utils/storage';
 import router from '@/router';
 import { Md5 } from 'ts-md5';
-import { login, logout } from '@/api/user';
+import { login, logout } from '@/apis/user';
 import pinia from './pinia';
 
 /**

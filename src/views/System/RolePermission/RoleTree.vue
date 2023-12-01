@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import { getRoleTree, removeRoles, type Role } from '@/api/user';
+import { getRoleTree, removeRoles, type Role } from '@/apis/user';
 import {
   ElTree,
   ElDropdown,

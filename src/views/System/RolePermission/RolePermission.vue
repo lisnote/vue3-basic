@@ -3,7 +3,7 @@ import commonStyle from '@/styles/common.module.scss';
 import RoleTree from './RoleTree.vue';
 import PermissionTree from './PermissionTree.vue';
 import { ref } from 'vue';
-import { type Role } from '@/api/user';
+import { type Role } from '@/apis/user';
 
 const currentRole = ref<Role>();
 </script>
