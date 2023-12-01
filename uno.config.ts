@@ -1,5 +1,6 @@
-import { defineConfig } from 'unocss';
+import { defineConfig, presetAttributify, presetUno } from 'unocss';
 export default defineConfig({
+  presets: [presetAttributify(), presetUno()],
   theme: {
     breakpoints: {
       sm: '640px',
@@ -9,4 +10,5 @@ export default defineConfig({
       '2xl': '1536px',
     },
   },
+  rules: [['ellipsis', { overflow: 'hidden', 'text-overflow': 'ellipsis' }]],
 });

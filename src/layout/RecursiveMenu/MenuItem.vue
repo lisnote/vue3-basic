@@ -46,14 +46,11 @@ function hoverMenu() {
       </div>
       <ElTooltip
         :content="t(data.title)"
-        placement="top"
+        placement="right"
+        :offset="36"
         :disabled="tooltipDisabled"
       >
-        <span
-          ref="menuTextRef"
-          class="overflow-ellipsis overflow-hidden"
-          @mouseover="hoverMenu"
-        >
+        <span ref="menuTextRef" class="ellipsis" @mouseover="hoverMenu">
           {{ t(data.title) }}
         </span>
       </ElTooltip>
@@ -74,14 +71,10 @@ function hoverMenu() {
     </div>
     <ElTooltip
       :content="t(data.title)"
-      placement="top"
+      placement="right"
       :disabled="tooltipDisabled"
     >
-      <span
-        ref="menuTextRef"
-        class="overflow-ellipsis overflow-hidden"
-        @mouseover="hoverMenu"
-      >
+      <span ref="menuTextRef" class="ellipsis" @mouseover="hoverMenu">
         {{ t(data.title) }}
       </span>
     </ElTooltip>
