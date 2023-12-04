@@ -14,7 +14,6 @@ const messages = reactive(
   ),
 );
 
-console.log();
 /** 支持的语言数组 */
 export const langs = {
   'zh-CN': '简体中文',
