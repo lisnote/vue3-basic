@@ -69,6 +69,7 @@ login:
   smsSentSuccessfully: 短信发送成功
   signIn: 登录
   signUp: 注册
+  signUpSuccessfully: 注册成功
   resetPassword: 重置密码
   passwordResetSuccessfully: 重置密码成功
 rolePermission:

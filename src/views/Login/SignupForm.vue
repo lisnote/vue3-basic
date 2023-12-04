@@ -80,7 +80,7 @@ async function submit() {
     smsCode: formData.value.smsCode,
     password: formData.value.password,
   }).then(() => {
-    ElMessage.success(t('login.passwordResetSuccessfully'));
+    ElMessage.success(t('login.signUpSuccessfully'));
     emit('success');
   });
 }

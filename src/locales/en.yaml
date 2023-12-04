@@ -69,6 +69,7 @@ login:
   wait60s: Wait %{0}s
   signIn: Sign in
   signUp: Sign up
+  signUpSuccessfully: Sign up successfully
   resetPassword: Reset password
   passwordResetSuccessfully: Password reset successfully
 rolePermission:
