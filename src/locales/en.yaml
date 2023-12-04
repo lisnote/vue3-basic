@@ -1,3 +1,21 @@
+errorCode:
+  unknownNetworkException: Unknown network exception
+  # 1xxxx: 后端异常
+  10000: System exception
+  # 2xxxx: 前端异常
+  20001: Parameter exception
+  20002: Parameter validation failed
+  # 3xxxx: basic服务异常
+  30000: Basic server exception
+  30001: API rate limit exceeded
+  30002: Invalid SMS code
+  # 4xxxx: user服务异常
+  40000: User server exception
+  40001: User already exists
+  40002: User does not exist
+  40003: Incorrect password
+  40004: Authorization expired
+  40005: Unauthorized access
 button:
   add: Add
   edit: Edit
