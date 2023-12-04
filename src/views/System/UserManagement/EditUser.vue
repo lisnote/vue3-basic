@@ -39,7 +39,7 @@ const formRules: FormRules = {
   phone: { required: true, validator: phoneValidator, trigger: 'blur' },
   roleId: {
     required: true,
-    message: () => t('userManagement.rolePlaceholder'),
+    message: () => t('views.userManagement.rolePlaceholder'),
     trigger: 'blur',
   },
 };
@@ -50,11 +50,11 @@ async function submit() {
   const { roleId, phone } = formData.value;
   if (props.mode === 'add') {
     await inviteUser({ phone: phone!, roleId: roleId! }).then(() =>
-      ElMessage.success(t('userManagement.userAddSuccessfully')),
+      ElMessage.success(t('views.userManagement.userAddSuccessfully')),
     );
   } else {
     await updateUser({ phone: phone!, roleId: roleId! }).then(() =>
-      ElMessage.success(t('userManagement.userEditSuccessfully')),
+      ElMessage.success(t('views.userManagement.userEditSuccessfully')),
     );
   }
   emit('update:visible', false);
@@ -66,8 +66,8 @@ async function submit() {
     <ElDialog
       :title="
         mode === 'add'
-          ? t('userManagement.addUser')
-          : t('userManagement.eidtUser')
+          ? t('views.userManagement.addUser')
+          : t('views.userManagement.eidtUser')
       "
       width="330"
       :model-value="visible"
@@ -81,14 +81,14 @@ async function submit() {
         label-width="80px"
         @keyup.enter="submit"
       >
-        <ElFormItem :label="t('userManagement.phone')" prop="phone">
+        <ElFormItem :label="t('views.userManagement.phone')" prop="phone">
           <ElInput
             v-model="formData.phone"
-            :placeholder="t('userManagement.phonePlaceholder')"
+            :placeholder="t('views.userManagement.phonePlaceholder')"
             :disabled="mode === 'edit'"
           />
         </ElFormItem>
-        <ElFormItem :label="t('userManagement.role')" prop="roleId">
+        <ElFormItem :label="t('views.userManagement.role')" prop="roleId">
           <ElCascader
             v-model="formData.roleId"
             :options="roleTree"
@@ -100,7 +100,7 @@ async function submit() {
             }"
             clearable
             :show-all-levels="false"
-            :placeholder="t('userManagement.rolePlaceholder')"
+            :placeholder="t('views.userManagement.rolePlaceholder')"
           />
         </ElFormItem>
       </ElForm>

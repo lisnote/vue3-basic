@@ -30,7 +30,7 @@ function loadData() {
 const formRules: FormRules = {
   name: {
     required: true,
-    message: () => t('rolePermission.roleNamePlaceholder'),
+    message: () => t('views.rolePermission.roleNamePlaceholder'),
     trigger: 'blur',
   },
 };
@@ -41,11 +41,11 @@ async function submit() {
   const { id = '', name = '', pid } = formData.value;
   if (props.mode === 'add') {
     await addRole({ name, pid }).then(() =>
-      ElMessage.success(t('rolePermission.roleAddSuccessfully')),
+      ElMessage.success(t('views.rolePermission.roleAddSuccessfully')),
     );
   } else {
     await updateRole({ id, name, pid }).then(() =>
-      ElMessage.success(t('rolePermission.roleEditSuccessfully')),
+      ElMessage.success(t('views.rolePermission.roleEditSuccessfully')),
     );
   }
   emit('update:visible', false);
@@ -57,8 +57,8 @@ async function submit() {
     <ElDialog
       :title="
         mode === 'add'
-          ? t('rolePermission.addRole')
-          : t('rolePermission.editRole')
+          ? t('views.rolePermission.addRole')
+          : t('views.rolePermission.editRole')
       "
       width="350"
       :model-value="visible"
@@ -72,7 +72,7 @@ async function submit() {
         label-width="100px"
         @keyup.enter="submit"
       >
-        <ElFormItem :label="t('rolePermission.parentRole')" prop="pid">
+        <ElFormItem :label="t('views.rolePermission.parentRole')" prop="pid">
           <ElCascader
             v-model="formData.pid"
             :options="roleTree"
@@ -84,13 +84,13 @@ async function submit() {
             }"
             clearable
             :show-all-levels="false"
-            :placeholder="t('rolePermission.parentRolePlaceholder')"
+            :placeholder="t('views.rolePermission.parentRolePlaceholder')"
           />
         </ElFormItem>
-        <ElFormItem :label="t('rolePermission.roleName')" prop="name">
+        <ElFormItem :label="t('views.rolePermission.roleName')" prop="name">
           <ElInput
             v-model="formData.name"
-            :placeholder="t('rolePermission.roleNamePlaceholder')"
+            :placeholder="t('views.rolePermission.roleNamePlaceholder')"
           />
         </ElFormItem>
       </ElForm>

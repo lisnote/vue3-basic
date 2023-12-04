@@ -40,14 +40,14 @@ async function submit() {
       <ElFormItem prop="phone">
         <ElInput
           v-model="formData.phone"
-          :placeholder="t('login.phonePlaceholder')"
+          :placeholder="t('views.login.phonePlaceholder')"
         />
       </ElFormItem>
       <ElFormItem prop="password">
         <ElInput
           v-model="formData.password"
           :type="passwordVisible ? 'text' : 'password'"
-          :placeholder="t('login.passwordPlaceholder')"
+          :placeholder="t('views.login.passwordPlaceholder')"
         >
           <template #suffix>
             <Icon
@@ -58,6 +58,8 @@ async function submit() {
         </ElInput>
       </ElFormItem>
     </ElForm>
-    <ElButton class="w-full" @click="submit">{{ t('login.signIn') }}</ElButton>
+    <ElButton class="w-full" @click="submit">{{
+      t('views.login.signIn')
+    }}</ElButton>
   </div>
 </template>

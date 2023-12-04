@@ -60,46 +60,47 @@ menus:
   rolePermission: Role Permission
   userManagement: User Management
   about: About
-login:
-  phonePlaceholder: Please input phone number
-  passwordPlaceholder: Please input password
-  smsCodePlaceholder: Please input SMS code
-  sendSms: Send SMS
-  smsSentSuccessfully: SMS sent successfully
-  wait60s: Wait %{0}s
-  signIn: Sign in
-  signUp: Sign up
-  signUpSuccessfully: Sign up successfully
-  resetPassword: Reset password
-  passwordResetSuccessfully: Password reset successfully
-rolePermission:
-  addRole: Add role
-  editRole: Edit role
-  parentRole: Superior role
-  parentRolePlaceholder: Please select superior role
-  roleName: Role name
-  roleNamePlaceholder: Please input role name
-  roleAddSuccessfully: Role add successfully
-  roleEditSuccessfully: Role edit successfully
-  deleteConfirm: Are you sure delete %{0}?
-  roleDeleteSuccessfully: Delete successfully
-  permissionName: Name
-  permissionCode: Code
-  handle: Handle
-  permissionUpdateSuccessfully: Permission update successfully
-userManagement:
-  searchAllUserInfo: Search all user info
-  name: Name
-  role: Role
-  phone: Phone
-  mail: Mail
-  handle: Handle
-  handleWidth: 230
-  accessThisAccount: Access this account
-  addUser: Add user
-  eidtUser: Edit user
-  phonePlaceholder: Please input phone number
-  rolePlaceholder: Please select role
-  userAddSuccessfully: User add successfully, awaiting user confirmation
-  userEditSuccessfully: User edit successfully
-  userDeleteSuccessfully: User delete successfully
+views:
+  login:
+    phonePlaceholder: Please input phone number
+    passwordPlaceholder: Please input password
+    smsCodePlaceholder: Please input SMS code
+    sendSms: Send SMS
+    smsSentSuccessfully: SMS sent successfully
+    wait60s: Wait %{0}s
+    signIn: Sign in
+    signUp: Sign up
+    signUpSuccessfully: Sign up successfully
+    resetPassword: Reset password
+    passwordResetSuccessfully: Password reset successfully
+  rolePermission:
+    addRole: Add role
+    editRole: Edit role
+    parentRole: Superior role
+    parentRolePlaceholder: Please select superior role
+    roleName: Role name
+    roleNamePlaceholder: Please input role name
+    roleAddSuccessfully: Role add successfully
+    roleEditSuccessfully: Role edit successfully
+    deleteConfirm: Are you sure delete %{0}?
+    roleDeleteSuccessfully: Delete successfully
+    permissionName: Name
+    permissionCode: Code
+    handle: Handle
+    permissionUpdateSuccessfully: Permission update successfully
+  userManagement:
+    searchAllUserInfo: Search all user info
+    name: Name
+    role: Role
+    phone: Phone
+    mail: Mail
+    handle: Handle
+    handleWidth: 230
+    accessThisAccount: Access this account
+    addUser: Add user
+    eidtUser: Edit user
+    phonePlaceholder: Please input phone number
+    rolePlaceholder: Please select role
+    userAddSuccessfully: User add successfully, awaiting user confirmation
+    userEditSuccessfully: User edit successfully
+    userDeleteSuccessfully: User delete successfully

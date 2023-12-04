@@ -39,7 +39,7 @@ loadTableData();
 // 移除用户
 function remove(users: User[]) {
   removeUsers(users.map((user) => user.id)).then(() => {
-    ElMessage.success(t('userManagement.userDeleteSuccessfully'));
+    ElMessage.success(t('views.userManagement.userDeleteSuccessfully'));
     loadTableData();
   });
 }
@@ -64,7 +64,7 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
     <div class="flex">
       <ElInput
         v-model="searchValue"
-        :placeholder="t('userManagement.searchAllUserInfo')"
+        :placeholder="t('views.userManagement.searchAllUserInfo')"
         class="block"
         @change="loadTableData()"
       />
@@ -107,12 +107,12 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
           />
         </template>
       </ElTableColumn>
-      <ElTableColumn :label="t('userManagement.name')" prop="name" />
-      <ElTableColumn :label="t('userManagement.role')" prop="role" />
-      <ElTableColumn :label="t('userManagement.phone')" prop="phone" />
-      <ElTableColumn :label="t('userManagement.mail')" prop="email" />
+      <ElTableColumn :label="t('views.userManagement.name')" prop="name" />
+      <ElTableColumn :label="t('views.userManagement.role')" prop="role" />
+      <ElTableColumn :label="t('views.userManagement.phone')" prop="phone" />
+      <ElTableColumn :label="t('views.userManagement.mail')" prop="email" />
       <ElTableColumn
-        :label="t('userManagement.handle')"
+        :label="t('views.userManagement.handle')"
         :show-overflow-tooltip="false"
         fixed="right"
         :width="230"
@@ -147,7 +147,7 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
             link
             @click="login(row)"
           >
-            {{ t('userManagement.accessThisAccount') }}
+            {{ t('views.userManagement.accessThisAccount') }}
           </ElButton>
         </template>
       </ElTableColumn>

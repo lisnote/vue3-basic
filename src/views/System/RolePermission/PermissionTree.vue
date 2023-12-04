@@ -40,7 +40,7 @@ const submit = debounce(async function submit() {
     if (node.has) permissions.push(node.code);
   });
   updateRolePermission({ roleId: props.role!.id, permissions }).then(() =>
-    ElMessage.success(t('rolePermission.permissionUpdateSuccessfully')),
+    ElMessage.success(t('views.rolePermission.permissionUpdateSuccessfully')),
   );
 }, 1000);
 function changePermission(row: Permission) {
@@ -69,9 +69,15 @@ function changePermission(row: Permission) {
       default-expand-all
       show-overflow-tooltip
     >
-      <ElTableColumn prop="name" :label="t('rolePermission.permissionName')" />
-      <ElTableColumn prop="code" :label="t('rolePermission.permissionCode')" />
-      <ElTableColumn :label="t('rolePermission.handle')" width="90">
+      <ElTableColumn
+        prop="name"
+        :label="t('views.rolePermission.permissionName')"
+      />
+      <ElTableColumn
+        prop="code"
+        :label="t('views.rolePermission.permissionCode')"
+      />
+      <ElTableColumn :label="t('views.rolePermission.handle')" width="90">
         <template #default="{ row }">
           <ElCheckbox
             v-model="row.has"

@@ -26,14 +26,14 @@ const mode = ref<'login' | 'signup' | 'reset'>('login');
         <div class="flex justify-between">
           <template v-if="mode === 'login'">
             <ElLink type="primary" @click="mode = 'signup'">
-              {{ t('login.signUp') }}
+              {{ t('views.login.signUp') }}
             </ElLink>
             <ElLink type="info" @click="mode = 'reset'">
-              {{ t('login.resetPassword') }}
+              {{ t('views.login.resetPassword') }}
             </ElLink>
           </template>
           <ElLink v-else type="primary" @click="mode = 'login'">
-            {{ t('login.signIn') }}
+            {{ t('views.login.signIn') }}
           </ElLink>
         </div>
       </div>

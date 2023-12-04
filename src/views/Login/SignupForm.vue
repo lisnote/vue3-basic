@@ -29,22 +29,22 @@ const formData = ref({
 });
 const passwordVisible = ref(false);
 // 验证码展示逻辑
-const smsCodeAppend = ref(t('login.sendSms'));
+const smsCodeAppend = ref(t('views.login.sendSms'));
 const sendSmsDisabled = ref(false);
 useWatchLang(() => {
-  if (!sendSmsDisabled.value) smsCodeAppend.value = t('login.sendSms');
+  if (!sendSmsDisabled.value) smsCodeAppend.value = t('views.login.sendSms');
 });
 const smsCodeFormItemRef = ref<FormItemInstance>();
 let smsCodeSetTimeout: ReturnType<typeof setTimeout>;
 function updateSmsCodeAppend(time = 60) {
   sendSmsDisabled.value = true;
-  smsCodeAppend.value = t('login.wait60s', [time]);
+  smsCodeAppend.value = t('views.login.wait60s', [time]);
   const nextSecond = function () {
     smsCodeSetTimeout = setTimeout(() => updateSmsCodeAppend(time - 1), 1000);
   };
   if (time === 0) {
     sendSmsDisabled.value = false;
-    smsCodeAppend.value = t('login.sendSms');
+    smsCodeAppend.value = t('views.login.sendSms');
   } else {
     nextSecond();
   }
@@ -65,7 +65,7 @@ async function sendSmsVerificationCode() {
     type: smsCodeType.signup,
   })
     .then(() => {
-      ElMessage.success(t('login.smsSentSuccessfully'));
+      ElMessage.success(t('views.login.smsSentSuccessfully'));
     })
     .catch(() => {
       clearTimeout(smsCodeSetTimeout);
@@ -80,7 +80,7 @@ async function submit() {
     smsCode: formData.value.smsCode,
     password: formData.value.password,
   }).then(() => {
-    ElMessage.success(t('login.signUpSuccessfully'));
+    ElMessage.success(t('views.login.signUpSuccessfully'));
     emit('success');
   });
 }
@@ -97,13 +97,13 @@ async function submit() {
       <ElFormItem prop="phone">
         <ElInput
           v-model="formData.phone"
-          :placeholder="t('login.phonePlaceholder')"
+          :placeholder="t('views.login.phonePlaceholder')"
         />
       </ElFormItem>
       <ElFormItem ref="smsCodeFormItemRef" prop="smsCode">
         <ElInput
           v-model="formData.smsCode"
-          :placeholder="t('login.smsCodePlaceholder')"
+          :placeholder="t('views.login.smsCodePlaceholder')"
           maxlength="6"
         >
           <template #append>
@@ -120,7 +120,7 @@ async function submit() {
         <ElInput
           v-model="formData.password"
           :type="passwordVisible ? 'text' : 'password'"
-          :placeholder="t('login.passwordPlaceholder')"
+          :placeholder="t('views.login.passwordPlaceholder')"
         >
           <template #suffix>
             <Icon
@@ -131,6 +131,8 @@ async function submit() {
         </ElInput>
       </ElFormItem>
     </ElForm>
-    <ElButton class="w-full" @click="submit">{{ t('login.signUp') }}</ElButton>
+    <ElButton class="w-full" @click="submit">{{
+      t('views.login.signUp')
+    }}</ElButton>
   </div>
 </template>
