@@ -13,6 +13,7 @@ import commonStyle from '@/styles/common.module.scss';
 import { useUserStore } from '@/store';
 import { ref } from 'vue';
 import EditUser from './EditUser.vue';
+import { t } from '@/locales';
 
 const userStore = useUserStore();
 // 查询参数
@@ -38,7 +39,7 @@ loadTableData();
 // 移除用户
 function remove(users: User[]) {
   removeUsers(users.map((user) => user.id)).then(() => {
-    ElMessage.success('删除成功');
+    ElMessage.success(t('userManagement.userDeleteSuccessfully'));
     loadTableData();
   });
 }
@@ -63,7 +64,7 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
     <div class="flex">
       <ElInput
         v-model="searchValue"
-        placeholder="模糊查询, 请输入"
+        :placeholder="t('userManagement.searchAllUserInfo')"
         class="block"
         @change="loadTableData()"
       />
@@ -73,14 +74,14 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
           type="primary"
           @click="showEditUser('add')"
         >
-          邀请
+          {{ t('button.add') }}
         </ElButton>
         <ElButton
           v-show="hasPermission('UserManagement/removeUser')"
           type="danger"
           @click="remove(tableRef?.getSelectionRows() ?? [])"
         >
-          删除
+          {{ t('button.delete') }}
         </ElButton>
       </div>
     </div>
@@ -106,34 +107,38 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
           />
         </template>
       </ElTableColumn>
-      <ElTableColumn label="用户名" prop="name" />
-      <ElTableColumn label="职位" prop="role" />
-      <ElTableColumn label="电话" prop="phone" />
-      <ElTableColumn label="邮件" prop="email" />
+      <ElTableColumn :label="t('userManagement.name')" prop="name" />
+      <ElTableColumn :label="t('userManagement.role')" prop="role" />
+      <ElTableColumn :label="t('userManagement.phone')" prop="phone" />
+      <ElTableColumn :label="t('userManagement.mail')" prop="email" />
       <ElTableColumn
-        label="操作"
+        :label="t('userManagement.handle')"
         :show-overflow-tooltip="false"
         fixed="right"
-        width="180"
+        :width="230"
       >
         <template #default="{ row }">
           <ElButton
-            v-if="hasPermission('UserManagement/updateUser')"
+            v-if="
+              hasPermission('UserManagement/updateUser') && row.roleId != '-1'
+            "
             type="primary"
             size="small"
             link
             @click="showEditUser('edit', row)"
           >
-            编辑
+            {{ t('button.edit') }}
           </ElButton>
           <ElButton
-            v-if="hasPermission('UserManagement/removeUser')"
+            v-if="
+              hasPermission('UserManagement/removeUser') && row.roleId != '-1'
+            "
             type="danger"
             size="small"
             link
             @click="remove([row])"
           >
-            删除
+            {{ t('button.delete') }}
           </ElButton>
           <ElButton
             v-if="row.id !== userStore.id"
@@ -142,7 +147,7 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
             link
             @click="login(row)"
           >
-            登录此用户
+            {{ t('userManagement.accessThisAccount') }}
           </ElButton>
         </template>
       </ElTableColumn>

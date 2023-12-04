@@ -74,4 +74,13 @@ userManagement:
   role: 职位
   phone: 电话
   mail: 邮箱
+  handle: 操作
+  handleWidth: 180
   accessThisAccount: 登录此用户
+  addUser: 新增用户
+  eidtUser: 编辑用户
+  phonePlaceholder: 请输入手机号
+  rolePlaceholder: 请选择职位
+  userAddSuccessfully: 用户添加成功, 等待用户同意
+  userEditSuccessfully: 用户编辑成功
+  userDeleteSuccessfully: 用户删除成功

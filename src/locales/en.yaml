@@ -43,9 +43,9 @@ menus:
   userManagement: User Management
   about: About
 login:
-  phonePlaceholder: Please input the phone number
-  passwordPlaceholder: Please input the password
-  smsCodePlaceholder: Please input the SMS code
+  phonePlaceholder: Please input phone number
+  passwordPlaceholder: Please input password
+  smsCodePlaceholder: Please input SMS code
   sendSms: Send SMS
   smsSentSuccessfully: SMS sent successfully
   wait60s: Wait %{0}s
@@ -59,7 +59,7 @@ rolePermission:
   parentRole: Superior role
   parentRolePlaceholder: Please select superior role
   roleName: Role name
-  roleNamePlaceholder: Please input the role name
+  roleNamePlaceholder: Please input role name
   roleAddSuccessfully: Role add successfully
   roleEditSuccessfully: Role edit successfully
   deleteConfirm: Are you sure delete %{0}?
@@ -69,9 +69,18 @@ rolePermission:
   handle: Handle
   permissionUpdateSuccessfully: Permission update successfully
 userManagement:
-  searchAllUserInfo: searchAllUserInfo
+  searchAllUserInfo: Search all user info
   name: Name
   role: Role
   phone: Phone
   mail: Mail
+  handle: Handle
+  handleWidth: 230
   accessThisAccount: Access this account
+  addUser: Add user
+  eidtUser: Edit user
+  phonePlaceholder: Please input phone number
+  rolePlaceholder: Please select role
+  userAddSuccessfully: User add successfully, awaiting user confirmation
+  userEditSuccessfully: User edit successfully
+  userDeleteSuccessfully: User delete successfully

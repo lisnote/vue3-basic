@@ -6,6 +6,7 @@ import { ref } from 'vue';
 
 import type { FormInstance, FormRules } from 'element-plus';
 import { phoneValidator } from '@/utils/validator';
+import { t } from '@/locales';
 
 const props = withDefaults(
   defineProps<{
@@ -36,7 +37,11 @@ function loadData() {
 }
 const formRules: FormRules = {
   phone: { required: true, validator: phoneValidator, trigger: 'blur' },
-  roleId: { required: true, message: '请选择职位', trigger: 'blur' },
+  roleId: {
+    required: true,
+    message: () => t('userManagement.rolePlaceholder'),
+    trigger: 'blur',
+  },
 };
 async function submit() {
   let valid = false;
@@ -45,11 +50,11 @@ async function submit() {
   const { roleId, phone } = formData.value;
   if (props.mode === 'add') {
     await inviteUser({ phone: phone!, roleId: roleId! }).then(() =>
-      ElMessage.success('邀请用户成功, 等待用户同意'),
+      ElMessage.success(t('userManagement.userAddSuccessfully')),
     );
   } else {
     await updateUser({ phone: phone!, roleId: roleId! }).then(() =>
-      ElMessage.success('编辑用户成功'),
+      ElMessage.success(t('userManagement.userEditSuccessfully')),
     );
   }
   emit('update:visible', false);
@@ -59,8 +64,12 @@ async function submit() {
 <template>
   <div>
     <ElDialog
-      :title="mode === 'add' ? '邀请用户' : '编辑用户'"
-      width="300"
+      :title="
+        mode === 'add'
+          ? t('userManagement.addUser')
+          : t('userManagement.eidtUser')
+      "
+      width="330"
       :model-value="visible"
       @update:model-value="emit('update:visible', $event)"
       @open="loadData"
@@ -72,14 +81,14 @@ async function submit() {
         label-width="80px"
         @keyup.enter="submit"
       >
-        <ElFormItem label="电话" prop="phone">
+        <ElFormItem :label="t('userManagement.phone')" prop="phone">
           <ElInput
             v-model="formData.phone"
-            placeholder="请输入手机号"
+            :placeholder="t('userManagement.phonePlaceholder')"
             :disabled="mode === 'edit'"
           />
         </ElFormItem>
-        <ElFormItem label="职位" prop="roleId">
+        <ElFormItem :label="t('userManagement.role')" prop="roleId">
           <ElCascader
             v-model="formData.roleId"
             :options="roleTree"
@@ -91,14 +100,16 @@ async function submit() {
             }"
             clearable
             :show-all-levels="false"
-            placeholder="请选择职位"
+            :placeholder="t('userManagement.rolePlaceholder')"
           />
         </ElFormItem>
       </ElForm>
       <template #footer>
         <div>
-          <ElButton @click="emit('update:visible', false)">取消</ElButton>
-          <ElButton @click="submit">确定</ElButton>
+          <ElButton @click="emit('update:visible', false)">
+            {{ t('button.cancel') }}
+          </ElButton>
+          <ElButton @click="submit">{{ t('button.confirm') }}</ElButton>
         </div>
       </template>
     </ElDialog>
