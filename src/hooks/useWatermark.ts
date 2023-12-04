@@ -1,7 +1,6 @@
 import {
   getCurrentInstance,
   onBeforeUnmount,
-  ref,
   Ref,
   shallowRef,
   unref,
