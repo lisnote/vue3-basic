@@ -2,6 +2,8 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import { menuRoutes } from './menuRoutes';
 import { useUserStore } from '@/store';
 import nProgress from 'nprogress';
+import { notPermission } from '@/hooks/usePermission';
+import { isString } from '@/utils/types';
 
 const loginPath = '/Login';
 const router = createRouter({
@@ -42,6 +44,12 @@ router.beforeEach(function (to, _from, next) {
   } else if (to.path === loginPath && userStore.token) {
     // 已登录跳转到首页
     next('/');
+  } else if (
+    isString(to.meta.permission) &&
+    notPermission(to.meta.permission)
+  ) {
+    // 无权跳转
+    next('/403');
   } else {
     // 普通跳转
     next();

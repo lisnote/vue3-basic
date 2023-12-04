@@ -27,62 +27,62 @@ export function getType(value: unknown): string {
  * // output: true
  * ```
  */
-export function is(value: unknown, type: string): boolean {
+export function is<T>(value: unknown, type: string): value is T {
   return getType(value) === type;
 }
 
 /**
  * 判断值是否为 Array 类型
  */
-export function isArray(value: unknown): boolean {
+export function isArray(value: unknown): value is any[] {
   return Array.isArray(value);
 }
 
 /**
  * 判断值是否为 Object 类型
  */
-export function isObject(value: unknown): boolean {
+export function isObject(value: unknown): value is object {
   return is(value, 'Object');
 }
 
 /**
  * 判断值是否为 String 类型
  */
-export function isString(value: unknown): boolean {
+export function isString(value: unknown): value is string {
   return typeof value === 'string';
 }
 
 /**
  * 判断值是否为 Number 类型
  */
-export function isNumber(value: unknown): boolean {
+export function isNumber(value: unknown): value is number {
   return typeof value === 'number';
 }
 
 /**
  * 判断值是否为 Boolean 类型
  */
-export function isBoolean(value: unknown): boolean {
+export function isBoolean(value: unknown): value is unknown {
   return typeof value === 'boolean';
 }
 
 /**
  * 判断值是否为 Null 类型
  */
-export function isNull(value: unknown): boolean {
+export function isNull(value: unknown): value is null {
   return value === null;
 }
 
 /**
  * 判断值是否为 Undefined 类型
  */
-export function isUndefined(value: unknown): boolean {
+export function isUndefined(value: unknown): value is undefined {
   return typeof value === 'undefined';
 }
 
 /**
  * 判断值是否为 Symbol 类型
  */
-export function isSymbol(value: unknown): boolean {
+export function isSymbol(value: unknown): value is symbol {
   return typeof value === 'symbol';
 }

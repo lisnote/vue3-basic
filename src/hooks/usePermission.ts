@@ -2,8 +2,8 @@ import { useUserStore } from '@/store';
 
 const userStore = useUserStore();
 
-export function hasPermission(permission: string) {
-  return userStore.permissions.includes(permission);
+export function hasPermission(permission: string | undefined) {
+  return permission ? userStore.permissions.includes(permission) : true;
 }
 
 export function notPermission(permission: string) {
