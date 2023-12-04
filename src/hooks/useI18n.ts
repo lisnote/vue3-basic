@@ -1,5 +1,8 @@
 import { lang } from '@/locales';
-import { type WatchCallback, watch } from 'vue';
-export function useWatchLang(fn: WatchCallback<string, string>) {
-  watch(lang, fn);
+import { watch, WatchCallback } from 'vue';
+export function useWatchLang(
+  fn: WatchCallback<string>,
+  options?: Parameters<typeof watch>[2],
+) {
+  watch(lang, fn, options);
 }
