@@ -1,24 +1,35 @@
-import { reactive } from 'vue';
+import { ref, watch } from 'vue';
 import { useStorage } from '@/utils/storage';
 
-/** 当前的语言 */
-export const lang = useStorage('lang', navigator.language ?? 'en');
-const messages = reactive(
-  Object.fromEntries(
-    Object.entries(import.meta.glob('./*.yaml', { eager: true })).map(
-      ([key, value]: [string, any]) => [
-        key.replace(/^\.\/(.*)\.yaml/, '$1'),
-        value.default,
-      ],
-    ),
-  ),
-);
-
-/** 支持的语言数组 */
+/** 支持的语言Map */
 export const langs = {
   'zh-CN': '简体中文',
   en: 'English',
 };
+/** 当前的语言 */
+export const lang = useStorage(
+  'lang',
+  navigator.language in langs ? navigator.language : 'en',
+);
+/** 获取所有语言库加载函数 */
+const langModules = Object.fromEntries(
+  Object.entries(import.meta.glob('./*.yaml', { import: 'default' })).map(
+    ([key, value]: [string, any]) => [
+      key.replace(/^\.\/(.*)\.yaml/, '$1'),
+      value,
+    ],
+  ),
+);
+/** 当前语言库 */
+const messages = ref();
+watch(
+  lang,
+  async (newLang) => {
+    const msg = await langModules[newLang]();
+    if (lang.value === newLang) messages.value = msg;
+  },
+  { immediate: true },
+);
 
 /** 此函数并无数据处理, 仅用于配合 i18n Ally 插件进行智能提示 */
 export const $t = (message: string) => message;
@@ -34,10 +45,7 @@ export function t(
 ) {
   let msg = message
     .split('.')
-    .reduce(
-      (pre, current) => pre?.[current] || message,
-      messages[lang.value] ?? messages['en'],
-    );
+    .reduce((pre, current) => pre?.[current] || message, messages.value);
   if (map) {
     Object.entries(map).forEach(([key, value]) => {
       msg = msg.replaceAll('%{' + key + '}', String(value));
