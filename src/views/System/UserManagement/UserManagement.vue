@@ -79,6 +79,7 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
         <ElButton
           v-show="hasPermission('UserManagement/removeUser')"
           type="danger"
+          :disabled="!tableRef?.getSelectionRows().length"
           @click="remove(tableRef?.getSelectionRows() ?? [])"
         >
           {{ t('button.delete') }}
