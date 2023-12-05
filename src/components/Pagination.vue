@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ElPagination } from 'element-plus';
+import { t } from '@/locales';
 const emit = defineEmits(['change', 'update:page', 'update:limit']);
 const props = defineProps({
   page: {
@@ -41,9 +42,12 @@ function updateLimit(value: number) {
     @update:page-size="updateLimit"
   >
     <template #default>
-      <div>
-        共 {{ props.total }} 条，{{ Math.ceil(props.total / props.limit) }} 页
-      </div>
+      {{
+        t('components.pagination.total', [
+          props.total,
+          Math.ceil(props.total / props.limit),
+        ])
+      }}
     </template>
   </ElPagination>
 </template>

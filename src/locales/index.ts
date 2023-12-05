@@ -48,7 +48,7 @@ export function t(
     .reduce((pre, current) => pre?.[current] || message, messages.value);
   if (map) {
     Object.entries(map).forEach(([key, value]) => {
-      msg = msg.replaceAll('%{' + key + '}', String(value));
+      msg = msg.replaceAll('${' + key + '}', String(value));
     });
   }
   return msg;

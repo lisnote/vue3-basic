@@ -22,8 +22,11 @@ button:
   delete: Delete
   confirm: Confirm
   cancel: Cancel
+components:
+  pagination:
+    total: ${0} items, ${1} pages
 validator:
-  lengthMustBe: Length must be %{0} characters
+  lengthMustBe: Length must be ${0} characters
   pleaseInputAValidPhoneNumberFirst: Please input a valid phone number first
   account:
     mustContain: Must contain letters
@@ -67,7 +70,7 @@ views:
     smsCodePlaceholder: Please input SMS code
     sendSms: Send SMS
     smsSentSuccessfully: SMS sent successfully
-    wait60s: Wait %{0}s
+    wait60s: Wait ${0}s
     signIn: Sign in
     signUp: Sign up
     signUpSuccessfully: Sign up successfully
@@ -82,7 +85,7 @@ views:
     roleNamePlaceholder: Please input role name
     roleAddSuccessfully: Role add successfully
     roleEditSuccessfully: Role edit successfully
-    deleteConfirm: Are you sure delete %{0}?
+    deleteConfirm: Are you sure delete ${0}?
     roleDeleteSuccessfully: Delete successfully
     permissionName: Name
     permissionCode: Code

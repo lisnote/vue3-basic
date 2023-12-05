@@ -22,8 +22,11 @@ button:
   delete: 删除
   confirm: 确认
   cancel: 取消
+components:
+  pagination:
+    total: 共 ${0} 条，${1} 页
 validator:
-  lengthMustBe: 长度必须为%{0}位
+  lengthMustBe: 长度必须为${0}位
   pleaseInputAValidPhoneNumberFirst: 请先输入有效的手机号
   account:
     mustContain: 必须包含字母
@@ -65,7 +68,7 @@ views:
     phonePlaceholder: 请输入手机号
     passwordPlaceholder: 请输入密码
     smsCodePlaceholder: 请输入验证码
-    wait60s: 等待%{0}秒
+    wait60s: 等待${0}秒
     sendSms: 发送短信
     smsSentSuccessfully: 短信发送成功
     signIn: 登录
@@ -82,7 +85,7 @@ views:
     roleNamePlaceholder: 请输入职位名称
     roleAddSuccessfully: 职位新增成功
     roleEditSuccessfully: 编辑职位成功
-    deleteConfirm: 确定删除%{0}?
+    deleteConfirm: 确定删除${0}?
     roleDeleteSuccessfully: 删除职位成功
     permissionName: 权限名
     permissionCode: 权限码
