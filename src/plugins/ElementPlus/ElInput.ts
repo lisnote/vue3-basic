@@ -18,10 +18,10 @@ export const ElInput: FunctionalComponent = function (
       maxlength: props.maxlength
         ? props.maxlength
         : props.type == 'textarea'
-        ? 250
-        : props.type === 'text' || props.type === undefined
-        ? 30
-        : undefined,
+          ? 250
+          : props.type === 'text' || props.type === undefined
+            ? 30
+            : undefined,
       onChange() {
         ctx.emit('update:modelValue', props.modelValue.replace(/\s*$/, ''));
       },
