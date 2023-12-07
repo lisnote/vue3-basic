@@ -6,7 +6,7 @@ import svgLoader from 'vite-svg-loader';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import pkg from './package.json';
-import yamlLoader from '@modyfi/vite-plugin-yaml';
+import yamlLoader from '@rollup/plugin-yaml';
 import UnoCSS from 'unocss/vite';
 
 // https://vitejs.dev/config/
