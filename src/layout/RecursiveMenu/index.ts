@@ -5,7 +5,7 @@
  */
 import RecursiveMenu from './RecursiveMenu.vue';
 import { cloneDeepWith } from 'lodash-es';
-import { isObject } from '@/utils/types';
+import { is } from '@/utils/types';
 import router from '@/router';
 
 import type { RouteRecordRaw } from 'vue-router';
@@ -26,14 +26,14 @@ export interface RecursiveMenuData {
  */
 export function MenuRouteAdaptor(data: RouteRecordRaw[]): RecursiveMenuData[] {
   return cloneDeepWith(data, (value) => {
-    if (isObject(value)) {
+    if (is<RouteRecordRaw>(value, 'Object')) {
       return {
         index: value.path,
-        title: value.meta.title,
-        icon: value.meta.icon,
-        permission: value.meta.permission,
-        children: MenuRouteAdaptor(value.children),
-        onClick: () => !(value.children?.length > 0) && router.push(value.path),
+        title: value.meta?.title,
+        icon: value.meta?.icon,
+        permission: value.meta?.permission,
+        children: MenuRouteAdaptor(value.children ?? []),
+        onClick: () => !value.children?.length && router.push(value.path),
       };
     }
   });
