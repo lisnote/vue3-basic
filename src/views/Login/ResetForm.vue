@@ -124,6 +124,7 @@ async function submit() {
         >
           <template #suffix>
             <Icon
+              class="cursor-pointer"
               :icon="passwordVisible ? 'ep:hide' : 'ep:view'"
               @click="passwordVisible = !passwordVisible"
             />
@@ -131,7 +132,7 @@ async function submit() {
         </ElInput>
       </ElFormItem>
     </ElForm>
-    <ElButton class="w-full" @click="submit">
+    <ElButton type="primary" class="w-full" @click="submit">
       {{ t('views.login.resetPassword') }}
     </ElButton>
   </div>
