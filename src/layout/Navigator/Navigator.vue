@@ -6,6 +6,7 @@ import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
 import pkg from '@root/package.json';
 import router from '@/router';
 import { themeMap, switchTheme } from '@/utils/theme';
+import { t } from '@/locales';
 const userStore = useUserStore();
 const styleStore = useStyleStore();
 async function logout() {
@@ -36,8 +37,10 @@ async function logout() {
       {{ pkg.name }}
     </RouterLink>
     <div class="flex items-center">
-      <div><Icon icon="ep:bell" width="20" class="mx-10px" /></div>
-      <ElDropdown trigger="click" tabindex="">
+      <div>
+        <Icon icon="ep:bell" width="20" class="mx-10px cursor-pointer" />
+      </div>
+      <ElDropdown trigger="click" tabindex="" class="cursor-pointer">
         <div><Icon icon="cil:language" width="20" class="mx-10px" /></div>
         <template #dropdown>
           <ElDropdownMenu v-for="(value, key) of langs" :key="key">
@@ -46,7 +49,7 @@ async function logout() {
         </template>
       </ElDropdown>
       <ElDropdown trigger="click">
-        <span class="el-dropdown-link">
+        <span class="cursor-pointer">
           <div class="navigator-action">
             <img class="w-10 rounded-1/2" :src="userStore.avatar" />
             <span v-show="styleStore.deviceMode !== 'mobild'">
@@ -56,9 +59,11 @@ async function logout() {
         </span>
         <template #dropdown>
           <ElDropdownMenu>
-            <ElDropdownItem>用户中心</ElDropdownItem>
-            <ElDropdown placement="left" trigger="click">
-              <div><ElDropdownItem>切换主题</ElDropdownItem></div>
+            <ElDropdownItem>{{ t('nav.profile') }}</ElDropdownItem>
+            <ElDropdown placement="left" trigger="click" class="block">
+              <div>
+                <ElDropdownItem>{{ t('nav.theme') }}</ElDropdownItem>
+              </div>
               <template #dropdown>
                 <ElDropdownMenu>
                   <ElDropdownItem
@@ -66,12 +71,14 @@ async function logout() {
                     :key="key"
                     @click="switchTheme(key)"
                   >
-                    {{ theme.name }}
+                    {{ t(theme.name) }}
                   </ElDropdownItem>
                 </ElDropdownMenu>
               </template>
             </ElDropdown>
-            <ElDropdownItem divided @click="logout">退出登录</ElDropdownItem>
+            <ElDropdownItem divided @click="logout">{{
+              t('nav.signOut')
+            }}</ElDropdownItem>
           </ElDropdownMenu>
         </template>
       </ElDropdown>

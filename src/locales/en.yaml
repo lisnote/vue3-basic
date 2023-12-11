@@ -39,6 +39,10 @@ validator:
     onlyAllowed: Only letters, numbers, and special characters ._- are allowed
   smsCode:
     onlyAllowed: Only numbers are allowed
+nav:
+  profile: Profile
+  theme: Theme
+  signOut: Sign out
 menus:
   dashboard: Dashboard
   component: Component
@@ -63,6 +67,11 @@ menus:
   rolePermission: Role Permission
   userManagement: User Management
   about: About
+theme:
+  default: Default Blue
+  dark: Dark Mode
+  green: Bright Green
+  memorial-day: Memorial Day
 views:
   login:
     phonePlaceholder: Please input phone number

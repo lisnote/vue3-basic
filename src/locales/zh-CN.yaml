@@ -39,6 +39,10 @@ validator:
     onlyAllowed: 只允许使用字母，数字，特殊符号._-
   smsCode:
     onlyAllowed: 只允许使用数字
+nav:
+  profile: 个人资料
+  theme: 主题
+  signOut: 退出登录
 menus:
   dashboard: 仪表盘
   component: 组件
@@ -63,6 +67,11 @@ menus:
   rolePermission: 职位与权限
   userManagement: 用户管理
   about: 关于
+theme:
+  default: 默认蓝
+  dark: 夜间模式
+  green: 亮绿色
+  memorial-day: 哀悼日
 views:
   login:
     phonePlaceholder: 请输入手机号

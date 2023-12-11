@@ -1,28 +1,29 @@
 // 主题相关函数, 变量, 类型
 import { useStyleStore } from '@/store';
+import { $t } from '@/locales';
 import nProgress from 'nprogress';
 // 主题映射
 export const themeMap = {
   default: {
-    name: '默认主题',
+    name: $t('theme.default'),
     accentColor: '#409eff',
     background: 'white',
     color: '#409eff',
   },
   dark: {
-    name: '夜间模式',
+    name: $t('theme.dark'),
     accentColor: 'black',
     background: 'black',
     color: 'white',
   },
   green: {
-    name: '绿色主题',
+    name: $t('theme.green'),
     accentColor: 'lime',
     background: 'white',
     color: 'lime',
   },
   'memorial-day': {
-    name: '哀悼日',
+    name: $t('theme.memorial-day'),
     accentColor: '#919191',
     background: 'white',
     color: '#919191',
