@@ -7,7 +7,7 @@
 <script lang="ts" setup>
 import { ElInput } from 'element-plus';
 import { ref } from 'vue';
-import { computed } from 'vue';
+import { computed, Slot } from 'vue';
 
 // 事件代理
 const emit = defineEmits({
@@ -72,7 +72,7 @@ const reactValue = computed({
   >
     <!-- 插槽代理 -->
     <template v-for="(value, key) of $slots" #[key]="attrs" :key="key">
-      <component :is="value" :props="attrs" />
+      <component :is="value" v-if="value" :props="attrs" />
     </template>
   </ElInput>
 </template>
