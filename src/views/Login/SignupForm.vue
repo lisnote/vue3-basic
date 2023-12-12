@@ -119,17 +119,10 @@ async function submit() {
       <ElFormItem prop="password">
         <ElInput
           v-model="formData.password"
-          :type="passwordVisible ? 'text' : 'password'"
+          type="password"
+          :show-password="true"
           :placeholder="t('views.login.passwordPlaceholder')"
-        >
-          <template #suffix>
-            <Icon
-              class="cursor-pointer"
-              :icon="passwordVisible ? 'ep:hide' : 'ep:view'"
-              @click="passwordVisible = !passwordVisible"
-            />
-          </template>
-        </ElInput>
+        />
       </ElFormItem>
     </ElForm>
     <ElButton type="primary" class="w-full" @click="submit">{{
