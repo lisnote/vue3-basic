@@ -82,7 +82,9 @@ function hoverMenu() {
 </template>
 <style module lang="scss">
 .subMenu {
-  max-height: calc(100vh - 10px);
-  overflow-y: auto;
+  .subMenu {
+    max-height: calc(100vh - 10px);
+    overflow-y: auto;
+  }
 }
 </style>
