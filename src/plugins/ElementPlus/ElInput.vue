@@ -7,7 +7,7 @@
 <script lang="ts" setup>
 import { ElInput } from 'element-plus';
 import { ref } from 'vue';
-import { computed, Slot } from 'vue';
+import { computed } from 'vue';
 
 // 事件代理
 const emit = defineEmits({
@@ -26,7 +26,7 @@ const props = defineProps({
     default: undefined,
   },
   maxlength: {
-    type: Number,
+    type: [String, Number],
     required: false,
     default: ({ type = 'text' }) => {
       return type === 'textarea' ? 250 : type === 'text' ? 30 : undefined;
