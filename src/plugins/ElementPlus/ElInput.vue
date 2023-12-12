@@ -1,3 +1,9 @@
+<!-- 
+  封装内容
+  1. 内容变更后焦点后删除尾部空白
+  2. 默认长度在类型为 text 时是 30, 为 textarea 时是 250
+  3. 允许不设置 v-model
+ -->
 <script lang="ts" setup>
 import { ElInput } from 'element-plus';
 import { ref } from 'vue';
