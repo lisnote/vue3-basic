@@ -2,7 +2,7 @@
  * Element Plus 组件封装
  */
 import type { App } from 'vue';
-import { ElInput } from './ElInput';
+import ElInput from './ElInput.vue';
 import { ElScrollbar, ElLink, ElForm, ElFormItem } from 'element-plus';
 import 'element-plus/dist/index.css';
 

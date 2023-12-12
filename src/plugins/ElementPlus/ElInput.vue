@@ -1,0 +1,72 @@
+<script lang="ts" setup>
+import { ElInput } from 'element-plus';
+import { ref } from 'vue';
+import { computed } from 'vue';
+
+// 事件代理
+const emit = defineEmits({
+  'update:modelValue': (value: string | number) => value,
+});
+// 属性代理
+const props = defineProps({
+  type: {
+    type: String,
+    required: false,
+    default: 'text',
+  },
+  moduleValue: {
+    type: [String, Number],
+    required: false,
+    default: undefined,
+  },
+  maxlength: {
+    type: Number,
+    required: false,
+    default: ({ type = 'text' }) => {
+      return type === 'textarea' ? 250 : type === 'text' ? 30 : undefined;
+    },
+  },
+});
+// 方法代理
+const inputRef = ref<InstanceType<typeof ElInput>>();
+defineExpose({
+  blur: () => inputRef.value?.blur(),
+  clear: () => inputRef.value?.clear(),
+  focus: () => inputRef.value?.focus(),
+  resizeTextarea: () => inputRef.value?.resizeTextarea(),
+  select: () => inputRef.value?.blur(),
+  input: computed(() => inputRef.value?.input),
+  textarea: computed(() => inputRef.value?.textarea),
+  textareaStyle: computed(() => inputRef.value?.textareaStyle),
+});
+
+// v-model 代理
+const defaultValue = ref<string | number>('');
+const reactValue = computed({
+  get() {
+    return props.moduleValue === undefined
+      ? defaultValue.value
+      : props.moduleValue;
+  },
+  set(newValue) {
+    emit('update:modelValue', newValue);
+    defaultValue.value = newValue;
+  },
+});
+</script>
+
+<template>
+  <ElInput
+    ref="inputRef"
+    v-model="reactValue"
+    :maxlength="props.maxlength"
+    :type="props.type"
+    :props="$attrs"
+    @change="reactValue = $event.replace(/\s*$/, '')"
+  >
+    <!-- 插槽代理 -->
+    <template v-for="(value, key) of $slots" #[key]="attrs" :key="key">
+      <component :is="value" :props="attrs" />
+    </template>
+  </ElInput>
+</template>
