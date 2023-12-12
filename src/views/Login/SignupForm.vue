@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ElButton, ElMessage } from 'element-plus';
-import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
 import {
   phoneValidator,
@@ -27,7 +26,6 @@ const formData = ref({
   smsCode: '',
   password: '',
 });
-const passwordVisible = ref(false);
 // 验证码展示逻辑
 const smsCodeAppend = ref(t('views.login.sendSms'));
 const sendSmsDisabled = ref(false);
