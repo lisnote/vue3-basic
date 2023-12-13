@@ -1,4 +1,4 @@
-import { createMockMethod, queryList, treeForEach, treeToList } from '.';
+import createMockMethod, { queryList, treeForEach, treeToList } from '.';
 
 // 角色数据
 type Role = { id: string; name: string; children?: Role[] };

@@ -7,8 +7,14 @@ const baseUrl = '/backend';
  * @param mockMethod 原始 mock 方法数组
  * @returns 封装后的 mock 方法数组
  */
-export function createMockMethod(...mockMethod: MockMethod[]): MockMethod[] {
-  return mockMethod.map((item) => ({ ...item, url: baseUrl + item.url }));
+export default function createMockMethod(
+  ...mockMethod: MockMethod[]
+): MockMethod[] {
+  return mockMethod.map((item) => ({
+    method: 'post',
+    ...item,
+    url: baseUrl + item.url,
+  }));
 }
 
 /**
