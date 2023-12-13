@@ -4,7 +4,7 @@
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
     "*.env": "$(capture).env.*",
-    ".eslintrc.js": ".commitlintrc.js,.prettierrc.js,.stylelintrc.js",
+    ".eslintrc.js": ".commitlintrc.js,.prettierrc.js,.stylelintrc,.lintstagedrc",
     "package.json": "pnpm-lock.yaml,.gitignore,README*",
     "vite.config.ts": "index.html,uno.config.ts,tsconfig.json,tsconfig.*.json"
   },
