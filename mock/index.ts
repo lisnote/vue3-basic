@@ -1,6 +1,20 @@
-import { MockMethod } from 'vite-plugin-mock';
-
+import { MethodType, Recordable } from 'vite-plugin-mock';
 const baseUrl = '/backend';
+
+/** 自定义 MockMethod */
+export declare interface CustomMockMethod {
+  url: string;
+  method?: MethodType;
+  response: (
+    this: { res: { statusCode: number } },
+    opt: {
+      url: string;
+      body: Recordable;
+      query: Recordable;
+      headers: Recordable;
+    },
+  ) => any;
+}
 
 /**
  * 封装 MockMethod
@@ -8,12 +22,15 @@ const baseUrl = '/backend';
  * @returns 封装后的 mock 方法数组
  */
 export default function createMockMethod(
-  ...mockMethod: MockMethod[]
-): MockMethod[] {
+  ...mockMethod: CustomMockMethod[]
+): CustomMockMethod[] {
   return mockMethod.map((item) => ({
     method: 'post',
     ...item,
     url: baseUrl + item.url,
+    response(this, opt) {
+      return item.response?.call(this, opt);
+    },
   }));
 }
 

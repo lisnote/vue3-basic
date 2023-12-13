@@ -4,6 +4,7 @@
  */
 import axios from 'axios';
 import useInterceptors from './interceptor';
+import MockAdapter from './MockAdapter';
 
 const http = axios.create({
   baseURL: import.meta.env.APP_API,
@@ -12,8 +13,10 @@ const http = axios.create({
   formSerializer: { indexes: null },
   paramsSerializer: { indexes: null },
 });
-
 useInterceptors(http);
+
+// 生产环境 mock
+import.meta.env.PROD && new MockAdapter(http);
 
 export default http;
 export * from './transform';
