@@ -1,4 +1,5 @@
-import createMockMethod, { queryList, treeForEach, treeToList } from '.';
+import createMockMethod, { queryList } from '.';
+import { treeForEach, treeToList } from '../src/utils/dataFactory';
 
 // 角色数据
 type Role = { id: string; name: string; children?: Role[] };
@@ -104,7 +105,7 @@ export default createMockMethod(
             ...user,
             token: user.roleId,
             permissions: treeToList(
-              permissionMap[user.roleId === '-1' ? 0 : user.roleId],
+              permissionMap[user.roleId === '-1' ? 0 : Number(user.roleId)],
             )
               .filter((permission) => user.roleId === '-1' || permission.has)
               .map((permission) => permission.code),
