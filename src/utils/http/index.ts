@@ -16,4 +16,4 @@ const http = axios.create({
 useInterceptors(http);
 
 export default http;
-export * from './transformResponse';
+export * from './transform';
