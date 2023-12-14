@@ -112,7 +112,7 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
       <ElTableColumn :label="t('views.userManagement.name')" prop="name" />
       <ElTableColumn :label="t('views.userManagement.role')" prop="role" />
       <ElTableColumn :label="t('views.userManagement.phone')" prop="phone" />
-      <ElTableColumn :label="t('views.userManagement.mail')" prop="email" />
+      <ElTableColumn :label="t('views.userManagement.email')" prop="email" />
       <ElTableColumn
         :label="t('views.userManagement.handle')"
         :show-overflow-tooltip="false"

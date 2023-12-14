@@ -109,7 +109,7 @@ views:
     name: Name
     role: Role
     phone: Phone
-    mail: Mail
+    email: EMail
     handle: Handle
     handleWidth: 230
     accessThisAccount: Access this account

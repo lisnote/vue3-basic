@@ -8,5 +8,9 @@ const MobileUserList = defineAsyncComponent(
 const styleStore = useStyleStore();
 </script>
 <template>
-  <component :is="styleStore.deviceMode === 'pc' ? UserList : MobileUserList" />
+  <div class="h-full">
+    <component
+      :is="styleStore.deviceMode === 'pc' ? UserList : MobileUserList"
+    />
+  </div>
 </template>

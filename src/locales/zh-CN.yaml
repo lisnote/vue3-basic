@@ -109,7 +109,7 @@ views:
     name: 名称
     role: 职位
     phone: 电话
-    mail: 邮箱
+    email: 邮箱
     handle: 操作
     handleWidth: 180
     accessThisAccount: 登录此用户
