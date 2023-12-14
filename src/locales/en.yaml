@@ -44,6 +44,10 @@ nav:
   theme: Theme
   signOut: Sign out
 menus:
+  403: Forbidden
+  404: Not Found
+  500: Server Exception
+  login: Login
   dashboard: Dashboard
   component: Component
   functional: Functional

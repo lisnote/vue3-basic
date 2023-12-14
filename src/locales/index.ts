@@ -21,7 +21,7 @@ const langModules = Object.fromEntries(
   ),
 );
 /** 当前语言库 */
-const messages = ref();
+export const messages = ref();
 watch(
   lang,
   async (newLang) => {
