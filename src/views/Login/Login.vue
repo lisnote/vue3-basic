@@ -40,7 +40,9 @@ const mode = ref<'login' | 'signup' | 'reset'>('login');
     </div>
     <div class="absolute right-0 bottom-0 flex gap-3 m-3">
       <ElDropdown trigger="click" tabindex="">
-        <div><Icon icon="cil:language" width="20" class="mx-10px" /></div>
+        <div>
+          <Icon icon="cil:language" width="20" class="mx-10px cursor-pointer" />
+        </div>
         <template #dropdown>
           <ElDropdownMenu v-for="(value, key) of langs" :key="key">
             <ElDropdownItem @click="lang = key">{{ value }}</ElDropdownItem>
