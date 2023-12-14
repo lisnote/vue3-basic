@@ -109,7 +109,9 @@ async function submit() {
           <ElButton @click="emit('update:visible', false)">
             {{ t('button.cancel') }}
           </ElButton>
-          <ElButton @click="submit">{{ t('button.confirm') }}</ElButton>
+          <ElButton type="primary" @click="submit">{{
+            t('button.confirm')
+          }}</ElButton>
         </div>
       </template>
     </ElDialog>
