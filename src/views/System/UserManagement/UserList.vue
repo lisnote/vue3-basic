@@ -104,7 +104,8 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
             :preview-src-list="imageList"
             preview-teleported
             hide-on-click-modal
-            class="w-30px rounded-1 flex"
+            loading="lazy"
+            class="w-30px rounded-full flex"
           />
         </template>
       </ElTableColumn>

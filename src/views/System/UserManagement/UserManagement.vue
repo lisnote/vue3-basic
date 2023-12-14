@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { useStyleStore } from '@/store';
-import UserList from './UserList.vue';
-import MobileUserList from './MobileUserList.vue';
-
+import { defineAsyncComponent } from 'vue';
+const UserList = defineAsyncComponent(() => import('./UserList.vue'));
+const MobileUserList = defineAsyncComponent(
+  () => import('./MobileUserList.vue'),
+);
 const styleStore = useStyleStore();
 </script>
 <template>
-  <UserList v-if="styleStore.deviceMode === 'pc'" />
-  <MobileUserList v-else />
+  <component :is="styleStore.deviceMode === 'pc' ? UserList : MobileUserList" />
 </template>
