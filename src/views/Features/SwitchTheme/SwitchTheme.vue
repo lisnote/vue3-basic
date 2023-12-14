@@ -2,6 +2,7 @@
 import { themeMap, switchTheme } from '@/utils/theme';
 import commonStyle from '@/styles/common.module.scss';
 import { ElButton } from 'element-plus';
+import { t } from '@/locales';
 
 const colorVars = [
   {
@@ -77,7 +78,7 @@ const colorVars = [
         class="!ml-0"
         @click="switchTheme(key)"
       >
-        {{ theme.name }}
+        {{ t(theme.name) }}
       </ElButton>
     </div>
     <div class="flex flex-wrap gap-10px">
