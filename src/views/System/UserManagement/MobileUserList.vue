@@ -13,10 +13,10 @@ const searchValue = ref('');
 const paging = ref({ page: 1, count: 0 });
 // 加载数据
 const tableData = ref<User[]>([]);
-const tableLoading = ref(true);
+const tableLoading = ref(false);
 function loadTableData() {
   getUsers({
-    limit: 50,
+    limit: 100,
     page: paging.value.page,
     search: searchValue.value,
   }).then(({ data: { data, count } }) => {
@@ -26,7 +26,10 @@ function loadTableData() {
 }
 loadTableData();
 // 移除用户
-const remove = useRemoveUsers(loadTableData);
+const remove = useRemoveUsers(() => {
+  loadTableData();
+  drawerVisible.value = false;
+});
 // 用户登录
 const login = useLogin(() => (drawerVisible.value = false));
 
@@ -48,9 +51,20 @@ const editUserMode = ref<'add' | 'edit'>('add');
       >
         {{ t('button.add') }}
       </ElButton>
-      <ElInput type="search" class="mb-10px" placeholder="查询所有用户信息">
+      <ElInput
+        v-model="searchValue"
+        type="search"
+        class="mb-10px"
+        placeholder="查询所有用户信息"
+        @change="loadTableData"
+      >
         <template #suffix>
-          <Icon icon="ep:search" width="20" class="cursor-pointer" />
+          <Icon
+            icon="ep:search"
+            width="20"
+            class="cursor-pointer"
+            @click="loadTableData"
+          />
         </template>
       </ElInput>
     </div>

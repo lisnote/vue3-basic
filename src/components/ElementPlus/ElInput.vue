@@ -68,11 +68,19 @@ const reactValue = computed({
     :maxlength="props.maxlength"
     :type="props.type"
     :props="$attrs"
+    :class="$style.noneCancelButton"
     @change="reactValue = $event.replace(/\s*$/, '')"
   >
-    <!-- 插槽代理 -->
     <template v-for="(value, key) of $slots" #[key]="attrs" :key="key">
       <component :is="value" v-if="value" :props="attrs" />
     </template>
   </ElInput>
 </template>
+
+<style lang="scss" module>
+.noneCancelButton {
+  input[type='search' i]::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+</style>
