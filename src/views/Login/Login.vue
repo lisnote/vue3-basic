@@ -14,6 +14,7 @@ import { ref } from 'vue';
 import pkg from '@root/package.json';
 import { t } from '@/locales';
 
+const projectName = import.meta.env.APP_NAME;
 const mode = ref<'login' | 'signup' | 'reset'>('login');
 </script>
 
@@ -22,7 +23,7 @@ const mode = ref<'login' | 'signup' | 'reset'>('login');
     <div class="login-box flex justify-center items-center">
       <div class="w-300px flex flex-col gap-3">
         <div class="font-bold text-3xl text-center">
-          {{ pkg.name }}
+          {{ projectName }}
         </div>
         <LoginForm v-show="mode === 'login'" />
         <SignupForm v-show="mode === 'signup'" @success="mode = 'login'" />

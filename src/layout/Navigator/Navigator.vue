@@ -7,12 +7,12 @@ import {
   ElDropdownMenu,
   ElDropdownItem,
 } from '@/components/ElementPlus';
-import pkg from '@root/package.json';
 import router from '@/router';
 import { themeMap, switchTheme } from '@/utils/theme';
 import { t } from '@/locales';
 const userStore = useUserStore();
 const styleStore = useStyleStore();
+const projectName = import.meta.env.APP_NAME;
 async function logout() {
   await userStore.logout();
   router.push('/Login');
@@ -38,7 +38,7 @@ async function logout() {
       to="/"
       class="project-name"
     >
-      {{ pkg.name }}
+      {{ projectName }}
     </RouterLink>
     <div class="flex items-center">
       <div>

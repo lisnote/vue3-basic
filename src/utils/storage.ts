@@ -10,6 +10,20 @@ import type {
   UseStorageOptions,
 } from '@vueuse/core';
 
+const prefix = pkg.name + '-';
+// 版本更新时重置 Storage
+const version = StorageLocal<string>(prefix + 'version', pkg.version);
+if (version.value !== pkg.version) {
+  [localStorage, sessionStorage].forEach((storage) => {
+    Object.keys(localStorage).forEach((key) => {
+      if (key.indexOf(prefix) === 0) {
+        storage.removeItem(key);
+      }
+    });
+  });
+  version.value = pkg.version;
+}
+
 /**
  * 封装 \@vueuse/core 的 useStorage
  * 1. 增加前缀, 避免多个项目相同域名时发生冲突
@@ -21,9 +35,7 @@ export const useStorage: typeof StorageLocal = function <T>(
   storage?: StorageLike,
   options?: UseStorageOptions<T>,
 ): RemovableRef<T> {
-  key = pkg.name + '-' + key;
-  removeItemOnUpdate(key, 'local');
-  return StorageLocal(key, defaults, storage, options);
+  return StorageLocal(prefix + key, defaults, storage, options);
 };
 
 /**
@@ -36,22 +48,5 @@ export const useSessionStorage: typeof StorageSession = function <T>(
   initialValue: MaybeComputedRef<T>,
   options?: UseStorageOptions<T>,
 ): RemovableRef<T> {
-  removeItemOnUpdate(key, 'session');
-  return StorageSession(key, initialValue, options);
+  return StorageSession(prefix + key, initialValue, options);
 };
-
-/**
- * 版本更新时初始化Storage
- * @param key storage key
- * @param storage 操作的 storage
- */
-function removeItemOnUpdate(key: string, type: 'local' | 'session' = 'local') {
-  const storage = type == 'local' ? localStorage : sessionStorage;
-  const storageVersionKey = pkg.name + '-storage-version';
-  const storageVersion = JSON.parse(storage.getItem(storageVersionKey) || '{}');
-  if (storageVersion[key] != pkg.version) {
-    storage.removeItem(key);
-    storageVersion[key] = pkg.version;
-    storage.setItem(storageVersionKey, JSON.stringify(storageVersion));
-  }
-}
