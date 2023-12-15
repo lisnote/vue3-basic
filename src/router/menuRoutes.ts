@@ -84,11 +84,6 @@ export const menuRoutes: RouteRecordRaw[] = [
         component: () => import('@/views/Features/VideoPlayer'),
       },
       {
-        path: '/Features/QRCodeRecognition',
-        meta: { title: $t('menus.qrCodeRecognition') },
-        component: () => import('@/views/Features/ScanningCode'),
-      },
-      {
         path: '/Features/Watermark',
         meta: { title: $t('menus.watermark') },
         component: () => import('@/views/Features/Watermark'),

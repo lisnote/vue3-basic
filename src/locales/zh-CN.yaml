@@ -59,7 +59,6 @@ menus:
   pdfRender: PDF渲染
   richTextEditor: 富文本编辑器
   videoPlayer: 视频播放器
-  qrCodeRecognition: 二维码识别
   watermark: 水印
   aMap: 高德地图
   tencentMap: 腾讯地图

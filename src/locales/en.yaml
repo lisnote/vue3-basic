@@ -59,7 +59,6 @@ menus:
   pdfRender: PDF Render
   richTextEditor: Rich Text Editor
   videoPlayer: Video Player
-  qrCodeRecognition: QR Code Recognition
   watermark: Watermark
   aMap: AMap
   tencentMap: Tencent Map

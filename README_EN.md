@@ -54,7 +54,6 @@ Vue3 projects example.
   - [ ] docx-preview: docx preview
   - [ ] wangeditor: rich text editor
   - [ ] dplayer: danmaku video
-  - [x] zxing: QR/barcode recognition
   - [ ] canvas: add watermark, merge images & canvas, export
   - [ ] amap-js: AMap
   - [ ] tencent map service

@@ -54,7 +54,6 @@ Vue3 项目案例.
   - [ ] docx-preview: docx 预览
   - [ ] wangeditor: 富文本编辑器
   - [ ] dplayer: 弹幕视频
-  - [x] zxing: 二维码/条形码识别
   - [ ] canvas: 添加水印, 合并图片 & canvas, 导出
   - [ ] amap-js: 高德地图
   - [ ] 腾讯地图服务
