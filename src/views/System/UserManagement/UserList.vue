@@ -14,6 +14,7 @@ import { useUserStore } from '@/store';
 import { ref } from 'vue';
 import EditUser from './EditUser.vue';
 import { t } from '@/locales';
+import { useLogin, useRemoveUsers } from '.';
 
 const userStore = useUserStore();
 // 查询参数
@@ -37,16 +38,9 @@ function loadTableData() {
 loadTableData();
 
 // 移除用户
-function remove(users: User[]) {
-  removeUsers(users.map((user) => user.id)).then(() => {
-    ElMessage.success(t('views.userManagement.userDeleteSuccessfully'));
-    loadTableData();
-  });
-}
+const remove = useRemoveUsers(loadTableData);
 // 切换用户
-function login(user: User) {
-  userStore.login(user.phone, 'admin123');
-}
+const login = useLogin();
 
 // 编辑用户
 const editUserData = ref<User>();

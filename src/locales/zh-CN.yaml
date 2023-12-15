@@ -20,6 +20,7 @@ button:
   add: 新增
   edit: 编辑
   delete: 删除
+  deleteConfirm: 确定删除${0}?
   confirm: 确认
   cancel: 取消
 components:
@@ -85,6 +86,7 @@ views:
     sendSms: 发送短信
     smsSentSuccessfully: 短信发送成功
     signIn: 登录
+    signInSuccessfully: 登录成功
     signUp: 注册
     signUpSuccessfully: 注册成功
     resetPassword: 重置密码
@@ -98,7 +100,6 @@ views:
     roleNamePlaceholder: 请输入职位名称
     roleAddSuccessfully: 职位新增成功
     roleEditSuccessfully: 编辑职位成功
-    deleteConfirm: 确定删除${0}?
     roleDeleteSuccessfully: 删除职位成功
     permissionName: 权限名
     permissionCode: 权限码
@@ -115,6 +116,7 @@ views:
     accessThisAccount: 登录此用户
     addUser: 新增用户
     eidtUser: 编辑用户
+    
     phonePlaceholder: 请输入手机号
     rolePlaceholder: 请选择职位
     userAddSuccessfully: 用户添加成功, 等待用户同意

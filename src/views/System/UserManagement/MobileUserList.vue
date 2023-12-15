@@ -6,6 +6,7 @@ import { t } from '@/locales';
 import { ref } from 'vue';
 import { Icon } from '@iconify/vue';
 import { ElButton, ElDrawer, ElImage } from 'element-plus';
+import { useLogin, useRemoveUsers } from '.';
 
 // 查询参数
 const searchValue = ref('');
@@ -24,9 +25,15 @@ function loadTableData() {
   });
 }
 loadTableData();
+// 移除用户
+const remove = useRemoveUsers(loadTableData);
+// 用户登录
+const login = useLogin(() => (drawerVisible.value = false));
+
 // 抽屉
 const drawerVisible = ref(false);
 const drawerData = ref<User>();
+
 // 用户编辑
 const editUserVisible = ref(false);
 const editUserMode = ref<'add' | 'edit'>('add');
@@ -52,7 +59,7 @@ const editUserMode = ref<'add' | 'edit'>('add');
         v-for="(item, index) of tableData"
         :key="index"
         class="flex gap-3 p2 cursor-pointer"
-        border="b-solid b-1px $el-color-primary"
+        border="b-solid b-1px $el-border-color"
         @click="(drawerVisible = true), (drawerData = item)"
       >
         <ElImage
@@ -98,11 +105,21 @@ const editUserMode = ref<'add' | 'edit'>('add');
           <Icon icon="ep:edit" />
           <span>{{ t('button.edit') }}</span>
         </ElLink>
-        <ElLink type="danger" class="text-5" :underline="false">
+        <ElLink
+          type="danger"
+          class="text-5"
+          :underline="false"
+          @click="remove([drawerData!])"
+        >
           <Icon icon="ep:delete" />
           <span>{{ t('button.delete') }}</span>
         </ElLink>
-        <ElLink type="primary" class="text-5" :underline="false">
+        <ElLink
+          type="primary"
+          class="text-5"
+          :underline="false"
+          @click="login(drawerData!)"
+        >
           <Icon icon="ep:user" />
           <span>{{ t('views.userManagement.accessThisAccount') }}</span>
         </ElLink>

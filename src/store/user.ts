@@ -3,6 +3,8 @@ import { useStorage } from '@/utils/storage';
 import router from '@/router';
 import { Md5 } from 'ts-md5';
 import { login, logout } from '@/apis/user';
+import { ElMessage } from 'element-plus';
+import { t } from '@/locales';
 import pinia from './pinia';
 
 /**
@@ -28,6 +30,7 @@ export function useUserStore() {
         await login({ phone, password: Md5.hashStr(password) }).then(
           ({ data }) => {
             this.$patch(data.data);
+            ElMessage.success(t('views.login.signInSuccessfully'));
           },
         );
       },

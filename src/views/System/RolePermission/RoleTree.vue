@@ -91,13 +91,12 @@ function editNode(role: Role, parent: Role) {
   editRoleVisible.value = true;
 }
 function removeNode(role: Role) {
-  ElMessageBox.confirm(t('views.rolePermission.deleteConfirm', [role.name]))
-    .then(() => {
-      return removeRoles([role.id]);
-    })
-    .then(() =>
-      ElMessage.success(t('views.rolePermission.roleDeleteSuccessfully')),
-    );
+  ElMessageBox.confirm(t('button.deleteConfirm', [role.name])).then(
+    async () => {
+      await removeRoles([role.id]);
+      ElMessage.success(t('views.rolePermission.roleDeleteSuccessfully'));
+    },
+  );
 }
 // EditRole
 const editRoleVisible = ref(false);

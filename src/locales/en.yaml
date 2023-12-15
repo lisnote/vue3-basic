@@ -20,6 +20,7 @@ button:
   add: Add
   edit: Edit
   delete: Delete
+  deleteConfirm: Are you sure delete ${0}?
   confirm: Confirm
   cancel: Cancel
 components:
@@ -85,6 +86,7 @@ views:
     smsSentSuccessfully: SMS sent successfully
     wait60s: Wait ${0}s
     signIn: Sign in
+    signInSuccessfully: Sign in successfully
     signUp: Sign up
     signUpSuccessfully: Sign up successfully
     resetPassword: Reset password
@@ -98,7 +100,6 @@ views:
     roleNamePlaceholder: Please input role name
     roleAddSuccessfully: Role add successfully
     roleEditSuccessfully: Role edit successfully
-    deleteConfirm: Are you sure delete ${0}?
     roleDeleteSuccessfully: Delete successfully
     permissionName: Name
     permissionCode: Code
