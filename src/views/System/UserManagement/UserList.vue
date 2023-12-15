@@ -54,111 +54,109 @@ function showEditUser(mode: 'add' | 'edit', user?: User) {
 </script>
 
 <template>
-  <div :class="commonStyle.contentArea" class="flex flex-col">
+  <div class="flex">
+    <ElInput
+      v-model="searchValue"
+      :placeholder="t('views.userManagement.searchAllUserInfo')"
+      class="block"
+      @change="loadTableData()"
+    />
     <div class="flex">
-      <ElInput
-        v-model="searchValue"
-        :placeholder="t('views.userManagement.searchAllUserInfo')"
-        class="block"
-        @change="loadTableData()"
-      />
-      <div class="flex">
+      <ElButton
+        v-show="hasPermission('UserManagement/inviteUser')"
+        type="primary"
+        @click="showEditUser('add')"
+      >
+        {{ t('button.add') }}
+      </ElButton>
+      <ElButton
+        v-show="hasPermission('UserManagement/removeUser')"
+        type="danger"
+        :disabled="!tableRef?.getSelectionRows().length"
+        @click="remove(tableRef?.getSelectionRows() ?? [])"
+      >
+        {{ t('button.delete') }}
+      </ElButton>
+    </div>
+  </div>
+  <ElTable
+    ref="tableRef"
+    :data="tableData"
+    default-expand-all
+    show-overflow-tooltip
+    class="flex-1 my-5px"
+  >
+    <ElTableColumn
+      type="selection"
+      :selectable="(row) => !(row.roleId === '-1' || row.id === userStore.id)"
+    />
+    <ElTableColumn width="50" :show-overflow-tooltip="false">
+      <template #default="{ row }">
+        <ElImage
+          :src="row.avatar"
+          :preview-src-list="imageList"
+          preview-teleported
+          hide-on-click-modal
+          loading="lazy"
+          class="w-30px rounded-full flex"
+        />
+      </template>
+    </ElTableColumn>
+    <ElTableColumn :label="t('views.userManagement.name')" prop="name" />
+    <ElTableColumn :label="t('views.userManagement.role')" prop="role" />
+    <ElTableColumn :label="t('views.userManagement.phone')" prop="phone" />
+    <ElTableColumn :label="t('views.userManagement.email')" prop="email" />
+    <ElTableColumn
+      :label="t('views.userManagement.handle')"
+      :show-overflow-tooltip="false"
+      fixed="right"
+      :width="230"
+    >
+      <template #default="{ row }">
         <ElButton
-          v-show="hasPermission('UserManagement/inviteUser')"
+          v-if="
+            hasPermission('UserManagement/updateUser') && row.roleId != '-1'
+          "
           type="primary"
-          @click="showEditUser('add')"
+          size="small"
+          link
+          @click="showEditUser('edit', row)"
         >
-          {{ t('button.add') }}
+          {{ t('button.edit') }}
         </ElButton>
         <ElButton
-          v-show="hasPermission('UserManagement/removeUser')"
+          v-if="
+            hasPermission('UserManagement/removeUser') && row.roleId != '-1'
+          "
           type="danger"
-          :disabled="!tableRef?.getSelectionRows().length"
-          @click="remove(tableRef?.getSelectionRows() ?? [])"
+          size="small"
+          link
+          @click="remove([row])"
         >
           {{ t('button.delete') }}
         </ElButton>
-      </div>
-    </div>
-    <ElTable
-      ref="tableRef"
-      :data="tableData"
-      default-expand-all
-      show-overflow-tooltip
-      class="flex-1 my-5px"
-    >
-      <ElTableColumn
-        type="selection"
-        :selectable="(row) => !(row.roleId === '-1' || row.id === userStore.id)"
-      />
-      <ElTableColumn width="50" :show-overflow-tooltip="false">
-        <template #default="{ row }">
-          <ElImage
-            :src="row.avatar"
-            :preview-src-list="imageList"
-            preview-teleported
-            hide-on-click-modal
-            loading="lazy"
-            class="w-30px rounded-full flex"
-          />
-        </template>
-      </ElTableColumn>
-      <ElTableColumn :label="t('views.userManagement.name')" prop="name" />
-      <ElTableColumn :label="t('views.userManagement.role')" prop="role" />
-      <ElTableColumn :label="t('views.userManagement.phone')" prop="phone" />
-      <ElTableColumn :label="t('views.userManagement.email')" prop="email" />
-      <ElTableColumn
-        :label="t('views.userManagement.handle')"
-        :show-overflow-tooltip="false"
-        fixed="right"
-        :width="230"
-      >
-        <template #default="{ row }">
-          <ElButton
-            v-if="
-              hasPermission('UserManagement/updateUser') && row.roleId != '-1'
-            "
-            type="primary"
-            size="small"
-            link
-            @click="showEditUser('edit', row)"
-          >
-            {{ t('button.edit') }}
-          </ElButton>
-          <ElButton
-            v-if="
-              hasPermission('UserManagement/removeUser') && row.roleId != '-1'
-            "
-            type="danger"
-            size="small"
-            link
-            @click="remove([row])"
-          >
-            {{ t('button.delete') }}
-          </ElButton>
-          <ElButton
-            v-if="row.id !== userStore.id"
-            type="primary"
-            size="small"
-            link
-            @click="login(row)"
-          >
-            {{ t('views.userManagement.accessThisAccount') }}
-          </ElButton>
-        </template>
-      </ElTableColumn>
-    </ElTable>
-    <Pagination
-      v-model:limit="paging.limit"
-      v-model:page="paging.page"
-      :total="paging.total"
-      @change="loadTableData()"
-    />
-    <EditUser
-      v-model:visible="editUserVisible"
-      :data="editUserData"
-      :mode="editUserMode"
-      @success="loadTableData()"
-    />
-  </div>
+        <ElButton
+          v-if="row.id !== userStore.id"
+          type="primary"
+          size="small"
+          link
+          @click="login(row)"
+        >
+          {{ t('views.userManagement.accessThisAccount') }}
+        </ElButton>
+      </template>
+    </ElTableColumn>
+  </ElTable>
+  <Pagination
+    v-model:limit="paging.limit"
+    v-model:page="paging.page"
+    :total="paging.total"
+    @change="loadTableData()"
+  />
+  <EditUser
+    v-model:visible="editUserVisible"
+    :data="editUserData"
+    :mode="editUserMode"
+    @success="loadTableData()"
+  />
 </template>

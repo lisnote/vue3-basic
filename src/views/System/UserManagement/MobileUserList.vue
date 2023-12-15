@@ -43,57 +43,55 @@ const editUserMode = ref<'add' | 'edit'>('add');
 </script>
 
 <template>
-  <div :class="commonStyle.contentArea" class="flex flex-col">
-    <div class="flex gap-2">
-      <ElButton
-        type="primary"
-        @click="(editUserMode = 'add'), (editUserVisible = true)"
-      >
-        {{ t('button.add') }}
-      </ElButton>
-      <ElInput
-        v-model="searchValue"
-        type="search"
-        class="mb-10px"
-        placeholder="查询所有用户信息"
-        @change="loadTableData"
-      >
-        <template #suffix>
-          <Icon
-            icon="ep:search"
-            width="20"
-            class="cursor-pointer"
-            @click="loadTableData"
-          />
-        </template>
-      </ElInput>
-    </div>
-    <div class="flex-1 overflow-auto flex flex-col">
-      <div
-        v-for="(item, index) of tableData"
-        :key="index"
-        class="flex gap-3 p2 cursor-pointer"
-        border="b-solid b-1px $el-border-color"
-        @click="(drawerVisible = true), (drawerData = item)"
-      >
-        <ElImage
-          :src="item.avatar"
-          loading="lazy"
-          class="min-w-10 w-10 rounded-full flex"
+  <div class="flex gap-2">
+    <ElButton
+      type="primary"
+      @click="(editUserMode = 'add'), (editUserVisible = true)"
+    >
+      {{ t('button.add') }}
+    </ElButton>
+    <ElInput
+      v-model="searchValue"
+      type="search"
+      class="mb-10px"
+      placeholder="查询所有用户信息"
+      @change="loadTableData"
+    >
+      <template #suffix>
+        <Icon
+          icon="ep:search"
+          width="20"
+          class="cursor-pointer"
+          @click="loadTableData"
         />
-        <div class="flex-1 flex justify-between items-center">
-          <div class="ellipsis">
-            <div>
-              <span class="font-bold">{{ item.name }}</span>
-              <span text="$el-color-info">({{ item.role }})</span>
-            </div>
-            <div>{{ item.email }}</div>
+      </template>
+    </ElInput>
+  </div>
+  <div class="flex-1 overflow-auto flex flex-col">
+    <div
+      v-for="(item, index) of tableData"
+      :key="index"
+      class="flex gap-3 p2 cursor-pointer"
+      border="b-solid b-1px $el-border-color"
+      @click="(drawerVisible = true), (drawerData = item)"
+    >
+      <ElImage
+        :src="item.avatar"
+        loading="lazy"
+        class="min-w-10 w-10 rounded-full flex"
+      />
+      <div class="flex-1 flex justify-between items-center">
+        <div class="ellipsis">
+          <div>
+            <span class="font-bold">{{ item.name }}</span>
+            <span text="$el-color-info">({{ item.role }})</span>
           </div>
+          <div>{{ item.email }}</div>
         </div>
       </div>
-      <div class="flex justify-center p-2">
-        {{ tableLoading ? '正在加载更多...' : '已加载全部' }}
-      </div>
+    </div>
+    <div class="flex justify-center p-2">
+      {{ tableLoading ? '正在加载更多...' : '已加载全部' }}
     </div>
   </div>
   <ElDrawer
