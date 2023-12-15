@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ElPagination } from 'element-plus';
+import { ElPagination } from '@/components/ElementPlus';
 import { t } from '@/locales';
 const emit = defineEmits(['change', 'update:page', 'update:limit']);
 const props = defineProps({

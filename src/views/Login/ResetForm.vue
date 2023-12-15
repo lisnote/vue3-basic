@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ElButton, ElMessage } from 'element-plus';
+import { ElButton, ElMessage } from '@/components/ElementPlus';
 import { ref } from 'vue';
 import {
   phoneValidator,
@@ -10,7 +10,11 @@ import { sendSmsCode, smsCodeType } from '@/apis/basic';
 import { resetPassword } from '@/apis/user';
 import { t } from '@/locales';
 import { useWatchLang } from '@/hooks/useI18n';
-import type { FormInstance, FormItemInstance, FormRules } from 'element-plus';
+import type {
+  FormInstance,
+  FormItemInstance,
+  FormRules,
+} from '@/components/ElementPlus';
 
 const emit = defineEmits(['success']);
 

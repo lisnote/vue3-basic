@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ElConfigProvider } from 'element-plus';
+import { ElConfigProvider } from '@/components/ElementPlus';
 import { ref } from 'vue';
 import { useWatchLang } from '@/hooks/useI18n';
 import { lang } from '@/locales';

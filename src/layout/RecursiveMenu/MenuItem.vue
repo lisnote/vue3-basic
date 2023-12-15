@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ElSubMenu, ElMenuItem, ElTooltip } from 'element-plus';
+import { ElSubMenu, ElMenuItem, ElTooltip } from '@/components/ElementPlus';
 import { Icon } from '@iconify/vue';
 import { useStyleStore } from '@/store';
 import type { RecursiveMenuData } from '.';

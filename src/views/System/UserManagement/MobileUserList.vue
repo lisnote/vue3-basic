@@ -5,7 +5,7 @@ import EditUser from './EditUser.vue';
 import { t } from '@/locales';
 import { ref } from 'vue';
 import { Icon } from '@iconify/vue';
-import { ElButton, ElDrawer, ElImage } from 'element-plus';
+import { ElButton, ElDrawer, ElImage } from '@/components/ElementPlus';
 import { useLogin, useRemoveUsers } from '.';
 
 // 查询参数

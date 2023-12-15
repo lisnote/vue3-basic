@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ElButton } from 'element-plus';
+import { ElButton } from '@/components/ElementPlus';
 import NoServer from '@/assets/status/500.svg?component';
 </script>
 

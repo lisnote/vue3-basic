@@ -1,5 +1,5 @@
 import { t } from '@/locales';
-import type { FormRules } from 'element-plus';
+import type { FormRules } from '@/components/ElementPlus';
 type ArrayAbleFormItemRule = Exclude<FormRules['validator'], undefined>;
 type ExtractArray<T> = T extends Array<infer U> ? U : never;
 type Validator = Exclude<

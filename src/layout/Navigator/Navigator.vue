@@ -2,7 +2,11 @@
 import { useUserStore, useStyleStore } from '@/store';
 import { langs, lang } from '@/locales';
 import { Icon } from '@iconify/vue';
-import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
+import {
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem,
+} from '@/components/ElementPlus';
 import pkg from '@root/package.json';
 import router from '@/router';
 import { themeMap, switchTheme } from '@/utils/theme';

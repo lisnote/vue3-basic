@@ -3,7 +3,7 @@ import commonStyle from '@/styles/common.module.scss';
 import markdownText from '@/assets/markdown/MarkdownTest.md?raw';
 import { marked } from 'marked';
 import { ref, computed } from 'vue';
-import { ElInput } from 'element-plus';
+import { ElInput } from '@/components/ElementPlus';
 import { useStyleStore } from '@/store';
 
 const styleStore = useStyleStore();

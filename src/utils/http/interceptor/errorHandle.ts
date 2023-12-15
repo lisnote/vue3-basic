@@ -1,7 +1,7 @@
 /**
  * 全局异常请求处理
  */
-import { ElMessage } from 'element-plus';
+import { ElMessage } from '@/components/ElementPlus';
 import type { AxiosError } from 'axios';
 import { t } from '@/locales';
 

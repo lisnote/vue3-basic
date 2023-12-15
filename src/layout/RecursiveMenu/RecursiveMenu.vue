@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ElMenu } from 'element-plus';
+import { ElMenu } from '@/components/ElementPlus';
 import MenuItem from './MenuItem.vue';
 import { ref, computed } from 'vue';
 import router from '@/router';

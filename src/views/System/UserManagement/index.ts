@@ -1,7 +1,7 @@
 import UserManagement from './UserManagement.vue';
 export default UserManagement;
 import { User, removeUsers } from '@/apis/user';
-import { ElMessage, ElMessageBox } from 'element-plus';
+import { ElMessage, ElMessageBox } from '@/components/ElementPlus';
 import { t } from '@/locales';
 import { useUserStore } from '@/store';
 

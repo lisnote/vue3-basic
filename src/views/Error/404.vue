@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import NoExist from '@/assets/status/404.svg?component';
-import { ElButton } from 'element-plus';
+import { ElButton } from '@/components/ElementPlus';
 </script>
 
 <template>

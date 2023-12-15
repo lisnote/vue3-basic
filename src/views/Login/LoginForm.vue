@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ElButton } from 'element-plus';
+import { ElButton } from '@/components/ElementPlus';
 import { useUserStore } from '@/store';
 import router from '@/router';
 import { ref } from 'vue';
 import { phoneValidator, passwordValidator } from '@/utils/validator';
 import { t } from '@/locales';
-import type { FormInstance, FormRules } from 'element-plus';
+import type { FormInstance, FormRules } from '@/components/ElementPlus';
 const userStore = useUserStore();
 
 // 表单组件数据

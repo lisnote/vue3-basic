@@ -3,7 +3,7 @@ import { useStorage } from '@/utils/storage';
 import router from '@/router';
 import { Md5 } from 'ts-md5';
 import { login, logout } from '@/apis/user';
-import { ElMessage } from 'element-plus';
+import { ElMessage } from '@/components/ElementPlus';
 import { t } from '@/locales';
 import pinia from './pinia';
 

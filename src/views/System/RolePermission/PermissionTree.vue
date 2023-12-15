@@ -5,7 +5,12 @@ import { notPermission } from '@/hooks/usePermission';
 import { t } from '@/locales';
 import { useUserStore } from '@/store';
 import { treeForEach } from '@/utils/dataFactory';
-import { ElTable, ElTableColumn, ElCheckbox, ElMessage } from 'element-plus';
+import {
+  ElTable,
+  ElTableColumn,
+  ElCheckbox,
+  ElMessage,
+} from '@/components/ElementPlus';
 import { debounce } from 'lodash-es';
 import { toRaw, watch, ref, nextTick } from 'vue';
 

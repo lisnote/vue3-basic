@@ -2,7 +2,11 @@
 import LoginForm from './LoginForm.vue';
 import SignupForm from './SignupForm.vue';
 import ResetForm from './ResetForm.vue';
-import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
+import {
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem,
+} from '@/components/ElementPlus';
 import { langs, lang } from '@/locales';
 import { Icon } from '@iconify/vue';
 import { themeMap, switchTheme } from '@/utils/theme';

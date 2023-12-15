@@ -6,7 +6,7 @@ import {
   ElImage,
   ElButton,
   ElMessage,
-} from 'element-plus';
+} from '@/components/ElementPlus';
 import { hasPermission } from '@/hooks/usePermission';
 import Pagination from '@/components/Pagination.vue';
 import commonStyle from '@/styles/common.module.scss';

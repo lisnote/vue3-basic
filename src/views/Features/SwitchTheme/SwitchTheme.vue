@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { themeMap, switchTheme } from '@/utils/theme';
 import commonStyle from '@/styles/common.module.scss';
-import { ElButton } from 'element-plus';
+import { ElButton } from '@/components/ElementPlus';
 import { t } from '@/locales';
 
 const colorVars = [

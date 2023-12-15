@@ -7,7 +7,7 @@ import {
   canvasToDataUrl,
   dataUrlToBlobUrl,
 } from '@/utils/typeTransform';
-import { ElButton, ElMessage } from 'element-plus';
+import { ElButton, ElMessage } from '@/components/ElementPlus';
 import http, { download } from '@/utils/http';
 
 const canvasContainerRef = ref<HTMLDivElement>();

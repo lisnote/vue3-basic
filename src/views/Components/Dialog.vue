@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { ElMessageBox, ElButton, ElDialog } from 'element-plus';
+import { ElMessageBox, ElButton, ElDialog } from '@/components/ElementPlus';
 
 const dialogVisible = ref(false);
 

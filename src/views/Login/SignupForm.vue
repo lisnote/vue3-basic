@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ElButton, ElMessage } from 'element-plus';
+import { ElButton, ElMessage } from '@/components/ElementPlus';
 import { ref } from 'vue';
 import {
   phoneValidator,
@@ -8,7 +8,11 @@ import {
 } from '@/utils/validator';
 import { sendSmsCode, smsCodeType } from '@/apis/basic';
 import { signup } from '@/apis/user';
-import type { FormInstance, FormItemInstance, FormRules } from 'element-plus';
+import type {
+  FormInstance,
+  FormItemInstance,
+  FormRules,
+} from '@/components/ElementPlus';
 import { t } from '@/locales';
 import { useWatchLang } from '@/hooks/useI18n';
 

@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { type Role, updateRole, addRole } from '@/apis/user';
-import { ElButton, ElCascader, ElDialog, ElMessage } from 'element-plus';
+import {
+  ElButton,
+  ElCascader,
+  ElDialog,
+  ElMessage,
+} from '@/components/ElementPlus';
 import { ref } from 'vue';
 
-import type { FormInstance, FormRules } from 'element-plus';
+import type { FormInstance, FormRules } from '@/components/ElementPlus';
 import { t } from '@/locales';
 
 const props = withDefaults(

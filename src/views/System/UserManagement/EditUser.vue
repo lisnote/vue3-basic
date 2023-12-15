@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { getRoleTree, inviteUser, updateUser } from '@/apis/user';
 import type { User, Role } from '@/apis/user';
-import { ElButton, ElCascader, ElDialog, ElMessage } from 'element-plus';
+import {
+  ElButton,
+  ElCascader,
+  ElDialog,
+  ElMessage,
+} from '@/components/ElementPlus';
 import { ref } from 'vue';
 
-import type { FormInstance, FormRules } from 'element-plus';
+import type { FormInstance, FormRules } from '@/components/ElementPlus';
 import { phoneValidator } from '@/utils/validator';
 import { t } from '@/locales';
 

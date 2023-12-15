@@ -6,7 +6,7 @@ import {
   ElDropdownItem,
   ElMessageBox,
   ElMessage,
-} from 'element-plus';
+} from '@/components/ElementPlus';
 import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
 import EditRole from './EditRole.vue';
