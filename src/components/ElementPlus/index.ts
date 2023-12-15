@@ -16,3 +16,6 @@ export default function (app: App) {
     app.component(name, component);
   });
 }
+
+export * from 'element-plus';
+export { ElInput };
