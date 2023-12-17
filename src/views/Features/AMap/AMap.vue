@@ -6,11 +6,11 @@ import { useWatchIsDarkTheme } from '@/hooks/useTheme';
 
 const styleStore = useStyleStore();
 window._AMapSecurityConfig = {
-  securityJsCode: 'ed8a8c2acd6ca27b12e08179c4efe36e',
+  securityJsCode: window.config.securityJsCode,
 };
 onMounted(() => {
   AMapLoader.load({
-    key: 'ed2bc82159b21fa8303b8f70164ad093',
+    key: window.config.AMapKey,
     version: '2.0',
   }).then((AMap) => {
     // 渲染地图
