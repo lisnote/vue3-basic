@@ -65,7 +65,8 @@ router.beforeEach(function (to, _from, next) {
   }
 });
 function updateTitle(route: RouteLocationNormalized) {
-  document.title = t((route.meta.title as string | undefined) ?? 'vue3-basic');
+  document.title =
+    import.meta.env.APP_NAME + ' | ' + t((route.meta.title ?? '') as string);
 }
 useWatchMessage(() => {
   updateTitle(router.currentRoute.value);
