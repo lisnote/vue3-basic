@@ -89,6 +89,6 @@ Vue3 projects example.
     - [ ] StableDiffusion: text generates images
     - [ ] Real-ESRGAN: Image/Video Super-Resolution
 - [x] System Management
-  - [ ] Role Permission
-  - [ ] User Management
-  - [ ] About
+  - [x] Role Permission
+  - [x] User Management
+  - [x] About
