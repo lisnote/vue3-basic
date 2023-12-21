@@ -1,2 +1,1 @@
-import Minecraft from './Minecraft.vue';
-export default Minecraft;
+export { default } from './Minecraft.vue';

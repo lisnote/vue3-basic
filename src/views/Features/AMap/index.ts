@@ -1,2 +1,1 @@
-import AMap from './AMap.vue';
-export default AMap;
+export { default } from './AMap.vue';

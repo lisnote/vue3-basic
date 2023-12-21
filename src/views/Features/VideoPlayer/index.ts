@@ -1,2 +1,1 @@
-import VideoPlayer from './VideoPlayer.vue';
-export default VideoPlayer;
+export { default } from './VideoPlayer.vue';

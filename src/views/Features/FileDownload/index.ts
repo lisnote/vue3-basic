@@ -1,2 +1,1 @@
-import FileDownload from './FileDownload.vue';
-export default FileDownload;
+export { default } from './FileDownload.vue';

@@ -1,2 +1,1 @@
-import CodeEditor from './CodeEditor.vue';
-export default CodeEditor;
+export { default } from './CodeEditor.vue';

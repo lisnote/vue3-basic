@@ -1,2 +1,1 @@
-import Watermark from './Watermark.vue';
-export default Watermark;
+export { default } from './Watermark.vue';

@@ -1,2 +1,1 @@
-import WebGL from './WebGL.vue';
-export default WebGL;
+export { default } from './WebGL.vue';

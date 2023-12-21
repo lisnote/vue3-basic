@@ -1,2 +1,1 @@
-import PDFRender from './PDFRender.vue';
-export default PDFRender;
+export { default } from './PDFRender.vue';
