@@ -1,7 +1,7 @@
 /**
  * 树结构的数据处理方法集
  */
-import { cloneDeep, isString } from 'lodash-es';
+import { cloneDeep } from 'lodash-es';
 
 /**
  * 树结构数据修剪, 直接影响原对象, 移除自身及子树指定字段的值不含search值的树
@@ -12,7 +12,7 @@ import { cloneDeep, isString } from 'lodash-es';
  */
 export function treeCleaner<T extends any[]>(
   tree: T,
-  search: string | ((node: T[number]) => boolean),
+  predicate: (node: T[number]) => boolean,
   {
     children = 'children',
     field = 'id',
@@ -22,11 +22,11 @@ export function treeCleaner<T extends any[]>(
   } = {},
 ): T {
   return tree.reduceRight((pre, now, index) => {
-    if (isString(search) ? now[field].includes(search) : search(now)) {
+    if (predicate(now)) {
       return pre;
     }
     if (now[children]) {
-      treeCleaner(now[children], search, { children, field });
+      treeCleaner(now[children], predicate, { children, field });
     }
     if ((now[children]?.length ?? 0) < 1) {
       tree.splice(index, 1);
@@ -38,19 +38,19 @@ export function treeCleaner<T extends any[]>(
 /**
  * 树结构数据过滤, 不影响原对象, 过滤自身及子树指定字段的值不含search值的树
  * @param tree 待处理的树数据
- * @param search 查找的值或查找函数
+ * @param search 查找函数
  * @param props 树属性及查找字段
  * @returns 被过滤的树
  */
 export function treeFilter<T extends any[]>(
   tree: T,
-  search: string | ((node: T[number]) => boolean),
+  predicate: (node: T[number]) => boolean,
   props: {
     children?: string;
     field?: string;
   },
 ): T {
-  return treeCleaner(cloneDeep(tree), search, props);
+  return treeCleaner(cloneDeep(tree), predicate, props);
 }
 
 /**
@@ -94,4 +94,31 @@ export function treeForEach<T extends any[]>(
       treeForEach(childNodes, handle, { children, parent: node });
     }
   });
+}
+
+/**
+ * 查找第一个符合要求的节点
+ * @param tree 待处理的树
+ * @param predicate 查找函数
+ * @param children 子节点列表的字段名
+ * @returns 找到的子节点
+ */
+export function treeFind<T extends any[]>(
+  tree: T,
+  predicate: (node: T[number], parent?: T[number]) => boolean,
+  {
+    children = 'children',
+    parent,
+  }: { children?: string; parent?: T[number] } = {},
+): T[number] | void {
+  for (const child of tree) {
+    if (child[children]) {
+      const target = treeFind(child[children], predicate, {
+        children,
+        parent: child,
+      });
+      if (target) return target;
+    }
+    if (predicate(child, parent)) return child;
+  }
 }
