@@ -63,7 +63,9 @@ async function logout() {
         </span>
         <template #dropdown>
           <ElDropdownMenu>
-            <ElDropdownItem>{{ t('nav.profile') }}</ElDropdownItem>
+            <ElDropdownItem @click="router.push('/Profile')">
+              {{ t('nav.profile') }}
+            </ElDropdownItem>
             <ElDropdown placement="left" trigger="click" class="block">
               <div>
                 <ElDropdownItem>{{ t('nav.theme') }}</ElDropdownItem>

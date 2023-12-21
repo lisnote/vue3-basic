@@ -231,4 +231,9 @@ export const menuRoutes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: 'Profile',
+    meta: { title: '个人资料', invisible: true },
+    component: { render: createRender('个人资料') },
+  },
 ];

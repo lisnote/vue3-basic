@@ -12,13 +12,13 @@ const styleStore = useStyleStore();
 
 // SubMenu/MenuItem 判断
 function isMenu(data: RecursiveMenuData) {
-  if (!data.children?.length) return false;
+  if (!data.children?.length || data.invisible) return false;
   for (const child of data.children) {
     if (!child.permission || hasPermission(child.permission)) return true;
   }
 }
 function isMenuItem(data: RecursiveMenuData) {
-  if (data.children?.length) return false;
+  if (data.children?.length || data.invisible) return false;
   return !data.permission || hasPermission(data.permission);
 }
 
