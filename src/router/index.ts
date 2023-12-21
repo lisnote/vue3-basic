@@ -6,25 +6,21 @@ import {
 import { menuRoutes } from './menuRoutes';
 import { useUserStore } from '@/store';
 import nProgress from 'nprogress';
-import { notPermission } from '@/hooks/usePermission';
+import { hasPermission, notPermission } from '@/hooks/usePermission';
 import { isString } from '@/utils/types';
 import { $t, t } from '@/locales';
 import { useWatchMessage } from '@/hooks/useI18n';
+import { treeFind } from '@/utils/dataFactory';
 
+const rootPath = '/';
 const loginPath = '/Login';
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
-      path: '/',
+      path: rootPath,
       component: () => import('@/layout'),
-      children: [
-        {
-          path: '/',
-          redirect: '/Dashboard',
-        },
-        ...menuRoutes,
-      ],
+      children: menuRoutes,
     },
     {
       path: loginPath,
@@ -50,9 +46,18 @@ router.beforeEach(function (to, _from, next) {
   if (to.path !== loginPath && !userStore.token) {
     // 未登录跳转到登录界面
     next(loginPath);
-  } else if (to.path === loginPath && userStore.token) {
+  } else if (
+    (to.path === rootPath || to.path === loginPath) &&
+    userStore.token
+  ) {
     // 已登录跳转到首页
-    next('/');
+    const target = treeFind(menuRoutes, (node) => {
+      const isNotParent = !node.children?.length;
+      const isPermission = hasPermission(node.meta?.permission as string);
+      const notInvisible = !node.meta?.invisible;
+      return isNotParent && isPermission && notInvisible;
+    });
+    next(target?.path ?? rootPath);
   } else if (
     isString(to.meta.permission) &&
     notPermission(to.meta.permission)
