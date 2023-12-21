@@ -3,11 +3,6 @@
  */
 import { cloneDeep, isString } from 'lodash-es';
 
-interface TreeProps {
-  children?: string;
-  field?: string;
-}
-
 /**
  * 树结构数据修剪, 直接影响原对象, 移除自身及子树指定字段的值不含search值的树
  * @param tree 待处理的树数据
@@ -18,18 +13,20 @@ interface TreeProps {
 export function treeCleaner<T extends any[]>(
   tree: T,
   search: string | ((node: T[number]) => boolean),
-  props?: TreeProps,
+  {
+    children = 'children',
+    field = 'id',
+  }: {
+    children?: string;
+    field?: string;
+  } = {},
 ): T {
-  const { children, field } = Object.assign(
-    { children: 'children', field: 'id' },
-    props,
-  );
   return tree.reduceRight((pre, now, index) => {
     if (isString(search) ? now[field].includes(search) : search(now)) {
       return pre;
     }
     if (now[children]) {
-      treeCleaner(now[children], search, props);
+      treeCleaner(now[children], search, { children, field });
     }
     if ((now[children]?.length ?? 0) < 1) {
       tree.splice(index, 1);
@@ -48,7 +45,10 @@ export function treeCleaner<T extends any[]>(
 export function treeFilter<T extends any[]>(
   tree: T,
   search: string | ((node: T[number]) => boolean),
-  props?: TreeProps,
+  props: {
+    children?: string;
+    field?: string;
+  },
 ): T {
   return treeCleaner(cloneDeep(tree), search, props);
 }
@@ -58,7 +58,7 @@ export function treeFilter<T extends any[]>(
  * @param tree 待处理的树
  * @param children 子节点列表的字段名
  * @param list 树节点列表
- * @returns
+ * @returns 全部节点
  */
 export function treeToList<T extends any[]>(
   tree: T,
