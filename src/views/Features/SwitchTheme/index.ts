@@ -1,2 +1,1 @@
-import SwitchTheme from './SwitchTheme.vue';
-export default SwitchTheme;
+export { default } from './SwitchTheme.vue';

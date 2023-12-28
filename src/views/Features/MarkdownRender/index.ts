@@ -1,4 +1,4 @@
-import MarkdownRender from './MarkdownRender.vue';
+export { default } from './MarkdownRender.vue';
 import { marked } from 'marked';
 import hljs from 'highlight.js';
 import { markedHighlight } from 'marked-highlight';
@@ -12,5 +12,3 @@ marked.use(
   }),
   gfmHeadingId({ prefix: 'marked-heading-' }),
 );
-
-export default MarkdownRender;

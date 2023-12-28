@@ -1,2 +1,1 @@
-import RolePermission from './RolePermission.vue';
-export default RolePermission;
+export { default } from './RolePermission.vue';

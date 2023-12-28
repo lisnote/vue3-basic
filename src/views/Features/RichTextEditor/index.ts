@@ -1,2 +1,1 @@
-import RichTextEditor from './RichTextEditor.vue';
-export default RichTextEditor;
+export { default } from './RichTextEditor.vue';

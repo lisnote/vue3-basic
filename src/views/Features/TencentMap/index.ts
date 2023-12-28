@@ -1,3 +1,1 @@
-import TencentMap from './TencentMap.vue';
-
-export { TencentMap as default };
+export { default } from './TencentMap.vue';
