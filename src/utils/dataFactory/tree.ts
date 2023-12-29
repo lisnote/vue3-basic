@@ -17,7 +17,7 @@ export function treeCleaner<T extends any[]>(
     children = 'children',
     field = 'id',
   }: {
-    children?: string;
+    children?: keyof T[number];
     field?: string;
   } = {},
 ): T {
@@ -46,7 +46,7 @@ export function treeFilter<T extends any[]>(
   tree: T,
   predicate: (node: T[number]) => boolean,
   props: {
-    children?: string;
+    children?: keyof T[number];
     field?: string;
   },
 ): T {
@@ -62,7 +62,7 @@ export function treeFilter<T extends any[]>(
  */
 export function treeToList<T extends any[]>(
   tree: T,
-  children: string = 'children',
+  children: keyof T[number] = 'children',
   list: T = [] as any,
 ): T {
   tree.forEach((node) => {
@@ -85,7 +85,7 @@ export function treeForEach<T extends any[]>(
   {
     children = 'children',
     parent,
-  }: { children?: string; parent?: T[number] } = {},
+  }: { children?: keyof T[number]; parent?: T[number] } = {},
 ) {
   tree.forEach((node) => {
     handle(node, parent);
@@ -109,7 +109,7 @@ export function treeFind<T extends any[]>(
   {
     children = 'children',
     parent,
-  }: { children?: string; parent?: T[number] } = {},
+  }: { children?: keyof T[number]; parent?: T[number] } = {},
 ): T[number] | void {
   for (const child of tree) {
     if (child[children]) {
