@@ -85,14 +85,20 @@ export function treeForEach<T extends any[]>(
   {
     children = 'children',
     parent,
-  }: { children?: keyof T[number]; parent?: T[number] } = {},
+    handleTiming = 'afterChildren',
+  }: {
+    children?: keyof T[number];
+    parent?: T[number];
+    handleTiming?: 'beforeChildren' | 'afterChildren';
+  } = {},
 ) {
   tree.forEach((node) => {
-    handle(node, parent);
+    if (handleTiming === 'beforeChildren') handle(node, parent);
     const childNodes = node[children];
     if (childNodes?.length) {
       treeForEach(childNodes, handle, { children, parent: node });
     }
+    if (handleTiming === 'afterChildren') handle(node, parent);
   });
 }
 
