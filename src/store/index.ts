@@ -1,5 +1,3 @@
-import pinia from './pinia';
-
-export default pinia;
+export { default } from './pinia';
 export * from './style';
 export * from './user';
