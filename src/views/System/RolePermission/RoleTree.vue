@@ -1,4 +1,4 @@
-<script setup lang="tsx">
+<script setup lang="ts">
 import { getRoleTree, removeRoles, type Role } from '@/apis/user';
 import {
   ElTree,
@@ -8,7 +8,7 @@ import {
   ElMessage,
 } from '@/components/ElementPlus';
 import { Icon } from '@iconify/vue';
-import { ref } from 'vue';
+import { ref, nextTick } from 'vue';
 import EditRole from './EditRole.vue';
 import { hasPermission } from '@/hooks/usePermission';
 import { t } from '@/locales';
@@ -17,61 +17,13 @@ const emit = defineEmits({
   'node-click': (role: Role) => role,
 });
 
-// tree prop
-function renderContent(
-  _h: never,
-  {
-    node: {
-      data: role,
-      parent: { data: parent },
-    },
-  }: { node: { data: Role; parent: { data: Role } } },
-) {
-  return (
-    <div class="flex-1 h-full flex justify-between items-center">
-      <div class="flex-1" onClick={() => nodeClick(role)}>
-        {role.name}
-      </div>
-      {hasPermission('RolePermission/addRole') ||
-      hasPermission('RolePermission/updateRole') ||
-      hasPermission('RolePermission/removeRole') ? (
-        <ElDropdown tabindex="">
-          {{
-            default: () => (
-              <div>
-                <Icon icon="ep:more-filled" class="h-full" />
-              </div>
-            ),
-            dropdown: () => [
-              hasPermission('RolePermission/addRole') ? (
-                <ElDropdownItem onClick={() => addNode(role)}>
-                  {t('button.add')}
-                </ElDropdownItem>
-              ) : undefined,
-              hasPermission('RolePermission/updateRole') ? (
-                <ElDropdownItem onClick={() => editNode(role, parent)}>
-                  {t('button.edit')}
-                </ElDropdownItem>
-              ) : undefined,
-              hasPermission('RolePermission/removeRole') ? (
-                <ElDropdownItem onClick={() => removeNode(role)}>
-                  {t('button.delete')}
-                </ElDropdownItem>
-              ) : undefined,
-            ],
-          }}
-        </ElDropdown>
-      ) : undefined}
-    </div>
-  );
-}
 // tree data
 const treeData = ref<Role[]>([]);
 const currentNodeKey = ref('');
 async function loadData() {
   getRoleTree().then(({ data: { data } }) => {
     treeData.value = data;
-    currentNodeKey.value = data[0].id;
+    nextTick(() => (currentNodeKey.value = data[0].id));
     emit('node-click', data[0]);
   });
 }
@@ -112,10 +64,54 @@ const editRoleMode = ref<'add' | 'edit'>('add');
       :expand-on-click-node="false"
       draggable
       highlight-current
-      :render-content="renderContent"
       node-key="id"
       :current-node-key="currentNodeKey"
-    />
+    >
+      <template
+        #default="{
+          node: {
+            data: role,
+            parent: { data: parent },
+          },
+        }"
+      >
+        <div class="flex-1 h-full flex justify-between items-center">
+          <div class="flex-1" @click="nodeClick(role)">{{ role.name }}</div>
+        </div>
+        <ElDropdown
+          v-if="
+            hasPermission('RolePermission/addRole') ||
+            hasPermission('RolePermission/updateRole') ||
+            hasPermission('RolePermission/removeRole')
+          "
+          tabindex=""
+        >
+          <div>
+            <Icon icon="ep:more-filled" class="h-full" />
+          </div>
+          <template #dropdown>
+            <ElDropdownItem
+              v-if="hasPermission('RolePermission/addRole')"
+              @click="addNode(role)"
+            >
+              {{ t('button.add') }}
+            </ElDropdownItem>
+            <ElDropdownItem
+              v-if="hasPermission('RolePermission/updateRole')"
+              @click="editNode(role, parent)"
+            >
+              {{ t('button.edit') }}
+            </ElDropdownItem>
+            <ElDropdownItem
+              v-if="hasPermission('RolePermission/removeRole')"
+              @click="removeNode(role)"
+            >
+              {{ t('button.delete') }}
+            </ElDropdownItem>
+          </template>
+        </ElDropdown>
+      </template>
+    </ElTree>
     <EditRole
       v-model:visible="editRoleVisible"
       :data="editRoleData"
