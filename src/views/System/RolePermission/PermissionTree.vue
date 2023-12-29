@@ -25,6 +25,7 @@ watch(
   () => props.role,
   async () => {
     if (!props.role?.id) return;
+    submit.flush();
     getRolePermission({ roleId: props.role.id }).then(({ data: { data } }) => {
       tableData.value = data;
       treeForEach(tableData.value, (node, parent) => {
@@ -46,12 +47,12 @@ const updateIndeterminate = debounce(() => {
 }, 0);
 
 // 提交
-const submit = debounce(async function submit() {
+const submit = debounce(async function submit(roleId: string) {
   const permissions: string[] = [];
   treeForEach(tableData.value, (node) => {
     if (node.has) permissions.push(node.code);
   });
-  updateRolePermission({ roleId: props.role!.id, permissions }).then(() =>
+  updateRolePermission({ roleId: roleId, permissions }).then(() =>
     ElMessage.success(t('views.rolePermission.permissionUpdateSuccessfully')),
   );
 }, 1000);
@@ -68,7 +69,7 @@ function changePermission(row: Permission) {
     treeForEach(row.children, (node) => (node.has = false));
   }
   updateIndeterminate();
-  submit();
+  submit(props.role!.id);
 }
 </script>
 
