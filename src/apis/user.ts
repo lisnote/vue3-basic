@@ -38,6 +38,8 @@ export type Permission = {
   code: string;
   has: boolean;
   children?: Permission[];
+  indeterminate?: boolean;
+  parent?: Permission;
 };
 // 获取角色树
 export async function getRoleTree(

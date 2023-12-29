@@ -12,31 +12,38 @@ import {
   ElMessage,
 } from '@/components/ElementPlus';
 import { debounce } from 'lodash-es';
-import { toRaw, watch, ref, nextTick } from 'vue';
+import { watch, ref } from 'vue';
 
 const props = defineProps<{
   role: Role | undefined;
 }>();
 
 const userStore = useUserStore();
-const tableRef = ref<InstanceType<typeof ElTable>>();
 // 数据展示
 const tableData = ref<Permission[]>([]);
-const parentMap = new WeakMap<Permission, Permission>();
 watch(
   () => props.role,
   async () => {
-    const tabelInstance = tableRef.value!;
     if (!props.role?.id) return;
     getRolePermission({ roleId: props.role.id }).then(({ data: { data } }) => {
       tableData.value = data;
       treeForEach(tableData.value, (node, parent) => {
-        if (parent) parentMap.set(toRaw(node), parent);
-        nextTick(() => tabelInstance.toggleRowSelection(node, node.has));
+        node.parent = parent;
       });
+      updateIndeterminate();
     });
   },
 );
+// 更新中间态
+const updateIndeterminate = debounce(() => {
+  treeForEach(tableData.value, (node) => {
+    node.indeterminate =
+      node.has &&
+      node.children?.reduce((pre, current) => {
+        return pre || !current.has || current.indeterminate === true;
+      }, false);
+  });
+}, 0);
 
 // 提交
 const submit = debounce(async function submit() {
@@ -50,17 +57,17 @@ const submit = debounce(async function submit() {
 }, 1000);
 function changePermission(row: Permission) {
   if (row.has) {
-    const parent = parentMap.get(toRaw(row));
-    if (parent) {
-      parent.has = true;
-      changePermission(parent);
+    if (row.parent) {
+      row.parent.has = true;
+      changePermission(row.parent);
     }
-  } else {
-    row.children?.forEach((child) => {
-      child.has = false;
-      changePermission(child);
-    });
+  } else if (row.children && row.indeterminate) {
+    row.has = true;
+    treeForEach(row.children, (node) => (node.has = true));
+  } else if (row.children) {
+    treeForEach(row.children, (node) => (node.has = false));
   }
+  updateIndeterminate();
   submit();
 }
 </script>
@@ -68,7 +75,6 @@ function changePermission(row: Permission) {
 <template>
   <div class="h-full flex flex-col gap-1">
     <ElTable
-      ref="tableRef"
       :data="tableData"
       row-key="code"
       default-expand-all
@@ -83,7 +89,7 @@ function changePermission(row: Permission) {
         :label="t('views.rolePermission.permissionCode')"
       />
       <ElTableColumn :label="t('views.rolePermission.handle')" width="90">
-        <template #default="{ row }">
+        <template #default="{ row }: { row: Permission }">
           <ElCheckbox
             v-model="row.has"
             :disabled="
@@ -91,6 +97,7 @@ function changePermission(row: Permission) {
               notPermission(row.code) ||
               role?.id === userStore.roleId
             "
+            :indeterminate="row.indeterminate"
             @change="changePermission(row)"
           ></ElCheckbox>
         </template>
