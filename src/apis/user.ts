@@ -32,7 +32,7 @@ export async function logout(config?: AxiosRequestConfig) {
 }
 
 // 角色权限 --------------------------------------------------------
-export type Role = { id: string; name: string; children?: Role[] };
+export type Role = { id: string; name: string; pid: string; children?: Role[] };
 export type Permission = {
   name: string;
   code: string;

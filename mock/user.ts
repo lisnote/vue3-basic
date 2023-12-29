@@ -2,29 +2,33 @@ import createMockMethod, { queryList } from '.';
 import { treeForEach, treeToList } from '../src/utils/dataFactory';
 
 // 角色数据
-type Role = { id: string; name: string; children?: Role[] };
+type Role = { id: string; pid: string; name: string; children?: Role[] };
 const roleTree: Role[] = [
   {
     id: '0',
+    pid: '-1',
     name: '总经理',
     children: [
-      { id: '1', name: '实习经理' },
+      { id: '1', pid: '0', name: '实习经理' },
       {
         id: '2',
+        pid: '0',
         name: '技术总监',
-        children: [{ id: '3', name: '工程师' }],
+        children: [{ id: '3', pid: '2', name: '工程师' }],
       },
       {
         id: '4',
+        pid: '0',
         name: '销售主管',
-        children: [{ id: '5', name: '销售员' }],
+        children: [{ id: '5', pid: '4', name: '销售员' }],
       },
       {
         id: '6',
+        pid: '0',
         name: '产品经理',
         children: [
-          { id: '7', name: '设计师' },
-          { id: '8', name: '调查员' },
+          { id: '7', pid: '6', name: '设计师' },
+          { id: '8', pid: '6', name: '调查员' },
         ],
       },
     ],
