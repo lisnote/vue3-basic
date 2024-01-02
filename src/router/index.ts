@@ -81,5 +81,5 @@ router.afterEach((to) => {
   nProgress.done();
 });
 
-export { router as default };
+export default router;
 export * from './menuRoutes';

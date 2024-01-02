@@ -1,2 +1,1 @@
-import Navigator from './Navigator.vue';
-export default Navigator;
+export { default } from './Navigator.vue';
