@@ -11,7 +11,7 @@ const http = axios.create({
   timeout: 5000,
   responseType: 'blob',
   formSerializer: { indexes: null },
-  paramsSerializer: { indexes: null },
+  paramsSerializer: { indexes: null, encode: encodeURI },
 });
 useInterceptors(http);
 
