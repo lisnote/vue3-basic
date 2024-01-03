@@ -1,10 +1,7 @@
-/**
- * 移除对象中值为 '', null, undefined 的属性
- */
 import type { AxiosRequestConfig } from 'axios';
-
 import { isObject, isArray } from '@/utils/types';
 
+/** 移除对象中值为 '', null, undefined 的属性 */
 export default function (config: AxiosRequestConfig) {
   config.params = emptyFilter(JSON.parse(JSON.stringify(config.params ?? {})));
   config.data = emptyFilter(JSON.parse(JSON.stringify(config.data ?? {})));
