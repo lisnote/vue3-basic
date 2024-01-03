@@ -6,21 +6,23 @@ import type { AxiosRequestConfig } from 'axios';
 import { isObject, isArray } from '@/utils/types';
 
 export default function (config: AxiosRequestConfig) {
-  emptyFilter(config.data);
+  config.params = emptyFilter(JSON.parse(JSON.stringify(config.params ?? {})));
+  config.data = emptyFilter(JSON.parse(JSON.stringify(config.data ?? {})));
   return config;
 }
 
-const emptyValues: Array<unknown> = ['', null, undefined];
-function emptyFilter(value: unknown) {
+const emptyValues = ['', null, undefined];
+function emptyFilter<T>(value: T) {
   if (isArray(value)) {
-    (value as Array<unknown>).forEach(emptyFilter);
+    value.forEach(emptyFilter);
   } else if (isObject(value)) {
-    Object.entries(value as Record<string, unknown>).forEach(([k, v]) => {
+    Object.entries(value).forEach(([k, v]) => {
       if (isArray(v) || isObject(v)) {
         emptyFilter(v);
       } else if (emptyValues.includes(v)) {
-        delete (value as Record<string, unknown>)[k];
+        delete value[k as keyof typeof value];
       }
     });
   }
+  return value;
 }
