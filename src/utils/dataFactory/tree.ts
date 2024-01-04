@@ -1,32 +1,23 @@
-/**
- * 树结构的数据处理方法集
- */
-import { cloneDeep } from 'lodash-es';
+/** 树结构的数据处理方法集 */
 
 /**
  * 树结构数据修剪, 直接影响原对象, 移除自身及子树指定字段的值不含search值的树
  * @param tree 待处理的树数据
  * @param search 查找的值或查找函数
- * @param props 树属性及查找字段
+ * @param children 树的子节点组的字段名
  * @returns 被修剪的树
  */
 export function treeCleaner<T extends any[]>(
   tree: T,
   predicate: (node: T[number]) => boolean,
-  {
-    children = 'children',
-    field = 'id',
-  }: {
-    children?: keyof T[number];
-    field?: string;
-  } = {},
+  children: keyof T[number] = 'children',
 ): T {
   return tree.reduceRight((pre, now, index) => {
     if (predicate(now)) {
       return pre;
     }
     if (now[children]) {
-      treeCleaner(now[children], predicate, { children, field });
+      treeCleaner(now[children], predicate, children);
     }
     if ((now[children]?.length ?? 0) < 1) {
       tree.splice(index, 1);
@@ -36,21 +27,30 @@ export function treeCleaner<T extends any[]>(
 }
 
 /**
- * 树结构数据过滤, 不影响原对象, 过滤自身及子树指定字段的值不含search值的树
- * @param tree 待处理的树数据
- * @param search 查找函数
- * @param props 树属性及查找字段
- * @returns 被过滤的树
+ * 查找第一个符合要求的节点
+ * @param tree 待处理的树
+ * @param predicate 查找函数
+ * @param children 子节点列表的字段名
+ * @returns 找到的子节点
  */
-export function treeFilter<T extends any[]>(
+export function treeFind<T extends any[]>(
   tree: T,
-  predicate: (node: T[number]) => boolean,
-  props: {
-    children?: keyof T[number];
-    field?: string;
-  },
-): T {
-  return treeCleaner(cloneDeep(tree), predicate, props);
+  predicate: (node: T[number], parent?: T[number]) => boolean,
+  {
+    children = 'children',
+    parent,
+  }: { children?: keyof T[number]; parent?: T[number] } = {},
+): T[number] | void {
+  for (const child of tree) {
+    if (predicate(child, parent)) return child;
+    if (child[children]) {
+      const target = treeFind(child[children], predicate, {
+        children,
+        parent: child,
+      });
+      if (target) return target;
+    }
+  }
 }
 
 /**
@@ -100,31 +100,4 @@ export function treeForEach<T extends any[]>(
     }
     if (handleTiming === 'afterChildren') handle(node, parent);
   });
-}
-
-/**
- * 查找第一个符合要求的节点
- * @param tree 待处理的树
- * @param predicate 查找函数
- * @param children 子节点列表的字段名
- * @returns 找到的子节点
- */
-export function treeFind<T extends any[]>(
-  tree: T,
-  predicate: (node: T[number], parent?: T[number]) => boolean,
-  {
-    children = 'children',
-    parent,
-  }: { children?: keyof T[number]; parent?: T[number] } = {},
-): T[number] | void {
-  for (const child of tree) {
-    if (child[children]) {
-      const target = treeFind(child[children], predicate, {
-        children,
-        parent: child,
-      });
-      if (target) return target;
-    }
-    if (predicate(child, parent)) return child;
-  }
 }
