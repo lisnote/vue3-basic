@@ -1,5 +1,5 @@
 import createMockMethod, { queryList } from '.';
-import { treeForEach, treeToList } from '../src/utils/dataFactory';
+import { treeTraverse, treeToList } from '../src/utils/dataFactory';
 
 // 角色数据
 type Role = { id: string; pid: string; name: string; children?: Role[] };
@@ -137,7 +137,7 @@ export default createMockMethod(
     url: '/user/updateRolePermission',
     response({ body: { roleId, permissions } }) {
       const permissionSet = new Set(permissions);
-      treeForEach(permissionMap[roleId], (node) => {
+      treeTraverse(permissionMap[roleId], (node) => {
         node.has = permissionSet.has(node.code);
       });
       return { code: 0 };
