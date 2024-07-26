@@ -13,6 +13,9 @@ import router from '@/router';
 import { themeMap, switchTheme } from '@/utils/theme';
 import { t } from '@/locales';
 import { ref } from 'vue';
+
+const emit = defineEmits(['fullScreen']);
+
 const userStore = useUserStore();
 const styleStore = useStyleStore();
 const projectName = import.meta.env.APP_NAME;
@@ -53,9 +56,24 @@ async function showQRCode() {
       {{ projectName }}
     </RouterLink>
     <div class="flex items-center">
-      <div>
-        <Icon icon="ep:bell" width="20" class="mx-10px cursor-pointer" />
-      </div>
+      <ElDropdown trigger="click" tabindex="" class="cursor-pointer">
+        <div>
+          <Icon icon="ep:bell" width="20" class="mx-10px cursor-pointer" />
+        </div>
+        <template #dropdown>
+          <div
+            class="w-300px h-200px flex justify-center items-center text-14px"
+          >
+            无未读消息
+          </div>
+        </template>
+      </ElDropdown>
+      <Icon
+        icon="ep:full-screen"
+        width="20"
+        class="mx-10px cursor-pointer"
+        @click="emit('fullScreen')"
+      />
       <ElDropdown trigger="click" tabindex="" class="cursor-pointer">
         <div>
           <Icon

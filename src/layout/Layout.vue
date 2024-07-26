@@ -12,11 +12,17 @@ const activeIndex = ref('');
 router.isReady().then(() => {
   activeIndex.value = router.currentRoute.value.path;
 });
+
+// 内容界面全屏
+const articleRef = ref<HTMLDivElement>();
+function fullScreen() {
+  articleRef.value?.requestFullscreen();
+}
 </script>
 
 <template>
   <div class="layout">
-    <Navigator class="nav"></Navigator>
+    <Navigator class="nav" @full-screen="fullScreen"></Navigator>
     <div class="main">
       <RecursiveMenu
         :data="MenuRouteAdaptor(menuRoutes)"
@@ -32,10 +38,12 @@ router.isReady().then(() => {
         }"
         @click="styleStore.hideSidebar"
       ></div>
-      <article class="article">
-        <RouterView v-slot="{ Component }">
+      <article ref="articleRef" class="article">
+        <RouterView v-slot="{ Component, route }">
           <Transition name="fade-left">
-            <component :is="Component" class="w-full" />
+            <div :key="route.path" class="w-full h-full overflow-hidden">
+              <component :is="Component" class="w-full" />
+            </div>
           </Transition>
         </RouterView>
       </article>
