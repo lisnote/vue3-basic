@@ -4,7 +4,7 @@
 
 Vue3 projects example.
 
-[Preview](htttps://vue3-basic.pages.dev)
+[Preview](https://vue3-basic.pages.dev)
 
 ## TodoList
 

@@ -4,7 +4,7 @@
 
 Vue3 项目案例.
 
-[在线预览](htttps://vue3-basic.pages.dev)
+[在线预览](https://vue3-basic.pages.dev)
 
 ## TodoList
 
