@@ -15,8 +15,7 @@ const http = axios.create({
 });
 useInterceptors(http);
 
-// 生产环境 mock
-import.meta.env.PROD && new MockAdapter(http);
+new MockAdapter(http);
 
 export default http;
 export * from './transform';

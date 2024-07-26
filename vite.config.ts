@@ -12,18 +12,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
   const env = loadEnv(mode, __dirname, '');
   return {
     base: './',
-    plugins: [
-      vue(),
-      vueJsx(),
-      svgLoader(),
-      yamlLoader(),
-      viteMockServe({
-        mockPath: 'mock',
-        watchFiles: true,
-        ignore: /index\.ts/,
-      }),
-      UnoCSS(),
-    ],
+    plugins: [vue(), vueJsx(), svgLoader(), yamlLoader(), UnoCSS()],
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
