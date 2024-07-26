@@ -8,7 +8,6 @@ import {
   ElDropdownMenu,
   ElDropdownItem,
   ElImage,
-  vLoading,
 } from '@/components/ElementPlus';
 import router from '@/router';
 import { themeMap, switchTheme } from '@/utils/theme';
@@ -67,12 +66,11 @@ async function showQRCode() {
           />
         </div>
         <template #dropdown>
-          <div
-            v-if="qrCodeUrl === ''"
-            v-loading="true"
-            class="w-100px h-100px"
-          ></div>
-          <ElImage v-else :src="qrCodeUrl" :preview-src-list="[qrCodeUrl]" />
+          <ElImage
+            :src="qrCodeUrl"
+            :preview-src-list="[qrCodeUrl]"
+            class="w-150px h-150px"
+          />
         </template>
       </ElDropdown>
       <ElDropdown trigger="click" tabindex="" class="cursor-pointer">
