@@ -4,7 +4,7 @@ import type { Role, Permission } from '@/apis/user';
 import { notPermission } from '@/hooks/usePermission';
 import { t } from '@/locales';
 import { useUserStore } from '@/store';
-import { treeForEach } from '@/utils/dataFactory';
+import { treeTraverse } from '@/utils/dataFactory';
 import {
   ElTable,
   ElTableColumn,
@@ -28,7 +28,7 @@ watch(
     submit.flush();
     getRolePermission({ roleId: props.role.id }).then(({ data: { data } }) => {
       tableData.value = data;
-      treeForEach(tableData.value, (node, parent) => {
+      treeTraverse(tableData.value, (node, parent) => {
         node.parent = parent;
       });
       updateIndeterminate();
@@ -37,7 +37,7 @@ watch(
 );
 // 更新中间态
 const updateIndeterminate = debounce(() => {
-  treeForEach(tableData.value, (node) => {
+  treeTraverse(tableData.value, (node) => {
     node.indeterminate =
       node.has &&
       node.children?.reduce((pre, current) => {
@@ -49,7 +49,7 @@ const updateIndeterminate = debounce(() => {
 // 提交
 const submit = debounce(async function submit(roleId: string) {
   const permissions: string[] = [];
-  treeForEach(tableData.value, (node) => {
+  treeTraverse(tableData.value, (node) => {
     if (node.has) permissions.push(node.code);
   });
   updateRolePermission({ roleId: roleId, permissions }).then(() =>
@@ -64,9 +64,9 @@ function changePermission(row: Permission) {
     }
   } else if (row.children && row.indeterminate) {
     row.has = true;
-    treeForEach(row.children, (node) => (node.has = true));
+    treeTraverse(row.children, (node) => (node.has = true));
   } else if (row.children) {
-    treeForEach(row.children, (node) => (node.has = false));
+    treeTraverse(row.children, (node) => (node.has = false));
   }
   updateIndeterminate();
   submit(props.role!.id);

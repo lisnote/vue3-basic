@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { ElMessageBox, ElButton, ElDialog } from '@/components/ElementPlus';
+import { ElButton, ElDialog } from '@/components/ElementPlus';
+import { WarningBox } from '@/components/MessageBox';
 
 const dialogVisible = ref(false);
 
 const handleClose = (done: () => void) => {
-  ElMessageBox.confirm('Are you sure to close this dialog?')
+  WarningBox('Are you sure to close this dialog?')
     .then(() => {
       done();
     })

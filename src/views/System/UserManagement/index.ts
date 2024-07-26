@@ -1,24 +1,20 @@
 export { default } from './UserManagement.vue';
 import { User, removeUsers } from '@/apis/user';
-import { ElMessage, ElMessageBox } from '@/components/ElementPlus';
+import { ElMessage } from '@/components/ElementPlus';
+import { WarningBox } from '@/components/MessageBox';
 import { t } from '@/locales';
 import { useUserStore } from '@/store';
 
 const userStore = useUserStore();
 export function useRemoveUsers(successCb: CallableFunction) {
   return async (users: User[]) => {
-    ElMessageBox.confirm(
+    WarningBox(
       t('button.deleteConfirm', [
         users
           .slice(0, 3)
           .map(({ name }) => name)
           .join(', ') + (users.length > 3 ? '...' : ''),
       ]),
-      {
-        type: 'warning',
-        title: t('button.delete'),
-        confirmButtonText: t('button.confirm'),
-      },
     )
       .then(() => removeUsers(users.map(({ id }) => id)))
       .then(() => {

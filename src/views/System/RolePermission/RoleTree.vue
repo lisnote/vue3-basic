@@ -4,7 +4,6 @@ import {
   ElTree,
   ElDropdown,
   ElDropdownItem,
-  ElMessageBox,
   ElMessage,
   ElButton,
 } from '@/components/ElementPlus';
@@ -13,6 +12,7 @@ import { ref, nextTick } from 'vue';
 import EditRole from './EditRole.vue';
 import { hasPermission } from '@/hooks/usePermission';
 import { t } from '@/locales';
+import { WarningBox } from '@/components/MessageBox';
 
 const emit = defineEmits({
   'node-click': (role: Role) => role,
@@ -44,12 +44,10 @@ function editNode(role: Role, parent: Role) {
   editRoleVisible.value = true;
 }
 function removeNode(role: Role) {
-  ElMessageBox.confirm(t('button.deleteConfirm', [role.name])).then(
-    async () => {
-      await removeRoles([role.id]);
-      ElMessage.success(t('views.rolePermission.roleDeleteSuccessfully'));
-    },
-  );
+  WarningBox(t('button.deleteConfirm', [role.name])).then(async () => {
+    await removeRoles([role.id]);
+    ElMessage.success(t('views.rolePermission.roleDeleteSuccessfully'));
+  });
 }
 // EditRole
 const editRoleVisible = ref(false);
