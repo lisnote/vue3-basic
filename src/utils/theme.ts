@@ -7,26 +7,20 @@ export const themeMap = {
   default: {
     name: $t('theme.default'),
     accentColor: '#409eff',
-    background: 'white',
+    background: '#FFFFFF',
     color: '#409eff',
   },
   dark: {
     name: $t('theme.dark'),
-    accentColor: 'black',
-    background: 'black',
-    color: 'white',
+    accentColor: '#000000',
+    background: '#000000',
+    color: '#FFFFFF',
   },
   green: {
     name: $t('theme.green'),
-    accentColor: 'lime',
-    background: 'white',
-    color: 'lime',
-  },
-  'memorial-day': {
-    name: $t('theme.memorial-day'),
-    accentColor: '#919191',
-    background: 'white',
-    color: '#919191',
+    accentColor: '#00FF00',
+    background: '#FFFFFF',
+    color: '#00FF00',
   },
 };
 export type Theme = keyof typeof themeMap;

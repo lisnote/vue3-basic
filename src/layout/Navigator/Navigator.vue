@@ -8,6 +8,7 @@ import {
   ElDropdownMenu,
   ElDropdownItem,
   ElImage,
+  vLoading,
 } from '@/components/ElementPlus';
 import router from '@/router';
 import { themeMap, switchTheme } from '@/utils/theme';
@@ -22,7 +23,12 @@ async function logout() {
 }
 const qrCodeUrl = ref('');
 async function showQRCode() {
-  qrCodeUrl.value = await toDataURL(location.href);
+  qrCodeUrl.value = await toDataURL(location.href, {
+    color: {
+      dark: themeMap[styleStore.theme].color,
+      light: themeMap[styleStore.theme].background,
+    },
+  });
 }
 </script>
 <template>
@@ -61,7 +67,12 @@ async function showQRCode() {
           />
         </div>
         <template #dropdown>
-          <ElImage :src="qrCodeUrl" :preview-src-list="[qrCodeUrl]" />
+          <div
+            v-if="qrCodeUrl === ''"
+            v-loading="true"
+            class="w-100px h-100px"
+          ></div>
+          <ElImage v-else :src="qrCodeUrl" :preview-src-list="[qrCodeUrl]" />
         </template>
       </ElDropdown>
       <ElDropdown trigger="click" tabindex="" class="cursor-pointer">
