@@ -2,20 +2,27 @@
 import { useUserStore, useStyleStore } from '@/store';
 import { langs, lang } from '@/locales';
 import { Icon } from '@iconify/vue';
+import { toDataURL } from 'qrcode';
 import {
   ElDropdown,
   ElDropdownMenu,
   ElDropdownItem,
+  ElImage,
 } from '@/components/ElementPlus';
 import router from '@/router';
 import { themeMap, switchTheme } from '@/utils/theme';
 import { t } from '@/locales';
+import { ref } from 'vue';
 const userStore = useUserStore();
 const styleStore = useStyleStore();
 const projectName = import.meta.env.APP_NAME;
 async function logout() {
   await userStore.logout();
   router.push('/Login');
+}
+const qrCodeUrl = ref('');
+async function showQRCode() {
+  qrCodeUrl.value = await toDataURL(location.href);
 }
 </script>
 <template>
@@ -44,6 +51,19 @@ async function logout() {
       <div>
         <Icon icon="ep:bell" width="20" class="mx-10px cursor-pointer" />
       </div>
+      <ElDropdown trigger="click" tabindex="" class="cursor-pointer">
+        <div>
+          <Icon
+            icon="uiw:qrcode"
+            width="20"
+            class="mx-10px cursor-pointer"
+            @click="showQRCode"
+          />
+        </div>
+        <template #dropdown>
+          <ElImage :src="qrCodeUrl" :preview-src-list="[qrCodeUrl]" />
+        </template>
+      </ElDropdown>
       <ElDropdown trigger="click" tabindex="" class="cursor-pointer">
         <div><Icon icon="cil:language" width="20" class="mx-10px" /></div>
         <template #dropdown>
