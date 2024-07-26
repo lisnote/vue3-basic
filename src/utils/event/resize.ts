@@ -7,6 +7,11 @@ type ResizeListener = (event: {
 
 const elementMap = new WeakMap<HTMLElement, ResizeListener[]>();
 
+/**
+ * 监听指定元素尺寸变化
+ * @param element - 要添加监听器的元素
+ * @param listener - 监听器
+ */
 export function addResizeListener(
   element: HTMLElement,
   listener: ResizeListener,
@@ -15,6 +20,11 @@ export function addResizeListener(
   listeners.push(listener);
 }
 
+/**
+ * 关闭元素的尺寸变化监听
+ * @param element - 要移除监听器的元素
+ * @param listener - 要移除的监听器
+ */
 export function removeResizeListener(
   element: HTMLElement,
   listener: ResizeListener,
