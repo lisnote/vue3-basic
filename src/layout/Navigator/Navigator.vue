@@ -8,11 +8,13 @@ import {
   ElDropdownMenu,
   ElDropdownItem,
   ElImage,
+  ElMessage,
 } from '@/components/ElementPlus';
 import router from '@/router';
 import { themeMap, switchTheme } from '@/utils/theme';
 import { t } from '@/locales';
 import { ref } from 'vue';
+import { copyText } from '@/utils/clipboard';
 
 const emit = defineEmits(['fullScreen']);
 
@@ -25,12 +27,14 @@ async function logout() {
 }
 const qrCodeUrl = ref('');
 async function showQRCode() {
-  qrCodeUrl.value = await toDataURL(location.href, {
+  toDataURL(location.href, {
     color: {
       dark: themeMap[styleStore.theme].color,
       light: themeMap[styleStore.theme].background,
     },
-  });
+  }).then((v) => (qrCodeUrl.value = v));
+  copyText(location.href);
+  ElMessage.success(t('nav.urlCopiedToClipboard'));
 }
 </script>
 <template>
@@ -64,7 +68,7 @@ async function showQRCode() {
           <div
             class="w-300px h-200px flex justify-center items-center text-14px"
           >
-            无未读消息
+            {{ t('nav.noUnreadMessages') }}
           </div>
         </template>
       </ElDropdown>
