@@ -1,6 +1,10 @@
 import type { RouteRecordRaw } from 'vue-router';
 import { $t } from '@/locales';
 import commonStyle from '@/styles/common.module.scss';
+
+function createRender(content: string) {
+  return { render: () => <div class={commonStyle.contentArea}>{content}</div> };
+}
 /**
  * 菜单路由信息
  */
@@ -27,7 +31,7 @@ export const menuRoutes: RouteRecordRaw[] = [
       {
         path: '/Components/Table',
         meta: { title: '表格(未完成)' },
-        component: <div class={commonStyle.contentArea}>表格</div>,
+        component: createRender('表格'),
       },
       {
         path: '/Components/CountJS',
@@ -134,12 +138,12 @@ export const menuRoutes: RouteRecordRaw[] = [
           {
             path: '/Toys/Game/DontTapTheWhiteTile',
             meta: { title: '别踩白块(未完成)' },
-            component: <div class={commonStyle.contentArea}>别踩白块</div>,
+            component: createRender('别踩白块'),
           },
           {
             path: '/Toys/Game/ControlThe3DCar',
             meta: { title: '3D遥控车(未完成)' },
-            component: <div class={commonStyle.contentArea}>3D遥控车</div>,
+            component: createRender('3D遥控车'),
           },
           {
             path: '/Toys/Game/Minecraft',
@@ -155,59 +159,47 @@ export const menuRoutes: RouteRecordRaw[] = [
           {
             path: '/Toys/Service/Websocket',
             meta: { title: '双向通信(未完成)' },
-            component: (
-              <div class={commonStyle.contentArea}>双向通信SocketIO</div>
-            ),
+            component: createRender('双向通信SocketIO'),
           },
           {
             path: '/Toys/Service/GraphQL',
             meta: { title: '接口合并(未完成)' },
-            component: (
-              <div class={commonStyle.contentArea}>接口合并GraphQL</div>
-            ),
+            component: createRender('接口合并GraphQL'),
           },
           {
             path: '/Toys/Service/WebRTC',
             meta: { title: '即时通信(未完成)' },
-            component: (
-              <div class={commonStyle.contentArea}>即时通信WebRTC</div>
-            ),
+            component: createRender('即时通信WebRTC'),
           },
           {
             path: '/Toys/Service/SyncronousVideo',
             meta: { title: '同步放映室(未完成)' },
-            component: <div class={commonStyle.contentArea}>同步放映室</div>,
+            component: createRender('同步放映室'),
           },
           {
             path: '/Toys/Service/LiveBroadcast',
             meta: { title: '直播间(未完成)' },
-            component: <div class={commonStyle.contentArea}>直播间</div>,
+            component: createRender('直播间'),
           },
           {
             path: '/Toys/Service/FileUpload',
             meta: { title: '文件上传(未完成)' },
-            component: <div class={commonStyle.contentArea}>文件上传</div>,
+            component: createRender('文件上传'),
           },
           {
             path: '/Toys/Service/TextToSpeech',
             meta: { title: '文本转语音(未完成)' },
-            component: (
-              <div class={commonStyle.contentArea}>文本转语音Vits</div>
-            ),
+            component: createRender('文本转语音Vits'),
           },
           {
             path: '/Toys/Service/TextToImage',
             meta: { title: 'AI生图(未完成)' },
-            component: (
-              <div class={commonStyle.contentArea}>AI生图StableDiffusion</div>
-            ),
+            component: createRender('AI生图StableDiffusion'),
           },
           {
             path: '/Toys/Service/SuperResolution',
             meta: { title: '图片高清修复(未完成)' },
-            component: (
-              <div class={commonStyle.contentArea}>图片高清修复Real-ESRGAN</div>
-            ),
+            component: createRender('图片高清修复Real-ESRGAN'),
           },
         ],
       },
@@ -243,6 +235,6 @@ export const menuRoutes: RouteRecordRaw[] = [
   {
     path: 'Profile',
     meta: { title: '个人资料', invisible: true },
-    component: <div class={commonStyle.contentArea}>个人资料</div>,
+    component: createRender('个人资料'),
   },
 ];

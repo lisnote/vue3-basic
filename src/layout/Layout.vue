@@ -42,7 +42,7 @@ function fullScreen() {
         <RouterView v-slot="{ Component, route }">
           <Transition name="fade-left">
             <div :key="route.path" class="w-full h-full overflow-hidden">
-              <component :is="Component" class="w-full" />
+              <component :is="Component" />
             </div>
           </Transition>
         </RouterView>
