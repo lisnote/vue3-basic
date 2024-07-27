@@ -23,7 +23,7 @@ async function submit() {
   await formRef.value?.validate((value) => (valid = value));
   if (!valid) return;
   await userStore.login(formData.value.phone, formData.value.password);
-  router.push('/Dashboard');
+  router.push('/');
 }
 </script>
 
