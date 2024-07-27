@@ -1,7 +1,6 @@
 import { ConfigEnv, UserConfigExport, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
-import { viteMockServe } from 'vite-plugin-mock';
 import svgLoader from 'vite-svg-loader';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import yamlLoader from '@rollup/plugin-yaml';
