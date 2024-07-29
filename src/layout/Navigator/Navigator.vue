@@ -40,7 +40,7 @@ async function showQRCode() {
 <template>
   <nav class="navigator">
     <div
-      v-show="styleStore.deviceMode === 'mobild'"
+      v-show="styleStore.deviceMode === 'mobile'"
       @click="styleStore.sidebarToggle"
     >
       <Transition name="flip" mode="out-in">
@@ -107,7 +107,7 @@ async function showQRCode() {
         <span class="cursor-pointer">
           <div class="navigator-action">
             <img class="w-10 rounded-1/2" :src="userStore.avatar" />
-            <span v-show="styleStore.deviceMode !== 'mobild'">
+            <span v-show="styleStore.deviceMode !== 'mobile'">
               {{ userStore.name }}
             </span>
           </div>
