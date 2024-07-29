@@ -34,7 +34,7 @@ async function showQRCode() {
     },
   }).then((v) => (qrCodeUrl.value = v));
   copyText(location.href);
-  ElMessage.success(t('nav.urlCopiedToClipboard'));
+  ElMessage.success(t('nav.urlHasBeenCopied'));
 }
 </script>
 <template>
