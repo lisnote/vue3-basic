@@ -19,7 +19,7 @@ const markedProduct = computed(() => {
     class="flex"
     :class="[
       commonStyle.contentArea,
-      styleStore.deviceMode === 'mobild' ? 'flex-col' : '',
+      styleStore.deviceMode === 'mobile' ? 'flex-col' : '',
     ]"
   >
     <div class="marked-source">

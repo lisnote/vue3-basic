@@ -23,9 +23,9 @@ const defaultAvtive = computed(() => {
   <div
     class="recursive-menu flex flex-col"
     :style="{
-      position: styleStore.deviceMode === 'mobild' ? 'absolute' : 'static',
+      position: styleStore.deviceMode === 'mobile' ? 'absolute' : 'static',
       transform:
-        !styleStore.sidebarVisible && styleStore.deviceMode === 'mobild'
+        !styleStore.sidebarVisible && styleStore.deviceMode === 'mobile'
           ? 'translateX(calc(-100% - 1px))'
           : '',
     }"
